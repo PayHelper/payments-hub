@@ -1,0 +1,3 @@
+SWP\Component\Core\Model\PaymentMethod:
+    exclusion_policy: ALL
+    xml_root_name: payment-method
