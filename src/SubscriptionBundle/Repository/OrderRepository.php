@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace SubscriptionBundle\Repository;
 
 use Sylius\Bundle\OrderBundle\Doctrine\ORM\OrderRepository as BaseOrderRepository;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Repository;
+namespace SubscriptionBundle\Repository;
 
 use Sylius\Component\Order\Repository\OrderRepositoryInterface as BaseOrderRepositoryInterface;
 

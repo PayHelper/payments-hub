@@ -42,7 +42,7 @@ twig:
 doctrine:
     orm:
         resolve_target_entities:
-            Sylius\Component\Order\Model\OrderInterface: AppBundle\Model\Order
+            Sylius\Component\Order\Model\OrderInterface: SubscriptionBundle\Model\Order
     dbal:
         driver: pdo_pgsql
         host: '%database_host%'

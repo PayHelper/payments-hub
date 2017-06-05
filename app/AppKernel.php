@@ -28,7 +28,7 @@ class AppKernel extends Kernel
             new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 
-            new AppBundle\AppBundle(),
+            new SubscriptionBundle\SubscriptionBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Model;
+namespace SubscriptionBundle\Model;
 
 use Sylius\Component\Order\Model\Order as BaseOrder;
 
