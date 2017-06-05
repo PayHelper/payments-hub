@@ -1,0 +1,15 @@
+ph_core_homepage:
+    path:     /
+    defaults: { _controller: PHCoreBundle:Default:index }
+
+ph_core_get_payment_gateways:
+    path: /api/payment-gateways
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.payment_method:getPaymentGatewaysAction
+
+phpayment_method:
+    resource: |
+        alias: ph.payment_method
+    type: sylius.resource_api
+
