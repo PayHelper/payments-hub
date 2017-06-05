@@ -1,13 +1,15 @@
 <?php
 
-namespace SubscriptionBundle\Form\Type;
+declare(strict_types=1);
+
+namespace PH\Bundle\SubscriptionBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class CompositePublishActionType
+ * Class SubscriptionType
  */
 final class SubscriptionType extends AbstractType
 {
@@ -20,6 +22,7 @@ final class SubscriptionType extends AbstractType
             ->add('amount')
             ->add('currency')
             ->add('type')
+            ->add('providerType')
         ;
     }
 

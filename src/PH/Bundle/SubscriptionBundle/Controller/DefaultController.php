@@ -1,10 +1,12 @@
 <?php
 
-namespace SubscriptionBundle\Controller;
+declare(strict_types=1);
+
+namespace PH\Bundle\SubscriptionBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use SubscriptionBundle\Form\Type\SubscriptionType;
+use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
 use Sylius\Component\Order\Model\OrderInterface;
 use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -39,6 +41,7 @@ class DefaultController extends Controller
             $order->addItem($orderItem);
             $order->recalculateItemsTotal();
             $order->completeCheckout();
+            $order->setProviderType($data['providerType']);
             $orderRepository = $this->container->get('sylius.repository.order');
             $orderRepository->add($order);
 

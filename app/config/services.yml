@@ -16,19 +16,18 @@ services:
 
     # makes classes in src/SubscriptionBundle available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-
-    SubscriptionBundle\:
-        resource: '../../src/SubscriptionBundle/*'
-        # you can exclude directories or files
-        # but if a service is unused, it's removed anyway
-        exclude: '../../src/SubscriptionBundle/{Entity,Repository}'
+#    PH\Bundle\SubscriptionBundle\:
+#        resource: '../../src/PH/Bundle/SubscriptionBundle/*'
+#        # you can exclude directories or files
+#        # but if a service is unused, it's removed anyway
+#        exclude: '../../src/PH/Bundle/SubscriptionBundle/{Entity,Repository}'
 
     # controllers are imported separately to make sure they're public
     # and have a tag that allows actions to type-hint services
-    SubscriptionBundle\Controller\:
-        resource: '../../src/SubscriptionBundle/Controller'
-        public: true
-        tags: ['controller.service_arguments']
+#    PH\Bundle\SubscriptionBundle\Controller\:
+#        resource: '../../src/PH/Bundle/SubscriptionBundle/Controller'
+#        public: true
+#        tags: ['controller.service_arguments']
 
     # add more services, or override services that need manual wiring
     # AppBundle\Service\ExampleService:

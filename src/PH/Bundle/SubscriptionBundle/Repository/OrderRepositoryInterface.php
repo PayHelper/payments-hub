@@ -1,6 +1,8 @@
 <?php
 
-namespace SubscriptionBundle\Repository;
+declare(strict_types=1);
+
+namespace PH\Bundle\SubscriptionBundle\Repository;
 
 use Sylius\Component\Order\Repository\OrderRepositoryInterface as BaseOrderRepositoryInterface;
 
@@ -9,5 +11,4 @@ use Sylius\Component\Order\Repository\OrderRepositoryInterface as BaseOrderRepos
  */
 interface OrderRepositoryInterface extends BaseOrderRepositoryInterface
 {
-    public function count();
 }

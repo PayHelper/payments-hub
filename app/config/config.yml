@@ -40,9 +40,6 @@ twig:
 
 # Doctrine Configuration
 doctrine:
-    orm:
-        resolve_target_entities:
-            Sylius\Component\Order\Model\OrderInterface: SubscriptionBundle\Model\Order
     dbal:
         driver: pdo_pgsql
         host: '%database_host%'
@@ -71,7 +68,11 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
-sylius_order: ~
+sylius_order:
+    resources:
+        order:
+            classes:
+                model: PH\Bundle\SubscriptionBundle\Model\Order
 
 fos_rest:
     zone:
