@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
             new SWP\Bundle\StorageBundle\SWPStorageBundle(),
 
