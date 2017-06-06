@@ -1,6 +1,7 @@
+subscription:
+    resource: '@SubscriptionBundle/Controller/'
+    type: annotation
+
 ph_core:
     resource: "@PHCoreBundle/Resources/config/routing.yml"
 
-#app:
-#    resource: '@AppBundle/Controller/'
-#    type: annotation

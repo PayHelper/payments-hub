@@ -20,8 +20,6 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
 
-            new SWP\Bundle\StorageBundle\SWPStorageBundle(),
-
             new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
             new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
@@ -30,7 +28,7 @@ class AppKernel extends Kernel
             new Sylius\Bundle\PayumBundle\SyliusPayumBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 
-            //new AppBundle\AppBundle(),
+            new PH\Bundle\SubscriptionBundle\SubscriptionBundle(),
             new PH\Bundle\CoreBundle\PHCoreBundle(),
         ];
 
