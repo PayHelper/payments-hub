@@ -1,6 +1,3 @@
-imports:
-    - { resource: "@SyliusPaymentBundle/Resources/config/app/config.yml" }
-
 payum:
     storages:
         "%sylius.model.order.class%": { doctrine: orm }
@@ -20,6 +17,9 @@ payum:
 jms_serializer:
     metadata:
         directories:
+            sylius-payment:
+                namespace_prefix: "Sylius\\Component\\Payment"
+                path: "@PHCoreBundle/Resources/config/serializer/SyliusPaymentBundle"
             ph-core:
                 namespace_prefix: "PH\\Component\\Core"
                 path: "@PHCoreBundle/Resources/config/serializer"
@@ -32,10 +32,8 @@ sylius_payment:
                 repository: Sylius\Bundle\PaymentBundle\Doctrine\ORM\PaymentMethodRepository
                 controller: PH\Bundle\CoreBundle\Controller\PaymentMethodController
 
-sylius_resource:
-    drivers:
-        - doctrine/orm
-    resources:
-        ph.payment_method:
-            classes:
-                model: PH\Component\Core\Model\PaymentMethod
+#sylius_resource:
+#    resources:
+#        ph.payment_method:
+#            classes:
+#                model: PH\Component\Core\Model\PaymentMethod

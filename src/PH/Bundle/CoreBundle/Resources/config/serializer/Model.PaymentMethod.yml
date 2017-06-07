@@ -1,3 +1,12 @@
-SWP\Component\Core\Model\PaymentMethod:
+PH\Component\Core\Model\PaymentMethod:
     exclusion_policy: ALL
-    xml_root_name: payment-method
+    properties:
+        gatewayConfig:
+            expose: true
+    relations:
+        -   rel: self
+            href:
+                route: sylius_api_payment_method_show
+                parameters:
+                    code: expr(object.getCode())
+                    version: 1

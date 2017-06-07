@@ -4,4 +4,5 @@ subscription:
 
 ph_core:
     resource: "@PHCoreBundle/Resources/config/routing.yml"
+    prefix: /api/v{version}
 
