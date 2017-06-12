@@ -19,16 +19,18 @@ class AppKernel extends Kernel
             new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-
-            new SWP\Bundle\StorageBundle\SWPStorageBundle(),
+            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
             new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
             new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
             new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
+            new Sylius\Bundle\PayumBundle\SyliusPayumBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
 
-            new AppBundle\AppBundle(),
+            new PH\Bundle\SubscriptionBundle\SubscriptionBundle(),
+            new PH\Bundle\CoreBundle\PHCoreBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

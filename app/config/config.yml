@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-
+    - { resource: "@PHCoreBundle/Resources/config/app/config.yml" }
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
@@ -40,9 +40,6 @@ twig:
 
 # Doctrine Configuration
 doctrine:
-    orm:
-        resolve_target_entities:
-            Sylius\Component\Order\Model\OrderInterface: AppBundle\Model\Order
     dbal:
         driver: pdo_pgsql
         host: '%database_host%'
@@ -61,7 +58,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: true
+        auto_mapping: false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -71,7 +68,29 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+sylius_order:
+    resources:
+        order:
+            classes:
+                model: PH\Bundle\SubscriptionBundle\Model\Order
 
-sylius_payment: ~
-
-sylius_order: ~
+fos_rest:
+    zone:
+        - { path: ^/api/* }
+    versioning:
+        enabled: false
+    routing_loader:
+        default_format: json
+    view:
+        formats:
+            json: true
+            xml:  true
+        view_response_listener: false
+        empty_content: 204
+    serializer:
+        serialize_null: true
+    exception: ~
+    format_listener:
+        rules:
+            - { path: '^/api', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
+            - { path: '^/', stop: true }
