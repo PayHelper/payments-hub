@@ -8,8 +8,6 @@ php:
   - nightly
 
 env:
-  global:
-    - SYMFONY_ENV="test"
   matrix:
    - COMPOSER_FLAGS='update --prefer-stable'
    - COMPOSER_FLAGS='install'
