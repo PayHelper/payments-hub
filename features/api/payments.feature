@@ -1,4 +1,4 @@
-Feature: Adding a new payment method
+Feature: Managing payments
   In order to pay for subscriptions in different ways
   As a HTTP Client
   I want to make a request against payment method endpoint
@@ -85,6 +85,30 @@ Feature: Adding a new payment method
       | gateway_config.config.signature | signature12334              |
       | gateway_config.config.sandbox   | 1                           |
 
+  Scenario: Get payment method by code
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "GET" request to "/payment-methods/cash_on_delivery"
+    Then the response status code should be 200
+    And the response should be in JSON
+    And the header "Content-Type" should be equal to "application/json"
+    And the JSON node "translations" should have 1 element
+    And the JSON node "translations.en.translatable" should be null
+    And the JSON node "created_at" should not be null
+    And the JSON nodes should contain:
+      | id                           | 1                                        |
+      | position                     | 1                                        |
+      | code                         | cash_on_delivery                         |
+      | translations.en.locale       | en                                       |
+      | translations.en.locale       | en                                       |
+      | translations.en.id           | 1                                        |
+      | translations.en.name         | offline                                  |
+      | translations.en.description  | desc                                     |
+      | translations.en.instructions | instructions                             |
+      | gateway_config.id            | 1                                        |
+      | gateway_config.factory_name  | offline                                  |
+      | gateway_config.gateway_name  | offline                                  |
+
   Scenario: Retrieve the payment methods list
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/payment-methods/"
@@ -92,3 +116,11 @@ Feature: Adding a new payment method
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON node "_embedded.items" should have 2 elements
+
+  @dropSchema
+  Scenario: Delete a single payment by code
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "DELETE" request to "/payment-methods/cash_on_delivery"
+    Then the response status code should be 204
+    And the response should be empty
