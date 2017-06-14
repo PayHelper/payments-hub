@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace PH\Bundle\SubscriptionBundle\Controller;
 
+use PH\Bundle\SubscriptionBundle\Event\OrderEvent;
+use PH\Bundle\SubscriptionBundle\OrderEvents;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
-use Sylius\Component\Order\Model\OrderInterface;
-use Sylius\Component\Order\Model\OrderItemInterface;
+use PH\Bundle\SubscriptionBundle\Model\OrderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class OrderController extends Controller
 {
     /**
      * @Route("/api/subscription", name="api_subscription")
      * @Method("POST")
      */
-    public function indexAction(Request $request)
+    public function createAction(Request $request)
     {
         /** @var FactoryInterface $order */
         $orderFactory = $this->container->get('sylius.factory.order');
@@ -34,16 +35,10 @@ class DefaultController extends Controller
         $form->handleRequest($request);
         if ($form->isValid()) {
             $data = $form->getData();
-            /** @var OrderItemInterface $orderItem */
-            $orderItem = $this->container->get('sylius.factory.order_item')->createNew();
-            $this->container->get('sylius.order_item_quantity_modifier')->modify($orderItem, 1);
-            $orderItem->setUnitPrice((int) $data['amount']);
-            $order->addItem($orderItem);
-            $order->recalculateItemsTotal();
-            $order->completeCheckout();
-            $order->setProviderType($data['providerType']);
-            $orderRepository = $this->container->get('sylius.repository.order');
-            $orderRepository->add($order);
+            $order = $this->container->get('ph.service.order')->prepareOrder($order, $data);
+            $this->container->get('sylius.repository.order')->add($order);
+
+            $this->container->get('event_dispatcher')->dispatch(OrderEvents::ORDER_UPDATE, new OrderEvent($order));
 
             return new JsonResponse(['status' => 'OK']);
         }
