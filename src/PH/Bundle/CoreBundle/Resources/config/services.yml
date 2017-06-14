@@ -1,17 +1,13 @@
 services:
-#    ph_core.example:
-#        class: PH\Bundle\CoreBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
-
     sylius.invoice_number_generator:
         class: Sylius\Component\Core\Payment\IdBasedInvoiceNumberGenerator
 
-    sylius.custom_factory.payment_method:
+    ph.custom_factory.payment_method:
         class: Sylius\Component\Core\Factory\PaymentMethodFactory
         decorates: sylius.factory.payment_method
         public: false
         arguments:
-            - "@sylius.custom_factory.payment_method.inner"
+            - "@ph.custom_factory.payment_method.inner"
             - "@sylius.factory.gateway_config"
 
     sylius.form.extension.type.payment_method:
