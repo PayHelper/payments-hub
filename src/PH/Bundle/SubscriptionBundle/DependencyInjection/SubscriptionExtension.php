@@ -23,9 +23,7 @@ final class SubscriptionExtension extends AbstractResourceExtension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
-
         $this->registerResources('swp', $config['driver'], [], $container);
-
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
     }

@@ -1,0 +1,30 @@
+language: php
+
+dist: trusty
+sudo: false
+
+php:
+  - 7.1
+  - nightly
+
+env:
+  matrix:
+   - COMPOSER_FLAGS='update --prefer-stable'
+   - COMPOSER_FLAGS='install'
+
+matrix:
+  allow_failures:
+    - php: nightly
+  fast_finish: true
+
+before_script:
+  - phpenv config-rm xdebug.ini || echo "xdebug not available"
+  - phpenv rehash
+  - composer $COMPOSER_FLAGS --no-interaction --prefer-dist
+
+script:
+  - bin/behat --strict --no-interaction -vvv -f progress
+
+cache:
+  directories:
+    - $HOME/.composer/cache
