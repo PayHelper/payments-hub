@@ -58,7 +58,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: false
+        auto_mapping: true
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -67,12 +67,6 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-
-sylius_order:
-    resources:
-        order:
-            classes:
-                model: PH\Bundle\SubscriptionBundle\Model\Order
 
 fos_rest:
     zone:

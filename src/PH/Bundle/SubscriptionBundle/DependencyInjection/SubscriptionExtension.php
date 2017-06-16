@@ -22,6 +22,6 @@ final class SubscriptionExtension extends AbstractResourceExtension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $this->registerResources('swp', $config['driver'], [], $container);
+        //$this->registerResources('swp', $config['driver'], [], $container);
     }
 }

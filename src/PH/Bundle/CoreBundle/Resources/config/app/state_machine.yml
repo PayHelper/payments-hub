@@ -1,0 +1,3 @@
+imports:
+    - { resource: "@PHCoreBundle/Resources/config/app/state_machine/checkout.yml" }
+    - { resource: "@PHCoreBundle/Resources/config/app/state_machine/checkout_payment.yml" }

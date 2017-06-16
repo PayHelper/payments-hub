@@ -14,3 +14,19 @@ services:
         class: PH\Bundle\CoreBundle\Form\Extension\PaymentMethodTypeExtension
         tags:
             - { name: form.type_extension, extended_type: Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodType }
+
+    swp.form.type.checkout_select_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+        arguments:
+            - '%sylius.model.order.class%'
+            - [ph]
+        tags:
+            - { name: form.type }
+
+    swp.form.type.checkout_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
+        arguments:
+            - '%sylius.model.payment.class%'
+            - [ph]
+        tags:
+            - { name: form.type }

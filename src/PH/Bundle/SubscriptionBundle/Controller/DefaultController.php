@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/api/subscription", name="api_subscription")
+     * @Route("/api/v1/subscription", name="api_subscription")
      * @Method("POST")
      */
     public function indexAction(Request $request)
@@ -41,7 +41,6 @@ class DefaultController extends Controller
             $order->addItem($orderItem);
             $order->recalculateItemsTotal();
             $order->completeCheckout();
-            $order->setProviderType($data['providerType']);
             $orderRepository = $this->container->get('sylius.repository.order');
             $orderRepository->add($order);
 

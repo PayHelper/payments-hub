@@ -1,3 +1,6 @@
+imports:
+    - { resource: "@PHCoreBundle/Resources/config/app/state_machine.yml" }
+
 payum:
     storages:
         "%sylius.model.order.class%": { doctrine: orm }
@@ -31,7 +34,15 @@ sylius_payment:
                 model: PH\Component\Core\Model\PaymentMethod
                 repository: Sylius\Bundle\PaymentBundle\Doctrine\ORM\PaymentMethodRepository
                 controller: PH\Bundle\CoreBundle\Controller\PaymentMethodController
+        payment:
+            classes:
+                model: PH\Component\Core\Model\Payment
 
+sylius_order:
+    resources:
+        order:
+            classes:
+                model: PH\Component\Core\Model\Order
 #sylius_resource:
 #    resources:
 #        ph.payment_method:

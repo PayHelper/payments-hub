@@ -1,0 +1,24 @@
+winzou_state_machine:
+    ph_checkout:
+        class: PH\Component\Core\Model\Order #"%sylius.model.order.class%"
+        property_path: checkoutState
+        graph: ph_checkout
+        state_machine_class: "%sylius.state_machine.class%"
+        states:
+            new: ~
+            payment_skipped: ~
+            payment_selected: ~
+            completed: ~
+        transitions:
+            create:
+                from: [new, payment_selected, payment_skipped]
+                to: payment_selected
+            skip_payment:
+                from: [new]
+                to: payment_skipped
+            select_payment:
+                from: [new, payment_selected]
+                to: payment_selected
+            complete:
+                from: [payment_selected, payment_skipped]
+                to: completed

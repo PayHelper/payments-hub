@@ -22,7 +22,6 @@ final class SubscriptionType extends AbstractType
             ->add('amount')
             ->add('currency')
             ->add('type')
-            ->add('providerType')
         ;
     }
 
