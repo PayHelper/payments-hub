@@ -1,0 +1,16 @@
+services:
+    ph.service.order:
+        class: PH\Bundle\SubscriptionBundle\Service\OrderService
+        public: true
+        arguments:
+            - "@sylius.factory.order_item"
+            - "@sylius.order_item_quantity_modifier"
+            - "@event_dispatcher"
+
+    ph.push.subscriber:
+        class: PH\Bundle\SubscriptionBundle\EventSubscriber\OrderStatusSubscriber
+        arguments:
+            - "@ph.repository.push_destination"
+            - "@serializer"
+        tags:
+            - { name: kernel.event_subscriber }
