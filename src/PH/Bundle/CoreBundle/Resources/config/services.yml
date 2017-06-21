@@ -19,7 +19,7 @@ services:
         class: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
         arguments:
             - '%sylius.model.order.class%'
-            - [ph]
+#            - ['sylius']
         tags:
             - { name: form.type }
 
@@ -27,6 +27,5 @@ services:
         class: PH\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
         arguments:
             - '%sylius.model.payment.class%'
-            - [ph]
         tags:
             - { name: form.type }

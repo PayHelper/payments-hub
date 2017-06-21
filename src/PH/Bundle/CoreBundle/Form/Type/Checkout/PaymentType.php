@@ -39,7 +39,6 @@ final class PaymentType extends AbstractType
             $payment = $event->getData();
 
             $form->add('method', PaymentMethodChoiceType::class, [
-                'label' => 'sylius.form.checkout.payment_method',
                 'subject' => $payment,
                 'expanded' => true,
             ]);
@@ -55,6 +54,7 @@ final class PaymentType extends AbstractType
             'data_class' => $this->dataClass,
         ]);
     }
+
 
     /**
      * {@inheritdoc}

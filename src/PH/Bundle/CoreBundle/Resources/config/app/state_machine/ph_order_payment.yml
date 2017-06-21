@@ -1,11 +1,11 @@
 winzou_state_machine:
-    ph_order_payment:
+    sylius_order_payment:
         class: PH\Component\Core\Model\Order #"%sylius.model.order.class%"
         property_path: paymentState
-        graph: ph_order_payment
+        graph: sylius_order_payment
         state_machine_class: "%sylius.state_machine.class%"
         states:
-            new: ~
+            cart: ~
             awaiting_payment: ~
             partially_paid: ~
             cancelled: ~
@@ -14,9 +14,10 @@ winzou_state_machine:
             refunded: ~
         transitions:
             request_payment:
-                from: [new]
+                from: [cart]
                 to: awaiting_payment
             partially_pay:
+                from: [awaiting_payment, partially_paid]
                 to: partially_paid
             cancel:
                 from: [awaiting_payment]
@@ -25,7 +26,18 @@ winzou_state_machine:
                 from: [awaiting_payment, partially_paid]
                 to: paid
             partially_refund:
+                from: [paid, partially_paid, partially_refunded]
                 to: partially_refunded
             refund:
-                from: [paid, partially_refunded]
+                from: [paid, partially_paid, partially_refunded]
                 to: refunded
+        callbacks:
+            after:
+                ph_order_paid:
+                    on: ["pay"]
+                    do: ["@sylius.inventory.order_inventory_operator", "sell"]
+                    args: ["object"]
+                ph_resolve_state:
+                    on: ["pay"]
+                    do: ["@sylius.state_resolver.order", "resolve"]
+                    args: ["object"]

@@ -44,6 +44,14 @@ final class ChangePaymentMethodType extends AbstractType
     /**
      * {@inheritdoc}
      */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(['csrf_protection' => false]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getParent()
     {
         return CollectionType::class;

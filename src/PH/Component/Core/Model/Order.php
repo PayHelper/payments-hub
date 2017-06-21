@@ -20,12 +20,17 @@ class Order extends BaseOrder implements OrderInterface
     /**
      * @var string
      */
-    protected $checkoutState = OrderCheckoutStates::STATE_NEW;
+    protected $checkoutState = OrderCheckoutStates::STATE_CART;
 
     /**
      * @var string
      */
-    protected $paymentState = OrderPaymentStates::STATE_NEW;
+    protected $paymentState = OrderPaymentStates::STATE_CART;
+
+    /**
+     * @var string
+     */
+    protected $state = OrderInterface::STATE_CART;
 
     /**
      * Order constructor.
