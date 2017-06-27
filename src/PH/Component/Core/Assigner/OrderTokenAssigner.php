@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PH\Component\Core\TokenAssigner;
+namespace PH\Component\Core\Assigner;
 
 use PH\Component\Core\Model\OrderInterface;
 use Sylius\Component\Resource\Generator\RandomnessGeneratorInterface;

@@ -1,6 +1,6 @@
 services:
     ph.order_token_assigner:
-        class: PH\Component\Core\TokenAssigner\OrderTokenAssigner
+        class: PH\Component\Core\Assigner\OrderTokenAssigner
         arguments:
            - "@sylius.random_generator"
 
