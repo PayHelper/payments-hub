@@ -1,8 +1,8 @@
 winzou_state_machine:
-    sylius_order:
-        class: PH\Component\Core\Model\Order #"%sylius.model.order.class%"
+    ph_order:
+        class: "%sylius.model.order.class%"
         property_path: state
-        graph: sylius_order
+        graph: ph_order
         state_machine_class: "%sylius.state_machine.class%"
         states:
             cart: ~
@@ -27,17 +27,17 @@ winzou_state_machine:
                     args: ["object"]
                 ph_assign_token:
                     on: ["create"]
-                    do: ["@sylius.unique_id_based_order_token_assigner", "assignTokenValue"]
+                    do: ["@ph.order_token_assigner", "assignTokenValue"]
                     args: ["object"]
             after:
                 ph_request_payment:
                     on: ["create"]
                     do: ["@sm.callback.cascade_transition", "apply"]
-                    args: ["object", "event", "'request_payment'", "'sylius_order_payment'"]
+                    args: ["object", "event", "'request_payment'", "'ph_order_payment'"]
                 ph_create_payment:
                     on: ["create"]
                     do: ["@sm.callback.cascade_transition", "apply"]
-                    args: ["object.getPayments()", "event", "'create'", "'sylius_payment'"]
+                    args: ["object.getPayments()", "event", "'create'", "'ph_payment'"]
 #                sylius_hold_inventory:
 #                    on: ["create"]
 #                    do: ["@sylius.inventory.order_inventory_operator", "hold"]
@@ -45,11 +45,11 @@ winzou_state_machine:
                 ph_cancel_payment:
                     on: ["cancel"]
                     do: ["@sm.callback.cascade_transition", "apply"]
-                    args: ["object.getPayments()", "event", "'cancel'", "'sylius_payment'"]
+                    args: ["object.getPayments()", "event", "'cancel'", "'ph_payment'"]
                 ph_cancel_order_payment:
                     on: ["cancel"]
                     do: ["@sm.callback.cascade_transition", "apply"]
-                    args: ["object", "event", "'cancel'", "'sylius_order_payment'"]
+                    args: ["object", "event", "'cancel'", "'ph_order_payment'"]
                 ph_cancel_order:
                     on: ["cancel"]
                     do: ["@sylius.inventory.order_inventory_operator", "cancel"]

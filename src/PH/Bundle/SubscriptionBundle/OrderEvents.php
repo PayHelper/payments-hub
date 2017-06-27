@@ -15,7 +15,7 @@ class OrderEvents
      *
      * @var string
      */
-    public const ORDER_CREATE = 'swp.order.create';
+    const ORDER_CREATE = 'ph.order.create';
 
     /**
      * The ORDER_UPDATE event occurs when order is updated.
@@ -26,5 +26,5 @@ class OrderEvents
      *
      * @var string
      */
-    public const ORDER_UPDATE = 'swp.order.update';
+    const ORDER_UPDATE = 'ph.order.update';
 }

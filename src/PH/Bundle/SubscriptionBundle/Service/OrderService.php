@@ -5,10 +5,11 @@ declare(strict_types=1);
 namespace PH\Bundle\SubscriptionBundle\Service;
 
 use PH\Bundle\SubscriptionBundle\Event\OrderEvent;
-use PH\Bundle\SubscriptionBundle\Model\OrderInterface;
 use PH\Bundle\SubscriptionBundle\OrderEvents;
+use PH\Component\Core\Model\OrderInterface;
 use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Order\Modifier\OrderItemQuantityModifierInterface;
+use Sylius\Component\Order\Modifier\OrderModifierInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -30,6 +31,11 @@ class OrderService implements OrderServiceInterface
     protected $eventDispatcher;
 
     /**
+     * @var OrderModifierInterface
+     */
+    protected $orderModifier;
+
+    /**
      * OrderService constructor.
      *
      * @param FactoryInterface                   $orderItemFactory
@@ -38,11 +44,13 @@ class OrderService implements OrderServiceInterface
     public function __construct(
         FactoryInterface $orderItemFactory,
         OrderItemQuantityModifierInterface $orderItemQuantityModifier,
-        EventDispatcherInterface $eventDispatcher
+        EventDispatcherInterface $eventDispatcher,
+        OrderModifierInterface $orderModifier
     ) {
         $this->orderItemFactory = $orderItemFactory;
         $this->orderItemQuantityModifier = $orderItemQuantityModifier;
         $this->eventDispatcher = $eventDispatcher;
+        $this->orderModifier = $orderModifier;
     }
 
     public function prepareOrder(OrderInterface $order, array $data): OrderInterface
@@ -50,12 +58,12 @@ class OrderService implements OrderServiceInterface
         /** @var OrderItemInterface $orderItem */
         $orderItem = $this->orderItemFactory->createNew();
         $this->orderItemQuantityModifier->modify($orderItem, 1);
-        $orderItem->setUnitPrice((int) $data['amount']);
+        $orderItem->setUnitPrice((int) $data['price']);
+        $order->setCurrencyCode($data['currencyCode']);
 
-        $order->addItem($orderItem);
+        $this->orderModifier->addToOrder($order, $orderItem);
+
         $order->recalculateItemsTotal();
-        $order->completeCheckout();
-        $order->setProviderType($data['providerType']);
 
         return $order;
     }

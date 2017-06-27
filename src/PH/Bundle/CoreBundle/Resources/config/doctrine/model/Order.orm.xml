@@ -8,6 +8,7 @@
     <mapped-superclass name="PH\Component\Core\Model\Order" table="ph_order">
         <field type="string" name="checkoutState" column="checkout_state" />
         <field type="string" name="paymentState" column="payment_state" />
+        <field type="string" name="tokenValue" column="token_value" nullable="true" />
 
         <one-to-many field="payments" target-entity="Sylius\Component\Payment\Model\PaymentInterface" mapped-by="order" orphan-removal="true">
             <cascade>

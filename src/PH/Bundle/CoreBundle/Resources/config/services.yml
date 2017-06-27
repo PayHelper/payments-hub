@@ -1,4 +1,9 @@
 services:
+    ph.order_token_assigner:
+        class: PH\Component\Core\TokenAssigner\OrderTokenAssigner
+        arguments:
+           - "@sylius.random_generator"
+
     sylius.invoice_number_generator:
         class: Sylius\Component\Core\Payment\IdBasedInvoiceNumberGenerator
 
@@ -29,3 +34,49 @@ services:
             - '%sylius.model.payment.class%'
         tags:
             - { name: form.type }
+
+    ph.form.type.subscription:
+        class: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
+        arguments:
+            - '%sylius.model.order.class%'
+        tags:
+            - { name: form.type }
+
+#order processing
+    ph.order_processing.order_payment_processor.checkout:
+        class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor
+        arguments:
+            - "@ph.order_payment_provider"
+            - "cart"
+        tags:
+            - { name: sylius.order_processor, priority: 0 }
+
+    ph.order_processing.order_payment_processor.after_checkout:
+        class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor
+        arguments:
+            - "@ph.order_payment_provider"
+            - "new"
+####
+
+    ph.payment_method_resolver.default:
+        class: Sylius\Component\Payment\Resolver\DefaultPaymentMethodResolver
+        arguments:
+            - "@sylius.repository.payment_method"
+
+    ph.order_payment_provider:
+        class: PH\Component\Core\Payment\Provider\OrderPaymentProvider
+        arguments:
+            - "@ph.payment_method_resolver.default"
+            - "@sylius.factory.payment"
+            - "@sm.factory"
+
+# resolvers
+    ph.state_resolver.order_payment:
+        class: PH\Component\Core\StateResolver\OrderPaymentStateResolver
+        arguments:
+            - "@sm.factory"
+
+    ph.state_resolver.order:
+        class: PH\Component\Core\StateResolver\OrderStateResolver
+        arguments:
+            - "@sm.factory"

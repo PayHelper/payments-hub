@@ -25,6 +25,14 @@ ph_api_payment_method_create:
                     parameters:
                         factory: $factory
 
+ph_api_order_create:
+    path: /orders
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:createAction
+        _sylius:
+            section: api
+
 ph_core_payment_method:
     resource: |
         identifier: code
@@ -53,7 +61,7 @@ ph_core_checkout_payment:
                 method: find
                 arguments: [$orderId]
             state_machine:
-                graph: sylius_order_checkout
+                graph: ph_order_checkout
                 transition: select_payment
 
 ph_core_checkout_show:
@@ -72,13 +80,32 @@ ph_core_checkout_complete:
         _controller: sylius.controller.order:updateAction
         _sylius:
             serialization_version: $version
-#            form:
-#                type: Sylius\Bundle\CoreBundle\Form\Type\Checkout\CompleteType
-#                options:
-#                    validation_groups: 'sylius_checkout_complete'
+            form:
+                form: PH\Bundle\CoreBundle\Form\Type\Checkout\CompleteType
             repository:
                 method: find
                 arguments: [$orderId]
             state_machine:
                 graph: ph_order_checkout
                 transition: complete
+
+# payum
+ph_payum_order_pay:
+    path: /checkouts/pay/{tokenValue}
+    methods: [GET]
+    defaults:
+        _controller: ph.controller.payum:prepareCaptureAction
+        _sylius:
+            serialization_version: $version
+            redirect:
+                route: ph_payum_order_after_pay
+                parameters:
+                    version: $version
+
+ph_payum_order_after_pay:
+    path: /payum/after-pay
+    methods: [GET, POST]
+    defaults:
+        _controller: ph.controller.payum:afterCaptureAction
+        _sylius:
+            serialization_version: $version

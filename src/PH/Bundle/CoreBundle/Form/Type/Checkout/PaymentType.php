@@ -61,6 +61,6 @@ final class PaymentType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'sylius_checkout_payment';
+        return 'ph_checkout_payment';
     }
 }

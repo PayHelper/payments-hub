@@ -1,8 +1,8 @@
 winzou_state_machine:
-    sylius_order_payment:
-        class: PH\Component\Core\Model\Order #"%sylius.model.order.class%"
+    ph_order_payment:
+        class: "%sylius.model.order.class%"
         property_path: paymentState
-        graph: sylius_order_payment
+        graph: ph_order_payment
         state_machine_class: "%sylius.state_machine.class%"
         states:
             cart: ~
@@ -33,11 +33,11 @@ winzou_state_machine:
                 to: refunded
         callbacks:
             after:
-                ph_order_paid:
-                    on: ["pay"]
-                    do: ["@sylius.inventory.order_inventory_operator", "sell"]
-                    args: ["object"]
+#                ph_order_paid:
+#                    on: ["pay"]
+#                    do: ["@sylius.inventory.order_inventory_operator", "sell"]
+#                    args: ["object"]
                 ph_resolve_state:
                     on: ["pay"]
-                    do: ["@sylius.state_resolver.order", "resolve"]
+                    do: ["@ph.state_resolver.order", "resolve"]
                     args: ["object"]

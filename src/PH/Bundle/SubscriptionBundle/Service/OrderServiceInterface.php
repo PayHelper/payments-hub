@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PH\Bundle\SubscriptionBundle\Service;
 
-use PH\Bundle\SubscriptionBundle\Model\OrderInterface;
+use PH\Component\Core\Model\OrderInterface;
 
 interface OrderServiceInterface
 {

@@ -20,4 +20,15 @@ interface OrderInterface extends BaseOrderInterface
 //     * @param string $providerType
 //     */
 //    public function setProviderType($providerType);
+
+
+    /**
+     * @return string
+     */
+    public function getCurrencyCode(): string;
+
+    /**
+     * @param string $currencyCode
+     */
+    public function setCurrencyCode(string $currencyCode): void;
 }

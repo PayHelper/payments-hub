@@ -19,8 +19,8 @@ final class SubscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amount')
-            ->add('currency')
+            ->add('price')
+            ->add('currencyCode')
             ->add('type')
         ;
     }

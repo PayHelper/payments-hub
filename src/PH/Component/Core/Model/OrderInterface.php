@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PH\Component\Core\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Order\Model\OrderInterface as BaseOrderInterface;
+use PH\Bundle\SubscriptionBundle\Model\OrderInterface as BaseOrderInterface;
 
 interface OrderInterface extends BaseOrderInterface
 {
@@ -18,6 +18,35 @@ interface OrderInterface extends BaseOrderInterface
      * @param Collection|PaymentInterface[] $payments
      */
     public function setPayments(Collection $payments): void;
+
+    /**
+     * @return bool
+     */
+    public function hasPayments(): bool;
+
+    /**
+     * @param PaymentInterface $payment
+     */
+    public function addPayment(PaymentInterface $payment): void;
+
+    /**
+     * @param PaymentInterface $payment
+     */
+    public function removePayment(PaymentInterface $payment): void;
+
+    /**
+     * @param PaymentInterface $payment
+     *
+     * @return bool
+     */
+    public function hasPayment(PaymentInterface $payment): bool;
+
+    /**
+     * @param string|null $state
+     *
+     * @return null|PaymentInterface
+     */
+    public function getLastPayment(string $state = null): ?PaymentInterface;
 
     /**
      * @return string
@@ -38,4 +67,14 @@ interface OrderInterface extends BaseOrderInterface
      * @param string $paymentState
      */
     public function setPaymentState(string $paymentState): void;
+
+    /**
+     * @return null|string
+     */
+    public function getTokenValue(): ?string;
+
+    /**
+     * @param string $tokenValue
+     */
+    public function setTokenValue(string $tokenValue): void;
 }

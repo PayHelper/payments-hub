@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class OrderController extends Controller
 {
     /**
-     * @Route("/api/subscription", name="api_subscription")
+     * @Route("/api/v1/subscription", name="api_subscription")
      * @Method("POST")
      */
     public function createAction(Request $request)

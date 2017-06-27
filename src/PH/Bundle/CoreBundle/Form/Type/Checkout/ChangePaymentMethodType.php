@@ -17,7 +17,6 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * @author Arkadiusz Krakowiak <arkadiusz.krakowiak@lakion.com>
@@ -34,19 +33,11 @@ final class ChangePaymentMethodType extends AbstractType
             $form = $event->getForm();
 
             foreach ($payments as $key => $payment) {
-                if (!in_array($payment->getState(), [PaymentInterface::STATE_NEW])) {
+                if (!in_array($payment->getState(), [PaymentInterface::STATE_NEW, PaymentInterface::STATE_CART])) {
                     $form->remove($key);
                 }
             }
         });
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(['csrf_protection' => false]);
     }
 
     /**
@@ -59,6 +50,6 @@ final class ChangePaymentMethodType extends AbstractType
 
     public function getBlockPrefix()
     {
-        return 'sylius_change_payment_method';
+        return 'ph_change_payment_method';
     }
 }

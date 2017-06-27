@@ -6,6 +6,7 @@ services:
             - "@sylius.factory.order_item"
             - "@sylius.order_item_quantity_modifier"
             - "@event_dispatcher"
+            - "@sylius.order_modifier"
 
     ph.push.subscriber:
         class: PH\Bundle\SubscriptionBundle\EventSubscriber\OrderStatusSubscriber

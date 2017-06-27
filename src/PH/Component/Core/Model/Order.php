@@ -33,6 +33,11 @@ class Order extends BaseOrder implements OrderInterface
     protected $state = OrderInterface::STATE_CART;
 
     /**
+     * @var null|string
+     */
+    protected $tokenValue;
+
+    /**
      * Order constructor.
      */
     public function __construct()
@@ -56,6 +61,64 @@ class Order extends BaseOrder implements OrderInterface
     public function setPayments(Collection $payments): void
     {
         $this->payments = $payments;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasPayments(): bool
+    {
+        return !$this->payments->isEmpty();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addPayment(PaymentInterface $payment): void
+    {
+        /** @var PaymentInterface $payment */
+        if (!$this->hasPayment($payment)) {
+            $this->payments->add($payment);
+            $payment->setOrder($this);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removePayment(PaymentInterface $payment): void
+    {
+        /** @var PaymentInterface $payment */
+        if ($this->hasPayment($payment)) {
+            $this->payments->removeElement($payment);
+            $payment->setOrder(null);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasPayment(PaymentInterface $payment): bool
+    {
+        return $this->payments->contains($payment);
+    }
+
+    /**
+     * @param string|null $state
+     *
+     * @return PaymentInterface|null
+     */
+    public function getLastPayment(string $state = null): ?PaymentInterface
+    {
+        if ($this->payments->isEmpty()) {
+            return null;
+        }
+
+        $payment = $this->payments->filter(function (PaymentInterface $payment) use ($state) {
+            return null === $state || $payment->getState() === $state;
+        })->last();
+
+        return $payment !== false ? $payment : null;
     }
 
     /**
@@ -88,5 +151,21 @@ class Order extends BaseOrder implements OrderInterface
     public function setPaymentState(string $paymentState): void
     {
         $this->paymentState = $paymentState;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTokenValue(): ?string
+    {
+        return $this->tokenValue;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTokenValue(string $tokenValue): void
+    {
+        $this->tokenValue = $tokenValue;
     }
 }

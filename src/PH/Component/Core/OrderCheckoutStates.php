@@ -6,7 +6,6 @@ namespace PH\Component\Core;
 
 final class OrderCheckoutStates
 {
-    //const STATE_NEW = 'new';
     const STATE_CART = 'cart';
     const STATE_COMPLETED = 'completed';
     const STATE_PAYMENT_SELECTED = 'payment_selected';
