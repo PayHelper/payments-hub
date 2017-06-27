@@ -24,6 +24,8 @@ For example, if you have placed a new order and you want to pay for it, you can 
 
 Once the payment method is selected, the state of an order will change from `cart` to `new`, the checkout state of an order will change from `cart` to `payment_selected` and the order payment state will change from state `cart` to `awaiting_payment`.
 
+After this endpoint is successfully called, there will be a possibility to complete the checkout.
+
 <aside class="notice">You can check the <a href='https://github.com/sourcefabric/payments-hub/blob/master/src/PH/Bundle/CoreBundle/Resources/config/app/state_machine/ph_order_checkout.yml'>configuration</a> of the state machine to see the configured states and transitions.</aside>
 
 > Example Request
@@ -107,7 +109,7 @@ Returns an empty response if checkout complete succeeded. Returns an error if co
 GET http://localhost/api/v1/checkouts/pay/{tokenValue}
 ```
 
-Calling this endpoint will automatically prepare capture and redirect to a proper payment gateway that was selected during the checkout in order to pay for an order (e.g. when a PayPal payment method is selected for an order and this endpoint will be called, it will perform a redirect to a PayPal page to pay for the goods and if the payment succeeded or failed it will redirect to `thank you` endpoint which will return no content but a proper status code.)
+Calling this endpoint will automatically prepare capture and redirect to a proper payment gateway that was selected during the checkout in order to pay for an order (e.g. when a PayPal payment method is selected for order payments and this endpoint will be called, it will perform a redirect to a PayPal page to pay for the goods and if the payment succeeded or failed it will redirect to `thank you` endpoint which will return no content but a proper status code.)
 
 Once the payment transaction is finalized successfully the order state is changed from `new` to `fullfiled` and the order payment state is changed from `awaiting_payment` to `paid`.
 

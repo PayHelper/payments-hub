@@ -106,7 +106,7 @@ curl -X POST \
       }'
 ```
 
-> Example Response
+> Example Response (201 Created)
 
 ```json
 {
