@@ -11,6 +11,7 @@ includes:
   - api/payment_gateways
   - api/payment_methods
   - api/checkouts
+  - api/webhooks
   - errors
 
 search: true

@@ -34,6 +34,7 @@ class AppKernel extends Kernel
             new \FOS\RestBundle\FOSRestBundle(),
             new Sylius\Bundle\PayumBundle\SyliusPayumBundle(),
             new PH\Bundle\PayumBundle\PHPayumBundle(),
+            new PH\Bundle\WebhookBundle\PHWebhookBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

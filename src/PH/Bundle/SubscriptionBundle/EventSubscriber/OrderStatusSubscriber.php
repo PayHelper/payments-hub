@@ -7,7 +7,7 @@ namespace PH\Bundle\SubscriptionBundle\EventSubscriber;
 use GuzzleHttp\Client;
 use JMS\Serializer\SerializerInterface;
 use PH\Bundle\SubscriptionBundle\Event\OrderEvent;
-use PH\Bundle\SubscriptionBundle\Model\PushDestinationIntefrace;
+use PH\Component\Webhook\Model\WebhookInterface;
 use PH\Bundle\SubscriptionBundle\OrderEvents;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -49,7 +49,7 @@ final class OrderStatusSubscriber implements EventSubscriberInterface
         $destinations = $this->pushDestinationsRepository->findAll();
 
         $client = new Client();
-        /** @var PushDestinationIntefrace $destination */
+        /** @var \PH\Component\Webhook\Model\WebhookInterface $destination */
         foreach ($destinations as $destination) {
             $result = $client->request('POST', $destination->getUrl(), [
                 'body' => $this->serializer->serialize($event->getOrder(), 'json'),

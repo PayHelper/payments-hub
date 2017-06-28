@@ -109,3 +109,13 @@ ph_payum_order_after_pay:
         _controller: ph.controller.payum:afterCaptureAction
         _sylius:
             serialization_version: $version
+
+
+
+# webhook bundle
+ph_api_webhooks:
+    resource: |
+        alias: ph.webhook
+        section: api
+        serialization_version: $version
+    type: sylius.resource_api

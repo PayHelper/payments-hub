@@ -1,5 +1,6 @@
 imports:
     - { resource: "@PHCoreBundle/Resources/config/app/state_machine.yml" }
+    - { resource: "@PHWebhookBundle/Resources/config/app/config.yml" }
 
 payum:
     storages:

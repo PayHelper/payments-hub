@@ -1,0 +1,8 @@
+services:
+    ph.form.type.webhook:
+        class: PH\Bundle\WebhookBundle\Form\Type\WebhookType
+        arguments:
+            - '%ph.model.webhook.class%'
+            - ['ph']
+        tags:
+            - { name: form.type }

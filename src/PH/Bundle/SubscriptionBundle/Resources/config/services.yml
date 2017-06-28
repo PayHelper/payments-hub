@@ -11,7 +11,7 @@ services:
     ph.push.subscriber:
         class: PH\Bundle\SubscriptionBundle\EventSubscriber\OrderStatusSubscriber
         arguments:
-            - "@ph.repository.push_destination"
+            - "@ph.repository.webhook"
             - "@serializer"
         tags:
             - { name: kernel.event_subscriber }
