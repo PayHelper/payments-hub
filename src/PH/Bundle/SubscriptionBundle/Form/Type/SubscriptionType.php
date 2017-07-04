@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace PH\Bundle\SubscriptionBundle\Form\Type;
 
-use Symfony\Component\Form\AbstractType;
+use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolver;
 
-/**
- * Class SubscriptionType
- */
-final class SubscriptionType extends AbstractType
+final class SubscriptionType extends AbstractResourceType
 {
     /**
      * {@inheritdoc}
@@ -19,18 +15,10 @@ final class SubscriptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('price')
+            ->add('amount')
             ->add('currencyCode')
-            ->add('type')
+            ->add('interval')
         ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function configureOptions(OptionsResolver $resolver)
-    {
-        $resolver->setDefaults(['csrf_protection' => false]);
     }
 
     /**
@@ -38,6 +26,6 @@ final class SubscriptionType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'subscription';
+        return 'ph_subscription';
     }
 }

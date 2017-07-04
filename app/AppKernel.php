@@ -12,7 +12,7 @@ class AppKernel extends Kernel
             new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
             new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
 
-            new PH\Bundle\SubscriptionBundle\SubscriptionBundle(),
+            new PH\Bundle\SubscriptionBundle\PHSubscriptionBundle(),
             new PH\Bundle\CoreBundle\PHCoreBundle(),
             new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
             new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),

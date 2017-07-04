@@ -25,14 +25,6 @@ ph_api_payment_method_create:
                     parameters:
                         factory: $factory
 
-ph_api_order_create:
-    path: /orders
-    methods: [POST]
-    defaults:
-        _controller: sylius.controller.order:createAction
-        _sylius:
-            section: api
-
 ph_core_payment_method:
     resource: |
         identifier: code
@@ -119,3 +111,22 @@ ph_api_webhooks:
         section: api
         serialization_version: $version
     type: sylius.resource_api
+
+ph_api_orders:
+    resource: |
+        alias: sylius.order
+        section: api
+        only: ["index", "show", "update", "delete"]
+        serialization_version: $version
+    type: sylius.resource_api
+
+ph_api_order_create:
+    path: /orders/create/
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:addAction
+        _sylius:
+            section: api
+            form:
+                type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
+            serialization_version: $version

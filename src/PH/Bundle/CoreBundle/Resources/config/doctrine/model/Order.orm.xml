@@ -7,6 +7,7 @@
 
     <mapped-superclass name="PH\Component\Core\Model\Order" table="ph_order">
         <field type="string" name="checkoutState" column="checkout_state" />
+        <field name="currencyCode" column="currency_code" length="3" />
         <field type="string" name="paymentState" column="payment_state" />
         <field type="string" name="tokenValue" column="token_value" nullable="true" />
 
@@ -15,6 +16,13 @@
                 <cascade-all/>
             </cascade>
         </one-to-many>
+
+        <many-to-one field="subscription" target-entity="PH\Component\Subscription\Model\SubscriptionInterface">
+            <join-column name="subscription_id" referenced-column-name="id" />
+            <cascade>
+                <cascade-persist/>
+            </cascade>
+        </many-to-one>
 
     </mapped-superclass>
 

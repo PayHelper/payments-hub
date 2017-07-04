@@ -1,0 +1,8 @@
+services:
+    ph.form.type.subscription:
+        class: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
+        arguments:
+            - '%ph.model.subscription.class%'
+            - ['ph']
+        tags:
+            - { name: form.type }

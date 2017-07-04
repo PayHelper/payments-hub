@@ -7,7 +7,7 @@ namespace PH\Bundle\SubscriptionBundle;
 use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 
-final class SubscriptionBundle extends AbstractResourceBundle
+final class PHSubscriptionBundle extends AbstractResourceBundle
 {
     /**
      * {@inheritdoc}
@@ -24,6 +24,6 @@ final class SubscriptionBundle extends AbstractResourceBundle
      */
     protected function getModelNamespace()
     {
-        return 'PH\Bundle\SubscriptionBundle\Model';
+        return 'PH\Component\Subscription\Model';
     }
 }

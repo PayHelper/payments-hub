@@ -33,10 +33,6 @@ winzou_state_machine:
                 to: refunded
         callbacks:
             after:
-#                ph_order_paid:
-#                    on: ["pay"]
-#                    do: ["@sylius.inventory.order_inventory_operator", "sell"]
-#                    args: ["object"]
                 ph_resolve_state:
                     on: ["pay"]
                     do: ["@ph.state_resolver.order", "resolve"]

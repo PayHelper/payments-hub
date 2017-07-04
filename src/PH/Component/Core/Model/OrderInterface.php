@@ -5,7 +5,8 @@ declare(strict_types=1);
 namespace PH\Component\Core\Model;
 
 use Doctrine\Common\Collections\Collection;
-use PH\Bundle\SubscriptionBundle\Model\OrderInterface as BaseOrderInterface;
+use PH\Component\Subscription\Model\SubscriptionInterface;
+use Sylius\Component\Order\Model\OrderInterface as BaseOrderInterface;
 
 interface OrderInterface extends BaseOrderInterface
 {
@@ -77,4 +78,24 @@ interface OrderInterface extends BaseOrderInterface
      * @param string $tokenValue
      */
     public function setTokenValue(string $tokenValue): void;
+
+    /**
+     * @return string
+     */
+    public function getCurrencyCode(): ?string;
+
+    /**
+     * @param string $currencyCode
+     */
+    public function setCurrencyCode(string $currencyCode): void;
+
+    /**
+     * @return SubscriptionInterface
+     */
+    public function getSubscription(): SubscriptionInterface;
+
+    /**
+     * @param SubscriptionInterface $subscription
+     */
+    public function setSubscription(SubscriptionInterface $subscription): void;
 }

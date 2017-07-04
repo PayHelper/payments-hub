@@ -48,6 +48,9 @@ final class ChangePaymentMethodType extends AbstractType
         return CollectionType::class;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getBlockPrefix()
     {
         return 'ph_change_payment_method';

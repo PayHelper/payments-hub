@@ -44,6 +44,7 @@ sylius_order:
         order:
             classes:
                 model: PH\Component\Core\Model\Order
+                controller: PH\Bundle\CoreBundle\Controller\OrderController
 
 sylius_payum:
     resources:
@@ -53,8 +54,3 @@ sylius_payum:
         gateway_config:
             classes:
                 model: PH\Bundle\PayumBundle\Model\GatewayConfig
-#sylius_resource:
-#    resources:
-#        ph.payment_method:
-#            classes:
-#                model: PH\Component\Core\Model\PaymentMethod

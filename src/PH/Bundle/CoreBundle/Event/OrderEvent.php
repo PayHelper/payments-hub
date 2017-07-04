@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PH\Bundle\SubscriptionBundle\Event;
+namespace PH\Bundle\CoreBundle\Event;
 
-use PH\Bundle\SubscriptionBundle\Model\OrderInterface;
+use PH\Component\Core\Model\OrderInterface;
 use Symfony\Component\EventDispatcher\Event;
 
 class OrderEvent extends Event

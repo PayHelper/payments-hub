@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace PH\Bundle\SubscriptionBundle\Service;
 
-use PH\Bundle\SubscriptionBundle\Event\OrderEvent;
-use PH\Bundle\SubscriptionBundle\OrderEvents;
 use PH\Component\Core\Model\OrderInterface;
+use PH\Component\Subscription\Model\SubscriptionInterface;
 use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Order\Modifier\OrderItemQuantityModifierInterface;
 use Sylius\Component\Order\Modifier\OrderModifierInterface;
@@ -53,24 +52,18 @@ class OrderService implements OrderServiceInterface
         $this->orderModifier = $orderModifier;
     }
 
-    public function prepareOrder(OrderInterface $order, array $data): OrderInterface
+    public function prepareOrder(OrderInterface $order, SubscriptionInterface $subscription): OrderInterface
     {
         /** @var OrderItemInterface $orderItem */
         $orderItem = $this->orderItemFactory->createNew();
-        $this->orderItemQuantityModifier->modify($orderItem, 1);
-        $orderItem->setUnitPrice((int) $data['price']);
-        $order->setCurrencyCode($data['currencyCode']);
 
+        $this->orderItemQuantityModifier->modify($orderItem, 1);
+        $orderItem->setUnitPrice($subscription->getAmount());
+        $order->setCurrencyCode($subscription->getCurrencyCode());
         $this->orderModifier->addToOrder($order, $orderItem);
 
         $order->recalculateItemsTotal();
-
-        return $order;
-    }
-
-    public function updateOrder(OrderInterface $order, array $data): OrderInterface
-    {
-        $this->eventDispatcher->dispatch(OrderEvents::ORDER_UPDATE, new OrderEvent($order));
+        $order->setSubscription($subscription);
 
         return $order;
     }

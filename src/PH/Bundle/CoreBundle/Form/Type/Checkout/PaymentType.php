@@ -55,7 +55,6 @@ final class PaymentType extends AbstractType
         ]);
     }
 
-
     /**
      * {@inheritdoc}
      */

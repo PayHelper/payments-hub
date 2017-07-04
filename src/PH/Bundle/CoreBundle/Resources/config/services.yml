@@ -35,13 +35,6 @@ services:
         tags:
             - { name: form.type }
 
-    ph.form.type.subscription:
-        class: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
-        arguments:
-            - '%sylius.model.order.class%'
-        tags:
-            - { name: form.type }
-
 #order processing
     ph.order_processing.order_payment_processor.checkout:
         class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor

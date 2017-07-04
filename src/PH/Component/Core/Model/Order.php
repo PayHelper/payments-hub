@@ -6,9 +6,11 @@ namespace PH\Component\Core\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use PH\Bundle\SubscriptionBundle\Model\Order as BaseOrder;
 use PH\Component\Core\OrderCheckoutStates;
 use PH\Component\Core\OrderPaymentStates;
+use PH\Component\Subscription\Model\SubscriptionInterface;
+use Sylius\Component\Order\Model\Order as BaseOrder;
+use Webmozart\Assert\Assert;
 
 class Order extends BaseOrder implements OrderInterface
 {
@@ -36,6 +38,16 @@ class Order extends BaseOrder implements OrderInterface
      * @var null|string
      */
     protected $tokenValue;
+
+    /**
+     * @var string
+     */
+    protected $currencyCode;
+
+    /**
+     * @var SubscriptionInterface
+     */
+    protected $subscription;
 
     /**
      * Order constructor.
@@ -167,5 +179,39 @@ class Order extends BaseOrder implements OrderInterface
     public function setTokenValue(string $tokenValue): void
     {
         $this->tokenValue = $tokenValue;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCurrencyCode(): ?string
+    {
+        return $this->currencyCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCurrencyCode(string $currencyCode): void
+    {
+        Assert::string($currencyCode);
+
+        $this->currencyCode = $currencyCode;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSubscription(): SubscriptionInterface
+    {
+        return $this->subscription;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSubscription(SubscriptionInterface $subscription): void
+    {
+        $this->subscription = $subscription;
     }
 }

@@ -38,10 +38,6 @@ winzou_state_machine:
                     on: ["create"]
                     do: ["@sm.callback.cascade_transition", "apply"]
                     args: ["object.getPayments()", "event", "'create'", "'ph_payment'"]
-#                sylius_hold_inventory:
-#                    on: ["create"]
-#                    do: ["@sylius.inventory.order_inventory_operator", "hold"]
-#                    args: ["object"]
                 ph_cancel_payment:
                     on: ["cancel"]
                     do: ["@sm.callback.cascade_transition", "apply"]
