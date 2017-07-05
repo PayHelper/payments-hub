@@ -18,6 +18,8 @@ final class SubscriptionType extends AbstractResourceType
             ->add('amount')
             ->add('currencyCode')
             ->add('interval')
+            ->add('code')
+            ->add('name')
         ;
     }
 

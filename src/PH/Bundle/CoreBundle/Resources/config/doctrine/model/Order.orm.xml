@@ -17,13 +17,6 @@
             </cascade>
         </one-to-many>
 
-        <many-to-one field="subscription" target-entity="PH\Component\Subscription\Model\SubscriptionInterface">
-            <join-column name="subscription_id" referenced-column-name="id" />
-            <cascade>
-                <cascade-persist/>
-            </cascade>
-        </many-to-one>
-
     </mapped-superclass>
 
 </doctrine-mapping>

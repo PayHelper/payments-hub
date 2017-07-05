@@ -49,6 +49,9 @@ sylius_order:
             classes:
                 model: PH\Component\Core\Model\Order
                 controller: PH\Bundle\CoreBundle\Controller\OrderController
+        order_item:
+            classes:
+                model: PH\Component\Core\Model\OrderItem
 
 sylius_payum:
     resources:

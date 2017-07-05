@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace PH\Bundle\CoreBundle\Facade;
 
 use PH\Component\Core\Model\OrderInterface;
+use PH\Component\Core\Model\OrderItemInterface;
 use PH\Component\Subscription\Model\SubscriptionInterface;
-use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Order\Modifier\OrderItemQuantityModifierInterface;
 use Sylius\Component\Order\Modifier\OrderModifierInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
@@ -52,11 +52,11 @@ final class OrderFacade implements OrderFacadeInterface
 
         $this->orderItemQuantityModifier->modify($orderItem, 1);
         $orderItem->setUnitPrice($subscription->getAmount());
+        $orderItem->setSubscription($subscription);
         $order->setCurrencyCode($subscription->getCurrencyCode());
         $this->orderModifier->addToOrder($order, $orderItem);
 
         $order->recalculateItemsTotal();
-        $order->setSubscription($subscription);
 
         return $order;
     }

@@ -10,6 +10,7 @@ toc_footers:
 includes:
   - api/payment_gateways
   - api/payment_methods
+  - api/orders
   - api/checkouts
   - api/webhooks
   - errors
