@@ -6,11 +6,10 @@ namespace PH\Bundle\CoreBundle\Controller;
 
 use FOS\RestBundle\View\View;
 use PH\Bundle\CoreBundle\OrderEvents;
-use PH\Bundle\SubscriptionBundle\Service\OrderServiceInterface;
+use PH\Bundle\CoreBundle\Facade\OrderFacadeInterface;
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Subscription\Model\SubscriptionInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Sylius\Component\Resource\ResourceActions;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,7 +20,7 @@ class OrderController extends ResourceController
     public function addAction(Request $request)
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
-        $this->isGrantedOr403($configuration, ResourceActions::CREATE);
+        $this->isGrantedOr403($configuration, OrderEvents::CREATE);
 
         /** @var OrderInterface $order */
         $order = $this->newResourceFactory->create($configuration, $this->factory);
@@ -68,7 +67,7 @@ class OrderController extends ResourceController
     }
 
     /**
-     * @return OrderServiceInterface
+     * @return OrderFacadeInterface
      */
     protected function getOrderService()
     {

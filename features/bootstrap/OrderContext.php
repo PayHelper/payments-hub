@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
-use PH\Bundle\SubscriptionBundle\Service\OrderServiceInterface;
+use PH\Bundle\CoreBundle\Facade\OrderFacadeInterface;
 use PH\Component\Core\Model\OrderInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
@@ -11,7 +11,7 @@ use Sylius\Component\Resource\Repository\RepositoryInterface;
 final class OrderContext implements Context
 {
     /**
-     * @var OrderServiceInterface
+     * @var \PH\Bundle\CoreBundle\Facade\OrderFacadeInterface
      */
     private $orderService;
 
@@ -26,20 +26,28 @@ final class OrderContext implements Context
     private $orderRepository;
 
     /**
+     * @var FactoryInterface
+     */
+    private $subscriptionFactory;
+
+    /**
      * OrderContext constructor.
      *
-     * @param OrderServiceInterface $orderService
-     * @param FactoryInterface      $orderFactory
-     * @param RepositoryInterface   $orderRepository
+     * @param OrderFacadeInterface $orderService
+     * @param FactoryInterface     $orderFactory
+     * @param RepositoryInterface  $orderRepository
+     * @param FactoryInterface     $subscriptionFactory
      */
     public function __construct(
-        OrderServiceInterface $orderService,
+        OrderFacadeInterface $orderService,
         FactoryInterface $orderFactory,
-        RepositoryInterface $orderRepository
+        RepositoryInterface $orderRepository,
+        FactoryInterface $subscriptionFactory
     ) {
         $this->orderService = $orderService;
         $this->orderFactory = $orderFactory;
         $this->orderRepository = $orderRepository;
+        $this->subscriptionFactory = $subscriptionFactory;
     }
 
     /**
@@ -60,8 +68,12 @@ final class OrderContext implements Context
     {
         /** @var OrderInterface $order */
         $order = $this->orderFactory->createNew();
+        /** @var \PH\Component\Subscription\Model\SubscriptionInterface $subscription */
+        $subscription = $this->subscriptionFactory->createNew();
+        $subscription->setAmount($price);
+        $subscription->setCurrencyCode($currencyCode);
 
-        return $this->orderService->prepareOrder($order, ['price' => $price, 'currencyCode' => $currencyCode]);
+        return $this->orderService->prepareOrder($order, $subscription);
     }
 
     private function getPriceFromString(string $price)

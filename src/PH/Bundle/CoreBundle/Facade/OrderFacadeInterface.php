@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PH\Bundle\SubscriptionBundle\Service;
+namespace PH\Bundle\CoreBundle\Facade;
 
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Subscription\Model\SubscriptionInterface;
 
-interface OrderServiceInterface
+interface OrderFacadeInterface
 {
     /**
      * @param OrderInterface        $order

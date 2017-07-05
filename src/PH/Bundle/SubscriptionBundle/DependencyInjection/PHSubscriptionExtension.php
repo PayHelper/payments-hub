@@ -18,10 +18,7 @@ final class PHSubscriptionExtension extends AbstractResourceExtension
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
-
         $this->registerResources('ph', $config['driver'], $config['resources'], $container);
-
-        $loader->load('services.yml');
         $loader->load('forms.yml');
     }
 }

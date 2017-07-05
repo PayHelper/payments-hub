@@ -9,7 +9,7 @@ default:
         - Behatch\Context\RestContext
         - Behatch\Context\JsonContext
         - PaymentContext: { paymentMethodRepository: "@sylius.repository.payment_method", paymentMethodFactory: '@sylius.factory.payment_method', gatewayFactories: {offline: 'Offline', paypal_express_checkout: 'Paypal Express Checkout'} }
-        - OrderContext: { orderService: "@ph.service.order", orderFactory: "@sylius.factory.order", orderRepository: "@sylius.repository.order"}
+        - OrderContext: { orderService: "@ph.facade.order", orderFactory: "@sylius.factory.order", orderRepository: "@sylius.repository.order", subscriptionFactory: "@ph.factory.subscription"}
   extensions:
     Behat\Symfony2Extension:
       kernel:

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PH\Bundle\SubscriptionBundle\Service;
+namespace PH\Bundle\CoreBundle\Facade;
 
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Subscription\Model\SubscriptionInterface;
@@ -10,45 +10,38 @@ use Sylius\Component\Order\Model\OrderItemInterface;
 use Sylius\Component\Order\Modifier\OrderItemQuantityModifierInterface;
 use Sylius\Component\Order\Modifier\OrderModifierInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class OrderService implements OrderServiceInterface
+final class OrderFacade implements OrderFacadeInterface
 {
     /**
      * @var FactoryInterface
      */
-    protected $orderItemFactory;
+    private $orderItemFactory;
 
     /**
      * @var OrderItemQuantityModifierInterface
      */
-    protected $orderItemQuantityModifier;
-
-    /**
-     * @var EventDispatcherInterface
-     */
-    protected $eventDispatcher;
+    private $orderItemQuantityModifier;
 
     /**
      * @var OrderModifierInterface
      */
-    protected $orderModifier;
+    private $orderModifier;
 
     /**
-     * OrderService constructor.
+     * OrderFacade constructor.
      *
      * @param FactoryInterface                   $orderItemFactory
      * @param OrderItemQuantityModifierInterface $orderItemQuantityModifier
+     * @param OrderModifierInterface             $orderModifier
      */
     public function __construct(
         FactoryInterface $orderItemFactory,
         OrderItemQuantityModifierInterface $orderItemQuantityModifier,
-        EventDispatcherInterface $eventDispatcher,
         OrderModifierInterface $orderModifier
     ) {
         $this->orderItemFactory = $orderItemFactory;
         $this->orderItemQuantityModifier = $orderItemQuantityModifier;
-        $this->eventDispatcher = $eventDispatcher;
         $this->orderModifier = $orderModifier;
     }
 

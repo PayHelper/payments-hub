@@ -1,9 +1,0 @@
-services:
-    ph.service.order:
-        class: PH\Bundle\SubscriptionBundle\Service\OrderService
-        public: true
-        arguments:
-            - "@sylius.factory.order_item"
-            - "@sylius.order_item_quantity_modifier"
-            - "@event_dispatcher"
-            - "@sylius.order_modifier"
