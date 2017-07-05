@@ -71,6 +71,6 @@ class OrderController extends ResourceController
      */
     protected function getOrderService()
     {
-        return $this->get('ph.service.order');
+        return $this->get('ph.facade.order');
     }
 }
