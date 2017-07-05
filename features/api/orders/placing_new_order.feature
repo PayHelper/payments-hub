@@ -20,14 +20,23 @@ Feature: Placing a new order
     Then the response status code should be 201
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
-    And the JSON node "subscription.currency_code" should be equal to "USD"
-    And the JSON node "subscription.amount" should be equal to "500"
-    And the JSON node "subscription.interval" should be equal to "month"
-    And the JSON node "items_total" should be equal to "500"
-    And the JSON node "total" should be equal to "500"
+    And the JSON nodes should contain:
+      | id                           | 1                                        |
+      | subscription.id              | 1                                        |
+      | subscription.currency_code   | USD                                      |
+      | subscription.amount          | 500                                      |
+      | subscription.interval        | month                                    |
+      | items_total                  | 500                                      |
+      | total                        | 500                                      |
+      | state                        | cart                                     |
     And the JSON node "checkout_completed_at" should be null
-    And the JSON node "checkout_state" should be equal to "cart"
-    And the JSON node "payment_state" should be equal to "cart"
+    And the JSON node "number" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
+    And the JSON node "items" should have 1 element
+    And the JSON node "items[0].quantity" should be equal to "1"
+    And the JSON node "items[0].unit_price" should be equal to "500"
+    And the JSON node "items[0].total" should be equal to "500"
+    And the JSON node "items[0].created_at" should not be null
+    And the JSON node "items[0].updated_at" should not be null
     And the JSON node "_links" should not be null

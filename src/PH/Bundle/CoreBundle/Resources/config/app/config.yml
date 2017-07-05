@@ -1,6 +1,7 @@
 imports:
     - { resource: "@PHCoreBundle/Resources/config/app/state_machine.yml" }
     - { resource: "@PHWebhookBundle/Resources/config/app/config.yml" }
+    - { resource: "@PHSubscriptionBundle/Resources/config/app/config.yml" }
 
 payum:
     storages:
@@ -24,6 +25,9 @@ jms_serializer:
             sylius-payment:
                 namespace_prefix: "Sylius\\Component\\Payment"
                 path: "@PHCoreBundle/Resources/config/serializer/SyliusPaymentBundle"
+            sylius-order:
+                namespace_prefix: "Sylius\\Component\\Order"
+                path: "@PHCoreBundle/Resources/config/serializer/SyliusOrderBundle"
             ph-core:
                 namespace_prefix: "PH\\Component\\Core"
                 path: "@PHCoreBundle/Resources/config/serializer"

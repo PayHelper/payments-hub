@@ -1,0 +1,14 @@
+PH\Component\Core\Model\Order:
+    exclusion_policy: ALL
+    xml_root_name: order
+    properties:
+        subscription:
+            expose: true
+            groups: [Default, Detailed]
+    relations:
+        -   rel: self
+            href:
+                route: sylius_api_order_show
+                parameters:
+                    id: expr(object.getId())
+                    version: 1
