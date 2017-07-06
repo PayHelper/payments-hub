@@ -12,6 +12,7 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     const INTERVAL_DAY = 'day';
     const INTERVAL_MONTH = 'month';
     const INTERVAL_YEAR = 'year';
+    const INTERVAL_DONATION = 'donation';
 
     /**
      * @return mixed

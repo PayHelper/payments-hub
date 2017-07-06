@@ -6,6 +6,14 @@ PH\Component\Core\Model\Order:
             expose: true
             type: array
             groups: [Default, Detailed]
+        checkoutState:
+            expose: true
+            type: string
+            groups: [Detailed]
+        paymentState:
+            expose: true
+            type: string
+            groups: [Detailed]
     relations:
         -   rel: self
             href:
