@@ -8,7 +8,7 @@ Feature: Paying offline during checkout
   @dropSchema
   Scenario: Successfully placing an order
     Given the system has a payment method "Offline" with a code "off"
-    And the system has also a new order priced at "$50"
+    And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "PATCH" request to "/checkouts/payment/1" with body:

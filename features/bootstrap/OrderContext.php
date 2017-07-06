@@ -51,20 +51,22 @@ final class OrderContext implements Context
     }
 
     /**
-     * @Given /^the system has(?:| also) a new order priced at ("[^"]+")$/
+     * @Given /^the system has(?:| also) a new order with a code "([^"]*)" and name "([^"]*)" priced at ("[^"]+")$/
      */
-    public function theSystemHasANewOrderPricedAt(string $price)
+    public function theSystemHasAlsoANewOrderWithACodeAndNamePricedAt(string $code, string $name, string $price)
     {
         $currencyCode = 'USD';
         $order = $this->createOrder(
             $this->getPriceFromString(str_replace(['$', '"'], '', $price)),
-            $currencyCode
+            $currencyCode,
+            $name,
+            $code
         );
 
         $this->orderRepository->add($order);
     }
 
-    private function createOrder(int $price, string $currencyCode)
+    private function createOrder(int $price, string $currencyCode, string $name, string $code)
     {
         /** @var OrderInterface $order */
         $order = $this->orderFactory->createNew();
@@ -72,8 +74,10 @@ final class OrderContext implements Context
         $subscription = $this->subscriptionFactory->createNew();
         $subscription->setAmount($price);
         $subscription->setCurrencyCode($currencyCode);
+        $subscription->setCode($code);
+        $subscription->setName($name);
 
-        return $this->orderService->prepareOrder($order, $subscription);
+        return  $this->orderService->prepareOrder($order, $subscription);
     }
 
     private function getPriceFromString(string $price)
