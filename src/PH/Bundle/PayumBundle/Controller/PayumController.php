@@ -17,7 +17,6 @@ use Sylius\Bundle\ResourceBundle\Controller\ViewHandlerInterface;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
 use Sylius\Component\Order\Repository\OrderRepositoryInterface;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -104,16 +103,13 @@ class PayumController
             throw new NotFoundHttpException(sprintf('Order with token "%s" does not exist.', $tokenValue));
         }
 
-        //$request->getSession()->set('sylius_order_id', $order->getId());
         $options = $configuration->getParameters()->get('redirect');
 
         /** @var PaymentInterface $payment */
         $payment = $order->getLastPayment(PaymentInterface::STATE_NEW);
 
         if (null === $payment) {
-            $url = $this->router->generate('sylius_shop_order_thank_you');
-// change url
-            return new RedirectResponse($url);
+            return $this->viewHandler->handle($configuration, View::create([], 200));
         }
 
         $captureToken = $this->getTokenFactory()->createCaptureToken(
@@ -145,10 +141,6 @@ class PayumController
         $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
 
         $this->getHttpRequestVerifier()->invalidate($token);
-
-//        if (PaymentInterface::STATE_NEW !== $status->getValue()) {
-//            $request->getSession()->getBag('flashes')->add('info', sprintf('sylius.payment.%s', $status->getValue()));
-//        }
 
         return $this->viewHandler->handle(
             $configuration,
