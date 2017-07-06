@@ -230,6 +230,37 @@ id <br>(`required`)| string | The unique identifier of an order.
 
 Returns a order if a valid identifier was provided, and returns an error otherwise.
 
+## Delete an order
+
+> Definition
+
+```shell
+DELETE https://localhost/api/v1/orders/{id}
+```
+
+Deletes an order object. You need only supply the unique order identifier that was generated upon order creation in order to remove an object.
+
+> Example Request
+
+```shell
+curl -X DELETE \
+  http://localhost/api/v1/orders/6 \
+  -H 'authorization: Bearer key' \
+  -H 'content-type: application/json'
+```
+
+> Example Response (204 No Content)
+
+### Arguments
+
+Name | Type | Description
+--------- | ------- | -----------
+id <br>(`required`)| string | The unique identifier of an order.
+
+### Returns
+
+Returns an empty response if deleting an order succeeded. Returns an error if deleting order can not be done (e.g. when an order does not exist).
+
 ## List all orders
 
 > Definition

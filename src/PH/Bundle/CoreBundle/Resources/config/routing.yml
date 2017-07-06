@@ -116,7 +116,7 @@ ph_api_orders:
     resource: |
         alias: sylius.order
         section: api
-        only: ["index", "show", "update", "delete"]
+        only: ["index", "show", "delete"]
         serialization_version: $version
     type: sylius.resource_api
 

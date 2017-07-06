@@ -167,6 +167,37 @@ enabled <br>(`optional`)| boolean | Either 1 for enabled or 0 for disabled. Enab
 
 Returns an empty response if a valid identifier was provided, and returns an error otherwise.
 
+## Delete a webhook
+
+> Definition
+
+```shell
+DELETE https://localhost/api/v1/webhooks/{id}
+```
+
+Deletes a webhook object. You need only supply the unique webhook identifier that was generated upon order creation in order to remove webhook.
+
+> Example Request
+
+```shell
+curl -X DELETE \
+  http://localhost/api/v1/webhook/1 \
+  -H 'authorization: Bearer key' \
+  -H 'content-type: application/json'
+```
+
+> Example Response (204 No Content)
+
+### Arguments
+
+Name | Type | Description
+--------- | ------- | -----------
+id <br>(`required`)| string | The unique identifier of a webhook.
+
+### Returns
+
+Returns an empty response if deleting a webhook succeeded. Returns an error if deleting a webhook can not be done (e.g. when the webhook does not exist).
+
 ## List all webhooks
 
 > Definition
