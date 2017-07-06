@@ -14,14 +14,18 @@ Feature: Getting a single order
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
-      | id                                    | 1                  |
-      | items[0].subscription.id              | 1                  |
-      | items[0].subscription.currency_code   | USD                |
-      | items[0].subscription.amount          | 5000               |
-      | items[0].subscription.interval        | month              |
-      | items_total                           | 5000               |
-      | total                                 | 5000               |
-      | state                                 | cart               |
+      | id                                    | 1                           |
+      | items[0].subscription.id              | 1                           |
+      | items[0].subscription.currency_code   | USD                         |
+      | items[0].subscription.amount          | 5000                        |
+      | items[0].subscription.interval        | month                       |
+      | items[0].subscription.name            | My subscription             |
+      | items[0].subscription.code            | my_sub                      |
+      | items_total                           | 5000                        |
+      | total                                 | 5000                        |
+      | state                                 | cart                        |
+      | checkout_state                        | cart                        |
+      | payment_state                         | cart                        |
     And the JSON node "checkout_completed_at" should be null
     And the JSON node "number" should be null
     And the JSON node "created_at" should not be null

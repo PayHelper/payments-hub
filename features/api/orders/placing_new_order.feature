@@ -22,17 +22,19 @@ Feature: Placing a new order
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
-      | id                                    | 1                |
-      | items[0].subscription.id              | 1                |
-      | items[0].subscription.currency_code   | USD              |
-      | items[0].subscription.amount          | 500              |
-      | items[0].subscription.interval        | month            |
-      | items_total                           | 500              |
-      | total                                 | 500              |
-      | state                                 | cart             |
-      | items[0].quantity                     | 1                |
-      | items[0].unit_price                   | 500              |
-      | items[0].total                        | 500              |
+      | id                                    | 1                           |
+      | items[0].subscription.id              | 1                           |
+      | items[0].subscription.currency_code   | USD                         |
+      | items[0].subscription.amount          | 500                         |
+      | items[0].subscription.interval        | month                       |
+      | items[0].subscription.name            | My monthly subscription     |
+      | items[0].subscription.code            | monthly_subscription        |
+      | items_total                           | 500                         |
+      | total                                 | 500                         |
+      | state                                 | cart                        |
+      | items[0].quantity                     | 1                           |
+      | items[0].unit_price                   | 500                         |
+      | items[0].total                        | 500                         |
     And the JSON node "checkout_completed_at" should be null
     And the JSON node "number" should be null
     And the JSON node "created_at" should not be null
@@ -62,19 +64,21 @@ Feature: Placing a new order
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
-      | id                                    | 2                |
-      | items[0].subscription.id              | 2                |
-      | items[0].subscription.currency_code   | USD              |
-      | items[0].subscription.amount          | 500              |
-      | items[0].subscription.interval        | month            |
-      | items_total                           | 500              |
-      | total                                 | 500              |
-      | state                                 | cart             |
-      | items[0].quantity                     | 1                |
-      | items[0].unit_price                   | 500              |
-      | items[0].total                        | 500              |
-      | checkout_state                        | cart             |
-      | payment_state                         | cart             |
+      | id                                    | 2                           |
+      | items[0].subscription.id              | 2                           |
+      | items[0].subscription.currency_code   | USD                         |
+      | items[0].subscription.amount          | 500                         |
+      | items[0].subscription.interval        | month                       |
+      | items[0].subscription.name            | My monthly subscription     |
+      | items[0].subscription.code            | monthly_subscription        |
+      | items_total                           | 500                         |
+      | total                                 | 500                         |
+      | state                                 | cart                        |
+      | items[0].quantity                     | 1                           |
+      | items[0].unit_price                   | 500                         |
+      | items[0].total                        | 500                         |
+      | checkout_state                        | cart                        |
+      | payment_state                         | cart                        |
     And the JSON node "checkout_completed_at" should be null
     And the JSON node "number" should be null
     And the JSON node "created_at" should not be null
