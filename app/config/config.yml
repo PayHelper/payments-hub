@@ -91,6 +91,8 @@ fos_rest:
     serializer:
         serialize_null: true
     exception: ~
+    body_listener:
+        array_normalizer: fos_rest.normalizer.camel_keys
     format_listener:
         rules:
             - { path: '^/api', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }

@@ -88,7 +88,7 @@ curl -X POST \
         "code":"paypal",
         "position":"1",
         "enabled":"1",
-        "gatewayConfig":{
+        "gateway_config":{
           "config":{
             "username":"seller_api1.example.com",
             "password":"LW7Q8UXX3XF6AOP7",
@@ -245,7 +245,7 @@ curl -X PATCH \
         "code":"paypal",
         "position":"1",
         "enabled":"1",
-        "gatewayConfig":{
+        "gateway_config":{
           "config":{
             "username":"seller_api1.example.com",
             "password":"LW7Q8UXX3XF6AOP7",

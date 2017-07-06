@@ -12,7 +12,7 @@ Feature: Placing a new order
     """
     {
       "amount":500,
-      "currencyCode":"USD",
+      "currency_code":"USD",
       "interval":"month",
       "name": "My monthly subscription",
       "code": "monthly_subscription"
@@ -54,7 +54,7 @@ Feature: Placing a new order
     """
     {
       "amount":500,
-      "currencyCode":"USD",
+      "currency_code":"USD",
       "interval":"month",
       "name": "My monthly subscription",
       "code": "monthly_subscription"

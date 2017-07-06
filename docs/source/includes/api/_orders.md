@@ -84,11 +84,10 @@ Creates a new order object in the system. If at least one payment method exists 
 curl -X POST \
   http://localhost/api/v1/orders/create/ \
   -H 'authorization: Bearer key' \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -d '{
       	"amount": 500,
-      	"currencyCode": "PLN",
+      	"currency_code": "PLN",
       	"interval": "month",
       	"name": "Monthly subscription",
       	"code": "monthly_subscription"
@@ -146,7 +145,7 @@ curl -X POST \
 Name | Type | Description
 --------- | ------- | -----------
 amount <br>(`required`)| int | The amount of the order. It needs to be integer value, e.g. if `5 USD` will be given, it needs to be increased by a factor of `100` which will result in `500`.
-currencyCode <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
+currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
 name <br>(`required`)| string | Name of the order/subscription, to be displayed on invoices and in the web interface.
 code <br>(`required`)| string | Code of the order/subscription, to be displayed on invoices and in the web interface.
 interval <br>(`optional`)| string | One of `day`, `month` or `year`. The frequency with which a subscription should be billed. `month` by default.

@@ -53,7 +53,7 @@ Feature: Adding a new payment method
       "code":"paypal",
       "position":"2",
       "enabled":"1",
-      "gatewayConfig":{
+      "gateway_config":{
         "config":{
           "username":"test@example.com",
           "password":"pass",

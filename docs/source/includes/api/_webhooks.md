@@ -47,7 +47,6 @@ Creates a new webhook object which is enabled by default.
 curl -X POST \
   http://localhost/api/v1/webhooks/ \
   -H 'authorization: Bearer key' \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -d '{
 	"enabled": 1,
@@ -145,7 +144,6 @@ Updates already existing webhook object.
 curl -X PATCH \
   http://localhost/api/v1/webhooks/1 \
   -H 'authorization: Bearer key' \
-  -H 'cache-control: no-cache' \
   -H 'content-type: application/json' \
   -d '{
 	"enabled": 1,
