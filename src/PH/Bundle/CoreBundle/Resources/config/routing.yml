@@ -34,3 +34,92 @@ ph_core_payment_method:
         criteria:
             code: $code
     type: sylius.resource_api
+
+ph_core_checkout_payment:
+    path: /checkouts/payment/{orderId}
+    methods: [PUT, PATCH]
+    defaults:
+        _controller: sylius.controller.order:updateAction
+        _sylius:
+            serialization_version: $version
+            form: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+            repository:
+                method: find
+                arguments: [$orderId]
+            state_machine:
+                graph: ph_order_checkout
+                transition: select_payment
+
+ph_core_checkout_show:
+    path: /checkouts/{id}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.order:showAction
+        _sylius:
+            serialization_version: $version
+            serialization_groups: [Detailed]
+
+ph_core_checkout_complete:
+    path: /checkouts/complete/{orderId}
+    methods: [PATCH]
+    defaults:
+        _controller: sylius.controller.order:updateAction
+        _sylius:
+            serialization_version: $version
+            form:
+                form: PH\Bundle\CoreBundle\Form\Type\Checkout\CompleteType
+            repository:
+                method: findByOrderId
+                arguments: [$orderId]
+            state_machine:
+                graph: ph_order_checkout
+                transition: complete
+            return_content: true
+
+# payum
+ph_payum_order_pay:
+    path: /checkouts/pay/{tokenValue}
+    methods: [GET]
+    defaults:
+        _controller: ph.controller.payum:prepareCaptureAction
+        _sylius:
+            serialization_version: $version
+            redirect:
+                route: ph_payum_order_after_pay
+                parameters:
+                    version: $version
+
+ph_payum_order_after_pay:
+    path: /checkouts/after-pay/
+    methods: [GET, POST]
+    defaults:
+        _controller: ph.controller.payum:afterCaptureAction
+        _sylius:
+            serialization_version: $version
+
+# webhook bundle
+ph_api_webhooks:
+    resource: |
+        alias: ph.webhook
+        section: api
+        serialization_version: $version
+    type: sylius.resource_api
+
+ph_api_orders:
+    resource: |
+        alias: sylius.order
+        section: api
+        only: ["index", "show", "delete"]
+        serialization_version: $version
+    type: sylius.resource_api
+
+ph_api_order_create:
+    path: /orders/create/
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:addAction
+        _sylius:
+            section: api
+            form:
+                type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
+            serialization_version: $version

@@ -1,6 +1,6 @@
-sylius_resource:
-    resources:
-        ph.push_destination:
-            classes:
-                model: PH\Bundle\SubscriptionBundle\Model\PushDestination
-                interface: PH\Bundle\SubscriptionBundle\Model\PushDestinationIntefrace
+jms_serializer:
+    metadata:
+        directories:
+            ph-subscription:
+                namespace_prefix: "PH\\Component\\Subscription"
+                path: "@PHSubscriptionBundle/Resources/config/serializer"

@@ -1,6 +1,8 @@
-subscription:
-    resource: '@SubscriptionBundle/Controller/'
-    type: annotation
+ph_payum_capture:
+    resource: "@PayumBundle/Resources/config/routing/capture.xml"
+
+ph_payum_notify:
+    resource: "@PayumBundle/Resources/config/routing/notify.xml"
 
 ph_core:
     resource: "@PHCoreBundle/Resources/config/routing.yml"

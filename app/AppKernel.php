@@ -8,29 +8,33 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
+            new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
+            new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
+            new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
+
+            new PH\Bundle\SubscriptionBundle\PHSubscriptionBundle(),
+            new PH\Bundle\CoreBundle\PHCoreBundle(),
+            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
+
+            new Payum\Bundle\PayumBundle\PayumBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
+
+            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new winzou\Bundle\StateMachineBundle\winzouStateMachineBundle(),
-            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
-            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
-            new Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
 
-            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
-            new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
-            new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
-            new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
-            new Payum\Bundle\PayumBundle\PayumBundle(),
+            new \Bazinga\Bundle\HateoasBundle\BazingaHateoasBundle(),
+            new \JMS\SerializerBundle\JMSSerializerBundle(),
+            new \FOS\RestBundle\FOSRestBundle(),
             new Sylius\Bundle\PayumBundle\SyliusPayumBundle(),
-            new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
-
-            new PH\Bundle\SubscriptionBundle\SubscriptionBundle(),
-            new PH\Bundle\CoreBundle\PHCoreBundle(),
+            new PH\Bundle\PayumBundle\PHPayumBundle(),
+            new PH\Bundle\WebhookBundle\PHWebhookBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

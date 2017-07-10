@@ -1,0 +1,33 @@
+PH\Component\Webhook\Model\Webhook:
+    exclusion_policy: ALL
+    xml_root_name: webhook
+    properties:
+        id:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        url:
+            expose: true
+            type: string
+            groups: [Default, Detailed]
+        enabled:
+            expose: true
+            type: boolean
+            groups: [Default, Detailed]
+        createdAt:
+            expose: true
+            type: datetime
+            groups: [Default, Detailed]
+        updatedAt:
+            expose: true
+            type: datetime
+            groups: [Default, Detailed]
+    relations:
+        - rel: self
+          exclusion:
+            groups: [Default, Detailed]
+          href:
+                route: ph_api_webhook_show
+                parameters:
+                    id: expr(object.getId())
+                    version: 1

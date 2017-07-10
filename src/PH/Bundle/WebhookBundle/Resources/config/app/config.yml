@@ -1,0 +1,6 @@
+jms_serializer:
+    metadata:
+        directories:
+            ph-webhook:
+                namespace_prefix: "PH\\Component\\Webhook"
+                path: "@PHWebhookBundle/Resources/config/serializer"

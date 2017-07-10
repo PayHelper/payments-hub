@@ -1,0 +1,9 @@
+services:
+    ph.event_listener.send_order_payload:
+        class: PH\Bundle\CoreBundle\EventSubscriber\SendOrderPayloadListener
+        arguments:
+            - "@ph.repository.webhook"
+            - "@serializer"
+        tags:
+            - { name: kernel.event_listener, event: sylius.order.post_create, method: sendPayload }
+            - { name: kernel.event_listener, event: sylius.order.post_update, method: sendPayload }

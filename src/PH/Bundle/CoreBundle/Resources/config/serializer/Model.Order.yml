@@ -1,0 +1,27 @@
+PH\Component\Core\Model\Order:
+    exclusion_policy: ALL
+    xml_root_name: order
+    properties:
+        payments:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        checkoutState:
+            expose: true
+            type: string
+            groups: [Detailed]
+        paymentState:
+            expose: true
+            type: string
+            groups: [Detailed]
+        tokenValue:
+            expose: true
+            type: string
+            groups: [Detailed]
+    relations:
+        -   rel: self
+            href:
+                route: sylius_api_order_show
+                parameters:
+                    id: expr(object.getId())
+                    version: 1

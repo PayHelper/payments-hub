@@ -1,0 +1,35 @@
+PH\Component\Subscription\Model\Subscription:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        amount:
+            expose: true
+            type: string
+            groups: [Default, Detailed]
+        currencyCode:
+            expose: true
+            type: string
+            groups: [Default, Detailed]
+        interval:
+            expose: true
+            type: string
+            groups: [Default, Detailed]
+        name:
+            expose: true
+            type: string
+            groups: [Default, Detailed]
+        code:
+            expose: true
+            type: string
+            groups: [Default, Detailed]
+        createdAt:
+            expose: true
+            type: DateTime
+            groups: [Detailed]
+        updatedAt:
+            expose: true
+            type: DateTime
+            groups: [Detailed]

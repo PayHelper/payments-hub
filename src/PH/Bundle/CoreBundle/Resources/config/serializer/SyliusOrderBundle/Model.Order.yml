@@ -1,0 +1,43 @@
+Sylius\Component\Order\Model\Order:
+    exclusion_policy: ALL
+    xml_root_name: order
+    properties:
+        id:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        items:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        itemsTotal:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        total:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        state:
+            expose: true
+            type: string
+            groups: [Detailed]
+        checkoutCompletedAt:
+            expose: true
+            groups: [Detailed]
+        number:
+            expose: true
+            type: string
+            groups: [Detailed]
+        notes:
+            expose: true
+            type: string
+            groups: [Detailed]
+        createdAt:
+            expose: true
+            type: DateTime
+            groups: [Detailed]
+        updatedAt:
+            expose: true
+            type: DateTime
+            groups: [Detailed]

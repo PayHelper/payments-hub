@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ae8fec9ec69888f3f4e090bd8d8fd03",
+    "content-hash": "8cc7836253a559ce6406dbc3fd970677",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -446,12 +446,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "76b65d73ec75b4e1dc672731d0e7be1437870abd"
+                "reference": "757a0072e63b98cdf687ccb4638e87f6d322fc13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/76b65d73ec75b4e1dc672731d0e7be1437870abd",
-                "reference": "76b65d73ec75b4e1dc672731d0e7be1437870abd",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/757a0072e63b98cdf687ccb4638e87f6d322fc13",
+                "reference": "757a0072e63b98cdf687ccb4638e87f6d322fc13",
                 "shasum": ""
             },
             "require": {
@@ -509,7 +509,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-05-20 13:35:00"
+            "time": "2017-06-15 21:40:54"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -686,12 +686,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "6dcae3aee85691db6df6e91e3b5e10911429516c"
+                "reference": "dde035898f2daae9b3b3e5c792f4891cf7aaff80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/6dcae3aee85691db6df6e91e3b5e10911429516c",
-                "reference": "6dcae3aee85691db6df6e91e3b5e10911429516c",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/dde035898f2daae9b3b3e5c792f4891cf7aaff80",
+                "reference": "dde035898f2daae9b3b3e5c792f4891cf7aaff80",
                 "shasum": ""
             },
             "require": {
@@ -745,7 +745,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-06-08 15:16:24"
+            "time": "2017-06-16 11:07:05"
         },
         {
             "name": "doctrine/instantiator",
@@ -991,12 +991,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "d2df87770c3901d79e3ba8dbb96cddd42d61a6f7"
+                "reference": "5f50d2e360cc44aea80adce7eba98de3a4d63788"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/d2df87770c3901d79e3ba8dbb96cddd42d61a6f7",
-                "reference": "d2df87770c3901d79e3ba8dbb96cddd42d61a6f7",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/5f50d2e360cc44aea80adce7eba98de3a4d63788",
+                "reference": "5f50d2e360cc44aea80adce7eba98de3a4d63788",
                 "shasum": ""
             },
             "require": {
@@ -1085,7 +1085,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2017-05-30 16:52:17"
+            "time": "2017-06-18 13:30:07"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1093,12 +1093,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "f65c02eae3bff1aa57709ea4c8ca26947df95b9c"
+                "reference": "0b0ecb197ab20ddcdb205a3c1c7422bcd36f9d4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/f65c02eae3bff1aa57709ea4c8ca26947df95b9c",
-                "reference": "f65c02eae3bff1aa57709ea4c8ca26947df95b9c",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/0b0ecb197ab20ddcdb205a3c1c7422bcd36f9d4e",
+                "reference": "0b0ecb197ab20ddcdb205a3c1c7422bcd36f9d4e",
                 "shasum": ""
             },
             "require": {
@@ -1163,7 +1163,7 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2017-05-29 17:33:48"
+            "time": "2017-06-14 10:49:55"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -1228,7 +1228,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-06-10T14:17:14+00:00"
+            "time": "2017-06-10 14:17:14"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1279,7 +1279,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2017-05-20T23:14:18+00:00"
+            "time": "2017-05-20 23:14:18"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1287,12 +1287,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "8dfe52c2d14a68ff3dce6af82058391c6c4eb9b3"
+                "reference": "526d8ef63e8701e02216b621e4a3a16085e2286f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/8dfe52c2d14a68ff3dce6af82058391c6c4eb9b3",
-                "reference": "8dfe52c2d14a68ff3dce6af82058391c6c4eb9b3",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/526d8ef63e8701e02216b621e4a3a16085e2286f",
+                "reference": "526d8ef63e8701e02216b621e4a3a16085e2286f",
                 "shasum": ""
             },
             "require": {
@@ -1344,7 +1344,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2017-06-10T19:55:42+00:00"
+            "time": "2017-06-19 13:30:27"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -1604,12 +1604,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "3a41588d7e66b098c6ebd5b37adbdc60da63a0d8"
+                "reference": "f96cec79bd20c0a5c174b3cf340641b11e130fa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/3a41588d7e66b098c6ebd5b37adbdc60da63a0d8",
-                "reference": "3a41588d7e66b098c6ebd5b37adbdc60da63a0d8",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/f96cec79bd20c0a5c174b3cf340641b11e130fa6",
+                "reference": "f96cec79bd20c0a5c174b3cf340641b11e130fa6",
                 "shasum": ""
             },
             "require": {
@@ -1679,7 +1679,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2017-05-24 16:30:33"
+            "time": "2017-06-20 11:41:36"
         },
         {
             "name": "jms/serializer-bundle",
@@ -1903,7 +1903,7 @@
                 "url",
                 "ws"
             ],
-            "time": "2016-12-14T07:45:41+00:00"
+            "time": "2016-12-14 07:45:41"
         },
         {
             "name": "monolog/monolog",
@@ -1911,12 +1911,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "35c07a81de6200e5aa0629eacecd11fd925d19dc"
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/35c07a81de6200e5aa0629eacecd11fd925d19dc",
-                "reference": "35c07a81de6200e5aa0629eacecd11fd925d19dc",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
+                "reference": "fd8c787753b3a2ad11bc60c063cff1358a32a3b4",
                 "shasum": ""
             },
             "require": {
@@ -1937,7 +1937,7 @@
                 "phpunit/phpunit-mock-objects": "2.3.0",
                 "ruflin/elastica": ">=0.90 <3.0",
                 "sentry/sentry": "^0.13",
-                "swiftmailer/swiftmailer": "~5.3"
+                "swiftmailer/swiftmailer": "^5.3|^6.0"
             },
             "suggest": {
                 "aws/aws-sdk-php": "Allow sending log messages to AWS services like DynamoDB",
@@ -1981,7 +1981,7 @@
                 "logging",
                 "psr-3"
             ],
-            "time": "2017-05-03 13:17:21"
+            "time": "2017-06-19 01:22:40"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -1989,12 +1989,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/Pagerfanta.git",
-                "reference": "122cbf6fac5d9c49bd8df0c03996462e52a22cc8"
+                "reference": "89c38212ce3407d247724eb1b857f3b0fbdd7f8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/122cbf6fac5d9c49bd8df0c03996462e52a22cc8",
-                "reference": "122cbf6fac5d9c49bd8df0c03996462e52a22cc8",
+                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/89c38212ce3407d247724eb1b857f3b0fbdd7f8f",
+                "reference": "89c38212ce3407d247724eb1b857f3b0fbdd7f8f",
                 "shasum": ""
             },
             "require": {
@@ -2050,7 +2050,7 @@
                 "paginator",
                 "paging"
             ],
-            "time": "2017-05-22 16:00:42"
+            "time": "2017-06-16 11:16:50"
         },
         {
             "name": "paragonie/random_compat",
@@ -2162,7 +2162,7 @@
                 "iso",
                 "library"
             ],
-            "time": "2017-04-26T07:43:32+00:00"
+            "time": "2017-04-26 07:43:32"
         },
         {
             "name": "payum/payum",
@@ -2170,12 +2170,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Payum.git",
-                "reference": "fd6863d5aa707a5b41e775b3cbe52613b34af101"
+                "reference": "050e8f8674db492e5275aeae82472dca886173ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Payum/zipball/fd6863d5aa707a5b41e775b3cbe52613b34af101",
-                "reference": "fd6863d5aa707a5b41e775b3cbe52613b34af101",
+                "url": "https://api.github.com/repos/Payum/Payum/zipball/050e8f8674db492e5275aeae82472dca886173ef",
+                "reference": "050e8f8674db492e5275aeae82472dca886173ef",
                 "shasum": ""
             },
             "require": {
@@ -2289,7 +2289,7 @@
                 "stripe.js",
                 "withdrawal"
             ],
-            "time": "2017-06-09T07:24:16+00:00"
+            "time": "2017-06-21 07:03:38"
         },
         {
             "name": "payum/payum-bundle",
@@ -2391,7 +2391,7 @@
                 "stripe.js",
                 "symfony"
             ],
-            "time": "2017-06-09T06:58:40+00:00"
+            "time": "2017-06-09 06:58:40"
         },
         {
             "name": "php-http/guzzle6-adapter",
@@ -2451,7 +2451,7 @@
                 "Guzzle",
                 "http"
             ],
-            "time": "2017-05-29T15:06:15+00:00"
+            "time": "2017-05-29 15:06:15"
         },
         {
             "name": "php-http/httplug",
@@ -2507,7 +2507,7 @@
                 "client",
                 "http"
             ],
-            "time": "2017-01-02T06:37:42+00:00"
+            "time": "2017-01-02 06:37:42"
         },
         {
             "name": "php-http/message",
@@ -2515,12 +2515,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "d36c45f2233b5393fdaa1baff3bfa59c5576d8a0"
+                "reference": "f12663ba88589489cc6725399b878bbf6f2a691c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/d36c45f2233b5393fdaa1baff3bfa59c5576d8a0",
-                "reference": "d36c45f2233b5393fdaa1baff3bfa59c5576d8a0",
+                "url": "https://api.github.com/repos/php-http/message/zipball/f12663ba88589489cc6725399b878bbf6f2a691c",
+                "reference": "f12663ba88589489cc6725399b878bbf6f2a691c",
                 "shasum": ""
             },
             "require": {
@@ -2576,7 +2576,7 @@
                 "message",
                 "psr-7"
             ],
-            "time": "2017-06-14T07:22:07+00:00"
+            "time": "2017-06-19 08:40:51"
         },
         {
             "name": "php-http/message-factory",
@@ -2626,7 +2626,7 @@
                 "stream",
                 "uri"
             ],
-            "time": "2016-02-03T08:16:31+00:00"
+            "time": "2016-02-03 08:16:31"
         },
         {
             "name": "php-http/promise",
@@ -2676,7 +2676,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2016-01-28T07:54:12+00:00"
+            "time": "2016-01-28 07:54:12"
         },
         {
             "name": "phpcollection/phpcollection",
@@ -2919,7 +2919,7 @@
                 "request",
                 "response"
             ],
-            "time": "2016-08-06T14:39:51+00:00"
+            "time": "2016-08-06 14:39:51"
         },
         {
             "name": "psr/link",
@@ -3409,7 +3409,7 @@
                 "shop",
                 "zones"
             ],
-            "time": "2017-03-09T14:32:35+00:00"
+            "time": "2017-03-09 14:32:35"
         },
         {
             "name": "sylius/attribute",
@@ -3472,7 +3472,7 @@
                 "feature",
                 "shop"
             ],
-            "time": "2017-03-31T12:53:47+00:00"
+            "time": "2017-03-31 12:53:47"
         },
         {
             "name": "sylius/channel",
@@ -3538,7 +3538,7 @@
                 "stores",
                 "sylius"
             ],
-            "time": "2017-05-18T13:38:27+00:00"
+            "time": "2017-05-18 13:38:27"
         },
         {
             "name": "sylius/core",
@@ -3622,7 +3622,7 @@
                 "store",
                 "sylius"
             ],
-            "time": "2017-06-03T16:47:23+00:00"
+            "time": "2017-06-03 16:47:23"
         },
         {
             "name": "sylius/currency",
@@ -3684,7 +3684,7 @@
                 "currency",
                 "money"
             ],
-            "time": "2017-05-18T13:38:27+00:00"
+            "time": "2017-05-18 13:38:27"
         },
         {
             "name": "sylius/customer",
@@ -3737,7 +3737,7 @@
                     "homepage": "http://pjedrzejewski.com"
                 },
                 {
-                    "name": "Łukasz Chruściel",
+                    "name": "Łukasz Chrusciel",
                     "email": "lukasz.chrusciel@lakion.com"
                 },
                 {
@@ -3751,7 +3751,7 @@
                 "customer",
                 "groups"
             ],
-            "time": "2017-01-26T10:58:45+00:00"
+            "time": "2017-01-26 10:58:45"
         },
         {
             "name": "sylius/inventory",
@@ -3813,7 +3813,7 @@
                 "stock",
                 "sylius"
             ],
-            "time": "2017-01-26T10:58:45+00:00"
+            "time": "2017-01-26 10:58:45"
         },
         {
             "name": "sylius/locale",
@@ -3876,7 +3876,7 @@
                 "locale",
                 "localization"
             ],
-            "time": "2017-05-18T13:38:27+00:00"
+            "time": "2017-05-18 13:38:27"
         },
         {
             "name": "sylius/money-bundle",
@@ -4294,7 +4294,7 @@
                 "payments",
                 "payum"
             ],
-            "time": "2017-05-18T13:38:27+00:00"
+            "time": "2017-05-18 13:38:27"
         },
         {
             "name": "sylius/product",
@@ -4364,7 +4364,7 @@
                 "shop",
                 "variants"
             ],
-            "time": "2017-05-24T16:36:55+00:00"
+            "time": "2017-05-24 16:36:55"
         },
         {
             "name": "sylius/promotion",
@@ -4426,7 +4426,7 @@
                 "shop",
                 "sylius"
             ],
-            "time": "2017-05-18T13:38:27+00:00"
+            "time": "2017-05-18 13:38:27"
         },
         {
             "name": "sylius/registry",
@@ -4727,7 +4727,7 @@
                 "review",
                 "shop"
             ],
-            "time": "2017-01-26T10:58:45+00:00"
+            "time": "2017-01-26 10:58:45"
         },
         {
             "name": "sylius/shipping",
@@ -4792,7 +4792,7 @@
                 "sylius",
                 "webshop"
             ],
-            "time": "2017-01-26T10:58:45+00:00"
+            "time": "2017-01-26 10:58:45"
         },
         {
             "name": "sylius/taxation",
@@ -4856,7 +4856,7 @@
                 "taxes",
                 "vat"
             ],
-            "time": "2017-01-26T10:58:45+00:00"
+            "time": "2017-01-26 10:58:45"
         },
         {
             "name": "sylius/taxonomy",
@@ -4919,7 +4919,7 @@
                 "taxon",
                 "taxonomy"
             ],
-            "time": "2017-04-05T14:25:23+00:00"
+            "time": "2017-04-05 14:25:23"
         },
         {
             "name": "sylius/user",
@@ -4993,7 +4993,7 @@
                 "registration",
                 "user"
             ],
-            "time": "2017-05-18T13:38:27+00:00"
+            "time": "2017-05-18 13:38:27"
         },
         {
             "name": "symfony/monolog-bundle",
@@ -5061,12 +5061,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-apcu.git",
-                "reference": "2e7965b8cdfbba50d0092d3f6dca97dddec409e2"
+                "reference": "ddb6ce1ab412f6987099bbb72ab2f4354e545fec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/2e7965b8cdfbba50d0092d3f6dca97dddec409e2",
-                "reference": "2e7965b8cdfbba50d0092d3f6dca97dddec409e2",
+                "url": "https://api.github.com/repos/symfony/polyfill-apcu/zipball/ddb6ce1ab412f6987099bbb72ab2f4354e545fec",
+                "reference": "ddb6ce1ab412f6987099bbb72ab2f4354e545fec",
                 "shasum": ""
             },
             "require": {
@@ -5075,7 +5075,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5106,7 +5106,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09 08:25:21"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/polyfill-iconv",
@@ -5114,12 +5114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-iconv.git",
-                "reference": "ae1347fa81423b67dbc232c8c111facb367ff8b9"
+                "reference": "1ea0e08453819ecc7130e1fb0ee10862c2f33ed0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/ae1347fa81423b67dbc232c8c111facb367ff8b9",
-                "reference": "ae1347fa81423b67dbc232c8c111facb367ff8b9",
+                "url": "https://api.github.com/repos/symfony/polyfill-iconv/zipball/1ea0e08453819ecc7130e1fb0ee10862c2f33ed0",
+                "reference": "1ea0e08453819ecc7130e1fb0ee10862c2f33ed0",
                 "shasum": ""
             },
             "require": {
@@ -5131,7 +5131,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5165,7 +5165,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09T08:25:21+00:00"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/polyfill-intl-icu",
@@ -5173,12 +5173,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-icu.git",
-                "reference": "3191cbe0ce64987bd382daf6724af31c53daae01"
+                "reference": "4aa0b65dc71a7369c1e7e6e2a3ca027d9decdb09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/3191cbe0ce64987bd382daf6724af31c53daae01",
-                "reference": "3191cbe0ce64987bd382daf6724af31c53daae01",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-icu/zipball/4aa0b65dc71a7369c1e7e6e2a3ca027d9decdb09",
+                "reference": "4aa0b65dc71a7369c1e7e6e2a3ca027d9decdb09",
                 "shasum": ""
             },
             "require": {
@@ -5191,7 +5191,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5223,7 +5223,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09 08:25:21"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -5231,12 +5231,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937"
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/f29dca382a6485c3cbe6379f0c61230167681937",
-                "reference": "f29dca382a6485c3cbe6379f0c61230167681937",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
+                "reference": "7c8fae0ac1d216eb54349e6a8baa57d515fe8803",
                 "shasum": ""
             },
             "require": {
@@ -5248,7 +5248,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5282,7 +5282,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09 14:24:12"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/polyfill-php56",
@@ -5290,12 +5290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
-                "reference": "bc0b7d6cb36b10cfabb170a3e359944a95174929"
+                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/bc0b7d6cb36b10cfabb170a3e359944a95174929",
-                "reference": "bc0b7d6cb36b10cfabb170a3e359944a95174929",
+                "url": "https://api.github.com/repos/symfony/polyfill-php56/zipball/e85ebdef569b84e8709864e1a290c40f156b30ca",
+                "reference": "e85ebdef569b84e8709864e1a290c40f156b30ca",
                 "shasum": ""
             },
             "require": {
@@ -5305,7 +5305,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5338,7 +5338,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-09 08:25:21"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/polyfill-php70",
@@ -5346,12 +5346,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "31e7c2b409137f4f7100317ceb0a9c930e89da51"
+                "reference": "b6482e68974486984f59449ecea1fbbb22ff840f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/31e7c2b409137f4f7100317ceb0a9c930e89da51",
-                "reference": "31e7c2b409137f4f7100317ceb0a9c930e89da51",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/b6482e68974486984f59449ecea1fbbb22ff840f",
+                "reference": "b6482e68974486984f59449ecea1fbbb22ff840f",
                 "shasum": ""
             },
             "require": {
@@ -5361,7 +5361,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5397,7 +5397,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2017-06-13 21:35:25"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/polyfill-util",
@@ -5405,12 +5405,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
-                "reference": "ebccbde4aad410f6438d86d7d261c6b4d2b9a51d"
+                "reference": "5d2fc887042ffa5617c28d362f0f114a4c6048bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/ebccbde4aad410f6438d86d7d261c6b4d2b9a51d",
-                "reference": "ebccbde4aad410f6438d86d7d261c6b4d2b9a51d",
+                "url": "https://api.github.com/repos/symfony/polyfill-util/zipball/5d2fc887042ffa5617c28d362f0f114a4c6048bf",
+                "reference": "5d2fc887042ffa5617c28d362f0f114a4c6048bf",
                 "shasum": ""
             },
             "require": {
@@ -5419,7 +5419,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5449,7 +5449,7 @@
                 "polyfill",
                 "shim"
             ],
-            "time": "2017-06-09 08:25:21"
+            "time": "2017-06-14 15:44:48"
         },
         {
             "name": "symfony/swiftmailer-bundle",
@@ -5516,12 +5516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "d8d0f877934ca63403cba4949c9293dfc943fb3a"
+                "reference": "035d5260b948e7eab563788bce8ead326e2557b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/d8d0f877934ca63403cba4949c9293dfc943fb3a",
-                "reference": "d8d0f877934ca63403cba4949c9293dfc943fb3a",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/035d5260b948e7eab563788bce8ead326e2557b2",
+                "reference": "035d5260b948e7eab563788bce8ead326e2557b2",
                 "shasum": ""
             },
             "require": {
@@ -5661,7 +5661,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-06-14 07:33:02"
+            "time": "2017-06-20 14:01:46"
         },
         {
             "name": "twig/twig",
@@ -5837,12 +5837,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/willdurand/Hateoas.git",
-                "reference": "e71a5702dce56cc8e077bfc06d982eed38764732"
+                "reference": "3026defaedb461096dade1002d8dd2a743d78a2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/e71a5702dce56cc8e077bfc06d982eed38764732",
-                "reference": "e71a5702dce56cc8e077bfc06d982eed38764732",
+                "url": "https://api.github.com/repos/willdurand/Hateoas/zipball/3026defaedb461096dade1002d8dd2a743d78a2f",
+                "reference": "3026defaedb461096dade1002d8dd2a743d78a2f",
                 "shasum": ""
             },
             "require": {
@@ -5893,7 +5893,7 @@
                 }
             ],
             "description": "A PHP library to support implementing representations for HATEOAS REST web services",
-            "time": "2017-05-22 10:40:22"
+            "time": "2017-06-15 16:43:41"
         },
         {
             "name": "willdurand/hateoas-bundle",
@@ -5946,7 +5946,7 @@
                 "HATEOAS",
                 "rest"
             ],
-            "time": "2017-06-07T17:54:37+00:00"
+            "time": "2017-06-07 17:54:37"
         },
         {
             "name": "willdurand/jsonp-callback-validator",
@@ -6643,6 +6643,44 @@
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
+            "name": "friends-of-behat/performance-extension",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfBehat/PerformanceExtension.git",
+                "reference": "eb0163ebdfda430e429e0a4c6ec2d9bbbd8a6c4b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfBehat/PerformanceExtension/zipball/eb0163ebdfda430e429e0a4c6ec2d9bbbd8a6c4b",
+                "reference": "eb0163ebdfda430e429e0a4c6ec2d9bbbd8a6c4b",
+                "shasum": ""
+            },
+            "require": {
+                "behat/behat": "^3.1",
+                "php": "^5.6|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "FriendsOfBehat\\PerformanceExtension\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kamil Kokot",
+                    "email": "kamil@kokot.me",
+                    "homepage": "http://kamil.kokot.me"
+                }
+            ],
+            "description": "Accelerates Behat using features available only for newer PHP versions.",
+            "time": "2016-07-22T21:46:29+00:00"
+        },
+        {
             "name": "justinrainbow/json-schema",
             "version": "1.6.1",
             "source": {
@@ -7325,7 +7363,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2017-03-15 01:02:10"
+            "time": "2017-03-15T01:02:10+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",

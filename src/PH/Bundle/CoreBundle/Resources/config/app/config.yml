@@ -1,3 +1,8 @@
+imports:
+    - { resource: "@PHCoreBundle/Resources/config/app/state_machine.yml" }
+    - { resource: "@PHWebhookBundle/Resources/config/app/config.yml" }
+    - { resource: "@PHSubscriptionBundle/Resources/config/app/config.yml" }
+
 payum:
     storages:
         "%sylius.model.order.class%": { doctrine: orm }
@@ -5,11 +10,11 @@ payum:
 
     security:
         token_storage:
-            Sylius\Bundle\PayumBundle\Model\PaymentSecurityToken: { doctrine: orm }
+            PH\Bundle\PayumBundle\Model\PaymentSecurityToken: { doctrine: orm }
 
     dynamic_gateways:
         config_storage:
-            Sylius\Bundle\PayumBundle\Model\GatewayConfig: { doctrine: orm }
+            PH\Bundle\PayumBundle\Model\GatewayConfig: { doctrine: orm }
     gateways:
         offline:
             factory: offline
@@ -20,6 +25,9 @@ jms_serializer:
             sylius-payment:
                 namespace_prefix: "Sylius\\Component\\Payment"
                 path: "@PHCoreBundle/Resources/config/serializer/SyliusPaymentBundle"
+            sylius-order:
+                namespace_prefix: "Sylius\\Component\\Order"
+                path: "@PHCoreBundle/Resources/config/serializer/SyliusOrderBundle"
             ph-core:
                 namespace_prefix: "PH\\Component\\Core"
                 path: "@PHCoreBundle/Resources/config/serializer"
@@ -31,9 +39,26 @@ sylius_payment:
                 model: PH\Component\Core\Model\PaymentMethod
                 repository: Sylius\Bundle\PaymentBundle\Doctrine\ORM\PaymentMethodRepository
                 controller: PH\Bundle\CoreBundle\Controller\PaymentMethodController
+        payment:
+            classes:
+                model: PH\Component\Core\Model\Payment
 
-#sylius_resource:
-#    resources:
-#        ph.payment_method:
-#            classes:
-#                model: PH\Component\Core\Model\PaymentMethod
+sylius_order:
+    resources:
+        order:
+            classes:
+                model: PH\Component\Core\Model\Order
+                controller: PH\Bundle\CoreBundle\Controller\OrderController
+                repository: PH\Bundle\CoreBundle\Doctrine\ORM\OrderRepository
+        order_item:
+            classes:
+                model: PH\Component\Core\Model\OrderItem
+
+sylius_payum:
+    resources:
+        payment_security_token:
+            classes:
+                model: PH\Bundle\PayumBundle\Model\PaymentSecurityToken
+        gateway_config:
+            classes:
+                model: PH\Bundle\PayumBundle\Model\GatewayConfig

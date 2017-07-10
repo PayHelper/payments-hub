@@ -1,0 +1,45 @@
+Sylius\Component\Order\Model\OrderItem:
+    exclusion_policy: ALL
+    xml_root_name: order
+    properties:
+        id:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        quantity:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        unitPrice:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        total:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        units:
+            expose: false
+            type: array
+            groups: [Default, Detailed]
+        unitsTotal:
+            expose: false
+            type: integer
+            groups: [Default, Detailed]
+        adjustments:
+            expose: false
+            type: array
+            groups: [Default, Detailed]
+        adjustmentsTotal:
+            expose: false
+            type: integer
+            groups: [Default, Detailed]
+    relations:
+        - rel: order
+          exclusion:
+            groups: [Default, Detailed]
+          href:
+                route: sylius_api_order_show
+                parameters:
+                    id: expr(object.getOrder().getId())
+                    version: 1

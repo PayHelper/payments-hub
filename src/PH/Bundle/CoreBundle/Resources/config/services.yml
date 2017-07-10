@@ -1,20 +1,82 @@
 services:
-#    ph_core.example:
-#        class: PH\Bundle\CoreBundle\Example
-#        arguments: ["@service_id", "plain_value", "%parameter%"]
+    ph.order_token_assigner:
+        class: PH\Component\Core\Assigner\OrderTokenAssigner
+        arguments:
+           - "@sylius.random_generator"
 
     sylius.invoice_number_generator:
         class: Sylius\Component\Core\Payment\IdBasedInvoiceNumberGenerator
 
-    sylius.custom_factory.payment_method:
+    ph.custom_factory.payment_method:
         class: Sylius\Component\Core\Factory\PaymentMethodFactory
         decorates: sylius.factory.payment_method
         public: false
         arguments:
-            - "@sylius.custom_factory.payment_method.inner"
+            - "@ph.custom_factory.payment_method.inner"
             - "@sylius.factory.gateway_config"
 
-    sylius.form.extension.type.payment_method:
+    ph.form.extension.type.payment_method:
         class: PH\Bundle\CoreBundle\Form\Extension\PaymentMethodTypeExtension
         tags:
             - { name: form.type_extension, extended_type: Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodType }
+
+    ph.facade.order:
+        class: PH\Bundle\CoreBundle\Facade\OrderFacade
+        arguments:
+            - "@sylius.factory.order_item"
+            - "@sylius.order_item_quantity_modifier"
+            - "@sylius.order_modifier"
+
+    ph.form.type.checkout_select_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+        arguments:
+            - '%sylius.model.order.class%'
+            - ['ph']
+        tags:
+            - { name: form.type }
+
+    swp.form.type.checkout_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
+        arguments:
+            - '%sylius.model.payment.class%'
+        tags:
+            - { name: form.type }
+
+#order processing
+    ph.order_processing.order_payment_processor.checkout:
+        class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor
+        arguments:
+            - "@ph.order_payment_provider"
+            - "cart"
+        tags:
+            - { name: sylius.order_processor, priority: 0 }
+
+    ph.order_processing.order_payment_processor.after_checkout:
+        class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor
+        arguments:
+            - "@ph.order_payment_provider"
+            - "new"
+####
+
+    ph.payment_method_resolver.default:
+        class: Sylius\Component\Payment\Resolver\DefaultPaymentMethodResolver
+        arguments:
+            - "@sylius.repository.payment_method"
+
+    ph.order_payment_provider:
+        class: PH\Component\Core\Payment\Provider\OrderPaymentProvider
+        arguments:
+            - "@ph.payment_method_resolver.default"
+            - "@sylius.factory.payment"
+            - "@sm.factory"
+
+# resolvers
+    ph.state_resolver.order_payment:
+        class: PH\Component\Core\StateResolver\OrderPaymentStateResolver
+        arguments:
+            - "@sm.factory"
+
+    ph.state_resolver.order:
+        class: PH\Component\Core\StateResolver\OrderStateResolver
+        arguments:
+            - "@sm.factory"

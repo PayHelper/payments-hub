@@ -1,0 +1,7 @@
+PH\Component\Core\Model\OrderItem:
+    exclusion_policy: ALL
+    xml_root_name: order
+    properties:
+        subscription:
+            expose: true
+            groups: [Default, Detailed]

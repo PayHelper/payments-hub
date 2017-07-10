@@ -1,0 +1,11 @@
+services:
+    ph.controller.payum:
+      class: PH\Bundle\PayumBundle\Controller\PayumController
+      arguments:
+          - '@payum'
+          - '@sylius.repository.order'
+          - '@sylius.form_registry.payum_gateway_config'
+          - "@=service('sylius.resource_registry').get('sylius.order')"
+          - '@sylius.resource_controller.request_configuration_factory'
+          - '@sylius.resource_controller.view_handler'
+          - '@router'

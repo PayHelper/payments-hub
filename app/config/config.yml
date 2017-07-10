@@ -3,7 +3,7 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
     - { resource: "@PHCoreBundle/Resources/config/app/config.yml" }
-    - { resource: "@SubscriptionBundle/Resources/config/app/config.yml" }
+    - { resource: "@PHSubscriptionBundle/Resources/config/app/config.yml" }
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
@@ -59,7 +59,7 @@ doctrine:
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
-        auto_mapping: false
+        auto_mapping: true
 
 stof_doctrine_extensions:
     default_locale: '%locale%'
@@ -74,12 +74,6 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
-
-sylius_order:
-    resources:
-        order:
-            classes:
-                model: PH\Bundle\SubscriptionBundle\Model\Order
 
 fos_rest:
     zone:
@@ -97,6 +91,8 @@ fos_rest:
     serializer:
         serialize_null: true
     exception: ~
+    body_listener:
+        array_normalizer: fos_rest.normalizer.camel_keys
     format_listener:
         rules:
             - { path: '^/api', priorities: ['json', 'xml'], fallback_format: json, prefer_extension: true }
