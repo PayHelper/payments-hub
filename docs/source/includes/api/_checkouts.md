@@ -88,7 +88,85 @@ curl -X PATCH \
 }'
 ```
 
-> Response (204 No Content)
+> Response (200)
+
+```json
+{
+    "id": 1,
+    "checkout_completed_at": "2017-07-10T14:27:47+0200",
+    "number": "000000001",
+    "notes": "Thanks for your great content!",
+    "items": [
+        {
+            "id": 1,
+            "quantity": 1,
+            "unit_price": 5000,
+            "total": 5000,
+            "subscription": {
+                "id": 1,
+                "amount": "5000",
+                "currency_code": "PLN",
+                "interval": "month",
+                "name": "Monthly subscription",
+                "code": "monthly_subscription",
+                "created_at": "2017-07-10T14:27:19+0200",
+                "updated_at": "2017-07-10T14:27:19+0200"
+            },
+            "_links": {
+                "order": {
+                    "href": "/app_dev.php/api/v1/orders/36"
+                }
+            }
+        }
+    ],
+    "items_total": 5000,
+    "total": 5000,
+    "state": "new",
+    "created_at": "2017-07-10T14:27:19+0200",
+    "updated_at": "2017-07-10T14:27:47+0200",
+    "payments": [
+        {
+            "id": 1,
+            "method": {
+                "id": 2,
+                "code": "paypal",
+                "position": 1,
+                "created_at": "2017-07-06T16:32:48+0200",
+                "updated_at": "2017-07-06T16:32:50+0200",
+                "enabled": true,
+                "translations": {
+                    "en": {
+                        "locale": "en",
+                        "translatable": null,
+                        "id": 2,
+                        "name": "testpay",
+                        "description": "desc",
+                        "instructions": "instructions"
+                    }
+                },
+                "_links": {
+                    "self": {
+                        "href": "/api/v1/payment-methods/paypal"
+                    }
+                }
+            },
+            "currency_code": "PLN",
+            "amount": 5000,
+            "state": "new",
+            "created_at": "2017-07-10T14:27:19+0200",
+            "updated_at": "2017-07-10T14:27:47+0200"
+        }
+    ],
+    "checkout_state": "completed",
+    "payment_state": "awaiting_payment",
+    "token_value": "lKD1QhGtjW",
+    "_links": {
+        "self": {
+            "href": "/api/v1/orders/36"
+        }
+    }
+}
+```
 
 ### Arguments
 

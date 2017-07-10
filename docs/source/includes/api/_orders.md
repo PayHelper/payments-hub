@@ -14,6 +14,7 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
     "id": 6,
     "checkout_completed_at": null,
     "number": null,
+    "notes": null,
     "items": [
         {
             "id": 6,
@@ -59,6 +60,7 @@ Field | Type | Description
 id | integer | Unique identifier for the object.
 checkout_completed_at | string | Datetime when the checkout has been completed.
 number | string | Order number, generated once the checkout is completed.
+notes | string | Optional notes that can be added to an order when checkout is completed (see [Checkouts API](#complete-the-checkout)).
 items | array | An array of order item objects.
 items_total | int | A sum of all items prices.
 total | int | A sum of items total and adjustments total.
@@ -103,6 +105,7 @@ curl -X POST \
     "id": 6,
     "checkout_completed_at": null,
     "number": null,
+    "notes": null,
     "items": [
         {
             "id": 6,
@@ -183,6 +186,7 @@ curl -X GET \
     "id": 6,
     "checkout_completed_at": null,
     "number": null,
+    "notes": null,
     "items": [
         {
             "id": 6,
@@ -299,6 +303,7 @@ Returns a list of all orders.
                 "id": 6,
                 "checkout_completed_at": null,
                 "number": null,
+                "notes": null,
                 "items": [
                     {
                         "id": 6,
