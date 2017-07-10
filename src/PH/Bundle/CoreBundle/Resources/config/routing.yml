@@ -35,12 +35,6 @@ ph_core_payment_method:
             code: $code
     type: sylius.resource_api
 
-#ph_core_checkout_available_payment_methods:
-#    path: /checkouts/payment/{orderId}
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.show_available_payment_methods:showAction
-
 ph_core_checkout_payment:
     path: /checkouts/payment/{orderId}
     methods: [PUT, PATCH]
@@ -67,7 +61,7 @@ ph_core_checkout_show:
 
 ph_core_checkout_complete:
     path: /checkouts/complete/{orderId}
-    methods: [PUT]
+    methods: [PATCH]
     defaults:
         _controller: sylius.controller.order:updateAction
         _sylius:
@@ -75,11 +69,12 @@ ph_core_checkout_complete:
             form:
                 form: PH\Bundle\CoreBundle\Form\Type\Checkout\CompleteType
             repository:
-                method: find
+                method: findByOrderId
                 arguments: [$orderId]
             state_machine:
                 graph: ph_order_checkout
                 transition: complete
+            return_content: true
 
 # payum
 ph_payum_order_pay:
@@ -95,14 +90,12 @@ ph_payum_order_pay:
                     version: $version
 
 ph_payum_order_after_pay:
-    path: /payum/after-pay
+    path: /checkouts/after-pay/
     methods: [GET, POST]
     defaults:
         _controller: ph.controller.payum:afterCaptureAction
         _sylius:
             serialization_version: $version
-
-
 
 # webhook bundle
 ph_api_webhooks:

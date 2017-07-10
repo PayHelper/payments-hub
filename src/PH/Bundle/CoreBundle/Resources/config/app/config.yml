@@ -49,6 +49,7 @@ sylius_order:
             classes:
                 model: PH\Component\Core\Model\Order
                 controller: PH\Bundle\CoreBundle\Controller\OrderController
+                repository: PH\Bundle\CoreBundle\Doctrine\ORM\OrderRepository
         order_item:
             classes:
                 model: PH\Component\Core\Model\OrderItem

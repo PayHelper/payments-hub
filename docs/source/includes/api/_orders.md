@@ -45,6 +45,7 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
     "payments": [],
     "checkout_state": "cart",
     "payment_state": "cart",
+    "token_value": "WtR4aExE9C",
     "_links": {
         "self": {
             "href": "/api/v1/orders/6"
@@ -67,6 +68,7 @@ updated_at | string | Time at which the object was updated.
 payments | array | An array of Payment object which contains [payment methods](#payment-methods) objects.
 checkout_state | string | A state of the checkout process. Can be either: `cart`, `payment_selected` or `completed`.
 payment_state | string | A state of the payment. Can be either: `cart`, `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
+token_value | string | A unique token that is used in payment process.
 
 ## Create an order
 
@@ -132,6 +134,7 @@ curl -X POST \
     "payments": [],
     "checkout_state": "cart",
     "payment_state": "cart",
+    "token_value": "WtR4aExE9C",
     "_links": {
         "self": {
             "href": "/api/v1/orders/6"
@@ -211,6 +214,7 @@ curl -X GET \
     "payments": [],
     "checkout_state": "cart",
     "payment_state": "cart",
+    "token_value": "WtR4aExE9C",
     "_links": {
         "self": {
             "href": "/api/v1/orders/6"
@@ -293,6 +297,8 @@ Returns a list of all orders.
         "items": [
             {
                 "id": 6,
+                "checkout_completed_at": null,
+                "number": null,
                 "items": [
                     {
                         "id": 6,
@@ -305,7 +311,9 @@ Returns a list of all orders.
                             "currency_code": "PLN",
                             "interval": "month",
                             "name": "Monthly subscription",
-                            "code": "monthly_subscription"
+                            "code": "monthly_subscription",
+                            "created_at": "2017-07-06T12:13:46+0200",
+                            "updated_at": "2017-07-06T12:13:47+0200"
                         },
                         "_links": {
                             "order": {
@@ -316,7 +324,13 @@ Returns a list of all orders.
                 ],
                 "items_total": 500,
                 "total": 500,
+                "state": "cart",
+                "created_at": "2017-07-06T12:13:46+0200",
+                "updated_at": "2017-07-06T12:13:47+0200",
                 "payments": [],
+                "checkout_state": "cart",
+                "payment_state": "cart",
+                "token_value": "WtR4aExE9C",
                 "_links": {
                     "self": {
                         "href": "/api/v1/orders/6"

@@ -7,7 +7,7 @@ namespace PH\Component\Core\Model;
 use PH\Component\Subscription\Model\SubscriptionInterface;
 use Sylius\Component\Order\Model\OrderItem as BaseOrderItem;
 
-class OrderItem extends BaseOrderItem
+class OrderItem extends BaseOrderItem implements OrderItemInterface
 {
     /**
      * @var SubscriptionInterface

@@ -67,7 +67,7 @@ Returns an empty response if selecting payment method succeeded. Returns an erro
 > Definition
 
 ```shell
-PUT https://localhost/api/v1/checkouts/complete/{orderId}
+PATCH https://localhost/api/v1/checkouts/complete/{orderId}
 ```
 
 Here, after the payment method is selected, you can complete the order checkout to be able to pay for an order using the previously selected payment method.
@@ -79,7 +79,7 @@ Once this endpoint is called, the order checkout state will change from `payment
 > Example Request
 
 ```shell
-curl -X PUT \
+curl -X PATCH \
   http://localhost/api/v1/checkouts/complete/1 \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json' \
@@ -122,7 +122,7 @@ curl -X GET \
   -H 'content-type: application/json' \
 ```
 
-> Response (204 No Content)
+> Response (302)
 
 ### Arguments
 
@@ -132,4 +132,4 @@ tokenValue \(`required`)| string | The token value of the order to be paid (can 
 
 ### Returns
 
-Returns an empty response if checkout payment capture succeeded. Returns an error if complete can not be done.
+Returns an empty response with status code 302 if checkout payment capture succeeded. Returns an error if complete can not be done.

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PH\Bundle\CoreBundle\EventSubscriber;
 
 use GuzzleHttp\Client;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Webhook\Model\WebhookInterface;
@@ -45,13 +46,16 @@ final class SendOrderPayloadListener
             throw new UnexpectedTypeException($subject, OrderInterface::class);
         }
 
+        $context = new SerializationContext();
+        $context->setSerializeNull(true);
+
         $destinations = $this->webhookRepository->findAll();
 
         $client = new Client();
         /** @var WebhookInterface $destination */
         foreach ($destinations as $destination) {
             $client->request('POST', $destination->getUrl(), [
-                'payload' => $this->serializer->serialize($subject, 'json'),
+                'payload' => $this->serializer->serialize($subject, 'json', $context),
             ]);
         }
     }

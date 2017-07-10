@@ -44,13 +44,13 @@ final class ConvertPaymentAction implements ActionInterface
         $details = [];
         $details['PAYMENTREQUEST_0_INVNUM'] = $this->invoiceNumberGenerator->generate($order, $payment);
         $details['PAYMENTREQUEST_0_CURRENCYCODE'] = $order->getCurrencyCode();
-        $details['PAYMENTREQUEST_0_AMT'] = $this->formatPrice(5000);
-        $details['PAYMENTREQUEST_0_ITEMAMT'] = $this->formatPrice(5000);
+        $details['PAYMENTREQUEST_0_AMT'] = $this->formatPrice($order->getTotal());
+        $details['PAYMENTREQUEST_0_ITEMAMT'] = $this->formatPrice($order->getTotal());
 
         $m = 0;
         foreach ($order->getItems() as $item) {
-            $details['L_PAYMENTREQUEST_0_NAME'.$m] = 'test';
-            $details['L_PAYMENTREQUEST_0_AMT'.$m] = $this->formatPrice($item->getDiscountedUnitPrice());
+            $details['L_PAYMENTREQUEST_0_NAME'.$m] = $order->getItems()->first()->getSubscription()->getName();
+            $details['L_PAYMENTREQUEST_0_AMT'.$m] = $this->formatPrice($item->getUnitPrice());
             $details['L_PAYMENTREQUEST_0_QTY'.$m] = $item->getQuantity();
 
             ++$m;
