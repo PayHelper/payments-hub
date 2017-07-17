@@ -8,3 +8,9 @@ ph_core:
     resource: "@PHCoreBundle/Resources/config/routing.yml"
     prefix: /api/v{version}
 
+ph_public_api_core:
+    resource: "@PHCoreBundle/Resources/config/routing_public_api.yml"
+    prefix: /public-api/v{version}
+
+api_login_check:
+    path: /api/v1/login_check

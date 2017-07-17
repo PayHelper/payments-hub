@@ -7,3 +7,10 @@ services:
         tags:
             - { name: kernel.event_listener, event: sylius.order.post_create, method: sendPayload }
             - { name: kernel.event_listener, event: sylius.order.post_update, method: sendPayload }
+
+    ph.event_listener.assign_order_token:
+        class: PH\Bundle\CoreBundle\EventListener\AssignOrderTokenListener
+        arguments:
+            - "@ph.order_token_assigner"
+        tags:
+            - { name: kernel.event_listener, event: sylius.order.pre_create, method: assignToken }

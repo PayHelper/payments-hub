@@ -1,28 +1,49 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/security.html
 security:
-
     # http://symfony.com/doc/current/security.html#b-configuring-how-users-are-loaded
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    admin:
+                        password: $2y$12$OW7IDvK93lW3ppb1PcRLme4WC0XJZw4BIYg66TMdCx7xS9iW5Zs/i
+                        roles: 'ROLE_ADMIN'
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
+        login:
+            pattern:  ^/api/v1/login
+            stateless: true
+            anonymous: true
+            form_login:
+                check_path: /api/v1/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                require_previous_session: false
+
         api:
             pattern: ^/api
-            anonymous: true
-            logout: false
             stateless: true
-        main:
-            anonymous: ~
-            # activate different ways to authenticate
+            guard:
+                authenticators:
+                    - lexik_jwt_authentication.jwt_token_authenticator
+        public_api:
+            pattern: ^/public-api
+            stateless: true
+            anonymous: true
 
-            # http://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            #http_basic: ~
+    access_control:
+        - { path: ^/api/v1/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/(orders|checkouts|payment-gateways|payment-methods), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/api/v1/orders/create, roles: [IS_AUTHENTICATED_ANONYMOUSLY, ROLE_ADMIN] }
+        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 
-            # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
-            #form_login: ~

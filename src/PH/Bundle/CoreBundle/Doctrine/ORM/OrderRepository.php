@@ -24,4 +24,19 @@ class OrderRepository extends BaseOrderRepository implements OrderRepositoryInte
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getOneByToken(string $token): ?OrderInterface
+    {
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.tokenValue = :token')
+            ->leftJoin('o.items', 'i')
+            ->addSelect('i')
+            ->setParameter('token', $token)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

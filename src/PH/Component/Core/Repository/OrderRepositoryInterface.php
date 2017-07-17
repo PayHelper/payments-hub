@@ -14,4 +14,11 @@ interface OrderRepositoryInterface
      * @return null|OrderInterface
      */
     public function findByOrderId(int $id): ?OrderInterface;
+
+    /**
+     * @param string $token
+     *
+     * @return null|OrderInterface
+     */
+    public function getOneByToken(string $token): ?OrderInterface;
 }

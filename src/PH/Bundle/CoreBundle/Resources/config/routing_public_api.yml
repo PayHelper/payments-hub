@@ -1,0 +1,87 @@
+ph_public_api_core_order_create:
+    path: /orders/
+    methods: [POST]
+    defaults:
+        _controller: sylius.controller.order:addAction
+        _sylius:
+            section: api
+            form:
+                type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
+            serialization_version: $version
+
+ph_public_api_core_payment_method:
+    resource: |
+        identifier: code
+        alias: sylius.payment_method
+        section: public_api
+        only: ["index"]
+        serialization_version: $version
+        criteria:
+            code: $code
+    type: sylius.resource_api
+
+
+ph_public_api_core_checkout_payment:
+    path: /checkouts/payment/{token}
+    methods: [PUT, PATCH]
+    defaults:
+        _controller: sylius.controller.order:updateAction
+        _sylius:
+            serialization_version: $version
+            form: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+            repository:
+                method: getOneByToken
+                arguments: [$token]
+            state_machine:
+                graph: ph_order_checkout
+                transition: select_payment
+
+ph_public_api_core_checkout_show:
+    path: /checkouts/{token}
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.order:showAction
+        repository:
+            method: getOneByToken
+            arguments: [$token]
+        _sylius:
+            serialization_version: $version
+            serialization_groups: [Detailed]
+
+ph_public_api_core_checkout_complete:
+    path: /checkouts/complete/{token}
+    methods: [PATCH]
+    defaults:
+        _controller: sylius.controller.order:updateAction
+        _sylius:
+            serialization_version: $version
+            form:
+                form: PH\Bundle\CoreBundle\Form\Type\Checkout\CompleteType
+            repository:
+                method: getOneByToken
+                arguments: [$token]
+            state_machine:
+                graph: ph_order_checkout
+                transition: complete
+            return_content: true
+
+# payum
+ph_public_api_payum_order_pay:
+    path: /checkouts/pay/{token}
+    methods: [GET]
+    defaults:
+        _controller: ph.controller.payum:prepareCaptureAction
+        _sylius:
+            serialization_version: $version
+            redirect:
+                route: ph_payum_order_after_pay
+                parameters:
+                    version: $version
+
+ph_public_api_payum_order_after_pay:
+    path: /checkouts/after-pay/
+    methods: [GET, POST]
+    defaults:
+        _controller: ph.controller.payum:afterCaptureAction
+        _sylius:
+            serialization_version: $version

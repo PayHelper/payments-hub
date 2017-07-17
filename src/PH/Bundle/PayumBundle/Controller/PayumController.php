@@ -88,19 +88,19 @@ class PayumController
 
     /**
      * @param Request $request
-     * @param mixed   $tokenValue
+     * @param mixed   $token
      *
      * @return Response
      */
-    public function prepareCaptureAction(Request $request, string $tokenValue)
+    public function prepareCaptureAction(Request $request, string $token)
     {
         $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
 
         /** @var OrderInterface $order */
-        $order = $this->orderRepository->findOneByTokenValue($tokenValue);
+        $order = $this->orderRepository->findOneByTokenValue($token);
 
         if (null === $order) {
-            throw new NotFoundHttpException(sprintf('Order with token "%s" does not exist.', $tokenValue));
+            throw new NotFoundHttpException(sprintf('Order with token "%s" does not exist.', $token));
         }
 
         $options = $configuration->getParameters()->get('redirect');
