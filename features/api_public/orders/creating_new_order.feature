@@ -1,15 +1,15 @@
 @orders
 Feature: Placing a new order
-  In order to buy a subscription/place an order
+  In order to pay for the service
   As a HTTP Client
   I want to make a request against order create endpoint
 
   @createSchema
   Scenario: Place a new order when no payment methods are defined
-    Given I am authenticated as "admin" with "admin" password
-    When I add "Content-Type" header equal to "application/json"
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/api/v1/orders/create/" with body:
+    And I send a "POST" request to "/public-api/v1/orders/" with body:
     """
     {
       "amount":500,
@@ -48,11 +48,11 @@ Feature: Placing a new order
 
   @dropSchema
   Scenario: Place a new order when at least one payment method is defined
-    Given I am authenticated as "admin" with "admin" password
-    And the system has a payment method "Offline" with a code "cash_on_delivery"
-    When I add "Content-Type" header equal to "application/json"
+    Given the system has a payment method "Offline" with a code "cash_on_delivery"
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/api/v1/orders/create/" with body:
+    And I send a "POST" request to "/public-api/v1/orders/" with body:
     """
     {
       "amount":500,

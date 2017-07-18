@@ -6,11 +6,12 @@ Feature: Selecting an order payment method
 
   @createSchema
   Scenario: Selecting PayPal payment method
-    Given the system has a payment method "PayPal" with a code "paypal" and Paypal Express Checkout gateway
+    Given I am authenticated as "admin" with "admin" password
+    And the system has a payment method "PayPal" with a code "paypal" and Paypal Express Checkout gateway
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/checkouts/payment/1" with body:
+    And I send a "PATCH" request to "/api/v1/checkouts/payment/1" with body:
     """
         {
             "payments": [
@@ -28,7 +29,7 @@ Feature: Selecting an order payment method
     And the system has also a new order with a code "my_sub2" and name "My subscription2" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/checkouts/payment/2" with body:
+    And I send a "PATCH" request to "/api/v1/checkouts/payment/2" with body:
     """
         {
             "payments": [

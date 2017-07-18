@@ -7,9 +7,10 @@ Feature: Adding a new webhook
   @createSchema
   @dropSchema
   Scenario: Add a new webhook
+    Given I am authenticated as "admin" with "admin" password
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/webhooks/" with body:
+    And I send a "POST" request to "/api/v1/webhooks/" with body:
     """
     {
       "enabled": 1,

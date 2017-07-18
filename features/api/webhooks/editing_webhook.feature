@@ -9,7 +9,7 @@ Feature: Editing existing webhook
   Scenario: Edit a single webhook by id
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/webhooks/" with body:
+    And I send a "POST" request to "/api/v1/webhooks/" with body:
     """
     {
       "enabled": 1,
@@ -20,7 +20,7 @@ Feature: Editing existing webhook
     And the response should be in JSON
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/webhooks/1" with body:
+    And I send a "PATCH" request to "/api/v1/webhooks/1" with body:
     """
     {
       "url": "http://edit-example.com/my-webhook"
@@ -28,7 +28,7 @@ Feature: Editing existing webhook
     """
     Then the response status code should be 204
     And the response should be empty
-    Then I send a "GET" request to "/webhooks/1"
+    Then I send a "GET" request to "/api/v1/webhooks/1"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"

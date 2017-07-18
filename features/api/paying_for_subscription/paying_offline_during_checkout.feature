@@ -7,11 +7,12 @@ Feature: Paying offline during checkout
   @createSchema
   @dropSchema
   Scenario: Successfully placing an order
-    Given the system has a payment method "Offline" with a code "off"
+    Given I am authenticated as "admin" with "admin" password
+    And the system has a payment method "Offline" with a code "off"
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/checkouts/payment/1" with body:
+    And I send a "PATCH" request to "/api/v1/checkouts/payment/1" with body:
     """
         {
             "payments": [
@@ -24,7 +25,7 @@ Feature: Paying offline during checkout
     Then the response status code should be 204
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/checkouts/complete/1" with body:
+    And I send a "PATCH" request to "/api/v1/checkouts/complete/1" with body:
     """
         {
             "notes": "Thanks!"
