@@ -4,7 +4,7 @@ payments--hub
 Prerequisites
 -------------
 
-This bundle requires the [OpenSSL](https://www.openssl.org/) library to be installed.
+This project requires the [OpenSSL](https://www.openssl.org/) library to be installed.
 
 Configuration
 -------------
