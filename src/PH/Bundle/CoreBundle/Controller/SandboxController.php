@@ -17,7 +17,7 @@ class SandboxController extends Controller
     public function thankYouAction(Request $request)
     {
         return $this->render('index.html.twig', [
-            'token' => $request->query->has('token') ? $request->query->has('token') : ''
+            'token' => $request->query->has('token') ? $request->query->has('token') : '',
         ]);
     }
 }
