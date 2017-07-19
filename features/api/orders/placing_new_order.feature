@@ -88,3 +88,19 @@ Feature: Placing a new order
     And the JSON node "items[0].created_at" should not be null
     And the JSON node "items[0].updated_at" should not be null
     And the JSON node "_links" should not be null
+
+  Scenario: Place a new order when not authenticated
+    Given I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/api/v1/orders/create/" with body:
+    """
+    {
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"month",
+      "name": "My monthly subscription",
+      "code": "monthly_subscription"
+    }
+    """
+    Then the response status code should be 401
+    And the response should be in JSON
