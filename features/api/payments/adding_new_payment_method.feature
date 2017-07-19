@@ -4,9 +4,8 @@ Feature: Adding a new payment method
   As a HTTP Client
   I want to make a request against payment method endpoint
 
-  @createSchema
   Scenario: Add a new offline payment method
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/payment-methods/new/offline" with body:
@@ -44,8 +43,8 @@ Feature: Adding a new payment method
       | gateway_config.factory_name  | offline                                  |
       | gateway_config.gateway_name  | offline                                  |
 
-  @dropSchema
   Scenario: Adding a new paypal payment method
+    Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/payment-methods/new/paypal_express_checkout" with body:
@@ -74,13 +73,13 @@ Feature: Adding a new payment method
     Then the response status code should be 201
     And the response should be in JSON
     And the JSON nodes should contain:
-      | id                              | 2                           |
+      | id                              | 1                           |
       | position                        | 2                           |
       | code                            | paypal                      |
       | enabled                         | 1                           |
       | translations.en.locale          | en                          |
-      | translations.en.id              | 2                           |
-      | gateway_config.id               | 2                           |
+      | translations.en.id              | 1                           |
+      | gateway_config.id               | 1                           |
       | gateway_config.factory_name     | paypal_express_checkout     |
       | gateway_config.gateway_name     | testpay                     |
       | gateway_config.config.username  | test@example.com            |

@@ -4,10 +4,8 @@ Feature: Prevent completing checkout process when payment method not selected
   As a HTTP Client
   I want to be prevented from finishing the payment step with no method selected
 
-  @createSchema
-  @dropSchema
   Scenario: Prevent completing checkout process when payment method not selected
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     And the system has a payment method "Offline" with a code "off"
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Accept" header equal to "application/json"

@@ -4,9 +4,8 @@ Feature: Placing a new order
   As a HTTP Client
   I want to make a request against order create endpoint
 
-  @createSchema
   Scenario: Place a new order when no payment methods are defined
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/orders/create/" with body:
@@ -46,9 +45,8 @@ Feature: Placing a new order
     And the JSON node "items[0].updated_at" should not be null
     And the JSON node "_links" should not be null
 
-  @dropSchema
   Scenario: Place a new order when at least one payment method is defined
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     And the system has a payment method "Offline" with a code "cash_on_delivery"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
@@ -66,8 +64,8 @@ Feature: Placing a new order
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
-      | id                                    | 2                           |
-      | items[0].subscription.id              | 2                           |
+      | id                                    | 1                           |
+      | items[0].subscription.id              | 1                           |
       | items[0].subscription.currency_code   | USD                         |
       | items[0].subscription.amount          | 500                         |
       | items[0].subscription.interval        | month                       |

@@ -46,7 +46,6 @@ Feature: Placing a new order
     And the JSON node "items[0].updated_at" should not be null
     And the JSON node "_links" should not be null
 
-  @dropSchema
   Scenario: Place a new order when at least one payment method is defined
     Given the system has a payment method "Offline" with a code "cash_on_delivery"
     When I add "Authorization" header equal to null
@@ -66,8 +65,8 @@ Feature: Placing a new order
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
-      | id                                    | 2                           |
-      | items[0].subscription.id              | 2                           |
+      | id                                    | 1                           |
+      | items[0].subscription.id              | 1                           |
       | items[0].subscription.currency_code   | USD                         |
       | items[0].subscription.amount          | 500                         |
       | items[0].subscription.interval        | month                       |

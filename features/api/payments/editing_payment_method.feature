@@ -4,10 +4,8 @@ Feature: Editing existing payment methods
   As a HTTP Client
   I want to be able to edit payment method
 
-  @createSchema
-  @dropSchema
   Scenario: Renaming the payment method
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     And the system has a payment method "Offline" with a code "off"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"

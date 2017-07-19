@@ -4,10 +4,8 @@ Feature: Getting a single existing webhook
   As a HTTP Client
   I want to be able to make a request to webhook show endpoint
 
-  @createSchema
-  @dropSchema
   Scenario: Get a single webhook by id
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/webhooks/" with body:

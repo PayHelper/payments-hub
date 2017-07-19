@@ -4,9 +4,8 @@ Feature: Selecting an order payment method
   As a HTTP Client
   I want to be able to choose a payment method
 
-  @createSchema
   Scenario: Selecting PayPal payment method
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     And the system has a payment method "PayPal" with a code "paypal" and Paypal Express Checkout gateway
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
@@ -23,13 +22,13 @@ Feature: Selecting an order payment method
     """
     Then the response status code should be 204
 
-  @dropSchema
   Scenario: Selecting an offline method
-    Given the system has a payment method "Offline" with a code "off"
+    Given I am authenticated as "admin"
+    And the system has a payment method "Offline" with a code "off"
     And the system has also a new order with a code "my_sub2" and name "My subscription2" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/api/v1/checkouts/payment/2" with body:
+    And I send a "PATCH" request to "/api/v1/checkouts/payment/1" with body:
     """
         {
             "payments": [

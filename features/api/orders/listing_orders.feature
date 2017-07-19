@@ -4,10 +4,8 @@ Feature: Listing available orders
   As a HTTP Client
   I want to make a request against orders list endpoint
 
-  @createSchema
-  @dropSchema
   Scenario: List orders
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     And the system has a payment method "Offline" with a code "cash_on_delivery"
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     And the system has also a new order with a code "my_sub2" and name "My subscription 2" priced at "$300"

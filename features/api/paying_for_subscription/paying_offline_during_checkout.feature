@@ -4,10 +4,8 @@ Feature: Paying offline during checkout
   As a HTTP Client
   I want to be able to complete checkout process without paying
 
-  @createSchema
-  @dropSchema
   Scenario: Successfully placing an order
-    Given I am authenticated as "admin" with "admin" password
+    Given I am authenticated as "admin"
     And the system has a payment method "Offline" with a code "off"
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"

@@ -6,40 +6,31 @@ use Behatch\Context\RestContext;
 
 final class RestJwtContext extends RestContext
 {
-    /**
-     * @param string $username
-     * @param string $password
-     *
-     * @Given I am authenticated as ":username" with ":password" password
-     */
-    public function iAmAuthenticatedAs(string $username, string $password)
-    {
-        $this->request->setHttpHeader('Authorization', null);
-        $this->request->send(
-            'POST',
-            '/api/v1/login_check',
-            [],
-            [],
-            json_encode([
-                'username' => $username,
-                'password' => $password,
-            ])
-        );
+    private $jwtEncoder;
 
-        $actual = $this->request->getContent();
-        $response = json_decode($actual, true);
-        $this->request->setHttpHeader('Authorization', 'Bearer '.$response['token']);
+    public function __construct(\Behatch\HttpCall\Request $request, \Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface $jwtEncoder)
+    {
+        parent::__construct($request);
+
+        $this->jwtEncoder = $jwtEncoder;
     }
 
     /**
-     * Removes a header identified by $headerName
+     * @param string $username
      *
-     * @param string $headerName
+     * @Given I am authenticated as ":username"
      */
-    protected function removeHeader($headerName)
+    public function iAmAuthenticatedAs(string $username)
     {
-        if (array_key_exists($headerName, $this->request->getHttpHeaders())) {
-            unset($this->request->getHttpHeaders()[$headerName]);
-        }
+        $token = $this->jwtEncoder->encode(['username' => $username]);
+        $this->request->setHttpHeader('Authorization', 'Bearer '.$token);
+    }
+
+    /**
+     * @BeforeScenario
+     */
+    public function restoreAuthHeader()
+    {
+        $this->request->setHttpHeader('Authorization', null);
     }
 }
