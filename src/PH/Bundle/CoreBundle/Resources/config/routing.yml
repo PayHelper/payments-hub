@@ -1,7 +1,3 @@
-ph_core_homepage:
-    path:     /
-    defaults: { _controller: PHCoreBundle:Default:index }
-
 ph_core_get_payment_gateways:
     path: /payment-gateways
     methods: [GET]

@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
+            </div>
+            <div id="next">
+                Place an order:<br><br>
+                <form id="place-order-form">
+                    Amount:<br>
+                    <input type="text" name="amount"><br>
+                    Currency:<br>
+                    <input type="text" value="EUR" name="currency_code"><br>
+                    Interval:<br>
+                    <input type="text" value="month" name="interval"><br>
+                    Payment method:<br>
+                    <select id="payment-methods">
+                    </select>
+                    <br>
+                    <input type="submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+    h1 { font-size: 36px; }
+    h2 { font-size: 21px; margin-bottom: 1em; }
+    p { margin: 0 0 1em 0; }
+    a { color: #0000F0; }
+    a:hover { text-decoration: none; }
+    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+    #container { padding: 2em; }
+    #welcome, #status { margin-bottom: 2em; }
+    #welcome h1 span { display: block; font-size: 75%; }
+</style>
+{% endblock %}
+{% block javascripts %}
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <script>
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url: '/public-api/v1/payment-methods/',
+            dataType: "json"
+        }).done(function( paymentRes ) {
+            var options = [];
+
+            $.each(paymentRes._embedded.items, function(key, value)
+            {
+                options.push('<option value="'+ value.code +'">'+ value.translations.en.name +'</option>');
+            });
+
+            $('#payment-methods').html(options.join(''));
+        });
+
+        $( "#place-order-form" ).submit(function( event ) {
+            event.preventDefault();
+
+            // Get some values from elements on the page:
+            var $form = $( this ),
+                currency = $form.find( "input[name='currency_code']" ).val(),
+                amount = $form.find( "input[name='amount']" ).val(),
+                interval = $form.find( "input[name='interval']" ).val();
+
+            // Send the data using post
+            var posting =   $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: '/public-api/v1/orders/',
+                data: JSON.stringify({"amount": amount * 100,
+                    "currency_code": currency,
+                    "interval": interval,
+                    "name": "Monthly subscription",
+                    "code": "monthly_subscription"}),
+                dataType: "json"
+            });
+
+            // Put the results in a div
+            posting.done(function( data ) {
+                $.ajax({
+                    type: "PATCH",
+                    contentType: "application/json",
+                    url: '/public-api/v1/checkouts/payment/'+data.token_value,
+                    data: JSON.stringify({
+                        "payments": [
+                            {
+                                "method": $('#payment-methods').val()
+                            }
+                        ]
+                    }),
+                    dataType: "json"
+                }).done(function( paymentRes ) {
+                    console.log('payment method selected');
+                    $.ajax({
+                        type: "PATCH",
+                        contentType: "application/json",
+                        url: '/public-api/v1/checkouts/complete/'+data.token_value,
+                        data: JSON.stringify({
+                            "notes": "Thanks!"
+                        }),
+                        dataType: "json"
+                    }).done(function( completeRes ) {
+                        console.log('checkout completed');
+                        window.location.replace('/app_dev.php/public-api/v1/checkouts/pay/'+completeRes.token_value);
+                    });
+                });
+
+                console.log('done');
+            });
+        });
+//        $.post( "/public-api/v1/orders/", function() {
+//                alert( "success" );
+//            })
+//            .done(function() {
+//                alert( "second success" );
+//            })
+//            .fail(function() {
+//                alert( "error" );
+//            })
+//            .always(function() {
+//                alert( "finished" );
+//            });
+    </script>
+{% endblock %}

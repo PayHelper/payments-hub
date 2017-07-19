@@ -74,7 +74,7 @@ ph_public_api_payum_order_pay:
         _sylius:
             serialization_version: $version
             redirect:
-                route: ph_payum_order_after_pay
+                route: ph_public_api_payum_order_after_pay
                 parameters:
                     version: $version
 
