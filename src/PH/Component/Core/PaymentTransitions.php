@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PH\Component\Payment;
+namespace PH\Component\Core;
 
 final class PaymentTransitions
 {

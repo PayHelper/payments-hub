@@ -12,24 +12,10 @@ use Payum\Core\Request\Capture;
 use Payum\Core\Request\Convert;
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Core\Model\PaymentInterface;
-use Sylius\Bundle\PayumBundle\Provider\PaymentDescriptionProviderInterface;
 use Sylius\Bundle\PayumBundle\Request\GetStatus;
 
 final class CapturePaymentAction extends GatewayAwareAction
 {
-    /**
-     * @var PaymentDescriptionProviderInterface
-     */
-    private $paymentDescriptionProvider;
-
-    /**
-     * @param PaymentDescriptionProviderInterface $paymentDescriptionProvider
-     */
-    public function __construct(PaymentDescriptionProviderInterface $paymentDescriptionProvider)
-    {
-        $this->paymentDescriptionProvider = $paymentDescriptionProvider;
-    }
-
     /**
      * {@inheritdoc}
      *
@@ -57,7 +43,6 @@ final class CapturePaymentAction extends GatewayAwareAction
                 $payumPayment->setNumber($order->getNumber());
                 $payumPayment->setTotalAmount($totalAmount);
                 $payumPayment->setCurrencyCode($order->getCurrencyCode());
-                //$payumPayment->setDescription($this->paymentDescriptionProvider->getPaymentDescription($payment));
                 $payumPayment->setDetails($payment->getDetails());
 
                 $this->gateway->execute($convert = new Convert($payumPayment, 'array', $request->getToken()));

@@ -135,17 +135,22 @@ class PayumController
 
         $token = $this->getHttpRequestVerifier()->verify($request);
 
-        $status = new GetStatus($token);
-        $this->payum->getGateway($token->getGatewayName())->execute($status);
-        $resolveNextRoute = new ResolveNextRoute($status->getFirstModel());
-        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
+        //$status = new GetStatus($token);
+        //$this->payum->getGateway($token->getGatewayName())->execute($status);
+//        $resolveNextRoute = new ResolveNextRoute($status->getFirstModel());
+//        $resolveNextRoute->setRouteName($request->query->get('thankyou'));
+//        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
 
         $this->getHttpRequestVerifier()->invalidate($token);
 
-        return $this->viewHandler->handle(
-            $configuration,
-            View::createRouteRedirect($resolveNextRoute->getRouteName(), $resolveNextRoute->getRouteParameters())
-        );
+        $view = View::createRedirect($request->query->get('thankyou'));
+
+        return $this->viewHandler->handle($configuration, $view);
+
+//        return $this->viewHandler->handle(
+//            $configuration,
+//            View::createRedirect($resolveNextRoute->getRouteName())
+//        );
     }
 
     /**

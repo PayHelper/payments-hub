@@ -23,7 +23,7 @@ ph_public_api_core_payment_method:
 
 ph_public_api_core_checkout_payment:
     path: /checkouts/payment/{token}
-    methods: [PUT, PATCH]
+    methods: [PUT]
     defaults:
         _controller: sylius.controller.order:updateAction
         _sylius:
@@ -77,6 +77,7 @@ ph_public_api_payum_order_pay:
                 route: ph_public_api_payum_order_after_pay
                 parameters:
                     version: $version
+                    thankyou: $thankyou
 
 ph_public_api_payum_order_after_pay:
     path: /checkouts/after-pay/

@@ -9,7 +9,7 @@ use Payum\Core\Extension\ExtensionInterface;
 use Payum\Core\Request\Generic;
 use Payum\Core\Request\GetStatusInterface;
 use Payum\Core\Request\Notify;
-use PH\Component\Payment\PaymentTransitions;
+use PH\Component\Core\PaymentTransitions;
 use SM\Factory\FactoryInterface;
 use Sylius\Bundle\PayumBundle\Request\GetStatus;
 use Sylius\Component\Payment\Model\PaymentInterface;

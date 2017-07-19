@@ -6,6 +6,9 @@
             <div id="welcome">
                 <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
             </div>
+            {% if app.request.get('token') %}
+            <div style="color: #3D7700">Successfully payed for an order {{ app.request.get('token') }}</div>
+            {%  endif %}
             <div id="next">
                 Place an order:<br><br>
                 <form id="place-order-form">
@@ -67,14 +70,12 @@
         $( "#place-order-form" ).submit(function( event ) {
             event.preventDefault();
 
-            // Get some values from elements on the page:
             var $form = $( this ),
                 currency = $form.find( "input[name='currency_code']" ).val(),
                 amount = $form.find( "input[name='amount']" ).val(),
                 interval = $form.find( "input[name='interval']" ).val();
 
-            // Send the data using post
-            var posting =   $.ajax({
+            $.ajax({
                 type: "POST",
                 contentType: "application/json",
                 url: '/public-api/v1/orders/',
@@ -84,12 +85,9 @@
                     "name": "Monthly subscription",
                     "code": "monthly_subscription"}),
                 dataType: "json"
-            });
-
-            // Put the results in a div
-            posting.done(function( data ) {
+            }).done(function( data ) {
                 $.ajax({
-                    type: "PATCH",
+                    type: "PUT",
                     contentType: "application/json",
                     url: '/public-api/v1/checkouts/payment/'+data.token_value,
                     data: JSON.stringify({
@@ -112,24 +110,12 @@
                         dataType: "json"
                     }).done(function( completeRes ) {
                         console.log('checkout completed');
-                        window.location.replace('/app_dev.php/public-api/v1/checkouts/pay/'+completeRes.token_value);
+                        window.location.replace('/public-api/v1/checkouts/pay/'+completeRes.token_value+'?thankyou={{ app.request.getSchemeAndHttpHost() }}/thank-you?token='+data.token_value);
                     });
                 });
 
                 console.log('done');
             });
         });
-//        $.post( "/public-api/v1/orders/", function() {
-//                alert( "success" );
-//            })
-//            .done(function() {
-//                alert( "second success" );
-//            })
-//            .fail(function() {
-//                alert( "error" );
-//            })
-//            .always(function() {
-//                alert( "finished" );
-//            });
     </script>
 {% endblock %}

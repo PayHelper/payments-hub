@@ -21,6 +21,15 @@
             "vendor/symfony/symfony/src/Symfony/Component/VarDumper/Resources/functions/dump.php"
         ]
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "/Users/rafal/Documents/Projects/taz/mbe4",
+            "options": {
+                "symlink": false
+            }
+        }
+    ],
     "require": {
         "php": ">=7.1",
         "doctrine/doctrine-bundle": "^1.6.7",
@@ -31,6 +40,8 @@
         "php-http/guzzle6-adapter": "^1.1",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
+        "sourcefabric/payum-mbe4": "dev-master",
+        "stripe/stripe-php": "^2.0@dev",
         "sylius/order-bundle": "^1.0",
         "sylius/payment-bundle": "^1.0",
         "sylius/payum-bundle": "^1.0",

@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
+<<<<<<< Updated upstream
     "content-hash": "cbe3a4741728b7c11ac7b0157bce16b9",
+=======
+    "content-hash": "6b49248ea0d126e203d4f036a836c2de",
+>>>>>>> Stashed changes
     "packages": [
         {
             "name": "behat/transliterator",
@@ -164,17 +168,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/annotations.git",
-                "reference": "7c830a576f9471f71096d200d633b6400513ccfb"
+                "reference": "2016f4e48149d8c1ce65eb25d7f641fb3760b40c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/annotations/zipball/7c830a576f9471f71096d200d633b6400513ccfb",
-                "reference": "7c830a576f9471f71096d200d633b6400513ccfb",
+                "url": "https://api.github.com/repos/doctrine/annotations/zipball/2016f4e48149d8c1ce65eb25d7f641fb3760b40c",
+                "reference": "2016f4e48149d8c1ce65eb25d7f641fb3760b40c",
                 "shasum": ""
             },
             "require": {
                 "doctrine/lexer": "1.*",
-                "php": "^5.6 || ^7.0"
+                "php": "^7.1"
             },
             "require-dev": {
                 "doctrine/cache": "1.*",
@@ -183,7 +187,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.4.x-dev"
+                    "dev-master": "1.5.x-dev"
                 }
             },
             "autoload": {
@@ -224,7 +228,7 @@
                 "docblock",
                 "parser"
             ],
-            "time": "2017-05-25 15:48:57"
+            "time": "2017-06-28 04:31:58"
         },
         {
             "name": "doctrine/cache",
@@ -446,12 +450,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "757a0072e63b98cdf687ccb4638e87f6d322fc13"
+                "reference": "994f3b0002496cc380c9755869c87ff526d7f451"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/757a0072e63b98cdf687ccb4638e87f6d322fc13",
-                "reference": "757a0072e63b98cdf687ccb4638e87f6d322fc13",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/994f3b0002496cc380c9755869c87ff526d7f451",
+                "reference": "994f3b0002496cc380c9755869c87ff526d7f451",
                 "shasum": ""
             },
             "require": {
@@ -509,7 +513,7 @@
                 "persistence",
                 "queryobject"
             ],
-            "time": "2017-06-15 21:40:54"
+            "time": "2017-06-29 17:43:50"
         },
         {
             "name": "doctrine/doctrine-bundle",
@@ -686,12 +690,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/inflector.git",
-                "reference": "dde035898f2daae9b3b3e5c792f4891cf7aaff80"
+                "reference": "4af64e1756e2bd765ff5e7c36dbcf5ea47e8e576"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/inflector/zipball/dde035898f2daae9b3b3e5c792f4891cf7aaff80",
-                "reference": "dde035898f2daae9b3b3e5c792f4891cf7aaff80",
+                "url": "https://api.github.com/repos/doctrine/inflector/zipball/4af64e1756e2bd765ff5e7c36dbcf5ea47e8e576",
+                "reference": "4af64e1756e2bd765ff5e7c36dbcf5ea47e8e576",
                 "shasum": ""
             },
             "require": {
@@ -745,7 +749,7 @@
                 "singularize",
                 "string"
             ],
-            "time": "2017-06-16 11:07:05"
+            "time": "2017-07-06 08:23:43"
         },
         {
             "name": "doctrine/instantiator",
@@ -991,12 +995,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSRestBundle.git",
-                "reference": "5f50d2e360cc44aea80adce7eba98de3a4d63788"
+                "reference": "32d73743fc9693aa2c6fffb17d524ec0da9fc74c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/5f50d2e360cc44aea80adce7eba98de3a4d63788",
-                "reference": "5f50d2e360cc44aea80adce7eba98de3a4d63788",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSRestBundle/zipball/32d73743fc9693aa2c6fffb17d524ec0da9fc74c",
+                "reference": "32d73743fc9693aa2c6fffb17d524ec0da9fc74c",
                 "shasum": ""
             },
             "require": {
@@ -1085,7 +1089,7 @@
             "keywords": [
                 "rest"
             ],
-            "time": "2017-06-18 13:30:07"
+            "time": "2017-07-10 15:53:27"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1093,12 +1097,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Atlantic18/DoctrineExtensions.git",
-                "reference": "0b0ecb197ab20ddcdb205a3c1c7422bcd36f9d4e"
+                "reference": "8f0123a25ed9272b8bdf8afa9c40c1431bf84cbe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/0b0ecb197ab20ddcdb205a3c1c7422bcd36f9d4e",
-                "reference": "0b0ecb197ab20ddcdb205a3c1c7422bcd36f9d4e",
+                "url": "https://api.github.com/repos/Atlantic18/DoctrineExtensions/zipball/8f0123a25ed9272b8bdf8afa9c40c1431bf84cbe",
+                "reference": "8f0123a25ed9272b8bdf8afa9c40c1431bf84cbe",
                 "shasum": ""
             },
             "require": {
@@ -1163,20 +1167,29 @@
                 "tree",
                 "uploadable"
             ],
-            "time": "2017-06-14 10:49:55"
+            "time": "2017-07-04 12:34:27"
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "dev-master",
+            "version": "6.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
+<<<<<<< Updated upstream
                 "reference": "dfd01d60a38cf7e16b3456d4b1d7c10033b929c0"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/guzzle/guzzle/zipball/dfd01d60a38cf7e16b3456d4b1d7c10033b929c0",
                 "reference": "dfd01d60a38cf7e16b3456d4b1d7c10033b929c0",
+=======
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1228,7 +1241,11 @@
                 "rest",
                 "web service"
             ],
+<<<<<<< Updated upstream
             "time": "2017-06-28 21:17:38"
+=======
+            "time": "2017-06-22T18:50:49+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "guzzlehttp/promises",
@@ -1604,12 +1621,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/schmittjoh/serializer.git",
-                "reference": "f96cec79bd20c0a5c174b3cf340641b11e130fa6"
+                "reference": "020f2a221880fba6485ca428f405846279a0470f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/f96cec79bd20c0a5c174b3cf340641b11e130fa6",
-                "reference": "f96cec79bd20c0a5c174b3cf340641b11e130fa6",
+                "url": "https://api.github.com/repos/schmittjoh/serializer/zipball/020f2a221880fba6485ca428f405846279a0470f",
+                "reference": "020f2a221880fba6485ca428f405846279a0470f",
                 "shasum": ""
             },
             "require": {
@@ -1679,7 +1696,7 @@
                 "serialization",
                 "xml"
             ],
-            "time": "2017-06-20 11:41:36"
+            "time": "2017-07-12 06:03:24"
         },
         {
             "name": "jms/serializer-bundle",
@@ -2149,12 +2166,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/Pagerfanta.git",
-                "reference": "89c38212ce3407d247724eb1b857f3b0fbdd7f8f"
+                "reference": "7d228ca34c009f8a8428abef1527b0a807ef6862"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/89c38212ce3407d247724eb1b857f3b0fbdd7f8f",
-                "reference": "89c38212ce3407d247724eb1b857f3b0fbdd7f8f",
+                "url": "https://api.github.com/repos/whiteoctober/Pagerfanta/zipball/7d228ca34c009f8a8428abef1527b0a807ef6862",
+                "reference": "7d228ca34c009f8a8428abef1527b0a807ef6862",
                 "shasum": ""
             },
             "require": {
@@ -2210,7 +2227,7 @@
                 "paginator",
                 "paging"
             ],
-            "time": "2017-06-16 11:16:50"
+            "time": "2017-06-30 10:14:12"
         },
         {
             "name": "paragonie/random_compat",
@@ -2675,12 +2692,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/message.git",
-                "reference": "f12663ba88589489cc6725399b878bbf6f2a691c"
+                "reference": "2edd63bae5f52f79363c5f18904b05ce3a4b7253"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/message/zipball/f12663ba88589489cc6725399b878bbf6f2a691c",
-                "reference": "f12663ba88589489cc6725399b878bbf6f2a691c",
+                "url": "https://api.github.com/repos/php-http/message/zipball/2edd63bae5f52f79363c5f18904b05ce3a4b7253",
+                "reference": "2edd63bae5f52f79363c5f18904b05ce3a4b7253",
                 "shasum": ""
             },
             "require": {
@@ -2688,6 +2705,9 @@
                 "php": ">=5.4",
                 "php-http/message-factory": "^1.0.2",
                 "psr/http-message": "^1.0"
+            },
+            "provide": {
+                "php-http/message-factory-implementation": "1.0"
             },
             "require-dev": {
                 "akeneo/phpspec-skip-example-extension": "^1.0",
@@ -2736,7 +2756,7 @@
                 "message",
                 "psr-7"
             ],
-            "time": "2017-06-19 08:40:51"
+            "time": "2017-07-05 06:40:53"
         },
         {
             "name": "php-http/message-factory",
@@ -2988,12 +3008,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/container.git",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f"
+                "reference": "2cc4a01788191489dc7459446ba832fa79a216a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/container/zipball/b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
-                "reference": "b7ce3b176482dbbc1245ebf52b181af44c2cf55f",
+                "url": "https://api.github.com/repos/php-fig/container/zipball/2cc4a01788191489dc7459446ba832fa79a216a7",
+                "reference": "2cc4a01788191489dc7459446ba832fa79a216a7",
                 "shasum": ""
             },
             "require": {
@@ -3029,7 +3049,7 @@
                 "container-interop",
                 "psr"
             ],
-            "time": "2017-02-14 16:28:37"
+            "time": "2017-06-28 15:35:32"
         },
         {
             "name": "psr/http-message",
@@ -3394,6 +3414,56 @@
             "time": "2017-03-31 14:50:32"
         },
         {
+            "name": "sourcefabric/payum-mbe4",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/Users/rafal/Documents/Projects/taz/mbe4",
+                "reference": "f33282714ab98653d5f3c61d859c8a69810ec85e",
+                "shasum": null
+            },
+            "require": {
+                "payum/core": "^1.3",
+                "php": "^5.5.0|^7.0"
+            },
+            "require-dev": {
+                "payum/core": "^1.3@dev",
+                "php-http/guzzle6-adapter": "^1.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sourcefabric\\Payum\\Mbe4\\": ""
+                }
+            },
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Rafał Muszyński",
+                    "email": "rafal.muszynski@sourcefabric.org"
+                }
+            ],
+            "description": "The Payum extension. It provides Mbe4 payment integration.",
+            "homepage": "https://sourcefabric.org",
+            "keywords": [
+                "bill",
+                "mbe4",
+                "payment",
+                "payum",
+                "phone"
+            ],
+            "transport-options": {
+                "symlink": false
+            }
+        },
+        {
             "name": "stof/doctrine-extensions-bundle",
             "version": "dev-master",
             "source": {
@@ -3453,6 +3523,61 @@
                 "tree"
             ],
             "time": "2017-01-13 18:32:32"
+        },
+        {
+            "name": "stripe/stripe-php",
+            "version": "v2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/stripe/stripe-php.git",
+                "reference": "9d76444550a09a6f9c55dd98113ba0901908e60a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/stripe/stripe-php/zipball/9d76444550a09a6f9c55dd98113ba0901908e60a",
+                "reference": "9d76444550a09a6f9c55dd98113ba0901908e60a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6.1",
+                "squizlabs/php_codesniffer": "~2.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Stripe\\": "lib/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stripe and contributors",
+                    "homepage": "https://github.com/stripe/stripe-php/contributors"
+                }
+            ],
+            "description": "Stripe PHP Library",
+            "homepage": "https://stripe.com/",
+            "keywords": [
+                "api",
+                "payment processing",
+                "stripe"
+            ],
+            "time": "2015-07-07T01:13:32+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3577,12 +3702,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Attribute.git",
-                "reference": "88843dc1a62feff3d8a50cacf6fd305b8e9a29f7"
+                "reference": "c8d85e36874d5ad2dd0edd3eac5e08e4cf3a02ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Attribute/zipball/88843dc1a62feff3d8a50cacf6fd305b8e9a29f7",
-                "reference": "88843dc1a62feff3d8a50cacf6fd305b8e9a29f7",
+                "url": "https://api.github.com/repos/Sylius/Attribute/zipball/c8d85e36874d5ad2dd0edd3eac5e08e4cf3a02ee",
+                "reference": "c8d85e36874d5ad2dd0edd3eac5e08e4cf3a02ee",
                 "shasum": ""
             },
             "require": {
@@ -3632,7 +3757,7 @@
                 "feature",
                 "shop"
             ],
-            "time": "2017-03-31 12:53:47"
+            "time": "2017-07-12 12:36:06"
         },
         {
             "name": "sylius/channel",
@@ -3706,12 +3831,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Core.git",
-                "reference": "2992da6fb5edf019b525a3571c438a8a178c249d"
+                "reference": "65bc5827de36f4fa790b0f9556d85ee9ff664100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Core/zipball/2992da6fb5edf019b525a3571c438a8a178c249d",
-                "reference": "2992da6fb5edf019b525a3571c438a8a178c249d",
+                "url": "https://api.github.com/repos/Sylius/Core/zipball/65bc5827de36f4fa790b0f9556d85ee9ff664100",
+                "reference": "65bc5827de36f4fa790b0f9556d85ee9ff664100",
                 "shasum": ""
             },
             "require": {
@@ -3782,7 +3907,7 @@
                 "store",
                 "sylius"
             ],
-            "time": "2017-06-03 16:47:23"
+            "time": "2017-07-07 09:55:16"
         },
         {
             "name": "sylius/currency",
@@ -4119,17 +4244,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Order.git",
-                "reference": "4f8785d04043d2732995c4012df1f6037a962acf"
+                "reference": "b69dbc1e80535b621af45d6f8fbd2f0d65b26281"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Order/zipball/4f8785d04043d2732995c4012df1f6037a962acf",
-                "reference": "4f8785d04043d2732995c4012df1f6037a962acf",
+                "url": "https://api.github.com/repos/Sylius/Order/zipball/b69dbc1e80535b621af45d6f8fbd2f0d65b26281",
+                "reference": "b69dbc1e80535b621af45d6f8fbd2f0d65b26281",
                 "shasum": ""
             },
             "require": {
                 "php": "^5.6|^7.0",
                 "sylius/resource": "^1.0",
+                "webmozart/assert": "^1.1",
                 "zendframework/zend-stdlib": "^3.1"
             },
             "require-dev": {
@@ -4173,7 +4299,7 @@
                 "shop",
                 "webshop"
             ],
-            "time": "2017-05-18 13:38:27"
+            "time": "2017-07-04 10:41:05"
         },
         {
             "name": "sylius/order-bundle",
@@ -4181,12 +4307,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusOrderBundle.git",
-                "reference": "d5935d652475523c1b5046ad1a4bb5ae7e9e5baa"
+                "reference": "6e86d54de46fe9a92761e0a140d451cd0e945433"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusOrderBundle/zipball/d5935d652475523c1b5046ad1a4bb5ae7e9e5baa",
-                "reference": "d5935d652475523c1b5046ad1a4bb5ae7e9e5baa",
+                "url": "https://api.github.com/repos/Sylius/SyliusOrderBundle/zipball/6e86d54de46fe9a92761e0a140d451cd0e945433",
+                "reference": "6e86d54de46fe9a92761e0a140d451cd0e945433",
                 "shasum": ""
             },
             "require": {
@@ -4250,7 +4376,7 @@
                 "shop",
                 "sylius"
             ],
-            "time": "2017-05-30 08:21:32"
+            "time": "2017-07-11 04:05:05"
         },
         {
             "name": "sylius/payment",
@@ -4320,12 +4446,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusPaymentBundle.git",
-                "reference": "a04b9605366f79cd61a0dd934e0607abeac334b0"
+                "reference": "848af83fca1e5751b13d373c6d71469cefef802d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusPaymentBundle/zipball/a04b9605366f79cd61a0dd934e0607abeac334b0",
-                "reference": "a04b9605366f79cd61a0dd934e0607abeac334b0",
+                "url": "https://api.github.com/repos/Sylius/SyliusPaymentBundle/zipball/848af83fca1e5751b13d373c6d71469cefef802d",
+                "reference": "848af83fca1e5751b13d373c6d71469cefef802d",
                 "shasum": ""
             },
             "require": {
@@ -4384,7 +4510,7 @@
                 "shop",
                 "webshop"
             ],
-            "time": "2017-05-30 08:21:32"
+            "time": "2017-07-11 04:05:05"
         },
         {
             "name": "sylius/payum-bundle",
@@ -4392,12 +4518,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusPayumBundle.git",
-                "reference": "f2c1d6255b74ce3eca5d41181c28ff06e9036c59"
+                "reference": "517b37ee9e9c12316afd209af7f41b109da4a13a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusPayumBundle/zipball/f2c1d6255b74ce3eca5d41181c28ff06e9036c59",
-                "reference": "f2c1d6255b74ce3eca5d41181c28ff06e9036c59",
+                "url": "https://api.github.com/repos/Sylius/SyliusPayumBundle/zipball/517b37ee9e9c12316afd209af7f41b109da4a13a",
+                "reference": "517b37ee9e9c12316afd209af7f41b109da4a13a",
                 "shasum": ""
             },
             "require": {
@@ -4454,7 +4580,7 @@
                 "payments",
                 "payum"
             ],
-            "time": "2017-05-18 13:38:27"
+            "time": "2017-07-11 04:05:05"
         },
         {
             "name": "sylius/product",
@@ -4653,12 +4779,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Resource.git",
-                "reference": "a6df9af1301a06fc2ac9fd7ec8e2667be590796e"
+                "reference": "8bbd2ba5fa797571563e45d2f54b8cb941ee00a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Resource/zipball/a6df9af1301a06fc2ac9fd7ec8e2667be590796e",
-                "reference": "a6df9af1301a06fc2ac9fd7ec8e2667be590796e",
+                "url": "https://api.github.com/repos/Sylius/Resource/zipball/8bbd2ba5fa797571563e45d2f54b8cb941ee00a7",
+                "reference": "8bbd2ba5fa797571563e45d2f54b8cb941ee00a7",
                 "shasum": ""
             },
             "require": {
@@ -4717,7 +4843,7 @@
                 "shop",
                 "sylius"
             ],
-            "time": "2017-05-18 13:38:27"
+            "time": "2017-07-04 12:58:44"
         },
         {
             "name": "sylius/resource-bundle",
@@ -4725,12 +4851,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/SyliusResourceBundle.git",
-                "reference": "f069330b4a71eda0fb4d368e3c3ac2816a77b3b9"
+                "reference": "cb319b3149de7413de59869ca4a2bd412ce5baa6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/f069330b4a71eda0fb4d368e3c3ac2816a77b3b9",
-                "reference": "f069330b4a71eda0fb4d368e3c3ac2816a77b3b9",
+                "url": "https://api.github.com/repos/Sylius/SyliusResourceBundle/zipball/cb319b3149de7413de59869ca4a2bd412ce5baa6",
+                "reference": "cb319b3149de7413de59869ca4a2bd412ce5baa6",
                 "shasum": ""
             },
             "require": {
@@ -4815,7 +4941,7 @@
                 "storage",
                 "sylius"
             ],
-            "time": "2017-05-18 13:38:27"
+            "time": "2017-07-11 04:05:05"
         },
         {
             "name": "sylius/review",
@@ -5024,12 +5150,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Taxonomy.git",
-                "reference": "30ad2f66e3ca108a572bc36f3c1bd54f46659f55"
+                "reference": "3182e7a04d8896317365a14f4b1436a108560f05"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Taxonomy/zipball/30ad2f66e3ca108a572bc36f3c1bd54f46659f55",
-                "reference": "30ad2f66e3ca108a572bc36f3c1bd54f46659f55",
+                "url": "https://api.github.com/repos/Sylius/Taxonomy/zipball/3182e7a04d8896317365a14f4b1436a108560f05",
+                "reference": "3182e7a04d8896317365a14f4b1436a108560f05",
                 "shasum": ""
             },
             "require": {
@@ -5079,7 +5205,7 @@
                 "taxon",
                 "taxonomy"
             ],
-            "time": "2017-04-05 14:25:23"
+            "time": "2017-07-11 11:45:52"
         },
         {
             "name": "sylius/user",
@@ -5676,16 +5802,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/symfony.git",
-                "reference": "035d5260b948e7eab563788bce8ead326e2557b2"
+                "reference": "e8b9e253e8e0f5a2af23ed5c0f864edccf999016"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/symfony/zipball/035d5260b948e7eab563788bce8ead326e2557b2",
-                "reference": "035d5260b948e7eab563788bce8ead326e2557b2",
+                "url": "https://api.github.com/repos/symfony/symfony/zipball/e8b9e253e8e0f5a2af23ed5c0f864edccf999016",
+                "reference": "e8b9e253e8e0f5a2af23ed5c0f864edccf999016",
                 "shasum": ""
             },
             "require": {
                 "doctrine/common": "~2.4",
+                "ext-xml": "*",
                 "fig/link-util": "^1.0",
                 "php": ">=5.5.9",
                 "psr/cache": "~1.0",
@@ -5790,7 +5917,6 @@
                     "Symfony\\Bridge\\Doctrine\\": "src/Symfony/Bridge/Doctrine/",
                     "Symfony\\Bridge\\Monolog\\": "src/Symfony/Bridge/Monolog/",
                     "Symfony\\Bridge\\ProxyManager\\": "src/Symfony/Bridge/ProxyManager/",
-                    "Symfony\\Bridge\\Swiftmailer\\": "src/Symfony/Bridge/Swiftmailer/",
                     "Symfony\\Bridge\\Twig\\": "src/Symfony/Bridge/Twig/",
                     "Symfony\\Bundle\\": "src/Symfony/Bundle/",
                     "Symfony\\Component\\": "src/Symfony/Component/"
@@ -5821,7 +5947,7 @@
             "keywords": [
                 "framework"
             ],
-            "time": "2017-06-20 14:01:46"
+            "time": "2017-07-12 22:39:22"
         },
         {
             "name": "twig/twig",
@@ -5829,12 +5955,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "a9cca4b3b7c888a1077227c36821e8bf0ab1bd13"
+                "reference": "9823bed943c91316183df6e387a24d2acfdbf453"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/a9cca4b3b7c888a1077227c36821e8bf0ab1bd13",
-                "reference": "a9cca4b3b7c888a1077227c36821e8bf0ab1bd13",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/9823bed943c91316183df6e387a24d2acfdbf453",
+                "reference": "9823bed943c91316183df6e387a24d2acfdbf453",
                 "shasum": ""
             },
             "require": {
@@ -5887,7 +6013,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2017-06-12 16:59:07"
+            "time": "2017-07-04 13:21:11"
         },
         {
             "name": "webmozart/assert",
@@ -5945,12 +6071,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/whiteoctober/WhiteOctoberPagerfantaBundle.git",
-                "reference": "2f024c9e066a767a4458f536b7bbadbe1d5200c9"
+                "reference": "cd9a6c1721d674a711ddaf294cb4ace5f988be7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/2f024c9e066a767a4458f536b7bbadbe1d5200c9",
-                "reference": "2f024c9e066a767a4458f536b7bbadbe1d5200c9",
+                "url": "https://api.github.com/repos/whiteoctober/WhiteOctoberPagerfantaBundle/zipball/cd9a6c1721d674a711ddaf294cb4ace5f988be7e",
+                "reference": "cd9a6c1721d674a711ddaf294cb4ace5f988be7e",
                 "shasum": ""
             },
             "require": {
@@ -5989,7 +6115,7 @@
                 "page",
                 "paging"
             ],
-            "time": "2017-06-13 14:58:04"
+            "time": "2017-06-30 10:18:18"
         },
         {
             "name": "willdurand/hateoas",
@@ -6667,12 +6793,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behat/Symfony2Extension.git",
-                "reference": "ebfc2e67328cb69cbfbdaff7fb81bdeea1777c9d"
+                "reference": "319b56cd6ddb87afaebf0648ef101ce138144275"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/ebfc2e67328cb69cbfbdaff7fb81bdeea1777c9d",
-                "reference": "ebfc2e67328cb69cbfbdaff7fb81bdeea1777c9d",
+                "url": "https://api.github.com/repos/Behat/Symfony2Extension/zipball/319b56cd6ddb87afaebf0648ef101ce138144275",
+                "reference": "319b56cd6ddb87afaebf0648ef101ce138144275",
                 "shasum": ""
             },
             "require": {
@@ -6719,7 +6845,7 @@
                 "framework",
                 "symfony"
             ],
-            "time": "2017-06-06 08:41:20"
+            "time": "2017-06-21 18:29:14"
         },
         {
             "name": "behatch/contexts",
@@ -6727,12 +6853,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Behatch/contexts.git",
-                "reference": "bc653ab6f7e9f9c35cdebaf42f76c90d1ebe968c"
+                "reference": "b332c01f32e5709cb395fbd8a1fda5b76d528001"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Behatch/contexts/zipball/bc653ab6f7e9f9c35cdebaf42f76c90d1ebe968c",
-                "reference": "bc653ab6f7e9f9c35cdebaf42f76c90d1ebe968c",
+                "url": "https://api.github.com/repos/Behatch/contexts/zipball/b332c01f32e5709cb395fbd8a1fda5b76d528001",
+                "reference": "b332c01f32e5709cb395fbd8a1fda5b76d528001",
                 "shasum": ""
             },
             "require": {
@@ -6769,7 +6895,7 @@
                 "Context",
                 "Symfony2"
             ],
-            "time": "2017-04-14 08:47:09"
+            "time": "2017-07-04 11:00:15"
         },
         {
             "name": "container-interop/container-interop",
@@ -6863,21 +6989,24 @@
         },
         {
             "name": "friends-of-behat/performance-extension",
-            "version": "v1.0.1",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfBehat/PerformanceExtension.git",
-                "reference": "eb0163ebdfda430e429e0a4c6ec2d9bbbd8a6c4b"
+                "reference": "f772fec1544fcb887e85ce9c1e546f1e3361b375"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfBehat/PerformanceExtension/zipball/eb0163ebdfda430e429e0a4c6ec2d9bbbd8a6c4b",
-                "reference": "eb0163ebdfda430e429e0a4c6ec2d9bbbd8a6c4b",
+                "url": "https://api.github.com/repos/FriendsOfBehat/PerformanceExtension/zipball/f772fec1544fcb887e85ce9c1e546f1e3361b375",
+                "reference": "f772fec1544fcb887e85ce9c1e546f1e3361b375",
                 "shasum": ""
             },
             "require": {
                 "behat/behat": "^3.1",
-                "php": "^5.6|^7.0"
+                "php": "^7.0"
+            },
+            "require-dev": {
+                "friends-of-behat/test-context": "^0.3"
             },
             "type": "library",
             "autoload": {
@@ -6897,7 +7026,7 @@
                 }
             ],
             "description": "Accelerates Behat using features available only for newer PHP versions.",
-            "time": "2016-07-22T21:46:29+00:00"
+            "time": "2017-07-10T20:23:25+00:00"
         },
         {
             "name": "friendsofsymfony/user-bundle",
@@ -7377,17 +7506,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "be09eeb0229d6ad4a1e80d2a8473dbe14b0db914"
+                "reference": "875bd7cdcb5f49e9bcea732538767937abbed51d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/be09eeb0229d6ad4a1e80d2a8473dbe14b0db914",
-                "reference": "be09eeb0229d6ad4a1e80d2a8473dbe14b0db914",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/875bd7cdcb5f49e9bcea732538767937abbed51d",
+                "reference": "875bd7cdcb5f49e9bcea732538767937abbed51d",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0",
-                "sebastian/diff": "^1.2 || ^2.0",
+                "sebastian/diff": "^2.0",
                 "sebastian/exporter": "^3.0"
             },
             "require-dev": {
@@ -7433,7 +7562,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-05-19 04:08:27"
+            "time": "2017-07-11 16:29:53"
         },
         {
             "name": "sebastian/diff",
@@ -7441,19 +7570,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "c7a73305b177922a6cd6ddfab6bb1780fea29c02"
+                "reference": "ed724f5d860f9a4cf8eb8ba27ea45cac9541bb5b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/c7a73305b177922a6cd6ddfab6bb1780fea29c02",
-                "reference": "c7a73305b177922a6cd6ddfab6bb1780fea29c02",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/ed724f5d860f9a4cf8eb8ba27ea45cac9541bb5b",
+                "reference": "ed724f5d860f9a4cf8eb8ba27ea45cac9541bb5b",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.1"
+                "phpunit/phpunit": "^6.2"
             },
             "type": "library",
             "extra": {
@@ -7485,7 +7614,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2017-06-10 10:11:03"
+            "time": "2017-07-13 02:44:20"
         },
         {
             "name": "sebastian/exporter",
@@ -7613,12 +7742,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioGeneratorBundle.git",
-                "reference": "37f9f4e165b033fb76cc2320838321cc57140e65"
+                "reference": "535417a99ac1b387df3bfbc0c060122c24665b78"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/37f9f4e165b033fb76cc2320838321cc57140e65",
-                "reference": "37f9f4e165b033fb76cc2320838321cc57140e65",
+                "url": "https://api.github.com/repos/sensiolabs/SensioGeneratorBundle/zipball/535417a99ac1b387df3bfbc0c060122c24665b78",
+                "reference": "535417a99ac1b387df3bfbc0c060122c24665b78",
                 "shasum": ""
             },
             "require": {
@@ -7659,7 +7788,7 @@
                 }
             ],
             "description": "This bundle generates code for you",
-            "time": "2017-03-15 01:02:10"
+            "time": "2017-07-12 17:28:00"
         },
         {
             "name": "symfony/phpunit-bridge",
@@ -7727,8 +7856,16 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+<<<<<<< Updated upstream
         "symfony/symfony": 20,
         "doctrine/data-fixtures": 20
+=======
+        "payum/stripe": 20,
+        "php-http/guzzle6-adapter": 20,
+        "sourcefabric/payum-mbe4": 20,
+        "stripe/stripe-php": 20,
+        "symfony/symfony": 20
+>>>>>>> Stashed changes
     },
     "prefer-stable": false,
     "prefer-lowest": false,

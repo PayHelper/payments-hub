@@ -10,7 +10,7 @@ Feature: Selecting an order payment method
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/api/v1/checkouts/payment/1" with body:
+    And I send a "PUT" request to "/api/v1/checkouts/payment/1" with body:
     """
         {
             "payments": [
@@ -28,7 +28,7 @@ Feature: Selecting an order payment method
     And the system has also a new order with a code "my_sub2" and name "My subscription2" priced at "$50"
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/api/v1/checkouts/payment/1" with body:
+    And I send a "PUT" request to "/api/v1/checkouts/payment/1" with body:
     """
         {
             "payments": [

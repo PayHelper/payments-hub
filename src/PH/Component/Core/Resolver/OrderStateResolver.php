@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PH\Component\Core\StateResolver;
+namespace PH\Component\Core\Resolver;
 
 use SM\Factory\FactoryInterface;
 use PH\Component\Core\OrderPaymentStates;

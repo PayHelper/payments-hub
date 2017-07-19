@@ -1,6 +1,10 @@
 ph_core_homepage:
     path:     /
-    defaults: { _controller: PHCoreBundle:Welcome:index }
+    defaults: { _controller: PHCoreBundle:Sandbox:index }
+
+ph_core_thankyou:
+    path:     /thank-you
+    defaults: { _controller: PHCoreBundle:Sandbox:thankyou }
 
 ph_payum_capture:
     resource: "@PayumBundle/Resources/config/routing/capture.xml"

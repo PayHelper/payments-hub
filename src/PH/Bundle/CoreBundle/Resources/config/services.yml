@@ -72,11 +72,11 @@ services:
 
 # resolvers
     ph.state_resolver.order_payment:
-        class: PH\Component\Core\StateResolver\OrderPaymentStateResolver
+        class: PH\Component\Core\Resolver\OrderPaymentStateResolver
         arguments:
             - "@sm.factory"
 
     ph.state_resolver.order:
-        class: PH\Component\Core\StateResolver\OrderStateResolver
+        class: PH\Component\Core\Resolver\OrderStateResolver
         arguments:
             - "@sm.factory"
