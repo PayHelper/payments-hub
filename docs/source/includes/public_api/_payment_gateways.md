@@ -1,8 +1,8 @@
-# HUB API
+# Public API
 
 # Payment Gateways
 
-These endpoints will allow you to easily manage payment gateways.
+These endpoints will allow you to get a list of available payment gateways.
 
 Currently, there are three payment gateways configured:
 
@@ -15,7 +15,7 @@ Currently, there are three payment gateways configured:
 > Definition
 
 ```shell
-GET https://localhost/api/v1/payment-gateways/
+GET https://localhost/public-api/v1/payment-gateways/
 ```
 
 Returns a list of all payment gateways.
@@ -24,8 +24,7 @@ Returns a list of all payment gateways.
 
 ```shell
 curl -X GET \
-  http://localhost/api/v1/payment-gateways/ \
-  -H 'authorization: Bearer key' \
+  http://localhost/public-api/v1/payment-gateways/ \
   -H 'content-type: application/json'
 ```
 
