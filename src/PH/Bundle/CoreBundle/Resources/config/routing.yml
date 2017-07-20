@@ -1,7 +1,3 @@
-ph_core_homepage:
-    path:     /
-    defaults: { _controller: PHCoreBundle:Default:index }
-
 ph_core_get_payment_gateways:
     path: /payment-gateways
     methods: [GET]
@@ -37,7 +33,7 @@ ph_core_payment_method:
 
 ph_core_checkout_payment:
     path: /checkouts/payment/{orderId}
-    methods: [PUT, PATCH]
+    methods: [PUT]
     defaults:
         _controller: sylius.controller.order:updateAction
         _sylius:
@@ -78,7 +74,7 @@ ph_core_checkout_complete:
 
 # payum
 ph_payum_order_pay:
-    path: /checkouts/pay/{tokenValue}
+    path: /checkouts/pay/{token}
     methods: [GET]
     defaults:
         _controller: ph.controller.payum:prepareCaptureAction

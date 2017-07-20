@@ -25,10 +25,6 @@ winzou_state_machine:
                     on: ["create"]
                     do: ["@sylius.order_number_assigner", "assignNumber"]
                     args: ["object"]
-                ph_assign_token:
-                    on: ["create"]
-                    do: ["@ph.order_token_assigner", "assignTokenValue"]
-                    args: ["object"]
             after:
                 ph_request_payment:
                     on: ["create"]

@@ -4,12 +4,14 @@ Feature: Getting a single order
   As a HTTP Client
   I want to make a request against order show endpoint
 
-  @createSchema
+  Background:
+    Given I am authenticated as "admin"
+
   Scenario: Get a single order
-    Given the system has a payment method "Offline" with a code "cash_on_delivery"
+    And the system has a payment method "Offline" with a code "cash_on_delivery"
     And the system has also a new order with a code "my_sub" and name "My subscription" priced at "$50"
     And I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/orders/1"
+    When I am on "/api/v1/orders/1"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
@@ -39,10 +41,10 @@ Feature: Getting a single order
     And the JSON node "payments" should have 1 element
     And the JSON node "_links" should not be null
 
-  @dropSchema
   Scenario: Get not existing order
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/orders/999"
+    And the header "Authorization" should not exist
+    And I send a "GET" request to "/api/v1/orders/999"
     Then the response status code should be 404
     And the response should be in JSON

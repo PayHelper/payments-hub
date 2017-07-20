@@ -1,3 +1,5 @@
+# HUB API
+
 # Payment Gateways
 
 These endpoints will allow you to easily manage payment gateways.

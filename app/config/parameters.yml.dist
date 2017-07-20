@@ -17,3 +17,11 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    # default user password
+    user_password: $2y$12$OW7IDvK93lW3ppb1PcRLme4WC0XJZw4BIYg66TMdCx7xS9iW5Zs/i
+     # JWT
+    jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
+    jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
+    jwt_key_pass_phrase:  ''                                         # ssh key pass phrase
+    jwt_token_ttl:        3600

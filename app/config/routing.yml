@@ -1,3 +1,11 @@
+ph_core_homepage:
+    path:     /
+    defaults: { _controller: PHCoreBundle:Sandbox:index }
+
+ph_core_thankyou:
+    path:     /thank-you
+    defaults: { _controller: PHCoreBundle:Sandbox:thankyou }
+
 ph_payum_capture:
     resource: "@PayumBundle/Resources/config/routing/capture.xml"
 
@@ -8,3 +16,9 @@ ph_core:
     resource: "@PHCoreBundle/Resources/config/routing.yml"
     prefix: /api/v{version}
 
+ph_public_api_core:
+    resource: "@PHCoreBundle/Resources/config/routing_public_api.yml"
+    prefix: /public-api/v{version}
+
+api_login_check:
+    path: /api/v1/login_check

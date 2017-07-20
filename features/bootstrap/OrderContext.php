@@ -76,6 +76,7 @@ final class OrderContext implements Context
         $subscription->setCurrencyCode($currencyCode);
         $subscription->setCode($code);
         $subscription->setName($name);
+        $order->setTokenValue('12345abcde');
 
         return  $this->orderService->prepareOrder($order, $subscription);
     }

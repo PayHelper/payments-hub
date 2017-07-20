@@ -4,12 +4,12 @@ Feature: Getting a single payment method
   As a HTTP Client
   I want to be able to get info about single payment method
 
-  @createSchema
   Scenario: Get payment method by code
-    Given the system has a payment method "Offline" with a code "off"
+    Given I am authenticated as "admin"
+    And the system has a payment method "Offline" with a code "off"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/payment-methods/off"
+    And I send a "GET" request to "/api/v1/payment-methods/off"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
@@ -28,10 +28,10 @@ Feature: Getting a single payment method
     | gateway_config.factory_name  | offline                                  |
     | gateway_config.gateway_name  | offline                                  |
 
-  @dropSchema
   Scenario: Get not existing payment method by code
+    Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/payment-methods/cash_on_delivery"
+    And I send a "GET" request to "/api/v1/payment-methods/cash_on_delivery"
     Then the response status code should be 404
     And the response should be in JSON

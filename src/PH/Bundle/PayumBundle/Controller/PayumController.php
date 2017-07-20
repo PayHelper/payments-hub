@@ -88,19 +88,19 @@ class PayumController
 
     /**
      * @param Request $request
-     * @param mixed   $tokenValue
+     * @param mixed   $token
      *
      * @return Response
      */
-    public function prepareCaptureAction(Request $request, string $tokenValue)
+    public function prepareCaptureAction(Request $request, string $token)
     {
         $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
 
         /** @var OrderInterface $order */
-        $order = $this->orderRepository->findOneByTokenValue($tokenValue);
+        $order = $this->orderRepository->findOneByTokenValue($token);
 
         if (null === $order) {
-            throw new NotFoundHttpException(sprintf('Order with token "%s" does not exist.', $tokenValue));
+            throw new NotFoundHttpException(sprintf('Order with token "%s" does not exist.', $token));
         }
 
         $options = $configuration->getParameters()->get('redirect');
@@ -135,17 +135,22 @@ class PayumController
 
         $token = $this->getHttpRequestVerifier()->verify($request);
 
-        $status = new GetStatus($token);
-        $this->payum->getGateway($token->getGatewayName())->execute($status);
-        $resolveNextRoute = new ResolveNextRoute($status->getFirstModel());
-        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
+        //$status = new GetStatus($token);
+        //$this->payum->getGateway($token->getGatewayName())->execute($status);
+//        $resolveNextRoute = new ResolveNextRoute($status->getFirstModel());
+//        $resolveNextRoute->setRouteName($request->query->get('thankyou'));
+//        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
 
         $this->getHttpRequestVerifier()->invalidate($token);
 
-        return $this->viewHandler->handle(
-            $configuration,
-            View::createRouteRedirect($resolveNextRoute->getRouteName(), $resolveNextRoute->getRouteParameters())
-        );
+        $view = View::createRedirect($request->query->get('thankyou'));
+
+        return $this->viewHandler->handle($configuration, $view);
+
+//        return $this->viewHandler->handle(
+//            $configuration,
+//            View::createRedirect($resolveNextRoute->getRouteName())
+//        );
     }
 
     /**

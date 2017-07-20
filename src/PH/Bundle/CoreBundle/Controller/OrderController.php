@@ -34,6 +34,7 @@ class OrderController extends ResourceController
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
             /** @var SubscriptionInterface $subscription */
             $subscription = $form->getData();
+
             $event = $this->eventDispatcher->dispatchPreEvent(OrderEvents::CREATE, $configuration, $order);
 
             if ($event->isStopped() && !$configuration->isHtmlRequest()) {

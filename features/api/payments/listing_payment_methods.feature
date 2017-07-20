@@ -4,13 +4,12 @@ Feature: Listing payment methods
   As a HTTP Client
   I want to be able to list all payment methods
 
-  @createSchema
-  @dropSchema
   Scenario: Retrieve the payment methods list
-    Given the system has a payment method "Offline" with a code "off"
+    Given I am authenticated as "admin"
+    And the system has a payment method "Offline" with a code "off"
     And the system has a payment method "PayPal Express Checkout" with a code "paypal" and Paypal Express Checkout gateway
     When I add "Accept" header equal to "application/json"
-    And I send a "GET" request to "/payment-methods/"
+    And I send a "GET" request to "/api/v1/payment-methods/"
     Then the response status code should be 200
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"

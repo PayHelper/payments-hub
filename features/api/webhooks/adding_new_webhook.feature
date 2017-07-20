@@ -4,12 +4,11 @@ Feature: Adding a new webhook
   As a HTTP Client
   I want to make a request against webhook create endpoint
 
-  @createSchema
-  @dropSchema
   Scenario: Add a new webhook
+    Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/webhooks/" with body:
+    And I send a "POST" request to "/api/v1/webhooks/" with body:
     """
     {
       "enabled": 1,
