@@ -1,10 +1,9 @@
-@orders
+@public_orders
 Feature: Placing a new order
   In order to pay for the service
   As a HTTP Client
   I want to make a request against order create endpoint
 
-  @createSchema
   Scenario: Place a new order when no payment methods are defined
     When I add "Authorization" header equal to null
     And I add "Content-Type" header equal to "application/json"

@@ -1,4 +1,4 @@
-@checkout
+@public_checkout
 Feature: Selecting an order payment method
   In order to pay for my order in a suitable way
   As a HTTP Client

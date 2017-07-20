@@ -19,7 +19,7 @@ parameters:
     secret: ThisTokenIsNotSoSecretChangeIt
 
     # default user password
-    user_password: admin
+    user_password: $2y$12$OW7IDvK93lW3ppb1PcRLme4WC0XJZw4BIYg66TMdCx7xS9iW5Zs/i
      # JWT
     jwt_private_key_path: '%kernel.root_dir%/../var/jwt/private.pem' # ssh private key path
     jwt_public_key_path:  '%kernel.root_dir%/../var/jwt/public.pem'  # ssh public key path
