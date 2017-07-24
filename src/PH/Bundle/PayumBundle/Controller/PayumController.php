@@ -11,7 +11,6 @@ use Payum\Core\Security\HttpRequestVerifierInterface;
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Core\Model\PaymentInterface;
 use Sylius\Bundle\PayumBundle\Request\GetStatus;
-use Sylius\Bundle\PayumBundle\Request\ResolveNextRoute;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
 use Sylius\Bundle\ResourceBundle\Controller\ViewHandlerInterface;
 use Sylius\Bundle\ResourceBundle\Form\Registry\FormTypeRegistryInterface;
@@ -135,22 +134,13 @@ class PayumController
 
         $token = $this->getHttpRequestVerifier()->verify($request);
 
-        //$status = new GetStatus($token);
-        //$this->payum->getGateway($token->getGatewayName())->execute($status);
-//        $resolveNextRoute = new ResolveNextRoute($status->getFirstModel());
-//        $resolveNextRoute->setRouteName($request->query->get('thankyou'));
-//        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
-
+        $status = new GetStatus($token);
+        $this->payum->getGateway($token->getGatewayName())->execute($status);
         $this->getHttpRequestVerifier()->invalidate($token);
 
         $view = View::createRedirect($request->query->get('thankyou'));
 
         return $this->viewHandler->handle($configuration, $view);
-
-//        return $this->viewHandler->handle(
-//            $configuration,
-//            View::createRedirect($resolveNextRoute->getRouteName())
-//        );
     }
 
     /**

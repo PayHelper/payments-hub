@@ -109,6 +109,24 @@ ph_api_orders:
         serialization_version: $version
     type: sylius.resource_api
 
+ph_api_order_payment_complete:
+    path: /orders/{orderId}/payments/{id}/complete
+    methods: [PUT]
+    defaults:
+        _controller: sylius.controller.payment:applyStateMachineTransitionAction
+        _sylius:
+            event: complete
+            repository:
+                method: findOneByOrderId
+                arguments:
+                    id: $id
+                    orderId: $orderId
+            state_machine:
+                graph: ph_payment
+                transition: complete
+            section: api
+            return_content: false
+
 ph_api_order_create:
     path: /orders/create/
     methods: [POST]
