@@ -268,6 +268,40 @@ id <br>(`required`)| string | The unique identifier of an order.
 
 Returns an empty response if deleting an order succeeded. Returns an error if deleting order can not be done (e.g. when an order does not exist).
 
+## Complete an order payment
+
+> Definition
+
+```shell
+PUT https://localhost/api/v1/orders/{id}/payments/{paymentId}/complete
+```
+
+Completes an order payment. You need only supply the unique order identifier that was generated upon order creation and order's payment id in order to perform complete action.
+
+Completing order payment is useful when for example, offline payment method is selected and once the seller receives the money from buyer, the order can be completed manually and marked as paid.
+
+> Example Request
+
+```shell
+curl -X PUT \
+  http://localhost/api/v1/orders/6/payments/1/complete \
+  -H 'authorization: Bearer key' \
+  -H 'content-type: application/json'
+```
+
+> Example Response (204 No Content)
+
+### Arguments
+
+Name | Type | Description
+--------- | ------- | -----------
+id <br>(`required`)| string | The unique identifier of an order.
+paymentId <br>(`required`)| string | The unique identifier of an order payment.
+
+### Returns
+
+Returns an empty response if deleting an order succeeded. Returns an error if deleting order can not be done (e.g. when an order does not exist).
+
 ## List all orders
 
 > Definition

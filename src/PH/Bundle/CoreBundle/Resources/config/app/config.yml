@@ -42,6 +42,7 @@ sylius_payment:
         payment:
             classes:
                 model: PH\Component\Core\Model\Payment
+                repository: PH\Bundle\CoreBundle\Doctrine\ORM\PaymentRepository
 
 sylius_order:
     resources:

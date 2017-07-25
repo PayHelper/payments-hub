@@ -55,7 +55,7 @@ final class SendOrderPayloadListener
         /** @var WebhookInterface $destination */
         foreach ($destinations as $destination) {
             $client->request('POST', $destination->getUrl(), [
-                'payload' => $this->serializer->serialize($subject, 'json', $context),
+                'body' => $this->serializer->serialize($subject, 'json', $context),
             ]);
         }
     }
