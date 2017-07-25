@@ -300,7 +300,7 @@ paymentId <br>(`required`)| string | The unique identifier of an order payment.
 
 ### Returns
 
-Returns an empty response if deleting an order succeeded. Returns an error if deleting order can not be done (e.g. when an order does not exist).
+Returns an empty response if completing order payment succeeded. Returns an error if completing order payment can not be done (e.g. when an order does not exist).
 
 ## List all orders
 
