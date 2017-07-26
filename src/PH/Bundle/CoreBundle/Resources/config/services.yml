@@ -80,3 +80,9 @@ services:
         class: PH\Component\Core\Resolver\OrderStateResolver
         arguments:
             - "@sm.factory"
+
+    ph.payload_sender.order:
+        class: PH\Bundle\CoreBundle\Sender\OrderPayloadSender
+        arguments:
+            - "@ph.repository.webhook"
+            - "@serializer"
