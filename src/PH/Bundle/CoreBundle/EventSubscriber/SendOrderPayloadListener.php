@@ -11,6 +11,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 
 final class SendOrderPayloadListener
 {
+    /**
+     * @var OrderPayloadSenderInterface
+     */
     private $orderPayloadSender;
 
     /**
