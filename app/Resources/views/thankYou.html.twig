@@ -91,17 +91,5 @@
                 console.log(data, 'done');
             });
         });
-
-        function getFormData($form) {
-            var unindexed_array = $form.serializeArray();
-            var indexed_array = [];
-            var objects = {};
-
-            $.map(unindexed_array, function(n, i){
-                objects[n.name] = n.value;
-            });
-
-            return objects;
-        }
     </script>
 {% endblock %}
