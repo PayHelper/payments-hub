@@ -85,7 +85,7 @@
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
-                url: 'http://taz-crm.dev/app_dev.php/subscriptions/{{app.request.get("token", null)}}/customer_data',
+                url: 'http://taz-crm.s-lab.sourcefabric.org/subscriptions/{{app.request.get("token", null)}}/customer_data',
                 data: JSON.stringify(formData)
             }).done(function( data ) {
                 console.log(data, 'done');
