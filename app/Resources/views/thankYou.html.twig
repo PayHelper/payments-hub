@@ -1,0 +1,107 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Than You for order,  <br>please fill your data if you want to.</span></h1>
+            </div>
+            {% if app.request.get('token') %}
+                <div style="color: #3D7700">Successfully payed for an order {{ app.request.get('token') }}</div>
+            {%  endif %}
+            <div id="next">
+                <form id="fill-customer-data">
+                    First name:<br>
+                    <input type="text" name="subscriptions_customer[firstName]"><br>
+                    Middle name:<br>
+                    <input type="text" name="subscriptions_customer[middleName]"><br>
+                    Last name:<br>
+                    <input type="text" name="subscriptions_customer[lastName]"><br>
+                    Gender:<br>
+                    <ul style="list-style: none">
+                        <li><input type="radio" name="subscriptions_customer[gender]" value="Male"> Male</li>
+                        <li><input type="radio" name="subscriptions_customer[gender]" value="Female"> Female</li>
+                        <li><input type="radio" name="subscriptions_customer[gender]" value="Other"> Other</li>
+                    </ul>
+                    <br>
+                    Birthday:<br>
+                    <input type="date" name="subscriptions_customer[birthday]"><br>
+                    Email:<br>
+                    <input type="email" name="subscriptions_customer[email]"><br>
+                    Street:<br>
+                    <input type="text" name="subscriptions_customer[addresses][0][street]"><br>
+                    Street 2:<br>
+                    <input type="text" name="subscriptions_customer[addresses][0][street2]"><br>
+                    Postal code:<br>
+                    <input type="text" name="subscriptions_customer[addresses][0][postalCode]"><br>
+                    City:<br>
+                    <input type="text" name="subscriptions_customer[addresses][0][city]"><br>
+                    Region:<br>
+                    <input type="text" name="subscriptions_customer[addresses][0][region_text]"><br>
+                    Organization:<br>
+                    <input type="text" name="subscriptions_customer[addresses][0][organization]"><br>
+                    <br>
+                    <input type="submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+        h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 21px; margin-bottom: 1em; }
+        p { margin: 0 0 1em 0; }
+        a { color: #0000F0; }
+        a:hover { text-decoration: none; }
+        code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+        #welcome { margin-bottom: 2em; }
+        #welcome h1 span { display: block; font-size: 75%; }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script>
+        /**
+         * jQuery serializeObject
+         * @copyright 2014, macek <paulmacek@gmail.com>
+         * @link https://github.com/macek/jquery-serialize-object
+         * @license BSD
+         * @version 2.5.0
+         */
+        !function(e,i){if("function"==typeof define&&define.amd)define(["exports","jquery"],function(e,r){return i(e,r)});else if("undefined"!=typeof exports){var r=require("jquery");i(exports,r)}else i(e,e.jQuery||e.Zepto||e.ender||e.$)}(this,function(e,i){function r(e,r){function n(e,i,r){return e[i]=r,e}function a(e,i){for(var r,a=e.match(t.key);void 0!==(r=a.pop());)if(t.push.test(r)){var u=s(e.replace(/\[\]$/,""));i=n([],u,i)}else t.fixed.test(r)?i=n([],r,i):t.named.test(r)&&(i=n({},r,i));return i}function s(e){return void 0===h[e]&&(h[e]=0),h[e]++}function u(e){switch(i('[name="'+e.name+'"]',r).attr("type")){case"checkbox":return"on"===e.value?!0:e.value;default:return e.value}}function f(i){if(!t.validate.test(i.name))return this;var r=a(i.name,u(i));return l=e.extend(!0,l,r),this}function d(i){if(!e.isArray(i))throw new Error("formSerializer.addPairs expects an Array");for(var r=0,t=i.length;t>r;r++)this.addPair(i[r]);return this}function o(){return l}function c(){return JSON.stringify(o())}var l={},h={};this.addPair=f,this.addPairs=d,this.serialize=o,this.serializeJSON=c}var t={validate:/^[a-z_][a-z0-9_]*(?:\[(?:\d*|[a-z0-9_]+)\])*$/i,key:/[a-z0-9_]+|(?=\[\])/gi,push:/^$/,fixed:/^\d+$/,named:/^[a-z0-9_]+$/i};return r.patterns=t,r.serializeObject=function(){return new r(i,this).addPairs(this.serializeArray()).serialize()},r.serializeJSON=function(){return new r(i,this).addPairs(this.serializeArray()).serializeJSON()},"undefined"!=typeof i.fn&&(i.fn.serializeObject=r.serializeObject,i.fn.serializeJSON=r.serializeJSON),e.FormSerializer=r,r});
+
+        $( "#fill-customer-data" ).submit(function( e ) {
+            e.preventDefault();
+
+            var $form = $( this );
+            var formData = $form.serializeObject();
+            console.log(formData);
+            $.ajax({
+                type: "POST",
+                contentType: "application/json",
+                url: 'http://taz-crm.dev/app_dev.php/subscriptions/{{app.request.get("token", null)}}/customer_data',
+                data: JSON.stringify(formData)
+            }).done(function( data ) {
+                console.log(data, 'done');
+            });
+        });
+
+        function getFormData($form) {
+            var unindexed_array = $form.serializeArray();
+            var indexed_array = [];
+            var objects = {};
+
+            $.map(unindexed_array, function(n, i){
+                objects[n.name] = n.value;
+            });
+
+            return objects;
+        }
+    </script>
+{% endblock %}
