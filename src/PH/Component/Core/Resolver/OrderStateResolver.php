@@ -34,6 +34,10 @@ final class OrderStateResolver implements StateResolverInterface
         if ($this->canOrderBeFulfilled($order) && $stateMachine->can(OrderTransitions::TRANSITION_FULFILL)) {
             $stateMachine->apply(OrderTransitions::TRANSITION_FULFILL);
         }
+
+        if ($this->canOrderBeCancelled($order) && $stateMachine->can(OrderTransitions::TRANSITION_CANCEL)) {
+            $stateMachine->apply(OrderTransitions::TRANSITION_CANCEL);
+        }
     }
 
     /**
@@ -44,5 +48,15 @@ final class OrderStateResolver implements StateResolverInterface
     private function canOrderBeFulfilled(OrderInterface $order)
     {
         return OrderPaymentStates::STATE_PAID === $order->getPaymentState();
+    }
+
+    /**
+     * @param OrderInterface $order
+     *
+     * @return bool
+     */
+    private function canOrderBeCancelled(OrderInterface $order)
+    {
+        return OrderPaymentStates::STATE_CANCELLED === $order->getPaymentState();
     }
 }

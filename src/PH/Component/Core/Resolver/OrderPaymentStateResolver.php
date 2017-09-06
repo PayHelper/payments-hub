@@ -91,6 +91,12 @@ final class OrderPaymentStateResolver implements StateResolverInterface
             return OrderPaymentTransitions::TRANSITION_PARTIALLY_PAY;
         }
 
+        $cancelledPayments = $this->getPaymentsWithState($order, PaymentInterface::STATE_CANCELLED);
+
+        if (0 < $cancelledPayments->count()) {
+            return OrderPaymentTransitions::TRANSITION_CANCEL;
+        }
+
         return null;
     }
 

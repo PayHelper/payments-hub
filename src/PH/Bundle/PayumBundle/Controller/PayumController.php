@@ -108,7 +108,7 @@ class PayumController
         $payment = $order->getLastPayment(PaymentInterface::STATE_NEW);
 
         if (null === $payment) {
-            return $this->viewHandler->handle($configuration, View::create([], 200));
+            return $this->viewHandler->handle($configuration, View::create([], 404));
         }
 
         $captureToken = $this->getTokenFactory()->createCaptureToken(
@@ -135,6 +135,7 @@ class PayumController
         $token = $this->getHttpRequestVerifier()->verify($request);
 
         $status = new GetStatus($token);
+
         $this->payum->getGateway($token->getGatewayName())->execute($status);
         $this->getHttpRequestVerifier()->invalidate($token);
 

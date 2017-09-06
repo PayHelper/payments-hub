@@ -38,6 +38,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    paths:
+        '%kernel.project_dir%/vendor/sourcefabric/payum-mollie/Resources/views': payum_mollie
 
 # Doctrine Configuration
 doctrine:

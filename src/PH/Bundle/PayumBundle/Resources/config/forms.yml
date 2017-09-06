@@ -1,0 +1,6 @@
+services:
+    ph.form.type.gateway_configuration.mollie:
+        class: PH\Bundle\PayumBundle\Form\Type\MollieGatewayConfigurationType
+        tags:
+            - { name: sylius.gateway_configuration_type, type: 'mollie', label: 'Mollie' }
+            - { name: form.type }

@@ -7,7 +7,7 @@
                 <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
             </div>
             {% if app.request.get('token') %}
-            <div style="color: #3D7700">Successfully payed for an order {{ app.request.get('token') }}</div>
+                <div style="color: #3D7700">Successfully payed for an order {{ app.request.get('token') }}</div>
             {%  endif %}
             <div id="next">
                 Place an order:<br><br>
@@ -17,7 +17,30 @@
                     Currency:<br>
                     <input type="text" value="EUR" name="currency_code"><br>
                     Interval:<br>
-                    <input type="text" value="month" name="interval"><br>
+                    <select id="ph_subscription_interval" name="interval">
+                        <option value="1 month">Monthly</option>
+                        <option value="3 months">Quarterly</option>
+                        <option value="1 year">Yearly</option>
+                    </select><br>
+                    Type:<br>
+                    <select id="ph_subscription_type" name="ph_subscription[type]">
+                        <option value="recurring">Recurring</option>
+                        <option value="onetime">Non-Recurring</option>
+                    </select><br>
+                    Start date:<br>
+                    <div id="ph_subscription_startDate">
+                        <select id="ph_subscription_startDate_month" name="ph_subscription[startDate][month]">
+                            <option value="10">Oct</option>
+                            <option value="11">Nov</option>
+                        </select>
+                        <select id="ph_subscription_startDate_day" name="ph_subscription[startDate][day]">
+                            <option value="1">1</option>
+                            <option value="15">15</option>
+                        </select>
+                        <select id="ph_subscription_startDate_year" name="ph_subscription[startDate][year]">
+                            <option value="2017" selected="selected">2017</option>
+                        </select>
+                    </div>
                     Payment method:<br>
                     <select id="payment-methods">
                     </select>
@@ -30,20 +53,20 @@
 {% endblock %}
 
 {% block stylesheets %}
-<style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-    h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-    h1 { font-size: 36px; }
-    h2 { font-size: 21px; margin-bottom: 1em; }
-    p { margin: 0 0 1em 0; }
-    a { color: #0000F0; }
-    a:hover { text-decoration: none; }
-    code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-    #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-    #container { padding: 2em; }
-    #welcome, #status { margin-bottom: 2em; }
-    #welcome h1 span { display: block; font-size: 75%; }
-</style>
+    <style>
+        body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+        h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+        h1 { font-size: 36px; }
+        h2 { font-size: 21px; margin-bottom: 1em; }
+        p { margin: 0 0 1em 0; }
+        a { color: #0000F0; }
+        a:hover { text-decoration: none; }
+        code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+        #container { padding: 2em; }
+        #welcome, #status { margin-bottom: 2em; }
+        #welcome h1 span { display: block; font-size: 75%; }
+    </style>
 {% endblock %}
 {% block javascripts %}
     <script
@@ -61,7 +84,7 @@
 
             $.each(paymentRes._embedded.items, function(key, value)
             {
-                options.push('<option value="'+ value.code +'">'+ value.translations.en.name +'</option>');
+                options.push('<option value="'+ value.code +'">'+ value.translations.en.name +' ('+value.code+')</option>');
             });
 
             $('#payment-methods').html(options.join(''));
@@ -73,8 +96,22 @@
             var $form = $( this ),
                 currency = $form.find( "input[name='currency_code']" ).val(),
                 amount = $form.find( "input[name='amount']" ).val(),
-                interval = $form.find( "input[name='interval']" ).val();
-
+                interval = $form.find( "select[name='interval']" ).val(),
+                startMonth = $form.find( "select[name='ph_subscription[startDate][month]']" ).val(),
+                startDay = $form.find( "select[name='ph_subscription[startDate][day]']" ).val(),
+                startYear = $form.find( "select[name='ph_subscription[startDate][year]']" ).val(),
+                subType = $form.find( "select[name='ph_subscription[type]']" ).val();
+            console.log(JSON.stringify({"amount": amount * 100,
+                "currency_code": currency,
+                "interval": interval,
+                "name": "Monthly subscription",
+                "type": subType,
+                "start_date": {
+                    "month": startMonth,
+                    "day": startDay,
+                    "year": startYear
+                },
+                "code": "monthly_subscription"}));
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
@@ -83,6 +120,12 @@
                     "currency_code": currency,
                     "interval": interval,
                     "name": "Monthly subscription",
+                    "type": subType,
+                    "start_date": {
+                        "month": startMonth,
+                        "day": startDay,
+                        "year": startYear
+                    },
                     "code": "monthly_subscription"}),
                 dataType: "json"
             }).done(function( data ) {

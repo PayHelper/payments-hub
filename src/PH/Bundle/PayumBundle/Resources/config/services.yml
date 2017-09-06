@@ -9,3 +9,9 @@ services:
           - '@sylius.resource_controller.request_configuration_factory'
           - '@sylius.resource_controller.view_handler'
           - '@router'
+
+    ph.payum.mollie.factory:
+        class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
+        arguments: [Sourcefabric\Payum\Mollie\MollieGatewayFactory]
+        tags:
+            - { name: payum.gateway_factory_builder, factory: mollie }

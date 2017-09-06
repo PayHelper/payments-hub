@@ -14,10 +14,10 @@ namespace PH\Component\Core\Payment\Provider;
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Core\Model\PaymentInterface;
 use PH\Component\Core\Model\PaymentMethodInterface;
+use PH\Component\Core\PaymentTransitions;
 use SM\Factory\FactoryInterface as StateMachineFactoryInterface;
 use Sylius\Component\Payment\Exception\UnresolvedDefaultPaymentMethodException;
 use Sylius\Component\Payment\Factory\PaymentFactoryInterface;
-use Sylius\Component\Payment\PaymentTransitions;
 use Sylius\Component\Payment\Resolver\DefaultPaymentMethodResolverInterface;
 use Sylius\Component\Resource\StateMachine\StateMachineInterface;
 
