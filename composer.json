@@ -31,6 +31,7 @@
         "php-http/guzzle6-adapter": "^1.1",
         "sensio/distribution-bundle": "^5.0.19",
         "sensio/framework-extra-bundle": "^3.0.2",
+        "sourcefabric/payum-mollie": "^1.0@dev",
         "stripe/stripe-php": "^2.0@dev",
         "sylius/order-bundle": "^1.0",
         "sylius/payment-bundle": "^1.0",
