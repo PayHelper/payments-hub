@@ -45,6 +45,9 @@ final class CapturePaymentAction extends GatewayAwareAction
                 $payumPayment->setDescription($order->getItems()->first()->getSubscription()->getName());
 
                 $startDate = $order->getItems()->first()->getSubscription()->getStartDate();
+                if (null === $startDate) {
+                    $startDate = new \DateTime();
+                }
 
                 $payumPayment->setDetails(array_merge($payment->getDetails(), [
                     'method' => $paymentMethod,

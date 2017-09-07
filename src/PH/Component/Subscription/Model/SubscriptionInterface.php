@@ -72,22 +72,22 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     public function setName(string $name): void;
 
     /**
-     * @return \DateTime
+     * @return \DateTimeInterface|null
      */
-    public function getStartDate(): \DateTime;
+    public function getStartDate(): ?\DateTimeInterface;
 
     /**
-     * @param \DateTime $startDate
+     * @param \DateTimeInterface|null $startDate
      */
-    public function setStartDate(\DateTime $startDate): void;
+    public function setStartDate(?\DateTimeInterface $startDate): void;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getType(): string;
+    public function getType(): ?string;
 
     /**
-     * @param string $type
+     * @param null|string $type
      */
-    public function setType(string $type): void;
+    public function setType(?string $type): void;
 }

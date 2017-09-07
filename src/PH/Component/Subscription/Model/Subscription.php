@@ -41,15 +41,14 @@ class Subscription implements SubscriptionInterface
     protected $code;
 
     /**
-     * @var \DateTime
+     * @var \DateTimeInterface|null
      */
     protected $startDate;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $type = SubscriptionInterface::TYPE_ONETIME;
-
 
     /**
      * Subscription constructor.
@@ -151,7 +150,7 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getStartDate(): \DateTime
+    public function getStartDate(): ?\DateTimeInterface
     {
         return $this->startDate;
     }
@@ -159,7 +158,7 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setStartDate(\DateTime $startDate): void
+    public function setStartDate(?\DateTimeInterface $startDate): void
     {
         $this->startDate = $startDate;
     }
@@ -167,7 +166,7 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getType(): string
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -175,7 +174,7 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setType(string $type): void
+    public function setType(?string $type): void
     {
         $this->type = $type;
     }
