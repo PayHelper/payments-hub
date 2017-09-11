@@ -95,7 +95,7 @@ ph_payum_order_after_pay:
 
 ph_payum_payment_cancel:
     path: /orders/{orderId}/payments/{id}/cancel
-    methods: [PUT]
+    methods: [DELETE]
     defaults:
         _controller: ph.controller.payum:cancelAction
         _sylius:

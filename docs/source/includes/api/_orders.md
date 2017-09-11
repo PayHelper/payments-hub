@@ -25,11 +25,14 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
                 "id": 6,
                 "amount": "500",
                 "currency_code": "PLN",
-                "interval": "month",
+                "interval": "1 month",
                 "name": "Monthly subscription",
                 "code": "monthly_subscription",
+                "type": "recurring",
                 "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200"
+                "updated_at": "2017-07-06T12:13:47+0200",
+                "start_date": "2017-07-06",
+                "cancelled_at": "2017-09-06T12:13:47+0200"
             },
             "_links": {
                 "order": {
@@ -92,9 +95,15 @@ curl -X POST \
   -d '{
       	"amount": 500,
       	"currency_code": "PLN",
-      	"interval": "month",
+      	"interval": "1 month",
       	"name": "Monthly subscription",
-      	"code": "monthly_subscription"
+      	"code": "monthly_subscription",
+      	"type": "recurring",
+      	"start_date": {
+      	    "day": 6,
+      	    "month: 7,
+      	    "year": 2017
+      	}
 }'
 ```
 
@@ -116,11 +125,14 @@ curl -X POST \
                 "id": 6,
                 "amount": "500",
                 "currency_code": "PLN",
-                "interval": "month",
+                "interval": "1 month",
                 "name": "Monthly subscription",
                 "code": "monthly_subscription",
                 "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200"
+                "updated_at": "2017-07-06T12:13:47+0200",
+                "type": "recurring",
+                "start_date": "2017-07-06",
+                "cancelled_at": null
             },
             "_links": {
                 "order": {
@@ -154,7 +166,9 @@ amount <br>(`required`)| int | The amount of the order. It needs to be integer v
 currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
 name <br>(`required`)| string | Name of the order/subscription, to be displayed on invoices and in the web interface.
 code <br>(`required`)| string | Code of the order/subscription, to be displayed on invoices and in the web interface.
-interval <br>(`optional`)| string | One of `day`, `month` or `year`. The frequency with which a subscription should be billed. `month` by default.
+interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
+type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
+start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
 
 ### Returns
 
@@ -197,11 +211,14 @@ curl -X GET \
                 "id": 6,
                 "amount": "500",
                 "currency_code": "PLN",
-                "interval": "month",
+                "interval": "1 month",
                 "name": "Monthly subscription",
                 "code": "monthly_subscription",
                 "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200"
+                "updated_at": "2017-07-06T12:13:47+0200",
+                "type": "recurring",
+                "start_date": "2017-07-06",
+                "cancelled_at": null
             },
             "_links": {
                 "order": {
@@ -267,6 +284,38 @@ id <br>(`required`)| string | The unique identifier of an order.
 ### Returns
 
 Returns an empty response if deleting an order succeeded. Returns an error if deleting order can not be done (e.g. when an order does not exist).
+
+## Cancel an order's payment
+> Definition
+
+```shell
+DELETE https://localhost/api/v1/orders/{orderId}/payments/{id}/cancel
+```
+
+Cancels an order's payment. You need only supply the unique order identifier that was generated upon order creation and payment id in order to remove an object.
+
+> Example Request
+
+```shell
+curl -X DELETE \
+  http://localhost/api/v1/orders/6/payments/7/cancel \
+  -H 'authorization: Bearer key' \
+  -H 'content-type: application/json'
+```
+
+> Example Response (204 No Content)
+
+### Arguments
+
+Name | Type | Description
+--------- | ------- | -----------
+orderId <br>(`required`)| string | The unique identifier of an order.
+id <br>(`required`)| string | The unique identifier of an order's payment.
+
+### Returns
+
+Returns an empty response if cancelling an order succeeded. Returns an error if cancelling order's payment can not be done (e.g. when an order does not exist).
+
 
 ## Complete an order payment
 
@@ -353,6 +402,8 @@ Returns a list of all orders.
                             "code": "monthly_subscription",
                             "created_at": "2017-07-06T12:13:46+0200",
                             "updated_at": "2017-07-06T12:13:47+0200"
+                            "start_date": "2017-07-06",
+                            "cancelled_at": null
                         },
                         "_links": {
                             "order": {

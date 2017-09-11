@@ -72,7 +72,6 @@ class PayumController
     public function __construct(
         Payum $payum,
         OrderRepositoryInterface $orderRepository,
-        FormTypeRegistryInterface $gatewayConfigurationTypeRegistry,
         MetadataInterface $orderMetadata,
         RequestConfigurationFactoryInterface $requestConfigurationFactory,
         ViewHandlerInterface $viewHandler,

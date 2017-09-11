@@ -25,11 +25,14 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts11)).
                 "id": 6,
                 "amount": "500",
                 "currency_code": "PLN",
-                "interval": "month",
+                "interval": "1 month",
                 "name": "Monthly subscription",
                 "code": "monthly_subscription",
                 "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200"
+                "updated_at": "2017-07-06T12:13:47+0200",
+                "type": "recurring",
+                "start_date": "2017-07-06",
+                "cancelled_at": "2017-09-06T12:13:47+0200"
             },
             "_links": {
                 "order": {
@@ -92,9 +95,15 @@ curl -X POST \
   -d '{
       	"amount": 500,
       	"currency_code": "PLN",
-      	"interval": "month",
+      	"interval": "1 month",
       	"name": "Monthly subscription",
-      	"code": "monthly_subscription"
+      	"code": "monthly_subscription",
+      	"type": "recurring",
+      	"start_date": {
+      	    "day": 6,
+      	    "month: 7,
+      	    "year": 2017
+      	}
 }'
 ```
 
@@ -120,7 +129,10 @@ curl -X POST \
                 "name": "Monthly subscription",
                 "code": "monthly_subscription",
                 "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200"
+                "updated_at": "2017-07-06T12:13:47+0200",
+                "type": "recurring",
+                "start_date": "2017-07-06",
+                "cancelled_at": null
             },
             "_links": {
                 "order": {
@@ -154,7 +166,9 @@ amount <br>(`required`)| int | The amount of the order. It needs to be integer v
 currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
 name <br>(`required`)| string | Name of the order/subscription, to be displayed on invoices and in the web interface.
 code <br>(`required`)| string | Code of the order/subscription, to be displayed on invoices and in the web interface.
-interval <br>(`optional`)| string | One of `day`, `month` or `year`. The frequency with which a subscription should be billed. `month` by default.
+interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
+type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
+start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
 
 ### Returns
 

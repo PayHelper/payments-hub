@@ -48,7 +48,7 @@ class Subscription implements SubscriptionInterface
     /**
      * @var string|null
      */
-    protected $type = SubscriptionInterface::TYPE_ONETIME;
+    protected $type = SubscriptionInterface::TYPE_NON_RECURRING;
 
     /**
      * Subscription constructor.

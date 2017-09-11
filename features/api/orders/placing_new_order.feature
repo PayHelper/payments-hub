@@ -107,7 +107,7 @@ Feature: Placing a new order
       "interval":"1 month",
       "name":"My monthly subscription",
       "code":"monthly_subscription",
-      "type":"onetime"
+      "type":"non-recurring"
     }
     """
     Then the response status code should be 201
@@ -121,7 +121,7 @@ Feature: Placing a new order
       | items[0].subscription.interval        | month                       |
       | items[0].subscription.name            | My monthly subscription     |
       | items[0].subscription.code            | monthly_subscription        |
-      | items[0].subscription.type            | onetime                     |
+      | items[0].subscription.type            | non-recurring               |
       | items_total                           | 500                         |
       | total                                 | 500                         |
       | state                                 | cart                        |
