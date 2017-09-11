@@ -36,11 +36,6 @@ class PayumController
     private $orderRepository;
 
     /**
-     * @var FormTypeRegistryInterface
-     */
-    private $gatewayConfigurationTypeRegistry;
-
-    /**
      * @var MetadataInterface
      */
     private $orderMetadata;
@@ -68,7 +63,6 @@ class PayumController
     /**
      * @param Payum                                $payum
      * @param OrderRepositoryInterface             $orderRepository
-     * @param FormTypeRegistryInterface            $gatewayConfigurationTypeRegistry
      * @param MetadataInterface                    $orderMetadata
      * @param RequestConfigurationFactoryInterface $requestConfigurationFactory
      * @param ViewHandlerInterface                 $viewHandler
@@ -87,7 +81,6 @@ class PayumController
     ) {
         $this->payum = $payum;
         $this->orderRepository = $orderRepository;
-        $this->gatewayConfigurationTypeRegistry = $gatewayConfigurationTypeRegistry;
         $this->orderMetadata = $orderMetadata;
         $this->requestConfigurationFactory = $requestConfigurationFactory;
         $this->viewHandler = $viewHandler;
@@ -124,8 +117,8 @@ class PayumController
         $captureToken = $this->getTokenFactory()->createCaptureToken(
             $payment->getMethod()->getGatewayConfig()->getGatewayName(),
             $payment,
-            isset($options['route']) ? $options['route'] : null,
-            isset($options['parameters']) ? $options['parameters'] : []
+            $options['route'] ?? null,
+            $options['parameters'] ?? []
         );
 
         $view = View::createRedirect($captureToken->getTargetUrl());
@@ -169,7 +162,7 @@ class PayumController
         }
 
         if (PaymentInterface::STATE_CANCELLED === $payment->getState()) {
-            throw new HttpException(409, 'The subscription has been already cancelled!');
+            throw new HttpException(409, 'The payment has been already cancelled!');
         }
 
         $options = $configuration->getParameters()->get('redirect');
@@ -177,8 +170,8 @@ class PayumController
         $cancelToken = $this->getTokenFactory()->createCancelToken(
             $payment->getMethod()->getGatewayConfig()->getGatewayName(),
             $payment,
-            isset($options['route']) ? $options['route'] : null,
-            isset($options['parameters']) ? $options['parameters'] : []
+            $options['route'] ?? null,
+            $options['parameters'] ?? []
         );
 
         $view = View::createRedirect($cancelToken->getTargetUrl());

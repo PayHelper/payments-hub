@@ -14,7 +14,7 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     const INTERVAL_QUARTERLY = '3 months';
 
     const TYPE_RECURRING = 'recurring';
-    const TYPE_ONETIME = 'onetime';
+    const TYPE_NON_RECURRING = 'non-recurring';
 
     /**
      * @return mixed

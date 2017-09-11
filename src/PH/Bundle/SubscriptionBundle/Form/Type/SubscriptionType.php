@@ -33,7 +33,7 @@ final class SubscriptionType extends AbstractResourceType
             ->add('name')
             ->add('type', ChoiceType::class, [
                 'choices' => [
-                    'Non-recurring' => SubscriptionInterface::TYPE_ONETIME,
+                    'Non-recurring' => SubscriptionInterface::TYPE_NON_RECURRING,
                     'Recurring' => SubscriptionInterface::TYPE_RECURRING,
                 ],
             ])
