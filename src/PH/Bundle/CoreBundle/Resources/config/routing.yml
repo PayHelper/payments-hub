@@ -93,6 +93,26 @@ ph_payum_order_after_pay:
         _sylius:
             serialization_version: $version
 
+ph_payum_payment_cancel:
+    path: /orders/{orderId}/payments/{id}/cancel
+    methods: [PUT]
+    defaults:
+        _controller: ph.controller.payum:cancelAction
+        _sylius:
+            serialization_version: $version
+            redirect:
+                route: ph_payum_payment_after_cancel
+                parameters:
+                    version: $version
+
+ph_payum_payment_after_cancel:
+    path: /payments/after-cancel/
+    methods: [GET, POST]
+    defaults:
+        _controller: ph.controller.payum:afterCancelAction
+        _sylius:
+            serialization_version: $version
+
 # webhook bundle
 ph_api_webhooks:
     resource: |
