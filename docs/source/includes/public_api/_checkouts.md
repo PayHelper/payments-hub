@@ -110,8 +110,7 @@ curl -X PATCH \
                 "created_at": "2017-07-10T14:27:19+0200",
                 "updated_at": "2017-07-10T14:27:19+0200",
                 "type": "recurring",
-                "start_date": "2017-07-10",
-                "cancelled_at": null
+                "start_date": "2017-07-10"
             },
             "_links": {
                 "order": {

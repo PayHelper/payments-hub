@@ -31,8 +31,7 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts11)).
                 "created_at": "2017-07-06T12:13:46+0200",
                 "updated_at": "2017-07-06T12:13:47+0200",
                 "type": "recurring",
-                "start_date": "2017-07-06",
-                "cancelled_at": "2017-09-06T12:13:47+0200"
+                "start_date": "2017-07-06"
             },
             "_links": {
                 "order": {
@@ -131,8 +130,7 @@ curl -X POST \
                 "created_at": "2017-07-06T12:13:46+0200",
                 "updated_at": "2017-07-06T12:13:47+0200",
                 "type": "recurring",
-                "start_date": "2017-07-06",
-                "cancelled_at": null
+                "start_date": "2017-07-06"
             },
             "_links": {
                 "order": {

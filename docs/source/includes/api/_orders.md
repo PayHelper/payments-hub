@@ -31,8 +31,7 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
                 "type": "recurring",
                 "created_at": "2017-07-06T12:13:46+0200",
                 "updated_at": "2017-07-06T12:13:47+0200",
-                "start_date": "2017-07-06",
-                "cancelled_at": "2017-09-06T12:13:47+0200"
+                "start_date": "2017-07-06"
             },
             "_links": {
                 "order": {
@@ -131,8 +130,7 @@ curl -X POST \
                 "created_at": "2017-07-06T12:13:46+0200",
                 "updated_at": "2017-07-06T12:13:47+0200",
                 "type": "recurring",
-                "start_date": "2017-07-06",
-                "cancelled_at": null
+                "start_date": "2017-07-06"
             },
             "_links": {
                 "order": {
@@ -217,8 +215,7 @@ curl -X GET \
                 "created_at": "2017-07-06T12:13:46+0200",
                 "updated_at": "2017-07-06T12:13:47+0200",
                 "type": "recurring",
-                "start_date": "2017-07-06",
-                "cancelled_at": null
+                "start_date": "2017-07-06"
             },
             "_links": {
                 "order": {
@@ -293,6 +290,7 @@ DELETE https://localhost/api/v1/orders/{orderId}/payments/{id}/cancel
 ```
 
 Cancels an order's payment. You need only supply the unique order identifier that was generated upon order creation and payment id in order to remove an object.
+If the payment is recurring, it will be canceled so that the customer won't be charged anymore.
 
 > Example Request
 
@@ -402,8 +400,7 @@ Returns a list of all orders.
                             "code": "monthly_subscription",
                             "created_at": "2017-07-06T12:13:46+0200",
                             "updated_at": "2017-07-06T12:13:47+0200"
-                            "start_date": "2017-07-06",
-                            "cancelled_at": null
+                            "start_date": "2017-07-06"
                         },
                         "_links": {
                             "order": {

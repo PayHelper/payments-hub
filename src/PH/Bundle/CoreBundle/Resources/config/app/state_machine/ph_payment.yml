@@ -37,6 +37,10 @@ winzou_state_machine:
                     on: ["fail", "cancel"]
                     do: ["@ph.state_resolver.order_payment", "resolve"]
                     args: ["object.getOrder()"]
+                ph_cancel_payment:
+                    on: ["cancel"]
+                    do: ["object", "cancel"]
+                    args: ["object"]
                 ph_resolve_state:
                     on: ["complete", "refund"]
                     do: ["@ph.state_resolver.order_payment", "resolve"]
