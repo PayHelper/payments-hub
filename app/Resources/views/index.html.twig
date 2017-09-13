@@ -11,42 +11,22 @@
             {%  endif %}
             <div id="next">
                 Place an order:<br><br>
-                <form id="place-order-form">
-                    Amount:<br>
-                    <input type="text" name="amount"><br>
-                    Currency:<br>
-                    <input type="text" value="EUR" name="currency_code"><br>
-                    Interval:<br>
-                    <select id="ph_subscription_interval" name="interval">
-                        <option value="1 month">Monthly</option>
-                        <option value="3 months">Quarterly</option>
-                        <option value="1 year">Yearly</option>
-                    </select><br>
-                    Type:<br>
-                    <select id="ph_subscription_type" name="ph_subscription[type]">
-                        <option value="recurring">Recurring</option>
-                        <option value="non-recurring">Non-Recurring</option>
-                    </select><br>
-                    Start date:<br>
-                    <div id="ph_subscription_startDate">
-                        <select id="ph_subscription_startDate_month" name="ph_subscription[startDate][month]">
-                            <option value="10">Oct</option>
-                            <option value="11">Nov</option>
-                        </select>
-                        <select id="ph_subscription_startDate_day" name="ph_subscription[startDate][day]">
-                            <option value="1">1</option>
-                            <option value="15">15</option>
-                        </select>
-                        <select id="ph_subscription_startDate_year" name="ph_subscription[startDate][year]">
-                            <option value="2017" selected="selected">2017</option>
-                        </select>
-                    </div>
-                    Payment method:<br>
-                    <select id="payment-methods">
-                    </select>
-                    <br>
-                    <input type="submit"/>
-                </form>
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                {{ form_row(form.amount) }}
+                {{ form_row(form.currencyCode) }}
+                {{ form_row(form.interval) }}
+                {{ form_row(form.code) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.type) }}
+                {{ form_row(form.startDate) }}
+                Payment method:<br>
+                <select id="payment-methods">
+                </select>
+                <br>
+                {{ form_row(form.submit) }}
+                {{ form_end(form) }}
             </div>
         </div>
     </div>
@@ -90,28 +70,18 @@
             $('#payment-methods').html(options.join(''));
         });
 
-        $( "#place-order-form" ).submit(function( event ) {
+        $("form[name='ph_subscription']").submit(function( event ) {
             event.preventDefault();
 
             var $form = $( this ),
-                currency = $form.find( "input[name='currency_code']" ).val(),
-                amount = $form.find( "input[name='amount']" ).val(),
-                interval = $form.find( "select[name='interval']" ).val(),
+                currency = $form.find( "select[name='ph_subscription[currencyCode]']" ).val(),
+                amount = $form.find( "input[name='ph_subscription[amount]']" ).val(),
+                interval = $form.find( "select[name='ph_subscription[interval]']" ).val(),
                 startMonth = $form.find( "select[name='ph_subscription[startDate][month]']" ).val(),
                 startDay = $form.find( "select[name='ph_subscription[startDate][day]']" ).val(),
                 startYear = $form.find( "select[name='ph_subscription[startDate][year]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val();
-            console.log(JSON.stringify({"amount": amount * 100,
-                "currency_code": currency,
-                "interval": interval,
-                "name": "Monthly subscription",
-                "type": subType,
-                "start_date": {
-                    "month": startMonth,
-                    "day": startDay,
-                    "year": startYear
-                },
-                "code": "monthly_subscription"}));
+
             $.ajax({
                 type: "POST",
                 contentType: "application/json",

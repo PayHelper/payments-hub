@@ -17,8 +17,7 @@ PH\Component\Subscription\Model\Subscription:
             - NotBlank:
                 groups: [ph]
         startDate:
-            - Range:
-                min: now
+            - Date:
                 groups: [ph]
         interval:
             - NotBlank:

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace PH\Bundle\PayumBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,7 +23,6 @@ final class MollieGatewayConfigurationType extends AbstractType
                     new NotBlank(),
                 ],
             ])
-            ->add('sandbox', CheckboxType ::class)
             ->add('method', ChoiceType::class, [
                 'choices' => [
                     'SEPA Direct Debit' => 'directdebit',

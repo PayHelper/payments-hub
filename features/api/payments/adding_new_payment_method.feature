@@ -101,7 +101,6 @@ Feature: Adding a new payment method
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
-          "sandbox":"1",
           "method":"creditcard"
         }
       },
@@ -127,7 +126,6 @@ Feature: Adding a new payment method
       | gateway_config.factory_name     | mollie                      |
       | gateway_config.gateway_name     | mollie_credit_card          |
       | gateway_config.config.apiKey    | apikey123456                |
-      | gateway_config.config.sandbox   | 1                           |
       | gateway_config.config.method    | creditcard                  |
 
   Scenario: Adding a new Mollie SEPA direct debit payment method
@@ -143,7 +141,6 @@ Feature: Adding a new payment method
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
-          "sandbox":"1",
           "method":"directdebit"
         }
       },
@@ -169,7 +166,6 @@ Feature: Adding a new payment method
       | gateway_config.factory_name     | mollie                      |
       | gateway_config.gateway_name     | mollie_sepa                 |
       | gateway_config.config.apiKey    | apikey123456                |
-      | gateway_config.config.sandbox   | 1                           |
       | gateway_config.config.method    | directdebit                 |
 
   Scenario: Adding a new Mollie fake payment method
@@ -185,7 +181,6 @@ Feature: Adding a new payment method
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
-          "sandbox":"1",
           "method":"fake_method"
         }
       },
