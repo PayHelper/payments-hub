@@ -7,10 +7,7 @@ ph_core_thankyou:
     defaults: { _controller: PHCoreBundle:Sandbox:thankyou }
 
 ph_payum_capture:
-    resource: "@PayumBundle/Resources/config/routing/capture.xml"
-
-ph_payum_notify:
-    resource: "@PayumBundle/Resources/config/routing/notify.xml"
+    resource: "@PayumBundle/Resources/config/routing/all.xml"
 
 ph_core:
     resource: "@PHCoreBundle/Resources/config/routing.yml"

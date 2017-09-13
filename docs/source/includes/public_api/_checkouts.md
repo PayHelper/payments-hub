@@ -104,11 +104,13 @@ curl -X PATCH \
                 "id": 1,
                 "amount": "5000",
                 "currency_code": "PLN",
-                "interval": "month",
+                "interval": "1 month",
                 "name": "Monthly subscription",
                 "code": "monthly_subscription",
                 "created_at": "2017-07-10T14:27:19+0200",
-                "updated_at": "2017-07-10T14:27:19+0200"
+                "updated_at": "2017-07-10T14:27:19+0200",
+                "type": "recurring",
+                "start_date": "2017-07-10"
             },
             "_links": {
                 "order": {

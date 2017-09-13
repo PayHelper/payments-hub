@@ -41,11 +41,22 @@ class Subscription implements SubscriptionInterface
     protected $code;
 
     /**
+     * @var \DateTimeInterface|null
+     */
+    protected $startDate;
+
+    /**
+     * @var string|null
+     */
+    protected $type = SubscriptionInterface::TYPE_NON_RECURRING;
+
+    /**
      * Subscription constructor.
      */
     public function __construct()
     {
         $this->createdAt = new \DateTime();
+        $this->startDate = new \DateTime();
     }
 
     /**
@@ -134,5 +145,37 @@ class Subscription implements SubscriptionInterface
     public function setName(string $name): void
     {
         $this->name = $name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        return $this->startDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStartDate(?\DateTimeInterface $startDate): void
+    {
+        $this->startDate = $startDate;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType(?string $type): void
+    {
+        $this->type = $type;
     }
 }

@@ -22,4 +22,14 @@ interface PaymentInterface extends BasePaymentInterface
      * @param BaseOrderInterface|null $order
      */
     public function setOrder(BaseOrderInterface $order = null): void;
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getCanceledAt(): ?\DateTimeInterface;
+
+    /**
+     * @param \DateTimeInterface|null $dateTime
+     */
+    public function setCanceledAt(?\DateTimeInterface $dateTime): void;
 }

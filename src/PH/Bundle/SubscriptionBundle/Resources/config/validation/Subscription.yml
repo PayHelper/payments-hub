@@ -1,0 +1,27 @@
+PH\Component\Subscription\Model\Subscription:
+    properties:
+        type:
+            - NotBlank:
+                groups: [ph]
+        name:
+            - NotBlank:
+                groups: [ph]
+        code:
+            - NotBlank:
+                groups: [ph]
+        amount:
+            - Range:
+                min: 1
+                minMessage: Entered value can not be lower than {{ limit }}
+                groups: [ph]
+            - NotBlank:
+                groups: [ph]
+        startDate:
+            - Date:
+                groups: [ph]
+        interval:
+            - NotBlank:
+                groups: [ph]
+        currencyCode:
+            - Currency:
+                groups: [ph]

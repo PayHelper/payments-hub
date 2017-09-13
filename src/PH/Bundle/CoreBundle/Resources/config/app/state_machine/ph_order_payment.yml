@@ -34,6 +34,6 @@ winzou_state_machine:
         callbacks:
             after:
                 ph_resolve_state:
-                    on: ["pay"]
+                    on: ["pay", "cancel"]
                     do: ["@ph.state_resolver.order", "resolve"]
                     args: ["object"]

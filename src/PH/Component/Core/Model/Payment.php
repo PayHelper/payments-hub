@@ -15,6 +15,35 @@ class Payment extends BasePayment implements PaymentInterface
     protected $order;
 
     /**
+     * @var \DateTimeInterfac
+     */
+    protected $canceledAt;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCanceledAt(): ?\DateTimeInterface
+    {
+        return $this->canceledAt;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCanceledAt(?\DateTimeInterface $dateTime): void
+    {
+        $this->canceledAt = $dateTime;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function cancel()
+    {
+        $this->canceledAt = new \DateTime();
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getOrder(): ?BaseOrderInterface

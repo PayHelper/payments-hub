@@ -1,3 +1,6 @@
+parameters:
+    payum.template.sepa_obtain_bank_details: '@@PHPayum/Action/obtain_sepa_bank_account.html.twig'
+
 services:
     # generic
     ph.payum_action.capture_payment:
@@ -12,3 +15,11 @@ services:
             - '@sylius.invoice_number_generator'
         tags:
             - { name: "payum.action", factory: "paypal_express_checkout", alias: "sylius.paypal_express_checkout.convert_payment"}
+
+    # Mollie
+    ph.payum_action.mollie.obtain_sepa_bank_account:
+        class: PH\Bundle\PayumBundle\Action\Mollie\SepaDirectDebit\ObtainBankAccountAction
+        arguments:
+            - '%payum.template.sepa_obtain_bank_details%'
+        tags:
+            - { name: "payum.action", factory: "mollie", alias: "ph.mollie.obtain_sepa_bank_account"}

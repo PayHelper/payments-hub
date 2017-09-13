@@ -23,12 +23,14 @@ Feature: Getting a single order
       | items[0].subscription.interval        | month                       |
       | items[0].subscription.name            | My subscription             |
       | items[0].subscription.code            | my_sub                      |
+      | items[0].subscription.type            | non-recurring               |
       | items_total                           | 5000                        |
       | total                                 | 5000                        |
       | state                                 | cart                        |
       | checkout_state                        | cart                        |
       | payment_state                         | cart                        |
     And the JSON node "checkout_completed_at" should be null
+    And the JSON node "items[0].subscription.start_date" should not be null
     And the JSON node "number" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null

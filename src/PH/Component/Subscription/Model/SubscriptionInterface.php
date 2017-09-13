@@ -9,10 +9,12 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
 
 interface SubscriptionInterface extends TimestampableInterface, ResourceInterface
 {
-    const INTERVAL_DAY = 'day';
-    const INTERVAL_MONTH = 'month';
-    const INTERVAL_YEAR = 'year';
-    const INTERVAL_DONATION = 'donation';
+    const INTERVAL_MONTH = '1 month';
+    const INTERVAL_YEAR = '1 year';
+    const INTERVAL_QUARTERLY = '3 months';
+
+    const TYPE_RECURRING = 'recurring';
+    const TYPE_NON_RECURRING = 'non-recurring';
 
     /**
      * @return mixed
@@ -68,4 +70,24 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
      * @param string $name
      */
     public function setName(string $name): void;
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getStartDate(): ?\DateTimeInterface;
+
+    /**
+     * @param \DateTimeInterface|null $startDate
+     */
+    public function setStartDate(?\DateTimeInterface $startDate): void;
+
+    /**
+     * @return null|string
+     */
+    public function getType(): ?string;
+
+    /**
+     * @param null|string $type
+     */
+    public function setType(?string $type): void;
 }
