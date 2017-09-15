@@ -38,7 +38,7 @@ final class OrderPaymentProcessor implements OrderProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(BaseOrderInterface $order)
+    public function process(BaseOrderInterface $order): void
     {
         /* @var OrderInterface $order */
         Assert::isInstanceOf($order, OrderInterface::class);

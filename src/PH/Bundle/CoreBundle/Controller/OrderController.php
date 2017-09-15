@@ -17,7 +17,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class OrderController extends ResourceController
 {
-    public function addAction(Request $request)
+    public function addAction(Request $request): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
         $this->isGrantedOr403($configuration, OrderEvents::CREATE);
@@ -54,7 +54,7 @@ class OrderController extends ResourceController
     /**
      * @return FormFactoryInterface
      */
-    protected function getFormFactory()
+    protected function getFormFactory(): FormFactoryInterface
     {
         return $this->get('form.factory');
     }
@@ -62,7 +62,7 @@ class OrderController extends ResourceController
     /**
      * @return SubscriptionInterface
      */
-    protected function createSubscription()
+    protected function createSubscription(): SubscriptionInterface
     {
         return $this->get('ph.factory.subscription')->createNew();
     }
@@ -70,7 +70,7 @@ class OrderController extends ResourceController
     /**
      * @return OrderFacadeInterface
      */
-    protected function getOrderService()
+    protected function getOrderService(): OrderFacadeInterface
     {
         return $this->get('ph.facade.order');
     }

@@ -23,16 +23,10 @@ Feature: Paying offline during checkout
     Then the response status code should be 204
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "PATCH" request to "/api/v1/checkouts/complete/1" with body:
-    """
-        {
-            "notes": "Thanks!"
-        }
-    """
+    And I send a "GET" request to "/api/v1/checkouts/1"
     Then the response status code should be 200
     And the JSON node "checkout_state" should be equal to "completed"
     And the JSON node "payment_state" should be equal to "awaiting_payment"
     And the JSON node "total" should be equal to "5000"
     And the JSON node "token_value" should not be null
     And the JSON node "number" should not be null
-    And the JSON node "notes" should be equal to "Thanks!"

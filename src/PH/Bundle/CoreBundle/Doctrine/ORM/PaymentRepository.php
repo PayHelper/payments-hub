@@ -13,7 +13,7 @@ class PaymentRepository extends EntityRepository implements PaymentRepositoryInt
     /**
      * {@inheritdoc}
      */
-    public function findOneByOrderId(int $paymentId, int $orderId): ?PaymentInterface
+    public function findOneByOrderId(string $paymentId, string $orderId): ?PaymentInterface
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.id = :paymentId')

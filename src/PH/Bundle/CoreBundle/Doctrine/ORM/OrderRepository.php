@@ -13,7 +13,7 @@ class OrderRepository extends BaseOrderRepository implements OrderRepositoryInte
     /**
      * {@inheritdoc}
      */
-    public function findByOrderId(int $id): ?OrderInterface
+    public function findByOrderId(string $id): ?OrderInterface
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.id = :orderId')

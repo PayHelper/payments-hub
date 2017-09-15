@@ -140,15 +140,15 @@ class PayumController
 
     /**
      * @param Request $request
-     * @param int     $orderId
-     * @param int     $id
+     * @param string  $orderId
+     * @param string  $id
      *
      * @return Response
      *
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      */
-    public function cancelAction(Request $request, int $orderId, int $id): Response
+    public function cancelAction(Request $request, string $orderId, string $id): Response
     {
         $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
 
