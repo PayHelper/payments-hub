@@ -113,22 +113,15 @@
                     dataType: "json"
                 }).done(function( paymentRes ) {
                     console.log('payment method selected');
-                    $.ajax({
-                        type: "PATCH",
-                        contentType: "application/json",
-                        url: '/public-api/v1/checkouts/complete/'+data.token_value,
-                        data: JSON.stringify({
-                            "notes": "Thanks!"
-                        }),
-                        dataType: "json"
-                    }).done(function( completeRes ) {
-                        console.log('checkout completed');
-                        window.location.replace('/public-api/v1/checkouts/pay/'+completeRes.token_value+'?thankyou={{ app.request.getSchemeAndHttpHost() }}/thank-you?token='+data.token_value);
-                    });
+                    window.location.replace('/public-api/v1/checkouts/pay/'+data.token_value+'?thankyou={{ app.request.getSchemeAndHttpHost() }}/thank-you?token='+data.token_value);
+                }).fail(function () {
+                    alert('error when selecting payment method');
                 });
 
                 console.log('done');
-            });
+            }).fail(function () {
+                alert('error when making a purchase');
+            });;
         });
     </script>
 {% endblock %}
