@@ -25,7 +25,7 @@ final class CapturePaymentAction extends GatewayAwareAction
 
         /** @var PaymentInterface $payment */
         $payment = $request->getModel();
-        $paymentMethod = $payment->getMethod()->getGatewayConfig()->getConfig()['method'];
+        $paymentMethodConfig = $payment->getMethod()->getGatewayConfig()->getConfig();
 
         /** @var OrderInterface $order */
         $order = $payment->getOrder();
@@ -49,11 +49,16 @@ final class CapturePaymentAction extends GatewayAwareAction
                     $startDate = new \DateTime();
                 }
 
-                $payumPayment->setDetails(array_merge($payment->getDetails(), [
-                    'method' => $paymentMethod,
+                $details = [
                     'interval' => $order->getItems()->first()->getSubscription()->getInterval(),
                     'startDate' => $startDate->format('Y-m-d'),
-                ]));
+                ];
+
+                if (isset($paymentMethodConfig['method'])) {
+                    $details['method'] = $paymentMethodConfig['method'];
+                }
+
+                $payumPayment->setDetails(array_merge($payment->getDetails(), $details));
 
                 $this->gateway->execute($convert = new Convert($payumPayment, 'array', $request->getToken()));
 
