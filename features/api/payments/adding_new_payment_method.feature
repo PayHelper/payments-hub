@@ -195,3 +195,47 @@ Feature: Adding a new payment method
     """
     Then the response status code should be 400
     And the response should be in JSON
+
+  Scenario: Adding a new mbe4 payment method
+    Given I am authenticated as "admin"
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/api/v1/payment-methods/new/mbe4" with body:
+    """
+    {
+      "code":"mbe4",
+      "position":"2",
+      "enabled":"1",
+      "gateway_config":{
+        "config":{
+          "username":"user",
+          "password":"pass",
+          "serviceId": "4321",
+          "clientId": "1234"
+        }
+      },
+      "translations":{
+        "en":{
+          "name":"Mbe4",
+          "description":"desc",
+          "instructions":"instructions"
+        }
+      }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+    And the JSON nodes should contain:
+      | id                              | 1                           |
+      | position                        | 2                           |
+      | code                            | mbe4                        |
+      | enabled                         | 1                           |
+      | translations.en.locale          | en                          |
+      | translations.en.id              | 1                           |
+      | gateway_config.id               | 1                           |
+      | gateway_config.factory_name     | mbe4                        |
+      | gateway_config.gateway_name     | mbe4                        |
+      | gateway_config.config.username  | user                        |
+      | gateway_config.config.password  | pass                        |
+      | gateway_config.config.clientId  | 1234                        |
+      | gateway_config.config.serviceId | 4321                        |

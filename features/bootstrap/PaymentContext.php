@@ -3,9 +3,9 @@
 declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
+use PH\Component\Core\Factory\PaymentMethodFactoryInterface;
 use PH\Component\Core\Model\PaymentMethodInterface;
 use Sylius\Component\Payment\Repository\PaymentMethodRepositoryInterface;
-use Sylius\Component\Core\Factory\PaymentMethodFactoryInterface;
 
 final class PaymentContext implements Context
 {

@@ -15,12 +15,14 @@ final class MollieGatewayConfigurationType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('apiKey', TextType::class, [
                 'constraints' => [
-                    new NotBlank(),
+                    new NotBlank([
+                        'groups' => 'ph',
+                    ]),
                 ],
             ])
             ->add('method', ChoiceType::class, [

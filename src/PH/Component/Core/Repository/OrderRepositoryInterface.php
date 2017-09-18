@@ -9,11 +9,11 @@ use PH\Component\Core\Model\OrderInterface;
 interface OrderRepositoryInterface
 {
     /**
-     * @param int $id
+     * @param string $id
      *
      * @return null|OrderInterface
      */
-    public function findByOrderId(int $id): ?OrderInterface;
+    public function findByOrderId(string $id): ?OrderInterface;
 
     /**
      * @param string $token

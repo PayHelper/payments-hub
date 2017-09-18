@@ -24,7 +24,7 @@ final class PaymentType extends AbstractType
     /**
      * @param string $dataClass
      */
-    public function __construct($dataClass)
+    public function __construct(string $dataClass)
     {
         $this->dataClass = $dataClass;
     }
@@ -32,7 +32,7 @@ final class PaymentType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             $form = $event->getForm();
@@ -48,7 +48,7 @@ final class PaymentType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => $this->dataClass,
@@ -58,7 +58,7 @@ final class PaymentType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'ph_checkout_payment';
     }

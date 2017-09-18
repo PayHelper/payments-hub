@@ -4,3 +4,9 @@ services:
         tags:
             - { name: sylius.gateway_configuration_type, type: 'mollie', label: 'Mollie' }
             - { name: form.type }
+
+    ph.form.type.gateway_configuration.mbe4:
+        class: PH\Bundle\PayumBundle\Form\Type\Mbe4GatewayConfigurationType
+        tags:
+            - { name: sylius.gateway_configuration_type, type: 'mbe4', label: 'Mbe4' }
+            - { name: form.type }

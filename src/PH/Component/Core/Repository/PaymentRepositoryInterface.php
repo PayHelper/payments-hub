@@ -9,10 +9,10 @@ use PH\Component\Core\Model\PaymentInterface;
 interface PaymentRepositoryInterface
 {
     /**
-     * @param int $paymentId
-     * @param int $orderId
+     * @param string $paymentId
+     * @param string $orderId
      *
      * @return null|PaymentInterface
      */
-    public function findOneByOrderId(int $paymentId, int $orderId): ?PaymentInterface;
+    public function findOneByOrderId(string $paymentId, string $orderId): ?PaymentInterface;
 }
