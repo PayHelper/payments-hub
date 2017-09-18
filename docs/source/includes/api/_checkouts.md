@@ -4,11 +4,10 @@ These endpoints will allow you to easily go through the order checkout process r
 
 The checkout can be performed only when there is an order created.
 
-Checkouts API consists of three steps which must be executed in the exact order, unless you customize it:
+Checkouts API consists of two steps which must be executed in the exact order, unless you customize it:
 
 1. Select a payment method
-2. Complete the checkout
-3. Pay for an order
+2. Pay for an order
 
 ## Select a payment method
 
@@ -61,123 +60,6 @@ payments (`required`)| array | An array of selected payment methods.
 ### Returns 
 
 Returns an empty response if selecting payment method succeeded. Returns an error if selecting payment method can not be done (e.g. when the selected payment method does not exist or an order does not exist).
-
-## Complete the checkout
-
-> Definition
-
-```shell
-PATCH https://localhost/api/v1/checkouts/complete/{orderId}
-```
-
-Here, after the payment method is selected, you can complete the order checkout to be able to pay for an order using the previously selected payment method.
-
-Once this endpoint is called, the order checkout state will change from `payment_selected` to `completed` and order payment state will change from `cart` to `awaiting_payment`.
-
-<aside class="notice">You can check the <a href='https://github.com/sourcefabric/payments-hub/blob/master/src/PH/Bundle/CoreBundle/Resources/config/app/state_machine/ph_order_checkout.yml'>configuration</a> of the state machine to see the configured states and transitions.</aside>
-
-> Example Request
-
-```shell
-curl -X PATCH \
-  http://localhost/api/v1/checkouts/complete/1 \
-  -H 'authorization: Bearer key' \
-  -H 'content-type: application/json' \
-  -d '{
-  "notes": "Thanks for your great content!"
-}'
-```
-
-> Response (200)
-
-```json
-{
-    "id": 1,
-    "checkout_completed_at": "2017-07-10T14:27:47+0200",
-    "number": "000000001",
-    "notes": "Thanks for your great content!",
-    "items": [
-        {
-            "id": 1,
-            "quantity": 1,
-            "unit_price": 5000,
-            "total": 5000,
-            "subscription": {
-                "id": 1,
-                "amount": "5000",
-                "currency_code": "PLN",
-                "interval": "month",
-                "name": "Monthly subscription",
-                "code": "monthly_subscription",
-                "created_at": "2017-07-10T14:27:19+0200",
-                "updated_at": "2017-07-10T14:27:19+0200"
-            },
-            "_links": {
-                "order": {
-                    "href": "/app_dev.php/api/v1/orders/36"
-                }
-            }
-        }
-    ],
-    "items_total": 5000,
-    "total": 5000,
-    "state": "new",
-    "created_at": "2017-07-10T14:27:19+0200",
-    "updated_at": "2017-07-10T14:27:47+0200",
-    "payments": [
-        {
-            "id": 1,
-            "method": {
-                "id": 2,
-                "code": "paypal",
-                "position": 1,
-                "created_at": "2017-07-06T16:32:48+0200",
-                "updated_at": "2017-07-06T16:32:50+0200",
-                "enabled": true,
-                "translations": {
-                    "en": {
-                        "locale": "en",
-                        "translatable": null,
-                        "id": 2,
-                        "name": "testpay",
-                        "description": "desc",
-                        "instructions": "instructions"
-                    }
-                },
-                "_links": {
-                    "self": {
-                        "href": "/api/v1/payment-methods/paypal"
-                    }
-                }
-            },
-            "currency_code": "PLN",
-            "amount": 5000,
-            "state": "new",
-            "created_at": "2017-07-10T14:27:19+0200",
-            "updated_at": "2017-07-10T14:27:47+0200"
-        }
-    ],
-    "checkout_state": "completed",
-    "payment_state": "awaiting_payment",
-    "token_value": "lKD1QhGtjW",
-    "_links": {
-        "self": {
-            "href": "/api/v1/orders/36"
-        }
-    }
-}
-```
-
-### Arguments
-
-Name | Type | Description
---------- | ------- | -----------
-orderId (`required`)| integer | The identifier of the order to be completed.
-notes (`optional`)| string | An extra notes.
-
-### Returns 
-
-Returns an empty response if checkout complete succeeded. Returns an error if complete can not be done (e.g. when the payment method is not selected).
 
 ## Pay for an order
 
