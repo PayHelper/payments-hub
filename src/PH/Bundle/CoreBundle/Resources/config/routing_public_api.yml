@@ -60,7 +60,6 @@ ph_public_api_payum_order_pay:
                 route: ph_public_api_payum_order_after_pay
                 parameters:
                     version: $version
-                    thankyou: $thankyou
 
 ph_public_api_payum_order_after_pay:
     path: /checkouts/after-pay/

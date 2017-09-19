@@ -6,6 +6,10 @@ ph_core_thankyou:
     path:     /thank-you
     defaults: { _controller: PHCoreBundle:Sandbox:thankyou }
 
+ph_core_cancel:
+    path:     /cancel
+    defaults: { _controller: PHCoreBundle:Sandbox:cancel }
+
 ph_payum_capture:
     resource: "@PayumBundle/Resources/config/routing/all.xml"
 

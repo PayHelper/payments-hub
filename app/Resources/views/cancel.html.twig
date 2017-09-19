@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
+            </div>
+            {% if app.request.get('token') %}
+                <div style="color: #ff8888">Purchase {{ app.request.get('token') }} has been canceled!</div>
+            {% else %}
+                <div style="color: #ff8888">Purchase has been canceled!</div>
+            {%  endif %}
+        </div>
+    </div>
+{% endblock %}
