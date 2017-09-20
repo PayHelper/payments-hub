@@ -8,6 +8,11 @@ services:
         tags:
             - { name: "payum.action", all: true, alias: "sylius.capture_payment"}
 
+    ph.payum_action.resolve_next_route:
+        class: PH\Bundle\PayumBundle\Action\ResolveNextRouteAction
+        tags:
+            - { name: "payum.action", all: true, alias: "ph.resolve_next_route"}
+
     # Paypal
     ph.payum_action.paypal_express_checkout.convert_payment:
         class: PH\Bundle\PayumBundle\Action\Paypal\ExpressCheckout\ConvertPaymentAction

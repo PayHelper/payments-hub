@@ -25,4 +25,11 @@ class SandboxController extends Controller
             'token' => $request->query->has('token') ? $request->query->has('token') : '',
         ]);
     }
+
+    public function cancelAction(Request $request)
+    {
+        return $this->render('cancel.html.twig', [
+            'token' => $request->query->has('token') ? $request->query->has('token') : '',
+        ]);
+    }
 }

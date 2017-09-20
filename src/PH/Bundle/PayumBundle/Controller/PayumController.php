@@ -8,6 +8,7 @@ use FOS\RestBundle\View\View;
 use Payum\Core\Payum;
 use Payum\Core\Security\GenericTokenFactoryInterface;
 use Payum\Core\Security\HttpRequestVerifierInterface;
+use PH\Bundle\PayumBundle\Factory\ResolveNextRouteFactoryInterface;
 use PH\Component\Core\Model\OrderInterface;
 use PH\Component\Core\Model\PaymentInterface;
 use PH\Component\Core\Repository\OrderRepositoryInterface;
@@ -60,6 +61,11 @@ class PayumController
     private $paymentRepository;
 
     /**
+     * @var ResolveNextRouteFactoryInterface
+     */
+    private $resolveNextRouteFactory;
+
+    /**
      * @param Payum                                $payum
      * @param OrderRepositoryInterface             $orderRepository
      * @param MetadataInterface                    $orderMetadata
@@ -67,6 +73,7 @@ class PayumController
      * @param ViewHandlerInterface                 $viewHandler
      * @param RouterInterface                      $router
      * @param PaymentRepositoryInterface           $paymentRepository
+     * @param ResolveNextRouteFactoryInterface     $resolveNextRouteFactory
      */
     public function __construct(
         Payum $payum,
@@ -75,7 +82,8 @@ class PayumController
         RequestConfigurationFactoryInterface $requestConfigurationFactory,
         ViewHandlerInterface $viewHandler,
         RouterInterface $router,
-        PaymentRepositoryInterface $paymentRepository
+        PaymentRepositoryInterface $paymentRepository,
+        ResolveNextRouteFactoryInterface $resolveNextRouteFactory
     ) {
         $this->payum = $payum;
         $this->orderRepository = $orderRepository;
@@ -84,6 +92,7 @@ class PayumController
         $this->viewHandler = $viewHandler;
         $this->router = $router;
         $this->paymentRepository = $paymentRepository;
+        $this->resolveNextRouteFactory = $resolveNextRouteFactory;
     }
 
     /**
@@ -128,12 +137,21 @@ class PayumController
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws \InvalidArgumentException
      */
     public function afterCaptureAction(Request $request): Response
     {
-        $configuration = $this->afterAction($request);
+        $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
+        $token = $this->getHttpRequestVerifier()->verify($request);
+        $status = new GetStatus($token);
 
-        $view = View::createRedirect($request->query->get('thankyou'));
+        $this->payum->getGateway($token->getGatewayName())->execute($status);
+        $resolveNextRoute = $this->resolveNextRouteFactory->createNewWithModel($status->getFirstModel());
+        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
+        $this->getHttpRequestVerifier()->invalidate($token);
+
+        $view = View::createRouteRedirect($resolveNextRoute->getRouteName(), $resolveNextRoute->getRouteParameters());
 
         return $this->viewHandler->handle($configuration, $view);
     }
@@ -145,6 +163,7 @@ class PayumController
      *
      * @return Response
      *
+     * @throws \InvalidArgumentException
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      */
@@ -181,28 +200,21 @@ class PayumController
      * @param Request $request
      *
      * @return Response
+     *
+     * @throws \InvalidArgumentException
      */
     public function afterCancelAction(Request $request): Response
     {
-        $configuration = $this->afterAction($request);
-
-        $view = View::create([], 204);
-
-        return $this->viewHandler->handle($configuration, $view);
-    }
-
-    private function afterAction(Request $request)
-    {
         $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
-
         $token = $this->getHttpRequestVerifier()->verify($request);
-
         $status = new GetStatus($token);
 
         $this->payum->getGateway($token->getGatewayName())->execute($status);
         $this->getHttpRequestVerifier()->invalidate($token);
 
-        return $configuration;
+        $view = View::create([], 204);
+
+        return $this->viewHandler->handle($configuration, $view);
     }
 
     /**
