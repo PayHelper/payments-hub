@@ -8,6 +8,7 @@ final class PaymentTransitions
 {
     const GRAPH = 'ph_payment';
 
+    const TRANSITION_AUTHORIZE = 'authorize';
     const TRANSITION_CREATE = 'create';
     const TRANSITION_PROCESS = 'process';
     const TRANSITION_COMPLETE = 'complete';
