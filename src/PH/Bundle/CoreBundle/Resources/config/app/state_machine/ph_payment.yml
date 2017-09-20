@@ -12,6 +12,7 @@ winzou_state_machine:
             failed: ~
             cancelled: ~
             refunded: ~
+            authorized: ~
         transitions:
             create:
                 from: [cart]
@@ -19,14 +20,17 @@ winzou_state_machine:
             process:
                 from: [new]
                 to: processing
+            authorize:
+                from: [new]
+                to: authorized
             complete:
-                from: [new, processing]
+                from: [new, processing, authorized]
                 to: completed
             fail:
-                from: [new, processing]
+                from: [new, processing, authorized]
                 to: failed
             cancel:
-                from: [new, processing]
+                from: [new, processing, authorized]
                 to: cancelled
             refund:
                 from: [completed]
