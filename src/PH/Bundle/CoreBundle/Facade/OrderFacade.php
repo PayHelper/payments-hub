@@ -52,7 +52,7 @@ final class OrderFacade implements OrderFacadeInterface
 
         $this->orderItemQuantityModifier->modify($orderItem, 1);
         $orderItem->setUnitPrice($subscription->getAmount());
-        $orderItem->setSubscription($subscription);
+        $order->setSubscription($subscription);
         $order->setCurrencyCode($subscription->getCurrencyCode());
         $this->orderModifier->addToOrder($order, $orderItem);
 

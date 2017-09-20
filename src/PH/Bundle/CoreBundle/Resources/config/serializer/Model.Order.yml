@@ -18,6 +18,9 @@ PH\Component\Core\Model\Order:
             expose: true
             type: string
             groups: [Detailed]
+        subscription:
+            expose: true
+            groups: [Default, Detailed]
     relations:
         -   rel: self
             href:
