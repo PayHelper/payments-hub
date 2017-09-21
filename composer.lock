@@ -3547,12 +3547,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sourcefabric/payum-mollie.git",
-                "reference": "aeceb7115733e433fd8a0e1b721f15f71b6e662c"
+                "reference": "901beac59c8c5e57272dec65e51419188b8be749"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sourcefabric/payum-mollie/zipball/aeceb7115733e433fd8a0e1b721f15f71b6e662c",
-                "reference": "aeceb7115733e433fd8a0e1b721f15f71b6e662c",
+                "url": "https://api.github.com/repos/sourcefabric/payum-mollie/zipball/901beac59c8c5e57272dec65e51419188b8be749",
+                "reference": "901beac59c8c5e57272dec65e51419188b8be749",
                 "shasum": ""
             },
             "require": {
@@ -3596,7 +3596,7 @@
                 "payum",
                 "sepa"
             ],
-            "time": "2017-09-14T14:53:19+00:00"
+            "time": "2017-09-20T08:20:57+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
