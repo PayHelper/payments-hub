@@ -21,18 +21,6 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
             "quantity": 1,
             "unit_price": 500,
             "total": 500,
-            "subscription": {
-                "id": 6,
-                "amount": "500",
-                "currency_code": "PLN",
-                "interval": "1 month",
-                "name": "Monthly subscription",
-                "code": "monthly_subscription",
-                "type": "recurring",
-                "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200",
-                "start_date": "2017-07-06"
-            },
             "_links": {
                 "order": {
                     "href": "/api/v1/orders/6"
@@ -49,6 +37,18 @@ Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
     "checkout_state": "cart",
     "payment_state": "cart",
     "token_value": "WtR4aExE9C",
+    "subscription": {
+        "id": 6,
+        "amount": "500",
+        "currency_code": "PLN",
+        "interval": "1 month",
+        "name": "Monthly subscription",
+        "code": "monthly_subscription",
+        "type": "recurring",
+        "created_at": "2017-07-06T12:13:46+0200",
+        "updated_at": "2017-07-06T12:13:47+0200",
+        "start_date": "2017-07-06"
+    },
     "_links": {
         "self": {
             "href": "/api/v1/orders/6"
@@ -73,6 +73,7 @@ payments | array | An array of Payment object which contains [payment methods](#
 checkout_state | string | A state of the checkout process. Can be either: `cart`, `payment_selected` or `completed`.
 payment_state | string | A state of the payment. Can be either: `cart`, `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
+subscription | object | A subscription object
 
 ## Create an order
 
@@ -120,18 +121,6 @@ curl -X POST \
             "quantity": 1,
             "unit_price": 500,
             "total": 500,
-            "subscription": {
-                "id": 6,
-                "amount": "500",
-                "currency_code": "PLN",
-                "interval": "1 month",
-                "name": "Monthly subscription",
-                "code": "monthly_subscription",
-                "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200",
-                "type": "recurring",
-                "start_date": "2017-07-06"
-            },
             "_links": {
                 "order": {
                     "href": "/api/v1/orders/6"
@@ -148,6 +137,18 @@ curl -X POST \
     "checkout_state": "cart",
     "payment_state": "cart",
     "token_value": "WtR4aExE9C",
+    "subscription": {
+        "id": 6,
+        "amount": "500",
+        "currency_code": "PLN",
+        "interval": "1 month",
+        "name": "Monthly subscription",
+        "code": "monthly_subscription",
+        "type": "recurring",
+        "created_at": "2017-07-06T12:13:46+0200",
+        "updated_at": "2017-07-06T12:13:47+0200",
+        "start_date": "2017-07-06"
+    },
     "_links": {
         "self": {
             "href": "/api/v1/orders/6"
@@ -205,18 +206,6 @@ curl -X GET \
             "quantity": 1,
             "unit_price": 500,
             "total": 500,
-            "subscription": {
-                "id": 6,
-                "amount": "500",
-                "currency_code": "PLN",
-                "interval": "1 month",
-                "name": "Monthly subscription",
-                "code": "monthly_subscription",
-                "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200",
-                "type": "recurring",
-                "start_date": "2017-07-06"
-            },
             "_links": {
                 "order": {
                     "href": "/api/v1/orders/6"
@@ -233,6 +222,18 @@ curl -X GET \
     "checkout_state": "cart",
     "payment_state": "cart",
     "token_value": "WtR4aExE9C",
+    "subscription": {
+        "id": 6,
+        "amount": "500",
+        "currency_code": "PLN",
+        "interval": "1 month",
+        "name": "Monthly subscription",
+        "code": "monthly_subscription",
+        "type": "recurring",
+        "created_at": "2017-07-06T12:13:46+0200",
+        "updated_at": "2017-07-06T12:13:47+0200",
+        "start_date": "2017-07-06"
+    },
     "_links": {
         "self": {
             "href": "/api/v1/orders/6"
@@ -391,17 +392,6 @@ Returns a list of all orders.
                         "quantity": 1,
                         "unit_price": 500,
                         "total": 500,
-                        "subscription": {
-                            "id": 6,
-                            "amount": "500",
-                            "currency_code": "PLN",
-                            "interval": "month",
-                            "name": "Monthly subscription",
-                            "code": "monthly_subscription",
-                            "created_at": "2017-07-06T12:13:46+0200",
-                            "updated_at": "2017-07-06T12:13:47+0200"
-                            "start_date": "2017-07-06"
-                        },
                         "_links": {
                             "order": {
                                 "href": "/api/v1/orders/6"
@@ -418,6 +408,18 @@ Returns a list of all orders.
                 "checkout_state": "cart",
                 "payment_state": "cart",
                 "token_value": "WtR4aExE9C",
+                "subscription": {
+                    "id": 6,
+                    "amount": "500",
+                    "currency_code": "PLN",
+                    "interval": "1 month",
+                    "name": "Monthly subscription",
+                    "code": "monthly_subscription",
+                    "type": "recurring",
+                    "created_at": "2017-07-06T12:13:46+0200",
+                    "updated_at": "2017-07-06T12:13:47+0200",
+                    "start_date": "2017-07-06"
+                },
                 "_links": {
                     "self": {
                         "href": "/api/v1/orders/6"

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PH\Component\Core\OrderCheckoutStates;
 use PH\Component\Core\OrderPaymentStates;
+use PH\Component\Subscription\Model\SubscriptionInterface;
 use Sylius\Component\Order\Model\Order as BaseOrder;
 use Webmozart\Assert\Assert;
 
@@ -191,5 +192,26 @@ class Order extends BaseOrder implements OrderInterface
         Assert::string($currencyCode);
 
         $this->currencyCode = $currencyCode;
+    }
+
+    /**
+     * @var SubscriptionInterface
+     */
+    protected $subscription;
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSubscription(): SubscriptionInterface
+    {
+        return $this->subscription;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSubscription(SubscriptionInterface $subscription): void
+    {
+        $this->subscription = $subscription;
     }
 }
