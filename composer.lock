@@ -3492,12 +3492,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sourcefabric/payum-mbe4.git",
-                "reference": "5bab8f439bcd88b5310bf4d275f1b7e5b669db80"
+                "reference": "15929089ab5f36e90c9d3faf58feab6877644514"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sourcefabric/payum-mbe4/zipball/5bab8f439bcd88b5310bf4d275f1b7e5b669db80",
-                "reference": "5bab8f439bcd88b5310bf4d275f1b7e5b669db80",
+                "url": "https://api.github.com/repos/sourcefabric/payum-mbe4/zipball/15929089ab5f36e90c9d3faf58feab6877644514",
+                "reference": "15929089ab5f36e90c9d3faf58feab6877644514",
                 "shasum": ""
             },
             "require": {
@@ -3539,7 +3539,7 @@
                 "payum",
                 "phone"
             ],
-            "time": "2017-09-14T14:52:53+00:00"
+            "time": "2017-09-25T14:30:36+00:00"
         },
         {
             "name": "sourcefabric/payum-mollie",
