@@ -11,10 +11,13 @@ PH\Component\Subscription\Model\Subscription:
                 groups: [ph]
         amount:
             - Range:
-                min: 1
+                min: 500
                 minMessage: Entered value can not be lower than {{ limit }}
                 groups: [ph]
             - NotBlank:
+                groups: [ph]
+            - Type:
+                type: integer
                 groups: [ph]
         startDate:
             - Date:
