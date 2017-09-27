@@ -211,7 +211,8 @@ Feature: Adding a new payment method
           "username":"user",
           "password":"pass",
           "serviceId": "4321",
-          "clientId": "1234"
+          "clientId": "1234",
+          "contentclass": 1
         }
       },
       "translations":{
@@ -226,16 +227,17 @@ Feature: Adding a new payment method
     Then the response status code should be 201
     And the response should be in JSON
     And the JSON nodes should contain:
-      | id                              | 1                           |
-      | position                        | 2                           |
-      | code                            | mbe4                        |
-      | enabled                         | 1                           |
-      | translations.en.locale          | en                          |
-      | translations.en.id              | 1                           |
-      | gateway_config.id               | 1                           |
-      | gateway_config.factory_name     | mbe4                        |
-      | gateway_config.gateway_name     | mbe4                        |
-      | gateway_config.config.username  | user                        |
-      | gateway_config.config.password  | pass                        |
-      | gateway_config.config.clientId  | 1234                        |
-      | gateway_config.config.serviceId | 4321                        |
+      | id                                  | 1                           |
+      | position                            | 2                           |
+      | code                                | mbe4                        |
+      | enabled                             | 1                           |
+      | translations.en.locale              | en                          |
+      | translations.en.id                  | 1                           |
+      | gateway_config.id                   | 1                           |
+      | gateway_config.factory_name         | mbe4                        |
+      | gateway_config.gateway_name         | mbe4                        |
+      | gateway_config.config.username      | user                        |
+      | gateway_config.config.password      | pass                        |
+      | gateway_config.config.clientId      | 1234                        |
+      | gateway_config.config.serviceId     | 4321                        |
+      | gateway_config.config.contentclass  | 1                           |

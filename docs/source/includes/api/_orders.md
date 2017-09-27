@@ -161,7 +161,7 @@ curl -X POST \
 
 Name | Type | Description
 --------- | ------- | -----------
-amount <br>(`required`)| int | The amount of the order. It needs to be integer value, e.g. if `5 USD` will be given, it needs to be increased by a factor of `100` which will result in `500`.
+amount <br>(`required`)| int | The amount of the order. It needs to be integer value, e.g. if `5 USD` will be given, it needs to be increased by a factor of `100` which will result in `500`. The value can't be lower than `500`.
 currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
 name <br>(`required`)| string | Name of the order/subscription, to be displayed on invoices and in the web interface.
 code <br>(`required`)| string | Code of the order/subscription, to be displayed on invoices and in the web interface.
