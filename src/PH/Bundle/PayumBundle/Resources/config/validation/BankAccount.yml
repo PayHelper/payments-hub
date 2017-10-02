@@ -1,0 +1,10 @@
+Payum\Core\Model\BankAccount:
+    properties:
+        holder:
+            - NotBlank:
+                groups: [ph]
+        iban:
+            - NotBlank:
+                groups: [ph]
+            - Iban:
+                groups: [ph]
