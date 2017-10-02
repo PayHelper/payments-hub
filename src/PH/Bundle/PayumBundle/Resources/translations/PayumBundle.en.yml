@@ -1,0 +1,4 @@
+form:
+    bank_account:
+        holder: Holder Name
+        iban: IBAN

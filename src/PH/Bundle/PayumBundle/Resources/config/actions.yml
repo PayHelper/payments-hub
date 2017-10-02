@@ -13,6 +13,18 @@ services:
         tags:
             - { name: "payum.action", all: true, alias: "ph.resolve_next_route"}
 
+    ph.payum_action.obtain_bank_account:
+        class: PH\Bundle\PayumBundle\Action\ObtainBankAccountAction
+        arguments:
+            - '@form.factory'
+            - '%payum.template.sepa_obtain_bank_details%'
+        calls:
+            - method: setRequestStack
+              arguments:
+                  - '@request_stack'
+        tags:
+            - { name: "payum.action", all: true, alias: "ph.obtain_bank_account"}
+
     # Paypal
     ph.payum_action.paypal_express_checkout.convert_payment:
         class: PH\Bundle\PayumBundle\Action\Paypal\ExpressCheckout\ConvertPaymentAction
