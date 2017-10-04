@@ -25,14 +25,6 @@ PH\Component\Subscription\Model\Subscription:
             expose: true
             type: DateTime
             groups: [Default, Detailed]
-        name:
-            expose: true
-            type: string
-            groups: [Default, Detailed]
-        code:
-            expose: true
-            type: string
-            groups: [Default, Detailed]
         createdAt:
             expose: true
             type: DateTime

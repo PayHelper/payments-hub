@@ -42,7 +42,7 @@ final class CapturePaymentAction extends GatewayAwareAction
                 $payumPayment->setNumber($order->getNumber());
                 $payumPayment->setTotalAmount($totalAmount);
                 $payumPayment->setCurrencyCode($order->getCurrencyCode());
-                $payumPayment->setDescription($order->getSubscription()->getName());
+                $payumPayment->setDescription('name');
 
                 $startDate = $order->getSubscription()->getStartDate();
                 if (null === $startDate) {

@@ -31,16 +31,6 @@ class Subscription implements SubscriptionInterface
     protected $interval = SubscriptionInterface::INTERVAL_MONTH;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * @var string
-     */
-    protected $code;
-
-    /**
      * @var \DateTimeInterface|null
      */
     protected $startDate;
@@ -48,7 +38,7 @@ class Subscription implements SubscriptionInterface
     /**
      * @var string|null
      */
-    protected $type = SubscriptionInterface::TYPE_NON_RECURRING;
+    protected $type = SubscriptionInterface::TYPE_RECURRING;
 
     /**
      * Subscription constructor.
@@ -113,38 +103,6 @@ class Subscription implements SubscriptionInterface
     public function setInterval(string $interval)
     {
         $this->interval = $interval;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCode(string $code): void
-    {
-        $this->code = $code;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     /**

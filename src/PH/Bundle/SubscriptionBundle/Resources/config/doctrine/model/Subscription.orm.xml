@@ -13,8 +13,6 @@
         <field name="currencyCode" column="currency_code" length="3" />
         <field type="integer" name="amount" column="amount" />
         <field type="string" name="interval" column="interval" />
-        <field type="string" name="code" column="code" />
-        <field type="string" name="name" column="name" />
         <field type="string" name="type" column="type" />
         <field type="date" name="startDate" column="start_date" nullable="true" />
         <field name="createdAt" column="created_at" type="datetime">

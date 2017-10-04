@@ -52,26 +52,6 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     public function setInterval(string $interval);
 
     /**
-     * @return string|null
-     */
-    public function getCode(): ?string;
-
-    /**
-     * @param string $code
-     */
-    public function setCode(string $code): void;
-
-    /**
-     * @return string|null
-     */
-    public function getName(): ?string;
-
-    /**
-     * @param string $name
-     */
-    public function setName(string $name): void;
-
-    /**
      * @return \DateTimeInterface|null
      */
     public function getStartDate(): ?\DateTimeInterface;

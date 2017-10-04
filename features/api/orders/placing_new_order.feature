@@ -14,8 +14,6 @@ Feature: Placing a new order
       "amount":500,
       "currency_code":"USD",
       "interval":"1 month",
-      "name":"My monthly subscription",
-      "code":"monthly_subscription",
       "type":"recurring"
     }
     """
@@ -28,8 +26,6 @@ Feature: Placing a new order
       | subscription.currency_code            | USD                         |
       | subscription.amount                   | 500                         |
       | subscription.interval                 | month                       |
-      | subscription.name                     | My monthly subscription     |
-      | subscription.code                     | monthly_subscription        |
       | subscription.type                     | recurring                   |
       | items_total                           | 500                         |
       | total                                 | 500                         |
@@ -59,8 +55,6 @@ Feature: Placing a new order
       "amount":500,
       "currency_code":"USD",
       "interval":"1 month",
-      "name":"My monthly subscription",
-      "code":"monthly_subscription",
       "type":"recurring"
     }
     """
@@ -73,8 +67,6 @@ Feature: Placing a new order
       | subscription.currency_code            | USD                         |
       | subscription.amount                   | 500                         |
       | subscription.interval                 | month                       |
-      | subscription.name                     | My monthly subscription     |
-      | subscription.code                     | monthly_subscription        |
       | subscription.type                     | recurring                   |
       | items_total                           | 500                         |
       | total                                 | 500                         |
@@ -105,8 +97,6 @@ Feature: Placing a new order
       "amount":500,
       "currency_code":"USD",
       "interval":"1 month",
-      "name":"My monthly subscription",
-      "code":"monthly_subscription",
       "type":"non-recurring"
     }
     """
@@ -119,8 +109,6 @@ Feature: Placing a new order
       | subscription.currency_code            | USD                         |
       | subscription.amount                   | 500                         |
       | subscription.interval                 | month                       |
-      | subscription.name                     | My monthly subscription     |
-      | subscription.code                     | monthly_subscription        |
       | subscription.type                     | non-recurring               |
       | items_total                           | 500                         |
       | total                                 | 500                         |
@@ -151,8 +139,6 @@ Feature: Placing a new order
       "amount":500,
       "currency_code":"USD",
       "interval":"month",
-      "name": "My monthly subscription",
-      "code": "monthly_subscription",
       "type":"recurring"
     }
     """

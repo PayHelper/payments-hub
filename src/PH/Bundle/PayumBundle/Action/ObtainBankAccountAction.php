@@ -16,7 +16,6 @@ use PH\Bundle\PayumBundle\Form\Type\BankAccountType;
 use PH\Bundle\PayumBundle\Request\ObtainBankAccount;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -28,11 +27,6 @@ class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
      * @var FormFactoryInterface
      */
     protected $formFactory;
-
-    /**
-     * @var Request
-     */
-    protected $httpRequest;
 
     /**
      * @var RequestStack

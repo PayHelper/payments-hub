@@ -31,8 +31,6 @@ final class SubscriptionType extends AbstractResourceType
                     'Yearly' => SubscriptionInterface::INTERVAL_YEAR,
                 ],
             ])
-            ->add('code')
-            ->add('name')
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Non-recurring' => SubscriptionInterface::TYPE_NON_RECURRING,

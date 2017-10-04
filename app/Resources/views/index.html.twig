@@ -16,11 +16,9 @@
 
                 {{ form_row(form.amount) }}
                 {{ form_row(form.currencyCode) }}
-                {{ form_row(form.interval) }}
-                {{ form_row(form.code) }}
-                {{ form_row(form.name) }}
                 {{ form_row(form.type) }}
-                {{ form_row(form.startDate) }}
+                <span style="display: none;">{{ form_row(form.interval) }}</span>
+                <span style="display: none;">{{ form_row(form.startDate) }}</span>
                 Payment method:<br>
                 <select id="payment-methods">
                 </select>
@@ -54,6 +52,14 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <script>
+        $( "#ph_subscription_type" ).change(function() {
+            if ('recurring' == this.value) {
+                $('form span').show();
+            } else {
+                $('form span').hide();
+            }
+        });
+
         $.ajax({
             type: "GET",
             contentType: "application/json",
@@ -89,14 +95,12 @@
                 data: JSON.stringify({"amount": amount * 100,
                     "currency_code": currency,
                     "interval": interval,
-                    "name": "Monthly subscription",
                     "type": subType,
                     "start_date": {
                         "month": startMonth,
                         "day": startDay,
                         "year": startYear
-                    },
-                    "code": "monthly_subscription"}),
+                    }}),
                 dataType: "json"
             }).done(function( data ) {
                 $.ajax({
