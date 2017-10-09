@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace PH\Component\Core\Model;
 
-use Sylius\Component\Order\Model\OrderInterface as BaseOrderInterface;
+use PH\Component\Subscription\Model\SubscriptionInterface as BaseSubscriptionInterface;
 use Sylius\Component\Payment\Model\Payment as BasePayment;
+
 
 class Payment extends BasePayment implements PaymentInterface
 {
     /**
-     * @var BaseOrderInterface
+     * @var SubscriptionInterface
      */
-    protected $order;
+    protected $subscription;
 
     /**
      * @var \DateTimeInterfac
@@ -46,16 +47,16 @@ class Payment extends BasePayment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function getOrder(): ?BaseOrderInterface
+    public function getSubscription(): ?BaseSubscriptionInterface
     {
-        return $this->order;
+        return $this->subscription;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setOrder(BaseOrderInterface $order = null): void
+    public function setSubscription(?BaseSubscriptionInterface $subscription): void
     {
-        $this->order = $order;
+        $this->subscription = $subscription;
     }
 }

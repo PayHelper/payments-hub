@@ -9,9 +9,9 @@ use Payum\Core\Payum;
 use Payum\Core\Security\GenericTokenFactoryInterface;
 use Payum\Core\Security\HttpRequestVerifierInterface;
 use PH\Bundle\PayumBundle\Factory\ResolveNextRouteFactoryInterface;
-use PH\Component\Core\Model\OrderInterface;
+use PH\Component\Core\Model\SubscriptionInterface;
 use PH\Component\Core\Model\PaymentInterface;
-use PH\Component\Core\Repository\OrderRepositoryInterface;
+use PH\Component\Core\Repository\SubscriptionRepositoryInterface;
 use PH\Component\Core\Repository\PaymentRepositoryInterface;
 use Sylius\Bundle\PayumBundle\Request\GetStatus;
 use Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactoryInterface;
@@ -31,14 +31,14 @@ class PayumController
     private $payum;
 
     /**
-     * @var OrderRepositoryInterface
+     * @var SubscriptionRepositoryInterface
      */
-    private $orderRepository;
+    private $subscriptionRepository;
 
     /**
      * @var MetadataInterface
      */
-    private $orderMetadata;
+    private $subscriptionMetadata;
 
     /**
      * @var RequestConfigurationFactoryInterface
@@ -67,8 +67,8 @@ class PayumController
 
     /**
      * @param Payum                                $payum
-     * @param OrderRepositoryInterface             $orderRepository
-     * @param MetadataInterface                    $orderMetadata
+     * @param SubscriptionRepositoryInterface      $subscriptionRepository
+     * @param MetadataInterface                    $subscriptionMetadata
      * @param RequestConfigurationFactoryInterface $requestConfigurationFactory
      * @param ViewHandlerInterface                 $viewHandler
      * @param RouterInterface                      $router
@@ -77,8 +77,8 @@ class PayumController
      */
     public function __construct(
         Payum $payum,
-        OrderRepositoryInterface $orderRepository,
-        MetadataInterface $orderMetadata,
+        SubscriptionRepositoryInterface $subscriptionRepository,
+        MetadataInterface $subscriptionMetadata,
         RequestConfigurationFactoryInterface $requestConfigurationFactory,
         ViewHandlerInterface $viewHandler,
         RouterInterface $router,
@@ -86,8 +86,8 @@ class PayumController
         ResolveNextRouteFactoryInterface $resolveNextRouteFactory
     ) {
         $this->payum = $payum;
-        $this->orderRepository = $orderRepository;
-        $this->orderMetadata = $orderMetadata;
+        $this->subscriptionRepository = $subscriptionRepository;
+        $this->subscriptionMetadata = $subscriptionMetadata;
         $this->requestConfigurationFactory = $requestConfigurationFactory;
         $this->viewHandler = $viewHandler;
         $this->router = $router;
@@ -103,19 +103,19 @@ class PayumController
      */
     public function prepareCaptureAction(Request $request, string $token): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
+        $configuration = $this->requestConfigurationFactory->create($this->subscriptionMetadata, $request);
 
-        /** @var OrderInterface $order */
-        $order = $this->orderRepository->findOneByTokenValue($token);
+        /** @var SubscriptionInterface $subscription */
+        $subscription = $this->subscriptionRepository->findOneByTokenValue($token);
 
-        if (null === $order) {
-            throw new NotFoundHttpException(sprintf('Order with token "%s" does not exist.', $token));
+        if (null === $subscription) {
+            throw new NotFoundHttpException(sprintf('Subscription with token "%s" does not exist.', $token));
         }
 
         $options = $configuration->getParameters()->get('redirect');
 
         /** @var PaymentInterface $payment */
-        $payment = $order->getLastPayment(PaymentInterface::STATE_NEW);
+        $payment = $subscription->getLastPayment(PaymentInterface::STATE_NEW);
 
         if (null === $payment) {
             return $this->viewHandler->handle($configuration, View::create([], 404));
@@ -142,7 +142,7 @@ class PayumController
      */
     public function afterCaptureAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
+        $configuration = $this->requestConfigurationFactory->create($this->subscriptionMetadata, $request);
         $token = $this->getHttpRequestVerifier()->verify($request);
         $status = new GetStatus($token);
 
@@ -158,7 +158,7 @@ class PayumController
 
     /**
      * @param Request $request
-     * @param string  $orderId
+     * @param string  $subscription
      * @param string  $id
      *
      * @return Response
@@ -167,12 +167,12 @@ class PayumController
      * @throws \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
      * @throws \Symfony\Component\HttpKernel\Exception\HttpException
      */
-    public function cancelAction(Request $request, string $orderId, string $id): Response
+    public function cancelAction(Request $request, string $subscriptionId, string $id): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
+        $configuration = $this->requestConfigurationFactory->create($this->subscriptionMetadata, $request);
 
-        /** @var PaymentInterface|null $order */
-        $payment = $this->paymentRepository->findOneByOrderId($id, $orderId);
+        /** @var PaymentInterface|null $payment */
+        $payment = $this->paymentRepository->findOneBySubscriptionId($id, $subscriptionId);
 
         if (null === $payment) {
             throw new NotFoundHttpException(sprintf('Payment with id "%s" does not exist.', $id));
@@ -205,7 +205,7 @@ class PayumController
      */
     public function afterCancelAction(Request $request): Response
     {
-        $configuration = $this->requestConfigurationFactory->create($this->orderMetadata, $request);
+        $configuration = $this->requestConfigurationFactory->create($this->subscriptionMetadata, $request);
         $token = $this->getHttpRequestVerifier()->verify($request);
         $status = new GetStatus($token);
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PH\Component\Subscription\Model;
 
+use Doctrine\Common\Collections\Collection;
 use Sylius\Component\Resource\Model\ResourceInterface;
 use Sylius\Component\Resource\Model\TimestampableInterface;
 
@@ -15,6 +16,11 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
 
     const TYPE_RECURRING = 'recurring';
     const TYPE_NON_RECURRING = 'non-recurring';
+
+    const STATE_CART = 'cart';
+    const STATE_NEW = 'new';
+    const STATE_CANCELLED = 'cancelled';
+    const STATE_FULFILLED = 'fulfilled';
 
     /**
      * @return mixed
@@ -70,4 +76,92 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
      * @param null|string $type
      */
     public function setType(?string $type): void;
+
+    /**
+     * @return \DateTimeInterface|null
+     */
+    public function getCheckoutCompletedAt(): ?\DateTimeInterface;
+
+    /**
+     * @param \DateTimeInterface|null $checkoutCompletedAt
+     */
+    public function setCheckoutCompletedAt(?\DateTimeInterface $checkoutCompletedAt): void;
+
+    /**
+     * @return bool
+     */
+    public function isCheckoutCompleted(): bool;
+
+    public function completeCheckout(): void;
+
+    /**
+     * @return string|null
+     */
+    public function getNumber(): ?string;
+
+    /**
+     * @param string|null
+     */
+    public function setNumber(?string $number): void;
+
+    /**
+     * @return Collection|SubscriptionItemInterface[]
+     */
+    public function getItems(): Collection;
+
+    public function clearItems(): void;
+
+    /**
+     * @return int
+     */
+    public function countItems(): int;
+
+    /**
+     * @param SubscriptionItemInterface $item
+     */
+    public function addItem(SubscriptionItemInterface $item): void;
+
+    /**
+     * @param SubscriptionItemInterface $item
+     */
+    public function removeItem(SubscriptionItemInterface $item): void;
+
+    /**
+     * @param SubscriptionItemInterface $item
+     *
+     * @return bool
+     */
+    public function hasItem(SubscriptionItemInterface $item): bool;
+
+    /**
+     * @return int
+     */
+    public function getItemsTotal(): int;
+
+    public function recalculateItemsTotal(): void;
+
+    /**
+     * @return int
+     */
+    public function getTotal(): int;
+
+    /**
+     * @return int
+     */
+    public function getTotalQuantity(): int;
+
+    /**
+     * @return string
+     */
+    public function getState(): string;
+
+    /**
+     * @param string $state
+     */
+    public function setState(string $state): void;
+
+    /**
+     * @return bool
+     */
+    public function isEmpty(): bool;
 }

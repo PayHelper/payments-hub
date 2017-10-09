@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 use Behat\Behat\Context\Context;
-use PH\Bundle\CoreBundle\Facade\OrderFacadeInterface;
-use PH\Component\Core\Model\OrderInterface;
+use PH\Bundle\CoreBundle\Facade\SubscriptionFacadeInterface;
+use PH\Component\Core\Model\SubscriptionInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
 final class OrderContext implements Context
 {
     /**
-     * @var \PH\Bundle\CoreBundle\Facade\OrderFacadeInterface
+     * @var \PH\Bundle\CoreBundle\Facade\SubscriptionFacadeInterface
      */
     private $orderService;
 
@@ -33,13 +33,13 @@ final class OrderContext implements Context
     /**
      * OrderContext constructor.
      *
-     * @param OrderFacadeInterface $orderService
+     * @param SubscriptionFacadeInterface $orderService
      * @param FactoryInterface     $orderFactory
      * @param RepositoryInterface  $orderRepository
      * @param FactoryInterface     $subscriptionFactory
      */
     public function __construct(
-        OrderFacadeInterface $orderService,
+        SubscriptionFacadeInterface $orderService,
         FactoryInterface $orderFactory,
         RepositoryInterface $orderRepository,
         FactoryInterface $subscriptionFactory
@@ -66,7 +66,7 @@ final class OrderContext implements Context
 
     private function createOrder(int $price, string $currencyCode)
     {
-        /** @var OrderInterface $order */
+        /** @var SubscriptionInterface $order */
         $order = $this->orderFactory->createNew();
         /** @var \PH\Component\Subscription\Model\SubscriptionInterface $subscription */
         $subscription = $this->subscriptionFactory->createNew();

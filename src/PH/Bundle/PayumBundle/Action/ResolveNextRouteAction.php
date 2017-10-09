@@ -26,13 +26,13 @@ final class ResolveNextRouteAction implements ActionInterface
             $payment->getState() === PaymentInterface::STATE_PROCESSING
         ) {
             $request->setRouteName('ph_core_thankyou');
-            $request->setRouteParameters(['token' => $payment->getOrder()->getTokenValue()]);
+            $request->setRouteParameters(['token' => $payment->getSubscription()->getTokenValue()]);
 
             return;
         }
 
         $request->setRouteName('ph_core_cancel');
-        $request->setRouteParameters(['token' => $payment->getOrder()->getTokenValue()]);
+        $request->setRouteParameters(['token' => $payment->getSubscription()->getTokenValue()]);
     }
 
     /**

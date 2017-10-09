@@ -1,8 +1,8 @@
 ph_public_api_core_order_create:
-    path: /orders/
+    path: /subscriptions/
     methods: [POST]
     defaults:
-        _controller: sylius.controller.order:addAction
+        _controller: ph.controller.subscription:addAction
         _sylius:
             section: api
             form:
@@ -25,7 +25,7 @@ ph_public_api_core_checkout_payment:
     path: /checkouts/payment/{token}
     methods: [PUT]
     defaults:
-        _controller: sylius.controller.order:updateAction
+        _controller: ph.controller.subscription:updateAction
         _sylius:
             serialization_version: $version
             form: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
@@ -33,7 +33,7 @@ ph_public_api_core_checkout_payment:
                 method: getOneByToken
                 arguments: [$token]
             state_machine:
-                graph: ph_order_checkout
+                graph: ph_subscription_checkout
                 transition: select_payment
 
 ph_public_api_core_checkout_show:

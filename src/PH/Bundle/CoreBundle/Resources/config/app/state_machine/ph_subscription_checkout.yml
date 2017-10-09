@@ -1,0 +1,39 @@
+winzou_state_machine:
+    ph_order_checkout:
+        class: "%ph.model.subscription.class%"
+        property_path: checkoutState
+        graph: ph_subscription_checkout
+        state_machine_class: "%sylius.state_machine.class%"
+        states:
+            cart: ~
+            payment_skipped: ~
+            payment_selected: ~
+            completed: ~
+        transitions:
+            skip_payment:
+                from: [cart, payment_selected]
+                to: payment_skipped
+            select_payment:
+                from: [cart, payment_selected, payment_skipped]
+                to: payment_selected
+            complete:
+                from: [payment_selected, payment_skipped]
+                to: completed
+        callbacks:
+            after:
+                ph_process_cart:
+                    on: ["select_payment", "skip_payment"]
+                    do: ["@ph.subscription_processing.subscription_payment_processor.checkout", "process"]
+                    args: ["object"]
+                ph_create_subscription:
+                    on: ["complete"]
+                    do: ["@sm.callback.cascade_transition", "apply"]
+                    args: ["object", "event", "'create'", "'ph_subscription'"]
+                ph_complete:
+                    on: ["select_payment"]
+                    do: ["@sm.callback.cascade_transition", "apply"]
+                    args: ["object", "event", "'complete'", "'ph_subscription_checkout'"]
+                ph_save_checkout_completion_date:
+                    on: ["complete"]
+                    do: ["object", "completeCheckout"]
+                    args: ["object"]

@@ -39,13 +39,13 @@ winzou_state_machine:
             after:
                 ph_process_order:
                     on: ["fail", "cancel"]
-                    do: ["@ph.state_resolver.order_payment", "resolve"]
-                    args: ["object.getOrder()"]
+                    do: ["@ph.state_resolver.subscription_payment", "resolve"]
+                    args: ["object.getSubscription()"]
                 ph_cancel_payment:
                     on: ["cancel"]
                     do: ["object", "cancel"]
                     args: ["object"]
                 ph_resolve_state:
                     on: ["complete", "refund"]
-                    do: ["@ph.state_resolver.order_payment", "resolve"]
-                    args: ["object.getOrder()"]
+                    do: ["@ph.state_resolver.subscription_payment", "resolve"]
+                    args: ["object.getSubscription()"]

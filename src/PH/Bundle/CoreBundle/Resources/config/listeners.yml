@@ -1,15 +1,15 @@
 services:
-    ph.event_listener.send_order_payload:
-        class: PH\Bundle\CoreBundle\EventSubscriber\SendOrderPayloadListener
+    ph.event_listener.send_subscription_payload:
+        class: PH\Bundle\CoreBundle\EventSubscriber\SendSubscriptionPayloadListener
         arguments:
-            - "@ph.payload_sender.order"
+            - "@ph.payload_sender.subscription"
         tags:
-            - { name: kernel.event_listener, event: sylius.order.post_create, method: sendPayload }
-            - { name: kernel.event_listener, event: sylius.order.post_update, method: sendPayload }
+            - { name: kernel.event_listener, event: ph.subscription.post_create, method: sendPayload }
+            - { name: kernel.event_listener, event: ph.subscription.post_update, method: sendPayload }
 
-    ph.event_listener.assign_order_token:
-        class: PH\Bundle\CoreBundle\EventListener\AssignOrderTokenListener
+    ph.event_listener.assign_subscription_token:
+        class: PH\Bundle\CoreBundle\EventListener\AssignSubscriptionTokenListener
         arguments:
             - "@ph.order_token_assigner"
         tags:
-            - { name: kernel.event_listener, event: sylius.order.pre_create, method: assignToken }
+            - { name: kernel.event_listener, event: ph.subscription.pre_create, method: assignToken }

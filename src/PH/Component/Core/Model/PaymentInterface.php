@@ -1,28 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: rafal
- * Date: 14.06.2017
- * Time: 12:05.
- */
+
+declare(strict_types=1);
 
 namespace PH\Component\Core\Model;
 
-use Sylius\Component\Order\Model\OrderInterface as BaseOrderInterface;
+use PH\Component\Subscription\Model\SubscriptionAwareInterface;
 use Sylius\Component\Payment\Model\PaymentInterface as BasePaymentInterface;
 
-interface PaymentInterface extends BasePaymentInterface
+interface PaymentInterface extends BasePaymentInterface, SubscriptionAwareInterface
 {
-    /**
-     * @return null|BaseOrderInterface
-     */
-    public function getOrder(): ?BaseOrderInterface;
-
-    /**
-     * @param BaseOrderInterface|null $order
-     */
-    public function setOrder(BaseOrderInterface $order = null): void;
-
     /**
      * @return \DateTimeInterface|null
      */

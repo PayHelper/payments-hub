@@ -15,6 +15,19 @@
         <field type="string" name="interval" column="interval" />
         <field type="string" name="type" column="type" />
         <field type="date" name="startDate" column="start_date" nullable="true" />
+        <field type="string" name="state" column="state" />
+        <field name="checkoutCompletedAt" column="checkout_completed_at" type="datetime" nullable="true" />
+        <field name="number" column="number" type="string" unique="true" nullable="true" />
+
+        <one-to-many field="items" target-entity="PH\Component\Subscription\Model\SubscriptionItemInterface" mapped-by="subscription" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
+        <field name="itemsTotal" column="items_total" type="integer" />
+        <field name="total" column="total" type="integer" />
+
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>

@@ -61,7 +61,7 @@ Field | Type | Description
 --------- | ------- | -------
 id | integer | Unique identifier for the object.
 checkout_completed_at | string | Datetime when the checkout has been completed.
-number | string | Order number, generated once the checkout is completed.
+number | string | Subscription number, generated once the checkout is completed.
 notes | string | Optional notes that can be added to an order when checkout is completed (see [Checkouts API](#complete-the-checkout)).
 items | array | An array of order item objects.
 items_total | int | A sum of all items prices.

@@ -3,12 +3,6 @@ PH\Component\Subscription\Model\Subscription:
         type:
             - NotBlank:
                 groups: [ph]
-        name:
-            - NotBlank:
-                groups: [ph]
-        code:
-            - NotBlank:
-                groups: [ph]
         amount:
             - Range:
                 min: 500

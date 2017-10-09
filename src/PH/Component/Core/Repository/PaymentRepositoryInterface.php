@@ -10,9 +10,9 @@ interface PaymentRepositoryInterface
 {
     /**
      * @param string $paymentId
-     * @param string $orderId
+     * @param string $subscriptionId
      *
      * @return null|PaymentInterface
      */
-    public function findOneByOrderId(string $paymentId, string $orderId): ?PaymentInterface;
+    public function findOneBySubscriptionId(string $paymentId, string $subscriptionId): ?PaymentInterface;
 }
