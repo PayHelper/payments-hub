@@ -86,27 +86,33 @@
                 startMonth = $form.find( "select[name='ph_subscription[startDate][month]']" ).val(),
                 startDay = $form.find( "select[name='ph_subscription[startDate][day]']" ).val(),
                 startYear = $form.find( "select[name='ph_subscription[startDate][year]']" ).val(),
-                subType = $form.find( "select[name='ph_subscription[type]']" ).val();
+                subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
+                data = {
+                    "amount": amount * 100,
+                    "currency_code": currency,
+                    "type": subType,
+                };
+
+            if ('recurring' == subType) {
+                data['interval'] = interval;
+                data['start_date'] = {
+                    "month": startMonth,
+                    "day": startDay,
+                    "year": startYear
+                };
+            }
 
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
                 url: '/public-api/v1/subscriptions/',
-                data: JSON.stringify({"amount": amount * 100,
-                    "currency_code": currency,
-                    "interval": interval,
-                    "type": subType,
-                    "start_date": {
-                        "month": startMonth,
-                        "day": startDay,
-                        "year": startYear
-                    }}),
+                data: JSON.stringify(data),
                 dataType: "json"
             }).done(function( data ) {
                 $.ajax({
                     type: "PUT",
                     contentType: "application/json",
-                    url: '/public-api/v1/checkouts/payment/'+data.token_value,
+                    url: '/public-api/v1/purchase/payment/'+data.token_value,
                     data: JSON.stringify({
                         "payments": [
                             {
@@ -117,7 +123,7 @@
                     dataType: "json"
                 }).done(function( paymentRes ) {
                     console.log('payment method selected');
-                    window.location.replace('/public-api/v1/checkouts/pay/'+data.token_value+'?thankyou={{ app.request.getSchemeAndHttpHost() }}/thank-you?token='+data.token_value);
+                    window.location.replace('/public-api/v1/purchase/pay/'+data.token_value);
                 }).fail(function () {
                     alert('error when selecting payment method');
                 });

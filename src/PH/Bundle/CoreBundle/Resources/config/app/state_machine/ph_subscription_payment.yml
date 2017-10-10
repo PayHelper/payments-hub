@@ -1,5 +1,5 @@
 winzou_state_machine:
-    ph_order_payment:
+    ph_subscription_payment:
         class: "%ph.model.subscription.class%"
         property_path: paymentState
         graph: ph_subscription_payment

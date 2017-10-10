@@ -1,5 +1,8 @@
 services:
     ph.controller.payum:
+      alias: sylius.controller.payum
+
+    sylius.controller.payum:
       class: PH\Bundle\PayumBundle\Controller\PayumController
       arguments:
           - '@payum'

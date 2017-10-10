@@ -1,6 +1,6 @@
 PH\Component\Core\Model\Subscription:
     exclusion_policy: ALL
-    xml_root_name: order
+    xml_root_name: subscription
     properties:
         payments:
             expose: true

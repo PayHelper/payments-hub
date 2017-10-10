@@ -1,5 +1,5 @@
 services:
-    ph.order_token_assigner:
+    ph.subscription_token_assigner:
         class: PH\Component\Core\Assigner\SubscriptionTokenAssigner
         arguments:
            - "@sylius.random_generator"
@@ -41,7 +41,7 @@ services:
         tags:
             - { name: form.type }
 
-#order processing
+#subscription processing
     ph.subscription_processing.subscription_payment_processor.checkout:
         class: PH\Component\Core\Processor\SubscriptionPaymentProcessor
         arguments:

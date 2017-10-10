@@ -1,5 +1,5 @@
 winzou_state_machine:
-    ph_order:
+    ph_subscription:
         class: "%ph.model.subscription.class%"
         property_path: state
         graph: ph_subscription
@@ -32,7 +32,7 @@ winzou_state_machine:
                     on: ["cancel"]
                     do: ["@sm.callback.cascade_transition", "apply"]
                     args: ["object.getPayments()", "event", "'cancel'", "'ph_payment'"]
-                ph_cancel_order_payment:
+                ph_cancel_subscription_payment:
                     on: ["cancel"]
                     do: ["@sm.callback.cascade_transition", "apply"]
                     args: ["object", "event", "'cancel'", "'ph_subscription_payment'"]

@@ -1,5 +1,5 @@
 winzou_state_machine:
-    ph_order_checkout:
+    ph_subscription_checkout:
         class: "%ph.model.subscription.class%"
         property_path: checkoutState
         graph: ph_subscription_checkout
