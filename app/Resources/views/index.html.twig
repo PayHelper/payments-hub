@@ -7,10 +7,10 @@
                 <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
             </div>
             {% if app.request.get('token') %}
-                <div style="color: #3D7700">Successfully payed for an order {{ app.request.get('token') }}</div>
+                <div style="color: #3D7700">Successfully payed for subscription {{ app.request.get('token') }}</div>
             {%  endif %}
             <div id="next">
-                Place an order:<br><br>
+                Subscription purchase:<br><br>
                 {{ form_start(form) }}
                 {{ form_errors(form) }}
 
@@ -91,7 +91,7 @@
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
-                url: '/public-api/v1/orders/',
+                url: '/public-api/v1/subscriptions/',
                 data: JSON.stringify({"amount": amount * 100,
                     "currency_code": currency,
                     "interval": interval,
