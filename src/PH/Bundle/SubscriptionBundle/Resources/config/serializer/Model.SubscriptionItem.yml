@@ -1,0 +1,20 @@
+PH\Component\Subscription\Model\SubscriptionItem:
+    exclusion_policy: ALL
+    xml_root_name: subscription_item
+    properties:
+        id:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        quantity:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        unitPrice:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        total:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]

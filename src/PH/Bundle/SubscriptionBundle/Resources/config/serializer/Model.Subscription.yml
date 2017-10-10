@@ -7,7 +7,7 @@ PH\Component\Subscription\Model\Subscription:
             groups: [Default, Detailed]
         amount:
             expose: true
-            type: string
+            type: integer
             groups: [Default, Detailed]
         currencyCode:
             expose: true
