@@ -41,7 +41,7 @@ PH\Component\Subscription\Model\Subscription:
             expose: true
             type: string
             groups: [Detailed]
-        checkoutCompletedAt:
+        purchaseCompletedAt:
             expose: true
             groups: [Detailed]
         createdAt:

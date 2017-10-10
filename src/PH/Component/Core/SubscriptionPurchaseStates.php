@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PH\Component\Core;
 
-final class SubscriptionCheckoutStates
+final class SubscriptionPurchaseStates
 {
     const STATE_CART = 'cart';
     const STATE_COMPLETED = 'completed';

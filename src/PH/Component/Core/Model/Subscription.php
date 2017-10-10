@@ -6,7 +6,7 @@ namespace PH\Component\Core\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use PH\Component\Core\SubscriptionCheckoutStates;
+use PH\Component\Core\SubscriptionPurchaseStates;
 use PH\Component\Core\SubscriptionPaymentStates;
 use PH\Component\Subscription\Model\Subscription as BaseSubscription;
 
@@ -20,7 +20,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * @var string
      */
-    protected $checkoutState = SubscriptionCheckoutStates::STATE_CART;
+    protected $purchaseState = SubscriptionPurchaseStates::STATE_CART;
 
     /**
      * @var string
@@ -113,23 +113,23 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
             return null === $state || $payment->getState() === $state;
         })->last();
 
-        return $payment !== false ? $payment : null;
+        return false !== $payment ? $payment : null;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCheckoutState(): string
+    public function getPurchaseState(): string
     {
-        return $this->checkoutState;
+        return $this->purchaseState;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCheckoutState(string $checkoutState): void
+    public function setPurchaseState(string $purchaseState): void
     {
-        $this->checkoutState = $checkoutState;
+        $this->purchaseState = $purchaseState;
     }
 
     /**

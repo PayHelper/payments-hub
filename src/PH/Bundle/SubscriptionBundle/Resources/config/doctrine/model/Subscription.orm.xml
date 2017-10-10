@@ -16,7 +16,7 @@
         <field type="string" name="type" column="type" />
         <field type="date" name="startDate" column="start_date" nullable="true" />
         <field type="string" name="state" column="state" />
-        <field name="checkoutCompletedAt" column="checkout_completed_at" type="datetime" nullable="true" />
+        <field name="purchaseCompletedAt" column="purchase_completed_at" type="datetime" nullable="true" />
         <field name="number" column="number" type="string" unique="true" nullable="true" />
 
         <one-to-many field="items" target-entity="PH\Component\Subscription\Model\SubscriptionItemInterface" mapped-by="subscription" orphan-removal="true">

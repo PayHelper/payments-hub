@@ -32,7 +32,7 @@ Feature: Creating a new subscription
       | interval                              | month                       |
       | start_date                            | 2017-10-10T00:00:00+00:00   |
       | type                                  | recurring                   |
-      | checkout_state                        | cart                        |
+      | purchase_state                        | cart                        |
       | payment_state                         | cart                        |
       | items_total                           | 500                         |
       | total                                 | 500                         |
@@ -40,7 +40,7 @@ Feature: Creating a new subscription
       | items[0].quantity                     | 1                           |
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
-    And the JSON node "checkout_completed_at" should be null
+    And the JSON node "purchase_completed_at" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
     And the JSON node "items" should have 1 element
@@ -84,9 +84,9 @@ Feature: Creating a new subscription
       | items[0].quantity                     | 1                           |
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
-      | checkout_state                        | cart                        |
+      | purchase_state                        | cart                        |
       | payment_state                         | cart                        |
-    And the JSON node "checkout_completed_at" should be null
+    And the JSON node "purchase_completed_at" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
     And the JSON node "items" should have 1 element
@@ -122,12 +122,12 @@ Feature: Creating a new subscription
       | items[0].quantity                     | 1                           |
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
-      | checkout_state                        | cart                        |
+      | purchase_state                        | cart                        |
       | payment_state                         | cart                        |
     And the JSON node "start_date" should be null
     And the JSON node "token_value" should not be null
     And the JSON node "interval" should be null
-    And the JSON node "checkout_completed_at" should be null
+    And the JSON node "purchase_completed_at" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
     And the JSON node "items" should have 1 element

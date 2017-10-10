@@ -6,7 +6,7 @@ PH\Component\Core\Model\Subscription:
             expose: true
             type: array
             groups: [Default, Detailed]
-        checkoutState:
+        purchaseState:
             expose: true
             type: string
             groups: [Detailed]

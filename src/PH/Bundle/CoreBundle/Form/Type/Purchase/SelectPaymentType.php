@@ -2,8 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PH\Bundle\CoreBundle\Form\Type\Checkout;
+namespace PH\Bundle\CoreBundle\Form\Type\Purchase;
 
+use PH\Bundle\CoreBundle\Form\Type\Purchase\ChangePaymentMethodType;
+use PH\Bundle\CoreBundle\Form\Type\Purchase\PaymentType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -25,6 +27,6 @@ final class SelectPaymentType extends AbstractResourceType
      */
     public function getBlockPrefix(): string
     {
-        return 'ph_checkout_select_payment';
+        return 'ph_purchase_select_payment';
     }
 }

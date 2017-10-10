@@ -80,29 +80,14 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     /**
      * @return \DateTimeInterface|null
      */
-    public function getCheckoutCompletedAt(): ?\DateTimeInterface;
+    public function getPurchaseCompletedAt(): ?\DateTimeInterface;
 
     /**
-     * @param \DateTimeInterface|null $checkoutCompletedAt
+     * @param \DateTimeInterface|null $purchaseCompletedAt
      */
-    public function setCheckoutCompletedAt(?\DateTimeInterface $checkoutCompletedAt): void;
+    public function setPurchaseCompletedAt(?\DateTimeInterface $purchaseCompletedAt): void;
 
-    /**
-     * @return bool
-     */
-    public function isCheckoutCompleted(): bool;
-
-    public function completeCheckout(): void;
-
-    /**
-     * @return string|null
-     */
-    public function getNumber(): ?string;
-
-    /**
-     * @param string|null
-     */
-    public function setNumber(?string $number): void;
+    public function completePurchase(): void;
 
     /**
      * @return Collection|SubscriptionItemInterface[]

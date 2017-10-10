@@ -51,12 +51,12 @@ interface SubscriptionInterface extends BaseSubscriptionInterface
     /**
      * @return string
      */
-    public function getCheckoutState(): string;
+    public function getPurchaseState(): string;
 
     /**
-     * @param string $checkoutState
+     * @param string $purchaseState
      */
-    public function setCheckoutState(string $checkoutState): void;
+    public function setPurchaseState(string $purchaseState): void;
 
     /**
      * @return string

@@ -1,8 +1,8 @@
 winzou_state_machine:
-    ph_subscription_checkout:
+    ph_subscription_purchase:
         class: "%ph.model.subscription.class%"
-        property_path: checkoutState
-        graph: ph_subscription_checkout
+        property_path: purchaseState
+        graph: ph_subscription_purchase
         state_machine_class: "%sylius.state_machine.class%"
         states:
             cart: ~
@@ -21,9 +21,9 @@ winzou_state_machine:
                 to: completed
         callbacks:
             after:
-                ph_process_cart:
+                ph_process_purchase:
                     on: ["select_payment", "skip_payment"]
-                    do: ["@ph.subscription_processing.subscription_payment_processor.checkout", "process"]
+                    do: ["@ph.subscription_processing.subscription_payment_processor.purchase", "process"]
                     args: ["object"]
                 ph_create_subscription:
                     on: ["complete"]
@@ -32,8 +32,8 @@ winzou_state_machine:
                 ph_complete:
                     on: ["select_payment"]
                     do: ["@sm.callback.cascade_transition", "apply"]
-                    args: ["object", "event", "'complete'", "'ph_subscription_checkout'"]
-                ph_save_checkout_completion_date:
+                    args: ["object", "event", "'complete'", "'ph_subscription_purchase'"]
+                ph_save_purchase_completion_date:
                     on: ["complete"]
-                    do: ["object", "completeCheckout"]
+                    do: ["object", "completePurchase"]
                     args: ["object"]

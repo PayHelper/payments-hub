@@ -28,12 +28,12 @@ ph_public_api_core_purchase_payment:
         _controller: ph.controller.subscription:updateAction
         _sylius:
             serialization_version: $version
-            form: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+            form: PH\Bundle\CoreBundle\Form\Type\Purchase\SelectPaymentType
             repository:
                 method: getOneByToken
                 arguments: [$token]
             state_machine:
-                graph: ph_subscription_checkout
+                graph: ph_subscription_purchase
                 transition: select_payment
 
 ph_public_api_core_purchase_show:

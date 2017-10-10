@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PH\Bundle\CoreBundle\Form\Type\Checkout;
+namespace PH\Bundle\CoreBundle\Form\Type\Purchase;
 
 use Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodChoiceType;
 use Symfony\Component\Form\AbstractType;
@@ -60,6 +60,6 @@ final class PaymentType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'ph_checkout_payment';
+        return 'ph_purchase_payment';
     }
 }

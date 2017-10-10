@@ -55,7 +55,7 @@ class Subscription implements SubscriptionInterface
     /**
      * @var \DateTimeInterface|null
      */
-    protected $checkoutCompletedAt;
+    protected $purchaseCompletedAt;
 
     /**
      * @var int
@@ -172,49 +172,25 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getCheckoutCompletedAt(): ?\DateTimeInterface
+    public function getPurchaseCompletedAt(): ?\DateTimeInterface
     {
-        return $this->checkoutCompletedAt;
+        return $this->purchaseCompletedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setCheckoutCompletedAt(?\DateTimeInterface $checkoutCompletedAt): void
+    public function setPurchaseCompletedAt(?\DateTimeInterface $purchaseCompletedAt): void
     {
-        $this->checkoutCompletedAt = $checkoutCompletedAt;
+        $this->purchaseCompletedAt = $purchaseCompletedAt;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function isCheckoutCompleted(): bool
+    public function completePurchase(): void
     {
-        return null !== $this->checkoutCompletedAt;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function completeCheckout(): void
-    {
-        $this->checkoutCompletedAt = new \DateTime();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getNumber(): ?string
-    {
-        return $this->number;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setNumber(?string $number): void
-    {
-        $this->number = $number;
+        $this->purchaseCompletedAt = new \DateTime();
     }
 
     /**

@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace PH\Bundle\CoreBundle\Form\Type\Checkout;
+namespace PH\Bundle\CoreBundle\Form\Type\Purchase;
 
 use Sylius\Component\Core\Model\PaymentInterface;
 use Symfony\Component\Form\AbstractType;

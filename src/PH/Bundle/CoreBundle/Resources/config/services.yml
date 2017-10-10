@@ -24,31 +24,25 @@ services:
         class: PH\Bundle\CoreBundle\Facade\SubscriptionFacade
         arguments:
             - "@ph.factory.subscription_item"
-            - "@ph.subscription_processing.subscription_payment_processor.checkout"
+            - "@ph.subscription_processing.subscription_payment_processor.purchase"
 
-    ph.form.type.checkout_select_payment:
-        class: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+    ph.form.type.purchase_select_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Purchase\SelectPaymentType
         arguments:
             - '%ph.model.subscription.class%'
             - ['ph']
         tags:
             - { name: form.type }
 
-    swp.form.type.checkout_payment:
-        class: PH\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
+    swp.form.type.purchase_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Purchase\PaymentType
         arguments:
             - '%sylius.model.payment.class%'
         tags:
             - { name: form.type }
 
 #subscription processing
-    ph.subscription_processing.subscription_payment_processor.checkout:
-        class: PH\Component\Core\Processor\SubscriptionPaymentProcessor
-        arguments:
-            - "@ph.subscription_payment_provider"
-            - "new"
-
-    ph.subscription_processing.subscription_payment_processor.after_checkout:
+    ph.subscription_processing.subscription_payment_processor.purchase:
         class: PH\Component\Core\Processor\SubscriptionPaymentProcessor
         arguments:
             - "@ph.subscription_payment_provider"
