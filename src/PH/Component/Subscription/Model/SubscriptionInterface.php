@@ -48,14 +48,14 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     public function setCurrencyCode(string $currencyCode);
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getInterval(): string;
+    public function getInterval(): ?string;
 
     /**
-     * @param string $interval
+     * @param string|null $interval
      */
-    public function setInterval(string $interval);
+    public function setInterval(?string $interval);
 
     /**
      * @return \DateTimeInterface|null

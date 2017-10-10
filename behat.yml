@@ -15,11 +15,10 @@ default:
             paymentMethodRepository: "@sylius.repository.payment_method"
             paymentMethodFactory: '@sylius.factory.payment_method'
             gatewayFactories: {offline: 'Offline', paypal_express_checkout: 'Paypal Express Checkout'}
-        - OrderContext:
-            orderService: "@ph.facade.order"
-            orderFactory: "@sylius.factory.order"
-            orderRepository: "@sylius.repository.order"
+        - SubscriptionContext:
+            subscriptionFacade: "@ph.facade.subscription"
             subscriptionFactory: "@ph.factory.subscription"
+            subscriptionRepository: "@ph.repository.subscription"
   extensions:
     Behat\Symfony2Extension:
       kernel:

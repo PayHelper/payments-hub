@@ -13,7 +13,7 @@ class SubscriptionRepository extends EntityRepository implements SubscriptionRep
     /**
      * {@inheritdoc}
      */
-    public function findByOrderId(string $id): ?SubscriptionInterface
+    public function findOneBySubscriptionId(string $id): ?SubscriptionInterface
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.id = :id')

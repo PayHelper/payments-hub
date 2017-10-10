@@ -9,6 +9,11 @@ use Sylius\Component\Resource\Model\ResourceInterface;
 interface SubscriptionItemInterface extends SubscriptionAwareInterface, ResourceInterface
 {
     /**
+     * @param int $quantity
+     */
+    public function setQuantity(int $quantity): void;
+
+    /**
      * @return int
      */
     public function getQuantity(): int;

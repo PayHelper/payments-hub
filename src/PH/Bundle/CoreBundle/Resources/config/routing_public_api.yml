@@ -1,4 +1,4 @@
-ph_public_api_core_order_create:
+ph_public_api_core_subscription_create:
     path: /subscriptions/
     methods: [POST]
     defaults:
@@ -21,8 +21,8 @@ ph_public_api_core_payment_method:
     type: sylius.resource_api
 
 
-ph_public_api_core_checkout_payment:
-    path: /checkouts/payment/{token}
+ph_public_api_core_purchase_payment:
+    path: /purchase/payment/{token}
     methods: [PUT]
     defaults:
         _controller: ph.controller.subscription:updateAction
@@ -36,33 +36,33 @@ ph_public_api_core_checkout_payment:
                 graph: ph_subscription_checkout
                 transition: select_payment
 
-ph_public_api_core_checkout_show:
-    path: /checkouts/{orderId}
+ph_public_api_core_purchase_show:
+    path: /purchase/{token}
     methods: [GET]
     defaults:
-        _controller: sylius.controller.order:showAction
+        _controller: ph.controller.subscription:showAction
         repository:
-            method: findByOrderId
-            arguments: [$orderId]
+            method: getOneByToken
+            arguments: [$token]
         _sylius:
             serialization_version: $version
             serialization_groups: [Detailed]
 
 # payum
-ph_public_api_payum_order_pay:
-    path: /checkouts/pay/{token}
+ph_public_api_payum_subscription_pay:
+    path: /purchase/pay/{token}
     methods: [GET]
     defaults:
         _controller: ph.controller.payum:prepareCaptureAction
         _sylius:
             serialization_version: $version
             redirect:
-                route: ph_public_api_payum_order_after_pay
+                route: ph_public_api_payum_subscription_after_pay
                 parameters:
                     version: $version
 
-ph_public_api_payum_order_after_pay:
-    path: /checkouts/after-pay/
+ph_public_api_payum_subscription_after_pay:
+    path: /purchase/after-pay/
     methods: [GET, POST]
     defaults:
         _controller: ph.controller.payum:afterCaptureAction

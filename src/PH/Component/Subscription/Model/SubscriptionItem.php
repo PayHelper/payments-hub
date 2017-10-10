@@ -58,6 +58,14 @@ class SubscriptionItem implements SubscriptionItemInterface
     /**
      * {@inheritdoc}
      */
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getQuantity(): int
     {
         return $this->quantity;

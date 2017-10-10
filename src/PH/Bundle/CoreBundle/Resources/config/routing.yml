@@ -31,50 +31,42 @@ ph_core_payment_method:
             code: $code
     type: sylius.resource_api
 
-ph_core_checkout_payment:
-    path: /checkouts/payment/{orderId}
+ph_api_subscription_payment_complete:
+    path: /subscriptions/{subscriptionId}/payments/{id}/complete
     methods: [PUT]
     defaults:
-        _controller: sylius.controller.order:updateAction
+        _controller: sylius.controller.payment:applyStateMachineTransitionAction
+        _sylius:
+            event: complete
+            repository:
+                method: findOneBySubscriptionId
+                arguments:
+                    id: $id
+                    subscriptionId: $subscriptionId
+            state_machine:
+                graph: ph_payment
+                transition: complete
+            section: api
+            return_content: false
+
+ph_core_purchase_payment:
+    path: /purchase/payment/{subscriptionId}
+    methods: [PUT]
+    defaults:
+        _controller: ph.controller.subscription:updateAction
         _sylius:
             serialization_version: $version
             form: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
             repository:
                 method: find
-                arguments: [$orderId]
+                arguments: [$subscriptionId]
             state_machine:
                 graph: ph_order_checkout
                 transition: select_payment
 
-ph_core_checkout_show:
-    path: /checkouts/{id}
-    methods: [GET]
-    defaults:
-        _controller: sylius.controller.order:showAction
-        _sylius:
-            serialization_version: $version
-            serialization_groups: [Detailed]
-
-ph_core_checkout_complete:
-    path: /checkouts/complete/{subscriptionId}
-    methods: [PATCH]
-    defaults:
-        _controller: sylius.controller.order:updateAction
-        _sylius:
-            serialization_version: $version
-            form:
-                form: PH\Bundle\CoreBundle\Form\Type\Checkout\CompleteType
-            repository:
-                method: findBySubscriptionId
-                arguments: [$subscriptionId]
-            state_machine:
-                graph: ph_order_checkout
-                transition: complete
-            return_content: true
-
 # payum
-ph_payum_order_pay:
-    path: /checkouts/pay/{token}
+ph_payum_subscription_pay:
+    path: /purchase/pay/{token}
     methods: [GET]
     defaults:
         _controller: ph.controller.payum:prepareCaptureAction
@@ -86,7 +78,7 @@ ph_payum_order_pay:
                     version: $version
 
 ph_payum_order_after_pay:
-    path: /checkouts/after-pay/
+    path: /purchase/after-pay/
     methods: [GET, POST]
     defaults:
         _controller: ph.controller.payum:afterCaptureAction
@@ -94,7 +86,7 @@ ph_payum_order_after_pay:
             serialization_version: $version
 
 ph_payum_payment_cancel:
-    path: /orders/{orderId}/payments/{id}/cancel
+    path: /subscriptions/{subscriptionId}/payments/{id}/cancel
     methods: [DELETE]
     defaults:
         _controller: ph.controller.payum:cancelAction
@@ -121,47 +113,19 @@ ph_api_webhooks:
         serialization_version: $version
     type: sylius.resource_api
 
-#ph_api_orders:
-#    resource: |
-#        alias: sylius.order
-#        section: api
-#        only: ["index", "show", "delete"]
-#        serialization_version: $version
-#    type: sylius.resource_api
-
 ph_api_subscriptions:
     resource: |
         alias: ph.subscription
         section: api
-        only: ["index", "show", "delete", "create"]
+        only: ["index", "show", "delete"]
         serialization_version: $version
     type: sylius.resource_api
 
-ph_api_order_payment_complete:
-    path: /orders/{subscriptionId}/payments/{id}/complete
-    methods: [PUT]
-    defaults:
-        _controller: sylius.controller.payment:applyStateMachineTransitionAction
-        _sylius:
-            event: complete
-            repository:
-                method: findOneBySubscriptionId
-                arguments:
-                    id: $id
-                    orderId: $subscriptionId
-            state_machine:
-                graph: ph_payment
-                transition: complete
-            section: api
-            return_content: false
-
-#ph_api_order_create:
-#    path: /orders/create/
-#    methods: [POST]
-#    defaults:
-#        _controller: sylius.controller.order:addAction
-#        _sylius:
-#            section: api
-#            form:
-#                type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
-#            serialization_version: $version
+ph_api_subscriptions_create:
+     path: /subscriptions/
+     methods: [POST]
+     defaults:
+         _controller: ph.controller.subscription:addAction
+         _sylius:
+             section: api
+             serialization_version: $version

@@ -1,4 +1,4 @@
-@public_orders
+@public_subscriptions
 Feature: Preventing to pay lower amount than the minimum
   In order to be not able to pay less amount than the defined one
   As a HTTP Client
@@ -9,15 +9,18 @@ Feature: Preventing to pay lower amount than the minimum
     When I add "Authorization" header equal to null
     And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
-    And I send a "POST" request to "/public-api/v1/orders/" with body:
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
     """
     {
       "amount":400,
       "currency_code":"USD",
       "interval":"1 month",
-      "name":"My monthly subscription",
-      "code":"monthly_subscription",
-      "type":"recurring"
+      "type":"recurring",
+      "start_date": {
+          "month": "10",
+          "day": "10",
+          "year": "2017"
+       }
     }
     """
     Then the response status code should be 400

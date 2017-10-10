@@ -36,6 +36,7 @@ final class SubscriptionFacade implements SubscriptionFacadeInterface
         $subscriptionItem = $this->subscriptionItemFactory->createNew();
 
         $subscriptionItem->setUnitPrice($subscription->getAmount());
+        $subscriptionItem->setQuantity(1);
         $subscriptionItem->setTotal($subscription->getAmount());
         $subscription->addItem($subscriptionItem);
 

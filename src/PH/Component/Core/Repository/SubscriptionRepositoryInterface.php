@@ -14,7 +14,7 @@ interface SubscriptionRepositoryInterface extends RepositoryInterface
      *
      * @return null|SubscriptionInterface
      */
-    public function findByOrderId(string $id): ?SubscriptionInterface;
+    public function findOneBySubscriptionId(string $id): ?SubscriptionInterface;
 
     /**
      * @param string $token

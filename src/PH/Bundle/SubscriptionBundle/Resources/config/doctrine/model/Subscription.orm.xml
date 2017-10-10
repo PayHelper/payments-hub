@@ -12,7 +12,7 @@
         </id>
         <field name="currencyCode" column="currency_code" length="3" />
         <field type="integer" name="amount" column="amount" />
-        <field type="string" name="interval" column="interval" />
+        <field type="string" name="interval" column="interval" nullable="true" />
         <field type="string" name="type" column="type" />
         <field type="date" name="startDate" column="start_date" nullable="true" />
         <field type="string" name="state" column="state" />

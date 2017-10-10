@@ -33,9 +33,9 @@ class Subscription implements SubscriptionInterface
     protected $currencyCode;
 
     /**
-     * @var string
+     * @var string|null
      */
-    protected $interval = SubscriptionInterface::INTERVAL_MONTH;
+    protected $interval;
 
     /**
      * @var \DateTimeInterface|null
@@ -45,7 +45,7 @@ class Subscription implements SubscriptionInterface
     /**
      * @var string|null
      */
-    protected $type = SubscriptionInterface::TYPE_RECURRING;
+    protected $type = SubscriptionInterface::TYPE_NON_RECURRING;
 
     /**
      * @var Collection|SubscriptionItemInterface[]
@@ -79,7 +79,6 @@ class Subscription implements SubscriptionInterface
     {
         $this->items = new ArrayCollection();
         $this->createdAt = new \DateTime();
-        $this->startDate = new \DateTime();
     }
 
     /**
@@ -125,7 +124,7 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getInterval(): string
+    public function getInterval(): ?string
     {
         return $this->interval;
     }
@@ -133,7 +132,7 @@ class Subscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setInterval(string $interval)
+    public function setInterval(?string $interval)
     {
         $this->interval = $interval;
     }

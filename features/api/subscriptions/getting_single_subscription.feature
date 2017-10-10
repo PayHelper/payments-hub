@@ -1,8 +1,8 @@
 @subscriptions
 Feature: Getting a single subscription
-  In order to show single order available in the system
+  In order to show single subscription available in the system
   As a HTTP Client
-  I want to make a request against order show endpoint
+  I want to make a request against subscription show endpoint
 
   Background:
     Given I am authenticated as "admin"
@@ -22,13 +22,13 @@ Feature: Getting a single subscription
       | type                                  | non-recurring               |
       | items_total                           | 5000                        |
       | total                                 | 5000                        |
-      | state                                 | cart                        |
+      | state                                 | new                         |
       | checkout_state                        | cart                        |
       | payment_state                         | cart                        |
+      | token_value                           | 12345abcde                  |
     And the JSON node "checkout_completed_at" should be null
     And the JSON node "interval" should be null
-    And the JSON node "start_date" should not be null
-    And the JSON node "number" should be null
+    And the JSON node "start_date" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
     And the JSON node "items" should have 1 element
@@ -40,10 +40,10 @@ Feature: Getting a single subscription
     And the JSON node "payments" should have 1 element
     And the JSON node "_links" should not be null
 
-  Scenario: Get not existing order
+  Scenario: Get not existing subscription
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And the header "Authorization" should not exist
-    And I send a "GET" request to "/api/v1/orders/999"
+    And I send a "GET" request to "/api/v1/subscriptions/999"
     Then the response status code should be 404
     And the response should be in JSON

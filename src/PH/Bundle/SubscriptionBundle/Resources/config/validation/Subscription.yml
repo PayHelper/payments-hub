@@ -16,9 +16,6 @@ PH\Component\Subscription\Model\Subscription:
         startDate:
             - Date:
                 groups: [ph]
-        interval:
-            - NotBlank:
-                groups: [ph]
         currencyCode:
             - Currency:
                 groups: [ph]
