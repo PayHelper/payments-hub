@@ -1,108 +1,88 @@
-# Orders
+# Subscriptions
 
-These endpoints will allow you to easily manage orders.
+These endpoints allow you to easily manage subscriptions.
 
-Thanks to this API you are able to manage orders, you can place new orders, update it, delete it etc.
-Based on an order you can perform checkouts (see [Checkouts API](#checkouts)).
+Based on created subscriptions you can perform purchases (see [Purchase API](#purchase-api)).
 
-## The order object
+## The subscription object
 
 > Example Response
 
 ```json
 {
-    "id": 6,
-    "checkout_completed_at": null,
-    "number": null,
-    "notes": null,
+    "id": 79,
+    "amount": 500,
+    "currency_code": "USD",
+    "interval": "1 month",
+    "start_date": "2017-10-10T00:00:00+00:00",
+    "type": "recurring",
     "items": [
         {
-            "id": 6,
+            "id": 46,
             "quantity": 1,
             "unit_price": 500,
-            "total": 500,
-            "_links": {
-                "order": {
-                    "href": "/api/v1/orders/6"
-                }
-            }
+            "total": 500
         }
     ],
+    "purchase_completed_at": null,
     "items_total": 500,
     "total": 500,
-    "state": "cart",
-    "created_at": "2017-07-06T12:13:46+0200",
-    "updated_at": "2017-07-06T12:13:47+0200",
+    "state": "new",
+    "created_at": "2017-10-10T14:54:53+00:00",
+    "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "checkout_state": "cart",
+    "purchase_state": "cart",
     "payment_state": "cart",
-    "token_value": "WtR4aExE9C",
-    "subscription": {
-        "id": 6,
-        "amount": "500",
-        "currency_code": "PLN",
-        "interval": "1 month",
-        "name": "Monthly subscription",
-        "code": "monthly_subscription",
-        "type": "recurring",
-        "created_at": "2017-07-06T12:13:46+0200",
-        "updated_at": "2017-07-06T12:13:47+0200",
-        "start_date": "2017-07-06"
-    },
-    "_links": {
-        "self": {
-            "href": "/api/v1/orders/6"
-        }
-    }
+    "token_value": "zadfgN_3Oo"
 }
 ```
 
 Field | Type | Description
 --------- | ------- | -------
 id | integer | Unique identifier for the object.
-checkout_completed_at | string | Datetime when the checkout has been completed.
-number | string | Subscription number, generated once the checkout is completed.
-notes | string | Optional notes that can be added to an order when checkout is completed (see [Checkouts API](#complete-the-checkout)).
-items | array | An array of order item objects.
+purchase_completed_at | string | Datetime when the purchase has been completed.
+amount | int | The amount of the subscription. It needs to be integer value, e.g. if `5` will be given, it needs to be increased by a factor of `100` which will result in `500`. The value can't be lower than `500`.
+currency_code| string | Three-letter ISO code for currency, e.g. USD, EUR, PLN.
+interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
+type | string | Subscription type (either `recurring` or `non-recurring`).
+start_date | string | Subscription start date, applies only for recurring subscriptions.
+items | array | An array of subscription items. For more complex subscriptions handling.
 items_total | int | A sum of all items prices.
-total | int | A sum of items total and adjustments total.
-state | string | A state of the order. Can be either: `cart`, `new`, `cancelled` or `fulfilled`.
+total | int | A sum of items total.
+state | string | A state of the subscription. Can be either: `new`, `cancelled` or `fulfilled`.
 created_at | string | Time at which the object was created.
 updated_at | string | Time at which the object was updated.
 payments | array | An array of Payment object which contains [payment methods](#payment-methods) objects.
-checkout_state | string | A state of the checkout process. Can be either: `cart`, `payment_selected` or `completed`.
+purchase_state | string | A state of the checkout process. Can be either: `cart`, `payment_selected` or `completed`.
 payment_state | string | A state of the payment. Can be either: `cart`, `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
-subscription | object | A subscription object
 
-## Create an order
+## Create a subscription
 
 > Definition
 
 ```shell
-POST https://localhost/api/v1/orders/create/
+POST https://localhost/public-api/v1/subscriptions/
 ```
 
-Creates a new order object in the system. If at least one payment method exists order object after creation will have one payment object assigned inside `payments` property which will contain default (the very first one defined in the system) payment method.
+Creates a new subscription object in the system. If at least one payment method exists, a subscription object after the creation will have one payment object assigned inside `payments` property which will contain default (the very first one defined in the system) payment method.
 
 > Example Request
 
 ```shell
 curl -X POST \
-  http://localhost/api/v1/orders/create/ \
+  http://localhost/api/v1/subscriptions/ \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json' \
   -d '{
       	"amount": 500,
-      	"currency_code": "PLN",
+      	"currency_code": "USD",
       	"interval": "1 month",
-      	"name": "Monthly subscription",
-      	"code": "monthly_subscription",
       	"type": "recurring",
       	"start_date": {
-      	    "day": 6,
-      	    "month: 7,
-      	    "year": 2017
+      	    "day": "10",
+      	    "month: "10",
+      	    "year": "2017"
       	}
 }'
 ```
@@ -111,49 +91,30 @@ curl -X POST \
 
 ```json
 {
-    "id": 6,
-    "checkout_completed_at": null,
-    "number": null,
-    "notes": null,
+    "id": 79,
+    "amount": 500,
+    "currency_code": "USD",
+    "interval": "1 month",
+    "start_date": "2017-10-10T00:00:00+00:00",
+    "type": "recurring",
     "items": [
         {
-            "id": 6,
+            "id": 46,
             "quantity": 1,
             "unit_price": 500,
-            "total": 500,
-            "_links": {
-                "order": {
-                    "href": "/api/v1/orders/6"
-                }
-            }
+            "total": 500
         }
     ],
+    "purchase_completed_at": null,
     "items_total": 500,
     "total": 500,
-    "state": "cart",
-    "created_at": "2017-07-06T12:13:46+0200",
-    "updated_at": "2017-07-06T12:13:47+0200",
+    "state": "new",
+    "created_at": "2017-10-10T14:54:53+00:00",
+    "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "checkout_state": "cart",
+    "purchase_state": "cart",
     "payment_state": "cart",
-    "token_value": "WtR4aExE9C",
-    "subscription": {
-        "id": 6,
-        "amount": "500",
-        "currency_code": "PLN",
-        "interval": "1 month",
-        "name": "Monthly subscription",
-        "code": "monthly_subscription",
-        "type": "recurring",
-        "created_at": "2017-07-06T12:13:46+0200",
-        "updated_at": "2017-07-06T12:13:47+0200",
-        "start_date": "2017-07-06"
-    },
-    "_links": {
-        "self": {
-            "href": "/api/v1/orders/6"
-        }
-    }
+    "token_value": "zadfgN_3Oo"
 }
 ```
 
@@ -161,33 +122,31 @@ curl -X POST \
 
 Name | Type | Description
 --------- | ------- | -----------
-amount <br>(`required`)| int | The amount of the order. It needs to be integer value, e.g. if `5 USD` will be given, it needs to be increased by a factor of `100` which will result in `500`. The value can't be lower than `500`.
+amount <br>(`required`)| int | The amount of the subscription. It needs to be integer value, e.g. if `5 USD` will be given, it needs to be increased by a factor of `100` which will result in `500`. The value can't be lower than `500`.
 currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
-name <br>(`required`)| string | Name of the order/subscription, to be displayed on invoices and in the web interface.
-code <br>(`required`)| string | Code of the order/subscription, to be displayed on invoices and in the web interface.
 interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
 type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
 start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
 
 ### Returns
 
-Returns order object if successfully created, and returns an error if something goes wrong.
+Returns subscription object if successfully created, and returns an error if something goes wrong.
 
-## Retrieve an order
+## Retrieve a subscription
 
 > Definition
 
 ```shell
-GET https://localhost/api/v1/orders/{id}
+GET https://localhost/api/v1/subscriptions/{id}
 ```
 
-Retrieves the details of an existing order. You need only supply the unique order identifier that was generated upon order creation.
+Retrieves the details of an existing subscription. You need only supply the unique subscription identifier that was generated upon subscription creation.
 
 > Example Request
 
 ```shell
 curl -X GET \
-  http://localhost/api/v1/orders/6 \
+  http://localhost/api/v1/subscriptions/79 \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
@@ -196,49 +155,30 @@ curl -X GET \
 
 ```json
 {
-    "id": 6,
-    "checkout_completed_at": null,
-    "number": null,
-    "notes": null,
+    "id": 79,
+    "amount": 500,
+    "currency_code": "USD",
+    "interval": "1 month",
+    "start_date": "2017-10-10T00:00:00+00:00",
+    "type": "recurring",
     "items": [
         {
-            "id": 6,
+            "id": 46,
             "quantity": 1,
             "unit_price": 500,
-            "total": 500,
-            "_links": {
-                "order": {
-                    "href": "/api/v1/orders/6"
-                }
-            }
+            "total": 500
         }
     ],
+    "purchase_completed_at": null,
     "items_total": 500,
     "total": 500,
-    "state": "cart",
-    "created_at": "2017-07-06T12:13:46+0200",
-    "updated_at": "2017-07-06T12:13:47+0200",
+    "state": "new",
+    "created_at": "2017-10-10T14:54:53+00:00",
+    "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "checkout_state": "cart",
+    "purchase_state": "cart",
     "payment_state": "cart",
-    "token_value": "WtR4aExE9C",
-    "subscription": {
-        "id": 6,
-        "amount": "500",
-        "currency_code": "PLN",
-        "interval": "1 month",
-        "name": "Monthly subscription",
-        "code": "monthly_subscription",
-        "type": "recurring",
-        "created_at": "2017-07-06T12:13:46+0200",
-        "updated_at": "2017-07-06T12:13:47+0200",
-        "start_date": "2017-07-06"
-    },
-    "_links": {
-        "self": {
-            "href": "/api/v1/orders/6"
-        }
-    }
+    "token_value": "zadfgN_3Oo"
 }
 ```
 
@@ -246,27 +186,27 @@ curl -X GET \
 
 Name | Type | Description
 --------- | ------- | -----------
-id <br>(`required`)| string | The unique identifier of an order.
+id <br>(`required`)| string | The unique identifier of the subscription.
 
 ### Returns
 
-Returns a order if a valid identifier was provided, and returns an error otherwise.
+Returns a subscription if a valid identifier was provided, and returns an error otherwise.
 
-## Delete an order
+## Delete a subscription
 
 > Definition
 
 ```shell
-DELETE https://localhost/api/v1/orders/{id}
+DELETE https://localhost/api/v1/subscriptions/{id}
 ```
 
-Deletes an order object. You need only supply the unique order identifier that was generated upon order creation in order to remove an object.
+Deletes the subscription object. You need only supply the unique subscription identifier that was generated upon subscription creation in order to remove an object.
 
 > Example Request
 
 ```shell
 curl -X DELETE \
-  http://localhost/api/v1/orders/6 \
+  http://localhost/api/v1/subscriptions/79 \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
@@ -277,27 +217,27 @@ curl -X DELETE \
 
 Name | Type | Description
 --------- | ------- | -----------
-id <br>(`required`)| string | The unique identifier of an order.
+id <br>(`required`)| string | The unique identifier of the subscription.
 
 ### Returns
 
-Returns an empty response if deleting an order succeeded. Returns an error if deleting order can not be done (e.g. when an order does not exist).
+Returns an empty response if deleting the subscription succeeded. Returns an error if deleting the subscription can not be done (e.g. when the subscription does not exist).
 
-## Cancel an order's payment
+## Cancel a subscription's payment
 > Definition
 
 ```shell
-DELETE https://localhost/api/v1/orders/{orderId}/payments/{id}/cancel
+DELETE https://localhost/api/v1/subscriptions/{subscriptionId}/payments/{id}/cancel
 ```
 
-Cancels an order's payment. You need only supply the unique order identifier that was generated upon order creation and payment id in order to remove an object.
+Cancels an subscription's payment. You need only supply the unique subscription identifier that was generated upon subscription creation and payment id in order to cancel the subscription's payment.
 If the payment is recurring, it will be canceled so that the customer won't be charged anymore.
 
 > Example Request
 
 ```shell
 curl -X DELETE \
-  http://localhost/api/v1/orders/6/payments/7/cancel \
+  http://localhost/api/v1/subscriptions/79/payments/7/cancel \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
@@ -308,31 +248,31 @@ curl -X DELETE \
 
 Name | Type | Description
 --------- | ------- | -----------
-orderId <br>(`required`)| string | The unique identifier of an order.
-id <br>(`required`)| string | The unique identifier of an order's payment.
+subscriptionId <br>(`required`)| string | The unique identifier of the subscription.
+id <br>(`required`)| string | The unique identifier of an subscription's payment.
 
 ### Returns
 
-Returns an empty response if cancelling an order succeeded. Returns an error if cancelling order's payment can not be done (e.g. when an order does not exist).
+Returns an empty response if cancelling the subscription's payment succeeded. Returns an error if cancelling subscription's payment can not be done (e.g. when subscription does not exist or when subscription is non-recurring).
 
 
-## Complete an order payment
+## Complete a subscription's payment
 
 > Definition
 
 ```shell
-PUT https://localhost/api/v1/orders/{id}/payments/{paymentId}/complete
+PUT https://localhost/api/v1/subscriptions/{id}/payments/{paymentId}/complete
 ```
 
-Completes an order payment. You need only supply the unique order identifier that was generated upon order creation and order's payment id in order to perform complete action.
+Completes the subscription's payment. You need only supply the unique subscription identifier that was generated upon subscription creation and subscription's payment id in order to perform complete action.
 
-Completing order payment is useful when for example, offline payment method is selected and once the seller receives the money from buyer, the order can be completed manually and marked as paid.
+Completing subscription payment is useful when for example, offline payment method is selected and once the seller receives the money from buyer, the subscription's payment can be completed manually and marked as paid.
 
 > Example Request
 
 ```shell
 curl -X PUT \
-  http://localhost/api/v1/orders/6/payments/1/complete \
+  http://localhost/api/v1/subscriptions/79/payments/1/complete \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
@@ -343,22 +283,22 @@ curl -X PUT \
 
 Name | Type | Description
 --------- | ------- | -----------
-id <br>(`required`)| string | The unique identifier of an order.
-paymentId <br>(`required`)| string | The unique identifier of an order payment.
+id <br>(`required`)| string | The unique identifier of the subscription.
+paymentId <br>(`required`)| string | The unique identifier of the subscription's payment.
 
 ### Returns
 
-Returns an empty response if completing order payment succeeded. Returns an error if completing order payment can not be done (e.g. when an order does not exist).
+Returns an empty response if completing subscription payment succeeded. Returns an error if completing subscription payment can not be done (e.g. when the subscription does not exist).
 
-## List all orders
+## List all subscriptions
 
 > Definition
 
 ```shell
-GET https://localhost/api/v1/orders/
+GET https://localhost/api/v1/subscriptions/
 ```
 
-Returns a list of all orders.
+Returns a list of all subscriptions.
 
 > Example Request
 
@@ -370,61 +310,42 @@ Returns a list of all orders.
     "total": 1,
     "_links": {
         "self": {
-            "href": "/api/v1/orders/?page=1&limit=10"
+            "href": "/api/v1/subscriptions/?page=1&limit=10"
         },
         "first": {
-            "href": "/api/v1/orders/?page=1&limit=10"
+            "href": "/api/v1/subscriptions/?page=1&limit=10"
         },
         "last": {
-            "href": "/api/v1/orders/?page=1&limit=10"
+            "href": "/api/v1/subscriptions/?page=1&limit=10"
         }
     },
     "_embedded": {
         "items": [
             {
-                "id": 6,
-                "checkout_completed_at": null,
-                "number": null,
-                "notes": null,
+                "id": 79,
+                "amount": 500,
+                "currency_code": "USD",
+                "interval": "1 month",
+                "start_date": "2017-10-10T00:00:00+00:00",
+                "type": "recurring",
                 "items": [
                     {
-                        "id": 6,
+                        "id": 46,
                         "quantity": 1,
                         "unit_price": 500,
-                        "total": 500,
-                        "_links": {
-                            "order": {
-                                "href": "/api/v1/orders/6"
-                            }
-                        }
+                        "total": 500
                     }
                 ],
+                "purchase_completed_at": null,
                 "items_total": 500,
                 "total": 500,
-                "state": "cart",
-                "created_at": "2017-07-06T12:13:46+0200",
-                "updated_at": "2017-07-06T12:13:47+0200",
+                "state": "new",
+                "created_at": "2017-10-10T14:54:53+00:00",
+                "updated_at": "2017-10-10T14:54:53+00:00",
                 "payments": [],
-                "checkout_state": "cart",
+                "purchase_state": "cart",
                 "payment_state": "cart",
-                "token_value": "WtR4aExE9C",
-                "subscription": {
-                    "id": 6,
-                    "amount": "500",
-                    "currency_code": "PLN",
-                    "interval": "1 month",
-                    "name": "Monthly subscription",
-                    "code": "monthly_subscription",
-                    "type": "recurring",
-                    "created_at": "2017-07-06T12:13:46+0200",
-                    "updated_at": "2017-07-06T12:13:47+0200",
-                    "start_date": "2017-07-06"
-                },
-                "_links": {
-                    "self": {
-                        "href": "/api/v1/orders/6"
-                    }
-                }
+                "token_value": "zadfgN_3Oo"
             }
         ]
     }
@@ -440,4 +361,4 @@ page | 1 | A page number
 
 ### Returns
 
-A dictionary with a `items` property that contains an array of up to `limit` orders. Each entry in the array is a separate order object. If no more orders are available, the resulting array will be empty. This request should never return an error.
+A dictionary with a `items` property that contains an array of up to `limit` subscriptions. Each entry in the array is a separate subscription object. If no more subscriptions are available, the resulting array will be empty. This request should never return an error.
