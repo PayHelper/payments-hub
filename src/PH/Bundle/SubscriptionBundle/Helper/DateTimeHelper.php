@@ -11,7 +11,7 @@ final class DateTimeHelper implements DateTimeHelperInterface
      */
     public function getCurrentMonth(int $next = 0): string
     {
-        return date('m') + $next;
+        return (string) ((int) date('m') + $next);
     }
 
     /**
