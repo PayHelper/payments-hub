@@ -19,7 +19,7 @@ PATCH https://localhost/public-api/v1/purchase/payment/{tokenValue}
 
 This endpoint allows to select one of the payment methods which exists in the system and assign it to the subscription.
 
-For example, if you have created a new subscription using [Subscriptions API](#subscriptions-api), and you want to pay for it, you can choose whether you want to pay using PayPal or offline etc.
+For example, if you have created a new subscription using [Subscriptions API](#subscriptions11), and you want to pay for it, you can choose whether you want to pay using PayPal or offline etc.
 
 Once the payment method is selected, the state of the subscription will be `new`, the purchase state of subscription will change from `cart` to `payment_selected` and the subscription's payment state will change from state `cart` to `awaiting_payment`.
 

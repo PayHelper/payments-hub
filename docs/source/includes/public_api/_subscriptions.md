@@ -2,7 +2,7 @@
 
 These endpoints will allow you to create new recurring or non-recurring subscriptions.
 
-Based on created subscriptions you can perform purchases (see [Purchase API](#purchase-api)).
+Based on created subscriptions you can perform purchases (see [Purchase API](#purchase)).
 
 ## The subscription object
 
