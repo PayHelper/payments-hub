@@ -49,42 +49,6 @@ ph_api_subscription_payment_complete:
             section: api
             return_content: false
 
-ph_core_purchase_payment:
-    path: /purchase/payment/{subscriptionId}
-    methods: [PUT]
-    defaults:
-        _controller: ph.controller.subscription:updateAction
-        _sylius:
-            serialization_version: $version
-            form: PH\Bundle\CoreBundle\Form\Type\Purchase\SelectPaymentType
-            repository:
-                method: find
-                arguments: [$subscriptionId]
-            state_machine:
-                graph: ph_subscription_purchase
-                transition: select_payment
-
-# payum
-ph_payum_subscription_pay:
-    path: /purchase/pay/{token}
-    methods: [GET]
-    defaults:
-        _controller: ph.controller.payum:prepareCaptureAction
-        _sylius:
-            serialization_version: $version
-            redirect:
-                route: ph_payum_subscription_after_pay
-                parameters:
-                    version: $version
-
-ph_payum_subscription_after_pay:
-    path: /purchase/after-pay/
-    methods: [GET, POST]
-    defaults:
-        _controller: ph.controller.payum:afterCaptureAction
-        _sylius:
-            serialization_version: $version
-
 ph_payum_payment_cancel:
     path: /subscriptions/{subscriptionId}/payments/{id}/cancel
     methods: [DELETE]
