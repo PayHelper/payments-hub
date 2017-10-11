@@ -63,7 +63,7 @@ final class SubscriptionType extends AbstractResourceType
                 'months' => [
                     $this->dateTimeHelper->getCurrentMonth(),
                     $this->dateTimeHelper->getCurrentMonth(1),
-                    $this->dateTimeHelper->getCurrentMonth(2)
+                    $this->dateTimeHelper->getCurrentMonth(2),
                 ],
                 'data' => new \DateTime(),
             ])

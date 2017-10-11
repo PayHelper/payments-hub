@@ -49,6 +49,153 @@ Feature: Creating a new subscription
     And the JSON node "items[0].updated_at" should not be null
     And the JSON node "_links" should not be null
 
+  Scenario: Creating new subscription is not possible because the day of start date is wrong
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "22",
+          "day": "10",
+          "year": "2017"
+       }
+    }
+    """
+    Then the response status code should be 400
+    And the response should be in JSON
+
+  Scenario: Creating new subscription is not possible because the month of start date is wrong
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "10",
+          "day": "9",
+          "year": "2017"
+       }
+    }
+    """
+    Then the response status code should be 400
+    And the response should be in JSON
+
+  Scenario: Creating new subscription is not possible because the year of start date is wrong
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "10",
+          "day": "10",
+          "year": "2018"
+       }
+    }
+    """
+    Then the response status code should be 400
+    And the response should be in JSON
+
+  Scenario: Creating new subscription with the 15th day of start date
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "10",
+          "day": "15",
+          "year": "2017"
+       }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+
+  Scenario: Creating new subscription with the 1st day of start date
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "10",
+          "day": "1",
+          "year": "2017"
+       }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+
+  Scenario: Creating new subscription with the upcoming month of the given one in start date
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "11",
+          "day": "1",
+          "year": "2017"
+       }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+
+  Scenario: Creating new subscription with the next month of the upcoming month in start date
+    When I add "Authorization" header equal to null
+    And I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/public-api/v1/subscriptions/" with body:
+    """
+	{
+      "amount":500,
+      "currency_code":"USD",
+      "interval":"1 month",
+      "type":"recurring",
+      "start_date": {
+          "month": "12",
+          "day": "1",
+          "year": "2017"
+       }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+
   Scenario: Create a new subscription when at least one payment method is defined
     Given the system has a payment method "Offline" with a code "cash_on_delivery"
     When I add "Authorization" header equal to null
