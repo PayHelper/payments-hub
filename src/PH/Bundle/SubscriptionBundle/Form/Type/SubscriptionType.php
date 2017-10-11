@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PH\Bundle\SubscriptionBundle\Form\Type;
 
+use PH\Bundle\SubscriptionBundle\Helper\DateTimeHelperInterface;
 use PH\Component\Subscription\Model\SubscriptionInterface;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -12,10 +13,28 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Validator\Constraints\Choice;
 
 final class SubscriptionType extends AbstractResourceType
 {
+    /**
+     * @var DateTimeHelperInterface
+     */
+    private $dateTimeHelper;
+
+    /**
+     * SubscriptionType constructor.
+     *
+     * @param string                  $dataClass
+     * @param array                   $validationGroups
+     * @param DateTimeHelperInterface $dateTimeHelper
+     */
+    public function __construct($dataClass, $validationGroups = [], DateTimeHelperInterface $dateTimeHelper)
+    {
+        parent::__construct($dataClass, $validationGroups);
+
+        $this->dateTimeHelper = $dateTimeHelper;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -39,9 +58,13 @@ final class SubscriptionType extends AbstractResourceType
             ])
             ->add('startDate', DateType::class, [
                 'widget' => 'choice',
-                'days' => [date('d'), 1, 15],
-                'years' => [date('Y')],
-                'months' => [date('m'), date('m') + 1, date('m') + 2],
+                'days' => [$this->dateTimeHelper->getCurrentDay(), 1, 15],
+                'years' => [$this->dateTimeHelper->getCurrentYear()],
+                'months' => [
+                    $this->dateTimeHelper->getCurrentMonth(),
+                    $this->dateTimeHelper->getCurrentMonth(1),
+                    $this->dateTimeHelper->getCurrentMonth(2)
+                ],
                 'data' => new \DateTime(),
             ])
             ->add('submit', SubmitType::class)

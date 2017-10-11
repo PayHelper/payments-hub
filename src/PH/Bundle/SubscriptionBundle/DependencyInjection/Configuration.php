@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PH\Bundle\SubscriptionBundle\DependencyInjection;
 
 use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
+use PH\Bundle\SubscriptionBundle\Helper\DateTimeHelper;
 use PH\Component\Subscription\Model\Subscription;
 use PH\Component\Subscription\Model\SubscriptionInterface;
 use PH\Component\Subscription\Model\SubscriptionItem;
@@ -50,6 +51,7 @@ final class Configuration implements ConfigurationInterface
     {
         $node
             ->children()
+                ->scalarNode('date_time_helper')->defaultValue(DateTimeHelper::class)->cannotBeEmpty()->end()
                 ->arrayNode('resources')
                 ->addDefaultsIfNotSet()
                 ->children()
