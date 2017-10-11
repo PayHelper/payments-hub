@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PH\Bundle\SubscriptionBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 
-class RegisterDateTimeHelperCompilerPass implements CompilerPassInterface
+final class RegisterDateTimeHelperCompilerPass implements CompilerPassInterface
 {
     public function process(ContainerBuilder $container)
     {
