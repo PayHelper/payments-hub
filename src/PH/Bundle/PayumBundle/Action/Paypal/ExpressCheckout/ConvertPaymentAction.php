@@ -10,7 +10,6 @@ use Payum\Core\Request\Convert;
 use PH\Bundle\PayumBundle\Provider\PaymentDescriptionProviderInterface;
 use PH\Component\Core\Model\SubscriptionInterface;
 use PH\Component\Core\Model\PaymentInterface;
-use Sylius\Component\Core\Payment\InvoiceNumberGeneratorInterface;
 
 final class ConvertPaymentAction implements ActionInterface
 {
@@ -69,7 +68,7 @@ final class ConvertPaymentAction implements ActionInterface
         return
             $request instanceof Convert &&
             $request->getSource() instanceof PaymentInterface &&
-            $request->getTo() === 'array'
+            'array' === $request->getTo()
         ;
     }
 

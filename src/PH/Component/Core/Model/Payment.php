@@ -7,7 +7,6 @@ namespace PH\Component\Core\Model;
 use PH\Component\Subscription\Model\SubscriptionInterface as BaseSubscriptionInterface;
 use Sylius\Component\Payment\Model\Payment as BasePayment;
 
-
 class Payment extends BasePayment implements PaymentInterface
 {
     /**

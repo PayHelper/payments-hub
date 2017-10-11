@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace PH\Bundle\CoreBundle\Form\Type\Purchase;
 
-use PH\Bundle\CoreBundle\Form\Type\Purchase\ChangePaymentMethodType;
-use PH\Bundle\CoreBundle\Form\Type\Purchase\PaymentType;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Symfony\Component\Form\FormBuilderInterface;
 
