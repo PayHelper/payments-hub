@@ -5,6 +5,8 @@ services:
     # generic
     ph.payum_action.capture_payment:
         class: PH\Bundle\PayumBundle\Action\CapturePaymentAction
+        arguments:
+            - '@ph.payum.provider.payment_description'
         tags:
             - { name: "payum.action", all: true, alias: "sylius.capture_payment"}
 
@@ -29,7 +31,7 @@ services:
     ph.payum_action.paypal_express_checkout.convert_payment:
         class: PH\Bundle\PayumBundle\Action\Paypal\ExpressCheckout\ConvertPaymentAction
         arguments:
-            - '@sylius.invoice_number_generator'
+            - '@ph.payum.provider.payment_description'
         tags:
             - { name: "payum.action", factory: "paypal_express_checkout", alias: "sylius.paypal_express_checkout.convert_payment"}
 

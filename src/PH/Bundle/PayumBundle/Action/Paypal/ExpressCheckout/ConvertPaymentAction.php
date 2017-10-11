@@ -7,24 +7,25 @@ namespace PH\Bundle\PayumBundle\Action\Paypal\ExpressCheckout;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Request\Convert;
-use PH\Component\Core\Model\OrderInterface;
+use PH\Bundle\PayumBundle\Provider\PaymentDescriptionProviderInterface;
+use PH\Component\Core\Model\SubscriptionInterface;
 use PH\Component\Core\Model\PaymentInterface;
-use Sylius\Component\Core\Payment\InvoiceNumberGeneratorInterface;
 
 final class ConvertPaymentAction implements ActionInterface
 {
     /**
-     * @var InvoiceNumberGeneratorInterface
+     * @var PaymentDescriptionProviderInterface
      */
-    private $invoiceNumberGenerator;
+    private $descriptionProvider;
 
     /**
-     * @param InvoiceNumberGeneratorInterface $invoiceNumberGenerator
+     * CapturePaymentAction constructor.
+     *
+     * @param PaymentDescriptionProviderInterface $descriptionProvider
      */
-    public function __construct(
-        InvoiceNumberGeneratorInterface $invoiceNumberGenerator
-    ) {
-        $this->invoiceNumberGenerator = $invoiceNumberGenerator;
+    public function __construct(PaymentDescriptionProviderInterface $descriptionProvider)
+    {
+        $this->descriptionProvider = $descriptionProvider;
     }
 
     /**
@@ -38,18 +39,18 @@ final class ConvertPaymentAction implements ActionInterface
 
         /** @var PaymentInterface $payment */
         $payment = $request->getSource();
-        /** @var OrderInterface $order */
-        $order = $payment->getOrder();
+        /** @var SubscriptionInterface $subscription */
+        $subscription = $payment->getSubscription();
 
         $details = [];
-        $details['PAYMENTREQUEST_0_INVNUM'] = $this->invoiceNumberGenerator->generate($order, $payment);
-        $details['PAYMENTREQUEST_0_CURRENCYCODE'] = $order->getCurrencyCode();
-        $details['PAYMENTREQUEST_0_AMT'] = $this->formatPrice($order->getTotal());
-        $details['PAYMENTREQUEST_0_ITEMAMT'] = $this->formatPrice($order->getTotal());
+        $details['PAYMENTREQUEST_0_INVNUM'] = $subscription->getId().'-'.$payment->getId();
+        $details['PAYMENTREQUEST_0_CURRENCYCODE'] = $subscription->getCurrencyCode();
+        $details['PAYMENTREQUEST_0_AMT'] = $this->formatPrice($subscription->getTotal());
+        $details['PAYMENTREQUEST_0_ITEMAMT'] = $this->formatPrice($subscription->getTotal());
 
         $m = 0;
-        foreach ($order->getItems() as $item) {
-            $details['L_PAYMENTREQUEST_0_NAME'.$m] = $order->getSubscription()->getName();
+        foreach ($subscription->getItems() as $item) {
+            $details['L_PAYMENTREQUEST_0_NAME'.$m] = $this->descriptionProvider->getPaymentDescription($payment);
             $details['L_PAYMENTREQUEST_0_AMT'.$m] = $this->formatPrice($item->getUnitPrice());
             $details['L_PAYMENTREQUEST_0_QTY'.$m] = $item->getQuantity();
 
@@ -67,7 +68,7 @@ final class ConvertPaymentAction implements ActionInterface
         return
             $request instanceof Convert &&
             $request->getSource() instanceof PaymentInterface &&
-            $request->getTo() === 'array'
+            'array' === $request->getTo()
         ;
     }
 

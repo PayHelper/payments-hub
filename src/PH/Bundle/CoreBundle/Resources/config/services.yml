@@ -1,6 +1,6 @@
 services:
-    ph.order_token_assigner:
-        class: PH\Component\Core\Assigner\OrderTokenAssigner
+    ph.subscription_token_assigner:
+        class: PH\Component\Core\Assigner\SubscriptionTokenAssigner
         arguments:
            - "@sylius.random_generator"
 
@@ -20,41 +20,32 @@ services:
         tags:
             - { name: form.type_extension, extended_type: Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodType }
 
-    ph.facade.order:
-        class: PH\Bundle\CoreBundle\Facade\OrderFacade
+    ph.facade.subscription:
+        class: PH\Bundle\CoreBundle\Facade\SubscriptionFacade
         arguments:
-            - "@sylius.factory.order_item"
-            - "@sylius.order_item_quantity_modifier"
-            - "@sylius.order_modifier"
+            - "@ph.factory.subscription_item"
+            - "@ph.subscription_processing.subscription_payment_processor.purchase"
 
-    ph.form.type.checkout_select_payment:
-        class: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+    ph.form.type.purchase_select_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Purchase\SelectPaymentType
         arguments:
-            - '%sylius.model.order.class%'
+            - '%ph.model.subscription.class%'
             - ['ph']
         tags:
             - { name: form.type }
 
-    swp.form.type.checkout_payment:
-        class: PH\Bundle\CoreBundle\Form\Type\Checkout\PaymentType
+    swp.form.type.purchase_payment:
+        class: PH\Bundle\CoreBundle\Form\Type\Purchase\PaymentType
         arguments:
             - '%sylius.model.payment.class%'
         tags:
             - { name: form.type }
 
-#order processing
-    ph.order_processing.order_payment_processor.checkout:
-        class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor
+#subscription processing
+    ph.subscription_processing.subscription_payment_processor.purchase:
+        class: PH\Component\Core\Processor\SubscriptionPaymentProcessor
         arguments:
-            - "@ph.order_payment_provider"
-            - "cart"
-        tags:
-            - { name: sylius.order_processor, priority: 0 }
-
-    ph.order_processing.order_payment_processor.after_checkout:
-        class: PH\Component\Core\OrderProcessing\OrderPaymentProcessor
-        arguments:
-            - "@ph.order_payment_provider"
+            - "@ph.subscription_payment_provider"
             - "new"
 ####
 
@@ -63,26 +54,26 @@ services:
         arguments:
             - "@sylius.repository.payment_method"
 
-    ph.order_payment_provider:
-        class: PH\Component\Core\Payment\Provider\OrderPaymentProvider
+    ph.subscription_payment_provider:
+        class: PH\Component\Core\Payment\Provider\SubscriptionPaymentProvider
         arguments:
             - "@ph.payment_method_resolver.default"
             - "@sylius.factory.payment"
             - "@sm.factory"
 
 # resolvers
-    ph.state_resolver.order_payment:
-        class: PH\Component\Core\Resolver\OrderPaymentStateResolver
+    ph.state_resolver.subscription_payment:
+        class: PH\Component\Core\Resolver\SubscriptionPaymentStateResolver
         arguments:
             - "@sm.factory"
 
-    ph.state_resolver.order:
-        class: PH\Component\Core\Resolver\OrderStateResolver
+    ph.state_resolver.subscription:
+        class: PH\Component\Core\Resolver\SubscriptionStateResolver
         arguments:
             - "@sm.factory"
 
-    ph.payload_sender.order:
-        class: PH\Bundle\CoreBundle\Sender\OrderPayloadSender
+    ph.payload_sender.subscription:
+        class: PH\Bundle\CoreBundle\Sender\SubscriptionPayloadSender
         arguments:
             - "@ph.repository.webhook"
             - "@jms_serializer"

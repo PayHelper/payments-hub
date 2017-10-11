@@ -1,8 +1,8 @@
-ph_public_api_core_order_create:
-    path: /orders/
+ph_public_api_core_subscription_create:
+    path: /subscriptions/
     methods: [POST]
     defaults:
-        _controller: sylius.controller.order:addAction
+        _controller: ph.controller.subscription:addAction
         _sylius:
             section: api
             form:
@@ -21,48 +21,48 @@ ph_public_api_core_payment_method:
     type: sylius.resource_api
 
 
-ph_public_api_core_checkout_payment:
-    path: /checkouts/payment/{token}
+ph_public_api_core_purchase_payment:
+    path: /purchase/payment/{token}
     methods: [PUT]
     defaults:
-        _controller: sylius.controller.order:updateAction
+        _controller: ph.controller.subscription:updateAction
         _sylius:
             serialization_version: $version
-            form: PH\Bundle\CoreBundle\Form\Type\Checkout\SelectPaymentType
+            form: PH\Bundle\CoreBundle\Form\Type\Purchase\SelectPaymentType
             repository:
                 method: getOneByToken
                 arguments: [$token]
             state_machine:
-                graph: ph_order_checkout
+                graph: ph_subscription_purchase
                 transition: select_payment
 
-ph_public_api_core_checkout_show:
-    path: /checkouts/{orderId}
+ph_public_api_core_purchase_show:
+    path: /purchase/{token}
     methods: [GET]
     defaults:
-        _controller: sylius.controller.order:showAction
+        _controller: ph.controller.subscription:showAction
         repository:
-            method: findByOrderId
-            arguments: [$orderId]
+            method: getOneByToken
+            arguments: [$token]
         _sylius:
             serialization_version: $version
             serialization_groups: [Detailed]
 
 # payum
-ph_public_api_payum_order_pay:
-    path: /checkouts/pay/{token}
+ph_public_api_payum_subscription_pay:
+    path: /purchase/pay/{token}
     methods: [GET]
     defaults:
         _controller: ph.controller.payum:prepareCaptureAction
         _sylius:
             serialization_version: $version
             redirect:
-                route: ph_public_api_payum_order_after_pay
+                route: ph_public_api_payum_subscription_after_pay
                 parameters:
                     version: $version
 
-ph_public_api_payum_order_after_pay:
-    path: /checkouts/after-pay/
+ph_public_api_payum_subscription_after_pay:
+    path: /purchase/after-pay/
     methods: [GET, POST]
     defaults:
         _controller: ph.controller.payum:afterCaptureAction

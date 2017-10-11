@@ -8,7 +8,6 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            new Sylius\Bundle\OrderBundle\SyliusOrderBundle(),
             new Sylius\Bundle\MoneyBundle\SyliusMoneyBundle(),
             new Sylius\Bundle\PaymentBundle\SyliusPaymentBundle(),
 

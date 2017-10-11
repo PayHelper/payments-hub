@@ -1,0 +1,4 @@
+ph:
+  payum_action:
+    payment:
+      description: Payment for a total of %total% %currency%

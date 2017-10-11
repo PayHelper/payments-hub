@@ -4,5 +4,6 @@ services:
         arguments:
             - '%ph.model.subscription.class%'
             - ['ph']
+            - '@ph.helper.date_time' # registered by compiler pass
         tags:
             - { name: form.type }

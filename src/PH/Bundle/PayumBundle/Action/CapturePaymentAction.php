@@ -10,12 +10,28 @@ use Payum\Core\Exception\RequestNotSupportedException;
 use Payum\Core\Model\Payment as PayumPayment;
 use Payum\Core\Request\Capture;
 use Payum\Core\Request\Convert;
-use PH\Component\Core\Model\OrderInterface;
+use PH\Bundle\PayumBundle\Provider\PaymentDescriptionProviderInterface;
+use PH\Component\Core\Model\SubscriptionInterface;
 use PH\Component\Core\Model\PaymentInterface;
 use Sylius\Bundle\PayumBundle\Request\GetStatus;
 
 final class CapturePaymentAction extends GatewayAwareAction
 {
+    /**
+     * @var PaymentDescriptionProviderInterface
+     */
+    private $descriptionProvider;
+
+    /**
+     * CapturePaymentAction constructor.
+     *
+     * @param PaymentDescriptionProviderInterface $descriptionProvider
+     */
+    public function __construct(PaymentDescriptionProviderInterface $descriptionProvider)
+    {
+        $this->descriptionProvider = $descriptionProvider;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -27,8 +43,8 @@ final class CapturePaymentAction extends GatewayAwareAction
         $payment = $request->getModel();
         $paymentMethodConfig = $payment->getMethod()->getGatewayConfig()->getConfig();
 
-        /** @var OrderInterface $order */
-        $order = $payment->getOrder();
+        /** @var SubscriptionInterface $subscription */
+        $subscription = $payment->getSubscription();
 
         $this->gateway->execute($status = new GetStatus($payment));
 
@@ -37,20 +53,20 @@ final class CapturePaymentAction extends GatewayAwareAction
                 $this->gateway->execute($convert = new Convert($payment, 'array', $request->getToken()));
                 $payment->setDetails($convert->getResult());
             } catch (RequestNotSupportedException $e) {
-                $totalAmount = $order->getTotal();
+                $totalAmount = $subscription->getTotal();
                 $payumPayment = new PayumPayment();
-                $payumPayment->setNumber($order->getNumber());
+                //$payumPayment->setNumber($subscription->getNumber());
                 $payumPayment->setTotalAmount($totalAmount);
-                $payumPayment->setCurrencyCode($order->getCurrencyCode());
-                $payumPayment->setDescription($order->getSubscription()->getName());
+                $payumPayment->setCurrencyCode($subscription->getCurrencyCode());
+                $payumPayment->setDescription($this->descriptionProvider->getPaymentDescription($payment));
 
-                $startDate = $order->getSubscription()->getStartDate();
+                $startDate = $subscription->getStartDate();
                 if (null === $startDate) {
                     $startDate = new \DateTime();
                 }
 
                 $details = [
-                    'interval' => $order->getSubscription()->getInterval(),
+                    'interval' => $subscription->getInterval(),
                     'startDate' => $startDate->format('Y-m-d'),
                 ];
 

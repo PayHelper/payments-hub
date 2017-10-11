@@ -25,3 +25,6 @@ lexik_jwt_authentication:
     private_key_path: '%kernel.root_dir%/../var/jwt/private-test.pem'
     public_key_path: '%kernel.root_dir%/../var/jwt/public-test.pem'
     pass_phrase: sourcefabric
+
+ph_subscription:
+    date_time_helper: DateTimeHelperMock

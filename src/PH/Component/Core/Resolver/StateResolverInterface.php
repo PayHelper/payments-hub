@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace PH\Component\Core\Resolver;
 
-use PH\Component\Core\Model\OrderInterface;
+use PH\Component\Core\Model\SubscriptionInterface;
 
 interface StateResolverInterface
 {
     /**
-     * @param OrderInterface $order
+     * @param SubscriptionInterface $subscription
      */
-    public function resolve(OrderInterface $order);
+    public function resolve(SubscriptionInterface $subscription);
 }

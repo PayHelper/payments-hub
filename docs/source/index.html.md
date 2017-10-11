@@ -12,13 +12,12 @@ includes:
   - errors
   - api/payment_gateways
   - api/payment_methods
-  - api/orders
-  - api/checkouts
+  - api/subscriptions
   - api/webhooks
   - public_api/payment_gateways
   - public_api/payment_methods
-  - public_api/orders
-  - public_api/checkouts
+  - public_api/subscriptions
+  - public_api/purchase
 
 search: true
 ---

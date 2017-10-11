@@ -1,10 +1,13 @@
 services:
     ph.controller.payum:
+      alias: sylius.controller.payum
+
+    sylius.controller.payum:
       class: PH\Bundle\PayumBundle\Controller\PayumController
       arguments:
           - '@payum'
-          - '@sylius.repository.order'
-          - "@=service('sylius.resource_registry').get('sylius.order')"
+          - '@ph.repository.subscription'
+          - "@=service('sylius.resource_registry').get('ph.subscription')"
           - '@sylius.resource_controller.request_configuration_factory'
           - '@sylius.resource_controller.view_handler'
           - '@router'
@@ -25,3 +28,8 @@ services:
 
     ph.payum.factory.resolve_next_route:
         class: PH\Bundle\PayumBundle\Factory\ResolveNextRouteFactory
+
+    ph.payum.provider.payment_description:
+        class: PH\Bundle\PayumBundle\Provider\PaymentDescriptionProvider
+        arguments:
+            - '@translator'

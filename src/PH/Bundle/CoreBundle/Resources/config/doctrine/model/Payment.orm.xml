@@ -8,8 +8,8 @@
     <mapped-superclass name="PH\Component\Core\Model\Payment" table="ph_payment">
         <field name="canceledAt" column="canceled_at" type="datetime" nullable="true"/>
 
-        <many-to-one field="order" target-entity="Sylius\Component\Order\Model\OrderInterface" inversed-by="payments">
-            <join-column name="order_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
+        <many-to-one field="subscription" target-entity="PH\Component\Subscription\Model\SubscriptionInterface" inversed-by="payments">
+            <join-column name="subscription_id" referenced-column-name="id" nullable="false" on-delete="CASCADE" />
         </many-to-one>
     </mapped-superclass>
 

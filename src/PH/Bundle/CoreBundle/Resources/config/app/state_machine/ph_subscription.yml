@@ -1,0 +1,42 @@
+winzou_state_machine:
+    ph_subscription:
+        class: "%ph.model.subscription.class%"
+        property_path: state
+        graph: ph_subscription
+        state_machine_class: "%sylius.state_machine.class%"
+        states:
+            new: ~
+            cancelled: ~
+            fulfilled: ~
+        transitions:
+            create:
+                from: [new]
+                to: new
+            cancel:
+                from: [new]
+                to: cancelled
+            fulfill:
+                from: [new]
+                to: fulfilled
+        callbacks:
+            after:
+                ph_request_payment:
+                    on: ["create"]
+                    do: ["@sm.callback.cascade_transition", "apply"]
+                    args: ["object", "event", "'request_payment'", "'ph_subscription_payment'"]
+                ph_create_payment:
+                    on: ["create"]
+                    do: ["@sm.callback.cascade_transition", "apply"]
+                    args: ["object.getPayments()", "event", "'create'", "'ph_payment'"]
+                ph_cancel_payment:
+                    on: ["cancel"]
+                    do: ["@sm.callback.cascade_transition", "apply"]
+                    args: ["object.getPayments()", "event", "'cancel'", "'ph_payment'"]
+                ph_cancel_subscription_payment:
+                    on: ["cancel"]
+                    do: ["@sm.callback.cascade_transition", "apply"]
+                    args: ["object", "event", "'cancel'", "'ph_subscription_payment'"]
+                ph_send_payload:
+                    on: ["fulfill"]
+                    do: ["@ph.payload_sender.subscription", "send"]
+                    args: ["object"]

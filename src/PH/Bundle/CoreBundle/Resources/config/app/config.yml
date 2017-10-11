@@ -5,7 +5,7 @@ imports:
 
 payum:
     storages:
-        "%sylius.model.order.class%": { doctrine: orm }
+        "%ph.model.subscription.class%": { doctrine: orm }
         "%sylius.model.payment.class%": { doctrine: orm }
 
     security:
@@ -25,9 +25,6 @@ jms_serializer:
             sylius-payment:
                 namespace_prefix: "Sylius\\Component\\Payment"
                 path: "@PHCoreBundle/Resources/config/serializer/SyliusPaymentBundle"
-            sylius-order:
-                namespace_prefix: "Sylius\\Component\\Order"
-                path: "@PHCoreBundle/Resources/config/serializer/SyliusOrderBundle"
             ph-core:
                 namespace_prefix: "PH\\Component\\Core"
                 path: "@PHCoreBundle/Resources/config/serializer"
@@ -42,15 +39,16 @@ sylius_payment:
         payment:
             classes:
                 model: PH\Component\Core\Model\Payment
+                interface: PH\Component\Core\Model\PaymentInterface
                 repository: PH\Bundle\CoreBundle\Doctrine\ORM\PaymentRepository
 
-sylius_order:
+ph_subscription:
     resources:
-        order:
+        subscription:
             classes:
-                model: PH\Component\Core\Model\Order
-                controller: PH\Bundle\CoreBundle\Controller\OrderController
-                repository: PH\Bundle\CoreBundle\Doctrine\ORM\OrderRepository
+                model: PH\Component\Core\Model\Subscription
+                controller: PH\Bundle\CoreBundle\Controller\SubscriptionController
+                repository: PH\Bundle\CoreBundle\Doctrine\ORM\SubscriptionRepository
 
 sylius_payum:
     resources:

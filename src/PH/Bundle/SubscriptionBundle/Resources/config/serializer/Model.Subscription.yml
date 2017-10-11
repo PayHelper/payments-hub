@@ -7,7 +7,7 @@ PH\Component\Subscription\Model\Subscription:
             groups: [Default, Detailed]
         amount:
             expose: true
-            type: string
+            type: integer
             groups: [Default, Detailed]
         currencyCode:
             expose: true
@@ -25,14 +25,25 @@ PH\Component\Subscription\Model\Subscription:
             expose: true
             type: DateTime
             groups: [Default, Detailed]
-        name:
+        items:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        itemsTotal:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        total:
+            expose: true
+            type: integer
+            groups: [Default, Detailed]
+        state:
             expose: true
             type: string
-            groups: [Default, Detailed]
-        code:
+            groups: [Detailed]
+        purchaseCompletedAt:
             expose: true
-            type: string
-            groups: [Default, Detailed]
+            groups: [Detailed]
         createdAt:
             expose: true
             type: DateTime

@@ -1,0 +1,20 @@
+PH\Component\Core\Model\Subscription:
+    exclusion_policy: ALL
+    xml_root_name: subscription
+    properties:
+        payments:
+            expose: true
+            type: array
+            groups: [Default, Detailed]
+        purchaseState:
+            expose: true
+            type: string
+            groups: [Detailed]
+        paymentState:
+            expose: true
+            type: string
+            groups: [Detailed]
+        tokenValue:
+            expose: true
+            type: string
+            groups: [Detailed]
