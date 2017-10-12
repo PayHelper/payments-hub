@@ -52,29 +52,36 @@
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
             crossorigin="anonymous"></script>
     <script>
+
+        var loadPaymentMethods = function(url) {
+            $.ajax({
+                type: "GET",
+                contentType: "application/json",
+                url: url,
+                dataType: "json"
+            }).done(function( paymentRes ) {
+                var options = [];
+
+                $.each(paymentRes._embedded.items, function(key, value)
+                {
+                    options.push('<option value="'+ value.code +'">'+ value.translations.en.name +' ('+value.code+')</option>');
+                });
+
+                $('#payment-methods').html(options.join(''));
+            });
+        };
+
         $( "#ph_subscription_type" ).change(function() {
             if ('recurring' == this.value) {
                 $('form span').show();
+                loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=1');
             } else {
                 $('form span').hide();
+                loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=0');
             }
         });
 
-        $.ajax({
-            type: "GET",
-            contentType: "application/json",
-            url: '/public-api/v1/payment-methods/',
-            dataType: "json"
-        }).done(function( paymentRes ) {
-            var options = [];
-
-            $.each(paymentRes._embedded.items, function(key, value)
-            {
-                options.push('<option value="'+ value.code +'">'+ value.translations.en.name +' ('+value.code+')</option>');
-            });
-
-            $('#payment-methods').html(options.join(''));
-        });
+        loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=0');
 
         $("form[name='ph_subscription']").submit(function( event ) {
             event.preventDefault();

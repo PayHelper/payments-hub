@@ -53,8 +53,8 @@ final class PaymentContext implements Context
      * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode and Paypal Express Checkout gateway
      */
     public function theSystemHasPaymentMethodWithCodeAndPaypalExpressCheckoutGateway(
-        $paymentMethodName,
-        $paymentMethodCode
+        string $paymentMethodName,
+        string $paymentMethodCode
     ) {
         $this->createPaymentMethod($paymentMethodName, $paymentMethodCode, 'Paypal Express Checkout', 'paypal desc', 1, [
             'username' => 'TEST',
@@ -66,23 +66,47 @@ final class PaymentContext implements Context
     }
 
     /**
+     * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode and a :method and Mollie gateway
+     */
+    public function theSystemHasPaymentMethodWithCodeAndAAndMollieGateway(
+        string $paymentMethodName,
+        string $paymentMethodCode,
+        string $method
+    ) {
+        $this->createPaymentMethod(
+            $paymentMethodName,
+            $paymentMethodCode,
+            'Mollie',
+            'Mollie instructions',
+            1,
+            [
+                'apiKey' => 'TEST',
+                'method' => $method,
+            ],
+            true
+        );
+    }
+
+    /**
      * @param string   $name
      * @param string   $code
      * @param string   $gatewayFactory
      * @param string   $description
      * @param int|null $position
      * @param array    $config
+     * @param bool     $supportsRecurring
      *
      * @return PaymentMethodInterface
      */
     private function createPaymentMethod(
-        $name,
-        $code,
-        $gatewayFactory = 'Offline',
-        $description = '',
-        $position = null,
-        array $config = []
-    ) {
+        string $name,
+        string $code,
+        string $gatewayFactory = 'Offline',
+        string $description = '',
+        int $position = null,
+        array $config = [],
+        bool $supportsRecurring = false
+    ): PaymentMethodInterface {
         $gatewayFactory = array_search($gatewayFactory, $this->gatewayFactories);
 
         /** @var PaymentMethodInterface $paymentMethod */
@@ -93,6 +117,10 @@ final class PaymentContext implements Context
         $paymentMethod->setEnabled(true);
         $paymentMethod->getGatewayConfig()->setGatewayName($gatewayFactory);
         $paymentMethod->getGatewayConfig()->setConfig($config);
+
+        if ($supportsRecurring) {
+            $paymentMethod->setSupportsRecurring(true);
+        }
 
         if (null !== $position) {
             $paymentMethod->setPosition($position);

@@ -16,6 +16,11 @@ class PaymentMethod extends BasePaymentMethod implements PaymentMethodInterface
     protected $gatewayConfig;
 
     /**
+     * @var bool
+     */
+    protected $supportsRecurring = false;
+
+    /**
      * PaymentMethod constructor.
      */
     public function __construct()
@@ -45,5 +50,21 @@ class PaymentMethod extends BasePaymentMethod implements PaymentMethodInterface
     public static function getTranslationClass()
     {
         return PaymentMethodTranslation::class;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isSupportsRecurring(): bool
+    {
+        return $this->supportsRecurring;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSupportsRecurring(bool $supportsRecurring): void
+    {
+        $this->supportsRecurring = $supportsRecurring;
     }
 }

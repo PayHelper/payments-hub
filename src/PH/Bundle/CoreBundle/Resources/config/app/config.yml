@@ -34,7 +34,7 @@ sylius_payment:
         payment_method:
             classes:
                 model: PH\Component\Core\Model\PaymentMethod
-                repository: Sylius\Bundle\PaymentBundle\Doctrine\ORM\PaymentMethodRepository
+                repository: PH\Bundle\CoreBundle\Doctrine\ORM\PaymentMethodRepository
                 controller: PH\Bundle\CoreBundle\Controller\PaymentMethodController
         payment:
             classes:
