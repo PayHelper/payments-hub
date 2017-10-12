@@ -14,6 +14,7 @@ These endpoints will allow you to list available payment methods.
   "created_at":"2017-06-23T14:05:23+0200",
   "updated_at":"2017-06-23T14:05:23+0200",
   "enabled":true,
+  "supports_recurring":false,
   "translations":{
     "en":{
       "locale":"en",
@@ -52,6 +53,7 @@ position | integer | Position of payment method.
 created_at | string | Time at which the object was created.
 updated_at | string | Time at which the object was updated.
 enabled | boolean | This boolean represents whether or not payment method is enabled or not.
+supports_recurring | boolean | This boolean represents whether or not payment method supports recurring payments, `false` by default.
 translations | array | Translations.
 translations.en | array | Translation key (e.g. `en`).
 translations.en.locale | string | Translation locale (e.g. `en`).
@@ -113,6 +115,7 @@ curl -X GET \
         "created_at":"2017-06-23T14:05:23+0200",
         "updated_at":"2017-06-23T14:05:23+0200",
         "enabled":true,
+        "supports_recurring":false,
         "translations":{
           "en":{
             "locale":"en",
