@@ -36,6 +36,7 @@ Feature: Paying offline during purchase
     And the JSON node "payment_state" should be equal to "awaiting_payment"
     And the JSON node "total" should be equal to "5000"
     And the JSON node "token_value" should be equal to "12345abcde"
+    And the JSON node "state" should be equal to "new"
 
   Scenario: Completing successfully bought subscription
     Given the system has a payment method "Offline" with a code "off"

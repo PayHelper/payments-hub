@@ -42,3 +42,9 @@ services:
             - '%payum.template.sepa_obtain_bank_details%'
         tags:
             - { name: "payum.action", factory: "mollie", alias: "ph.mollie.obtain_sepa_bank_account"}
+
+    # Offline
+    ph.payum_action.offline.resolve_next_route:
+        class: PH\Bundle\PayumBundle\Action\Offline\ResolveNextRouteAction
+        tags:
+            - { name: "payum.action", factory: "offline", alias: "ph.offline.resolve_next_route"}
