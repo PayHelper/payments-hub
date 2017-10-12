@@ -4,10 +4,10 @@
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
-                <h1><span>Than You for order,  <br>please fill your data if you want to.</span></h1>
+                <h1><span>Thank You for your purchase,  <br>please fill in your data if you want to.</span></h1>
             </div>
             {% if app.request.get('token') %}
-                <div style="color: #3D7700">Successfully payed for an order {{ app.request.get('token') }}</div>
+                <div style="color: #3D7700">Successfully payed for a subscription {{ app.request.get('token') }}</div>
             {%  endif %}
             <div id="next">
                 <form id="fill-customer-data">
