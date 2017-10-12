@@ -3,6 +3,9 @@ PH\Component\Core\Model\PaymentMethod:
     properties:
         gatewayConfig:
             expose: true
+        supportsRecurring:
+            type: boolean
+            expose: true
     relations:
         -   rel: self
             href:

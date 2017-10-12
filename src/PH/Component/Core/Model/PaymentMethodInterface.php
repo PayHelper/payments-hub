@@ -18,4 +18,14 @@ interface PaymentMethodInterface extends BasePaymentInterface
      * @return GatewayConfigInterface
      */
     public function getGatewayConfig();
+
+    /**
+     * @return bool
+     */
+    public function isSupportsRecurring(): bool;
+
+    /**
+     * @param bool $supportsRecurring
+     */
+    public function setSupportsRecurring(bool $supportsRecurring): void;
 }

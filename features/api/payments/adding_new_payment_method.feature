@@ -138,6 +138,7 @@ Feature: Adding a new payment method
       "code":"sepa",
       "position":"2",
       "enabled":"1",
+      "supportsRecurring":"1",
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
@@ -158,6 +159,7 @@ Feature: Adding a new payment method
     And the JSON nodes should contain:
       | id                              | 1                           |
       | position                        | 2                           |
+      | supports_recurring              | 1                           |
       | code                            | sepa                        |
       | enabled                         | 1                           |
       | translations.en.locale          | en                          |

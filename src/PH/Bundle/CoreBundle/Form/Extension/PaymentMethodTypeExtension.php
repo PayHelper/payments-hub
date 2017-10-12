@@ -16,6 +16,7 @@ use Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodType;
 use Sylius\Bundle\PayumBundle\Form\Type\GatewayConfigType;
 use Sylius\Component\Core\Formatter\StringInflector;
 use Symfony\Component\Form\AbstractTypeExtension;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -34,6 +35,7 @@ final class PaymentMethodTypeExtension extends AbstractTypeExtension
                 'label' => false,
                 'data' => $gatewayFactory,
             ])
+            ->add('supportsRecurring', CheckboxType::class)
             ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
                 $paymentMethod = $event->getData();
 
