@@ -3,6 +3,7 @@ PH\Component\Core\Model\PaymentMethod:
     properties:
         gatewayConfig:
             expose: true
+            groups: [Detailed]
         supportsRecurring:
             type: boolean
             expose: true
