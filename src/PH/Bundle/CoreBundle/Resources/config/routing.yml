@@ -38,7 +38,7 @@ ph_core_payment_method_index:
     defaults:
         _controller: sylius.controller.payment_method:indexAction
         _sylius:
-            section: public_api
+            section: api
             filterable: true
             criteria:
                 supportsRecurring: $supportsRecurring
