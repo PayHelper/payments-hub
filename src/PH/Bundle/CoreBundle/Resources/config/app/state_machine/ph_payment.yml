@@ -5,7 +5,6 @@ winzou_state_machine:
         graph: ph_payment
         state_machine_class: "%sylius.state_machine.class%"
         states:
-            cart: ~
             new: ~
             processing: ~
             completed: ~
@@ -14,9 +13,6 @@ winzou_state_machine:
             refunded: ~
             authorized: ~
         transitions:
-            create:
-                from: [cart]
-                to: new
             process:
                 from: [new]
                 to: processing

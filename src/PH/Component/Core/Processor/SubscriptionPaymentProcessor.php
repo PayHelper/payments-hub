@@ -27,7 +27,7 @@ final class SubscriptionPaymentProcessor implements SubscriptionProcessorInterfa
      */
     public function __construct(
         SubscriptionPaymentProviderInterface $subscriptionPaymentProvider,
-        string $targetState = PaymentInterface::STATE_CART
+        string $targetState = PaymentInterface::STATE_NEW
     ) {
         $this->subscriptionPaymentProvider = $subscriptionPaymentProvider;
         $this->targetState = $targetState;

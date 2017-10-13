@@ -5,7 +5,7 @@ winzou_state_machine:
         graph: ph_subscription_payment
         state_machine_class: "%sylius.state_machine.class%"
         states:
-            cart: ~
+            new: ~
             awaiting_payment: ~
             partially_paid: ~
             cancelled: ~
@@ -14,7 +14,7 @@ winzou_state_machine:
             refunded: ~
         transitions:
             request_payment:
-                from: [cart]
+                from: [new]
                 to: awaiting_payment
             partially_pay:
                 from: [awaiting_payment, partially_paid]

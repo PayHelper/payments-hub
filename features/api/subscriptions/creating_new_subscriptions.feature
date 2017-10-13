@@ -32,8 +32,8 @@ Feature: Creating new subscriptions by admin
       | interval                              | month                       |
       | start_date                            | 2017-10-10T00:00:00+00:00   |
       | type                                  | recurring                   |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                         |
+      | payment_state                         | new                         |
       | items_total                           | 500                         |
       | total                                 | 500                         |
       | state                                 | new                         |
@@ -79,8 +79,8 @@ Feature: Creating new subscriptions by admin
       | interval                              | month                       |
       | start_date                            | 2017-10-10T00:00:00+00:00   |
       | type                                  | recurring                   |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                         |
+      | payment_state                         | new                         |
       | items_total                           | 500                         |
       | total                                 | 500                         |
       | state                                 | new                         |
@@ -123,8 +123,8 @@ Feature: Creating new subscriptions by admin
       | items[0].quantity                     | 1                           |
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                        |
+      | payment_state                         | new                         |
     And the JSON node "start_date" should be null
     And the JSON node "interval" should be null
     And the JSON node "purchase_completed_at" should be null

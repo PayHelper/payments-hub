@@ -23,8 +23,8 @@ Feature: Getting a single subscription
       | items_total                           | 5000                        |
       | total                                 | 5000                        |
       | state                                 | new                         |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                         |
+      | payment_state                         | new                         |
       | token_value                           | 12345abcde                  |
     And the JSON node "purchase_completed_at" should be null
     And the JSON node "interval" should be null
