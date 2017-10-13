@@ -32,8 +32,8 @@ Feature: Creating a new subscription
       | interval                              | month                       |
       | start_date                            | 2017-10-10T00:00:00+00:00   |
       | type                                  | recurring                   |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                         |
+      | payment_state                         | new                         |
       | items_total                           | 500                         |
       | total                                 | 500                         |
       | state                                 | new                         |
@@ -227,12 +227,12 @@ Feature: Creating a new subscription
       | type                                  | recurring                   |
       | items_total                           | 500                         |
       | total                                 | 500                         |
-      | state                                 | new                        |
+      | state                                 | new                         |
       | items[0].quantity                     | 1                           |
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                         |
+      | payment_state                         | new                         |
     And the JSON node "purchase_completed_at" should be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
@@ -269,8 +269,8 @@ Feature: Creating a new subscription
       | items[0].quantity                     | 1                           |
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
-      | purchase_state                        | cart                        |
-      | payment_state                         | cart                        |
+      | purchase_state                        | new                         |
+      | payment_state                         | new                         |
     And the JSON node "start_date" should be null
     And the JSON node "token_value" should not be null
     And the JSON node "interval" should be null

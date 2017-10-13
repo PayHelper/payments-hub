@@ -20,6 +20,11 @@ class Payment extends BasePayment implements PaymentInterface
     protected $canceledAt;
 
     /**
+     * @var string
+     */
+    protected $state = PaymentInterface::STATE_NEW;
+
+    /**
      * {@inheritdoc}
      */
     public function getCanceledAt(): ?\DateTimeInterface

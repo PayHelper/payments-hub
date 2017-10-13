@@ -17,7 +17,6 @@ interface SubscriptionInterface extends TimestampableInterface, ResourceInterfac
     const TYPE_RECURRING = 'recurring';
     const TYPE_NON_RECURRING = 'non-recurring';
 
-    const STATE_CART = 'cart';
     const STATE_NEW = 'new';
     const STATE_CANCELLED = 'cancelled';
     const STATE_FULFILLED = 'fulfilled';

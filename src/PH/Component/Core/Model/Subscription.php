@@ -20,12 +20,12 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * @var string
      */
-    protected $purchaseState = SubscriptionPurchaseStates::STATE_CART;
+    protected $purchaseState = SubscriptionPurchaseStates::STATE_NEW;
 
     /**
      * @var string
      */
-    protected $paymentState = SubscriptionPaymentStates::STATE_CART;
+    protected $paymentState = SubscriptionPaymentStates::STATE_NEW;
 
     /**
      * @var null|string

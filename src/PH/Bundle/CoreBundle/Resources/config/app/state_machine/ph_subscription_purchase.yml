@@ -5,16 +5,16 @@ winzou_state_machine:
         graph: ph_subscription_purchase
         state_machine_class: "%sylius.state_machine.class%"
         states:
-            cart: ~
+            new: ~
             payment_skipped: ~
             payment_selected: ~
             completed: ~
         transitions:
             skip_payment:
-                from: [cart, payment_selected]
+                from: [new, payment_selected]
                 to: payment_skipped
             select_payment:
-                from: [cart, payment_selected, payment_skipped]
+                from: [new, payment_selected, payment_skipped]
                 to: payment_selected
             complete:
                 from: [payment_selected, payment_skipped]

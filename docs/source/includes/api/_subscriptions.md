@@ -31,8 +31,8 @@ Based on created subscriptions you can perform purchases (see [Purchase API](#pu
     "created_at": "2017-10-10T14:54:53+00:00",
     "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "purchase_state": "cart",
-    "payment_state": "cart",
+    "purchase_state": "new",
+    "payment_state": "new",
     "token_value": "zadfgN_3Oo"
 }
 ```
@@ -53,8 +53,8 @@ state | string | A state of the subscription. Can be either: `new`, `cancelled` 
 created_at | string | Time at which the object was created.
 updated_at | string | Time at which the object was updated.
 payments | array | An array of Payment object which contains [payment methods](#payment-methods) objects.
-purchase_state | string | A state of the checkout process. Can be either: `cart`, `payment_selected` or `completed`.
-payment_state | string | A state of the payment. Can be either: `cart`, `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
+purchase_state | string | A state of the checkout process. Can be either: `new`, `payment_selected` or `completed`.
+payment_state | string | A state of the payment. Can be either: `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
 
 ## Create a subscription
@@ -112,8 +112,8 @@ curl -X POST \
     "created_at": "2017-10-10T14:54:53+00:00",
     "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "purchase_state": "cart",
-    "payment_state": "cart",
+    "purchase_state": "new",
+    "payment_state": "new",
     "token_value": "zadfgN_3Oo"
 }
 ```
@@ -176,8 +176,8 @@ curl -X GET \
     "created_at": "2017-10-10T14:54:53+00:00",
     "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "purchase_state": "cart",
-    "payment_state": "cart",
+    "purchase_state": "new",
+    "payment_state": "new",
     "token_value": "zadfgN_3Oo"
 }
 ```
@@ -343,8 +343,8 @@ Returns a list of all subscriptions.
                 "created_at": "2017-10-10T14:54:53+00:00",
                 "updated_at": "2017-10-10T14:54:53+00:00",
                 "payments": [],
-                "purchase_state": "cart",
-                "payment_state": "cart",
+                "purchase_state": "new",
+                "payment_state": "new",
                 "token_value": "zadfgN_3Oo"
             }
         ]
