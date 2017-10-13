@@ -27,9 +27,22 @@ ph_core_payment_method:
         alias: sylius.payment_method
         section: api
         serialization_version: $version
+        only: ["show", "delete", "update"]
         criteria:
             code: $code
     type: sylius.resource_api
+
+ph_core_payment_method_index:
+    path: /payment-methods/
+    methods: [GET]
+    defaults:
+        _controller: sylius.controller.payment_method:indexAction
+        _sylius:
+            section: public_api
+            filterable: true
+            criteria:
+                supportsRecurring: $supportsRecurring
+            serialization_version: $version
 
 ph_api_subscription_payment_complete:
     path: /subscriptions/{subscriptionId}/payments/{id}/complete

@@ -13,6 +13,14 @@ Feature: Listing payment methods
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON node "_embedded.items" should have 2 elements
+    And the JSON node "_embedded.items[0].enabled" should not exist
+    And the JSON node "_embedded.items[0].created_at" should not exist
+    And the JSON node "_embedded.items[0].updated_at" should not exist
+    And the JSON node "_embedded.items[0].gateway_config" should not exist
+    And the JSON node "_embedded.items[1].enabled" should not exist
+    And the JSON node "_embedded.items[1].created_at" should not exist
+    And the JSON node "_embedded.items[1].updated_at" should not exist
+    And the JSON node "_embedded.items[1].gateway_config" should not exist
 
   Scenario: Retrieve the payment methods which support recurring payments only
     And the system has a payment method "Offline" with a code "off"

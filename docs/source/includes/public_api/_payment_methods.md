@@ -11,9 +11,6 @@ These endpoints will allow you to list available payment methods.
   "id":1,
   "code":"paypal",
   "position":1,
-  "created_at":"2017-06-23T14:05:23+0200",
-  "updated_at":"2017-06-23T14:05:23+0200",
-  "enabled":true,
   "supports_recurring":false,
   "translations":{
     "en":{
@@ -24,18 +21,6 @@ These endpoints will allow you to list available payment methods.
       "description":"My method description",
       "instructions":"My method instructions"
     }
-  },
-  "gateway_config":{
-    "factory_name":"paypal_express_checkout",
-    "gateway_name":"PayPal",
-    "config":{
-      "username":"seller_api1.example.com",
-      "password":"LW7Q8UXX3XF6AOP7",
-      "signature":"DFcWxV21CUfd0v3bYYYRCpSSRl31RfQ6U98ckLkwqzodglNBGgBof5sK",
-      "sandbox":true
-    },
-    "decrypted_config":null,
-    "id":1
   },
   "_links":{
     "self":{
@@ -50,9 +35,6 @@ Field | Type | Description
 id | integer | Unique identifier for the object.
 code | string | Client facing order code
 position | integer | Position of payment method.
-created_at | string | Time at which the object was created.
-updated_at | string | Time at which the object was updated.
-enabled | boolean | This boolean represents whether or not payment method is enabled or not.
 supports_recurring | boolean | This boolean represents whether or not payment method supports recurring payments, `false` by default.
 translations | array | Translations.
 translations.en | array | Translation key (e.g. `en`).
@@ -62,12 +44,6 @@ translations.en.id | integer | Unique identifier of the translation
 translations.en.name | string | Translated name
 translations.en.description | string | Translated description
 translations.en.instructions | string | Translated instructions
-gateway_config | object | Gateway configuration
-gateway_config.factory_name | string | Gateway factory name (e.g. `offline`, see [Payment Gateways API](#payment-gateways))
-gateway_config.gateway_name | string | Gateway name
-gateway_config.config | object | Gateway specific configuration
-gateway_config.decrypted_config | object | Gateway specific decrypted configuration
-gateway_config.id | integer | Gateway configuration unique identifier
 
 ## List all payment methods
 
@@ -112,9 +88,6 @@ curl -X GET \
         "id":1,
         "code":"paypal",
         "position":1,
-        "created_at":"2017-06-23T14:05:23+0200",
-        "updated_at":"2017-06-23T14:05:23+0200",
-        "enabled":true,
         "supports_recurring":false,
         "translations":{
           "en":{
@@ -125,18 +98,6 @@ curl -X GET \
             "description":"My method description",
             "instructions":"My method instructions"
           }
-        },
-        "gateway_config":{
-          "factory_name":"paypal_express_checkout",
-          "gateway_name":"PayPal",
-          "config":{
-            "username":"seller_api1.example.com",
-            "password":"LW7Q8UXX3XF6AOP7",
-            "signature":"DFcWxV21CUfd0v3bYYYRCpSSRl31RfQ6U98ckLkwqzodglNBGgBof5sK",
-            "sandbox":true
-          },
-          "decrypted_config":null,
-          "id":1
         },
         "_links":{
           "self":{
