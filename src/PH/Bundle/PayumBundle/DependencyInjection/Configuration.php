@@ -27,6 +27,8 @@ final class Configuration implements ConfigurationInterface
             ->addDefaultsIfNotSet()
                 ->children()
                 ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                ->scalarNode('thank_you_url')->defaultValue('%ph_payum_redirect_thank_you_url%')->end()
+                ->scalarNode('cancel_url')->defaultValue('%ph_payum_redirect_cancel_url%')->end()
             ->end()
         ;
 
