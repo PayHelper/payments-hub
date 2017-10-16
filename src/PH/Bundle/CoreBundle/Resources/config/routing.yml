@@ -1,5 +1,5 @@
 ph_core_get_payment_gateways:
-    path: /payment-gateways
+    path: /payment-gateways/
     methods: [GET]
     defaults:
         _controller: sylius.controller.payment_method:getPaymentGatewaysAction

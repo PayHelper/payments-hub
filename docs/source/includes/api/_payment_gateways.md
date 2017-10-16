@@ -4,10 +4,12 @@
 
 These endpoints will allow you to easily manage payment gateways.
 
-Currently, there are three payment gateways configured:
+Currently, there are five payment gateways configured:
 
-- PayPal Express Checkout
-- Stripe Checkout
+- [Mollie](https://www.mollie.com/en/)
+- [Mbe4](http://www.mbe4.de/)
+- [PayPal Express Checkout](https://www.paypal.com/us/webapps/mpp/express-checkout)
+- [Stripe Checkout](https://stripe.com/checkout)
 - Offline
 
 ## List all payment gateways
@@ -33,6 +35,8 @@ curl -X GET \
 
 ```json
 {
+    "mbe4": "Mbe4",
+    "mollie": "Mollie",
     "offline": "Offline",
     "paypal_express_checkout": "PayPal Express Checkout",
     "stripe_checkout": "Stripe Checkout"
