@@ -8,7 +8,7 @@ use FOS\RestBundle\View\View;
 use Payum\Core\Payum;
 use Payum\Core\Security\GenericTokenFactoryInterface;
 use Payum\Core\Security\HttpRequestVerifierInterface;
-use PH\Bundle\PayumBundle\Factory\ResolveNextRouteFactoryInterface;
+use PH\Bundle\PayumBundle\Factory\ResolveNextUrlFactoryInterface;
 use PH\Component\Core\Model\SubscriptionInterface;
 use PH\Component\Core\Model\PaymentInterface;
 use PH\Component\Core\Repository\SubscriptionRepositoryInterface;
@@ -61,9 +61,9 @@ class PayumController
     private $paymentRepository;
 
     /**
-     * @var ResolveNextRouteFactoryInterface
+     * @var ResolveNextUrlFactoryInterface
      */
-    private $resolveNextRouteFactory;
+    private $resolveNextUrlFactory;
 
     /**
      * @param Payum                                $payum
@@ -73,7 +73,7 @@ class PayumController
      * @param ViewHandlerInterface                 $viewHandler
      * @param RouterInterface                      $router
      * @param PaymentRepositoryInterface           $paymentRepository
-     * @param ResolveNextRouteFactoryInterface     $resolveNextRouteFactory
+     * @param ResolveNextUrlFactoryInterface       $resolveNextUrlFactory
      */
     public function __construct(
         Payum $payum,
@@ -83,7 +83,7 @@ class PayumController
         ViewHandlerInterface $viewHandler,
         RouterInterface $router,
         PaymentRepositoryInterface $paymentRepository,
-        ResolveNextRouteFactoryInterface $resolveNextRouteFactory
+        ResolveNextUrlFactoryInterface $resolveNextUrlFactory
     ) {
         $this->payum = $payum;
         $this->subscriptionRepository = $subscriptionRepository;
@@ -92,7 +92,7 @@ class PayumController
         $this->viewHandler = $viewHandler;
         $this->router = $router;
         $this->paymentRepository = $paymentRepository;
-        $this->resolveNextRouteFactory = $resolveNextRouteFactory;
+        $this->resolveNextUrlFactory = $resolveNextUrlFactory;
     }
 
     /**
@@ -147,11 +147,11 @@ class PayumController
         $status = new GetStatus($token);
 
         $this->payum->getGateway($token->getGatewayName())->execute($status);
-        $resolveNextRoute = $this->resolveNextRouteFactory->createNewWithModel($status->getFirstModel());
-        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextRoute);
+        $resolveNextUrl = $this->resolveNextUrlFactory->createNewWithModel($status->getFirstModel());
+        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextUrl);
         $this->getHttpRequestVerifier()->invalidate($token);
 
-        $view = View::createRouteRedirect($resolveNextRoute->getRouteName(), $resolveNextRoute->getRouteParameters());
+        $view = View::createRedirect($resolveNextUrl->getUrl());
 
         return $this->viewHandler->handle($configuration, $view);
     }

@@ -10,10 +10,13 @@ services:
         tags:
             - { name: "payum.action", all: true, alias: "sylius.capture_payment"}
 
-    ph.payum_action.resolve_next_route:
-        class: PH\Bundle\PayumBundle\Action\ResolveNextRouteAction
+    ph.payum_action.resolve_next_url:
+        class: PH\Bundle\PayumBundle\Action\ResolveNextUrlAction
+        arguments:
+            - '%ph.payum.redirect.thank_you_url%'
+            - '%ph.payum.redirect.cancel_url%'
         tags:
-            - { name: "payum.action", all: true, alias: "ph.resolve_next_route"}
+            - { name: "payum.action", all: true, alias: "ph.resolve_next_url"}
 
     ph.payum_action.obtain_bank_account:
         class: PH\Bundle\PayumBundle\Action\ObtainBankAccountAction
@@ -44,7 +47,9 @@ services:
             - { name: "payum.action", factory: "mollie", alias: "ph.mollie.obtain_sepa_bank_account"}
 
     # Offline
-    ph.payum_action.offline.resolve_next_route:
-        class: PH\Bundle\PayumBundle\Action\Offline\ResolveNextRouteAction
+    ph.payum_action.offline.resolve_next_url:
+        class: PH\Bundle\PayumBundle\Action\Offline\ResolveNextUrlAction
+        arguments:
+            - '%ph.payum.redirect.thank_you_url%'
         tags:
-            - { name: "payum.action", factory: "offline", alias: "ph.offline.resolve_next_route"}
+            - { name: "payum.action", factory: "offline", alias: "ph.offline.resolve_next_url"}

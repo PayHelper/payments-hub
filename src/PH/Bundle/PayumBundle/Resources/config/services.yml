@@ -12,7 +12,7 @@ services:
           - '@sylius.resource_controller.view_handler'
           - '@router'
           - '@sylius.repository.payment'
-          - '@ph.payum.factory.resolve_next_route'
+          - '@ph.payum.factory.resolve_next_url'
 
     ph.payum.mollie.factory:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
@@ -26,8 +26,8 @@ services:
         tags:
             - { name: payum.gateway_factory_builder, factory: mbe4 }
 
-    ph.payum.factory.resolve_next_route:
-        class: PH\Bundle\PayumBundle\Factory\ResolveNextRouteFactory
+    ph.payum.factory.resolve_next_url:
+        class: PH\Bundle\PayumBundle\Factory\ResolveNextUrlFactory
 
     ph.payum.provider.payment_description:
         class: PH\Bundle\PayumBundle\Provider\PaymentDescriptionProvider
