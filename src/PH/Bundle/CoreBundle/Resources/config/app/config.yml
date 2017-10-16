@@ -50,6 +50,10 @@ ph_subscription:
                 controller: PH\Bundle\CoreBundle\Controller\SubscriptionController
                 repository: PH\Bundle\CoreBundle\Doctrine\ORM\SubscriptionRepository
 
+ph_payum:
+    thank_you_url: '%ph_payum_redirect_thank_you_url%'
+    cancel_url: '%ph_payum_redirect_cancel_url%'
+
 sylius_payum:
     resources:
         payment_security_token:
