@@ -24,7 +24,7 @@ class ResolveNextUrl extends Generic implements ResolveNextUrlInterface
             return $this->url;
         }
 
-        return rtrim($this->url, '/').'?'.http_build_query($this->getUrlQueryParams());
+        return $this->url.'?'.http_build_query($this->getUrlQueryParams());
     }
 
     public function setUrl(string $url): void
