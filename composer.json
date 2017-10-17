@@ -24,6 +24,7 @@
     "require": {
         "php": ">=7.1",
         "doctrine/doctrine-bundle": "^1.6.7",
+        "doctrine/doctrine-migrations-bundle": "1.2.1",
         "doctrine/orm": "v2.5.6",
         "incenteev/composer-parameter-handler": "^2.0",
         "lexik/jwt-authentication-bundle": "^2.4",
