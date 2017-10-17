@@ -108,7 +108,6 @@ lexik_jwt_authentication:
     pass_phrase:      '%jwt_key_pass_phrase%'
     token_ttl:        '%jwt_token_ttl%'
 
-
 doctrine_migrations:
     dir_name: "%kernel.root_dir%/migrations"
     namespace: PH\Migrations
