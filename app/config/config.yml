@@ -107,3 +107,11 @@ lexik_jwt_authentication:
     public_key_path:  '%jwt_public_key_path%'
     pass_phrase:      '%jwt_key_pass_phrase%'
     token_ttl:        '%jwt_token_ttl%'
+
+
+doctrine_migrations:
+    dir_name: "%kernel.root_dir%/migrations"
+    namespace: PH\Migrations
+    table_name: ph_migration_versions
+    name: PH Migrations
+    organize_migrations: false
