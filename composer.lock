@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "68280e9da4a2ec684bf3df80690d91f6",
+    "content-hash": "144290204086b33a3eed7dd055836aec",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1593,16 +1593,16 @@
         },
         {
             "name": "jeremykendall/php-domain-parser",
-            "version": "3.0.0",
+            "version": "4.0.3-alpha",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeremykendall/php-domain-parser.git",
-                "reference": "896e7e70f02bd4fd77190052799bc61e4d779672"
+                "reference": "026a459bb2d32b0352731b5cb525f2c1d2b9d673"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeremykendall/php-domain-parser/zipball/896e7e70f02bd4fd77190052799bc61e4d779672",
-                "reference": "896e7e70f02bd4fd77190052799bc61e4d779672",
+                "url": "https://api.github.com/repos/jeremykendall/php-domain-parser/zipball/026a459bb2d32b0352731b5cb525f2c1d2b9d673",
+                "reference": "026a459bb2d32b0352731b5cb525f2c1d2b9d673",
                 "shasum": ""
             },
             "require": {
@@ -1612,9 +1612,11 @@
                 "php": ">=5.3.0"
             },
             "require-dev": {
+                "fabpot/php-cs-fixer": "^1.11",
                 "jeremykendall/debug-die": "0.0.1.*",
-                "mikey179/vfsstream": "~1.4",
-                "phpunit/phpunit": "~4.4"
+                "mikey179/vfsstream": "~1.6",
+                "phing/phing": "^2.13",
+                "phpunit/phpunit": "~4.8"
             },
             "bin": [
                 "bin/parse",
@@ -1651,7 +1653,7 @@
                 "domain parsing",
                 "url parsing"
             ],
-            "time": "2015-03-30T12:49:45+00:00"
+            "time": "2017-09-28T15:52:11+00:00"
         },
         {
             "name": "jms/metadata",
@@ -1990,19 +1992,19 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/uri.git",
-                "reference": "f2c9d3e95092fec85a1ddcfb0df714584f7cc11d"
+                "reference": "e7a31846c3f00c190bd2817a36e943c22a1e2512"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/uri/zipball/f2c9d3e95092fec85a1ddcfb0df714584f7cc11d",
-                "reference": "f2c9d3e95092fec85a1ddcfb0df714584f7cc11d",
+                "url": "https://api.github.com/repos/thephpleague/uri/zipball/e7a31846c3f00c190bd2817a36e943c22a1e2512",
+                "reference": "e7a31846c3f00c190bd2817a36e943c22a1e2512",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
                 "ext-intl": "*",
                 "ext-mbstring": "*",
-                "jeremykendall/php-domain-parser": "^3.0",
+                "jeremykendall/php-domain-parser": "4.0.3-alpha",
                 "php": ">=5.5.9",
                 "psr/http-message": "^1.0"
             },
@@ -2050,7 +2052,7 @@
                 "url",
                 "ws"
             ],
-            "time": "2016-12-14T07:45:41+00:00"
+            "time": "2017-10-17T10:28:56+00:00"
         },
         {
             "name": "lexik/jwt-authentication-bundle",
@@ -2604,6 +2606,118 @@
             "time": "2017-09-27T21:40:39+00:00"
         },
         {
+            "name": "payhelper/payum-mbe4",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PayHelper/payum-mbe4.git",
+                "reference": "5799a4b535d7c6d9dc1b517cad6ba8b867d9eb9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PayHelper/payum-mbe4/zipball/5799a4b535d7c6d9dc1b517cad6ba8b867d9eb9b",
+                "reference": "5799a4b535d7c6d9dc1b517cad6ba8b867d9eb9b",
+                "shasum": ""
+            },
+            "require": {
+                "payum/core": "^1.3",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "payum/core": "^1.3@dev",
+                "php-http/guzzle6-adapter": "^1.0",
+                "phpspec/phpspec": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PayHelper\\Payum\\Mbe4\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Rafał Muszyński",
+                    "email": "rafal.muszynski@sourcefabric.org"
+                }
+            ],
+            "description": "The Payum extension. It provides Mbe4 payment integration.",
+            "homepage": "https://sourcefabric.org",
+            "keywords": [
+                "bill",
+                "mbe4",
+                "payment",
+                "payum",
+                "phone"
+            ],
+            "time": "2017-10-24T09:50:43+00:00"
+        },
+        {
+            "name": "payhelper/payum-mollie",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PayHelper/payum-mollie.git",
+                "reference": "4296746e1df7b3616bff7e11e42923ffd5adfe2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PayHelper/payum-mollie/zipball/4296746e1df7b3616bff7e11e42923ffd5adfe2c",
+                "reference": "4296746e1df7b3616bff7e11e42923ffd5adfe2c",
+                "shasum": ""
+            },
+            "require": {
+                "mollie/mollie-api-php": "^1.9",
+                "payum/core": "^1.3",
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "payum/core": "^1.3@dev",
+                "php-http/guzzle6-adapter": "^1.0",
+                "phpspec/phpspec": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PayHelper\\Payum\\Mollie\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPLv3"
+            ],
+            "authors": [
+                {
+                    "name": "Rafał Muszyński",
+                    "email": "rafal.muszynski@sourcefabric.org"
+                }
+            ],
+            "description": "The Payum extension. It provides Mollie payment integration.",
+            "homepage": "https://sourcefabric.org",
+            "keywords": [
+                "creditcard",
+                "directdebit",
+                "mollie",
+                "payment",
+                "payum",
+                "sepa"
+            ],
+            "time": "2017-10-24T09:46:38+00:00"
+        },
+        {
             "name": "payum/iso4217",
             "version": "dev-master",
             "source": {
@@ -2673,12 +2787,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Payum/Payum.git",
-                "reference": "ab58868ce8e6ac447ad248ed9468966e7cb63f9d"
+                "reference": "927e067e6a82f3bf7c53c423998713398e16c2e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Payum/Payum/zipball/ab58868ce8e6ac447ad248ed9468966e7cb63f9d",
-                "reference": "ab58868ce8e6ac447ad248ed9468966e7cb63f9d",
+                "url": "https://api.github.com/repos/Payum/Payum/zipball/927e067e6a82f3bf7c53c423998713398e16c2e8",
+                "reference": "927e067e6a82f3bf7c53c423998713398e16c2e8",
                 "shasum": ""
             },
             "require": {
@@ -2732,15 +2846,6 @@
                 "symfony/validator": "~2.8|~3.0",
                 "zendframework/zend-db": "~2"
             },
-            "suggest": {
-                "authorizenet/authorizenet": "^1 If you want to use Authorizenet.NET install authorizenet/authorizenet:~1.8 library",
-                "defuse/php-encryption": "^2 If you want to encrypt gateways credentials in database",
-                "fp/klarna-invoice": "^0.1 If you want to use Klarna Invoice install fp/klarna-invoice:0.1.* library",
-                "klarna/checkout": "^1|^2 If you want to use Klarna Checkout install klarna/checkout:~1|~2.0 library",
-                "paypal/rest-api-sdk-php": "^0.5 If you want to use PayPal REST API install paypal/rest-api-sdk-php:0.5.* library",
-                "sofort/sofortlib-php": "^3 If you want to use Sofort install sofort/sofortlib-php:^3.0 library",
-                "stripe/stripe-php": "^3|^4 If you want to use Stripe install stripe/stripe-php:~2.0|~3.0 library"
-            },
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -2792,7 +2897,7 @@
                 "stripe.js",
                 "withdrawal"
             ],
-            "time": "2017-09-22T15:03:07+00:00"
+            "time": "2017-10-23T07:46:34+00:00"
         },
         {
             "name": "payum/payum-bundle",
@@ -3738,118 +3843,6 @@
             ],
             "description": "A security checker for your composer.lock",
             "time": "2017-08-22T22:18:16+00:00"
-        },
-        {
-            "name": "sourcefabric/payum-mbe4",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sourcefabric/payum-mbe4.git",
-                "reference": "15929089ab5f36e90c9d3faf58feab6877644514"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sourcefabric/payum-mbe4/zipball/15929089ab5f36e90c9d3faf58feab6877644514",
-                "reference": "15929089ab5f36e90c9d3faf58feab6877644514",
-                "shasum": ""
-            },
-            "require": {
-                "payum/core": "^1.3",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "payum/core": "^1.3@dev",
-                "php-http/guzzle6-adapter": "^1.0",
-                "phpspec/phpspec": "^4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sourcefabric\\Payum\\Mbe4\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPLv3"
-            ],
-            "authors": [
-                {
-                    "name": "Rafał Muszyński",
-                    "email": "rafal.muszynski@sourcefabric.org"
-                }
-            ],
-            "description": "The Payum extension. It provides Mbe4 payment integration.",
-            "homepage": "https://sourcefabric.org",
-            "keywords": [
-                "bill",
-                "mbe4",
-                "payment",
-                "payum",
-                "phone"
-            ],
-            "time": "2017-09-25T14:30:36+00:00"
-        },
-        {
-            "name": "sourcefabric/payum-mollie",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/sourcefabric/payum-mollie.git",
-                "reference": "901beac59c8c5e57272dec65e51419188b8be749"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/sourcefabric/payum-mollie/zipball/901beac59c8c5e57272dec65e51419188b8be749",
-                "reference": "901beac59c8c5e57272dec65e51419188b8be749",
-                "shasum": ""
-            },
-            "require": {
-                "mollie/mollie-api-php": "^1.9",
-                "payum/core": "^1.3",
-                "php": "^7.1"
-            },
-            "require-dev": {
-                "payum/core": "^1.3@dev",
-                "php-http/guzzle6-adapter": "^1.0",
-                "phpspec/phpspec": "^4.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Sourcefabric\\Payum\\Mollie\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPLv3"
-            ],
-            "authors": [
-                {
-                    "name": "Rafał Muszyński",
-                    "email": "rafal.muszynski@sourcefabric.org"
-                }
-            ],
-            "description": "The Payum extension. It provides Mollie payment integration.",
-            "homepage": "https://sourcefabric.org",
-            "keywords": [
-                "creditcard",
-                "directdebit",
-                "mollie",
-                "payment",
-                "payum",
-                "sepa"
-            ],
-            "time": "2017-09-20T08:20:57+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",
@@ -8277,8 +8270,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "sourcefabric/payum-mbe4": 20,
-        "sourcefabric/payum-mollie": 20,
+        "payhelper/payum-mbe4": 20,
+        "payhelper/payum-mollie": 20,
         "stripe/stripe-php": 20,
         "symfony/symfony": 20,
         "doctrine/data-fixtures": 20
