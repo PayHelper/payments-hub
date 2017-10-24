@@ -16,13 +16,13 @@ services:
 
     ph.payum.mollie.factory:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
-        arguments: [Sourcefabric\Payum\Mollie\MollieGatewayFactory]
+        arguments: [PayHelper\Payum\Mollie\MollieGatewayFactory]
         tags:
             - { name: payum.gateway_factory_builder, factory: mollie }
 
     ph.payum.mbe4.factory:
         class: Payum\Core\Bridge\Symfony\Builder\GatewayFactoryBuilder
-        arguments: [Sourcefabric\Payum\Mbe4\Mbe4GatewayFactory]
+        arguments: [PayHelper\Payum\Mbe4\Mbe4GatewayFactory]
         tags:
             - { name: payum.gateway_factory_builder, factory: mbe4 }
 

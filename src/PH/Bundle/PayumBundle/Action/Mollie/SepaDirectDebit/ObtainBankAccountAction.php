@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PH\Bundle\PayumBundle\Action\Mollie\SepaDirectDebit;
 
+use PayHelper\Payum\Mollie\Request\Api\CreateSepaMandate;
 use Payum\Core\Action\ActionInterface;
 use Payum\Core\Bridge\Spl\ArrayObject;
 use Payum\Core\Exception\LogicException;
@@ -14,7 +15,6 @@ use Payum\Core\Model\BankAccountInterface;
 use Payum\Core\Request\GetHttpRequest;
 use Payum\Core\Security\SensitiveValue;
 use PH\Bundle\PayumBundle\Request\ObtainBankAccount;
-use Sourcefabric\Payum\Mollie\Request\Api\CreateSepaMandate;
 
 class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
 {
