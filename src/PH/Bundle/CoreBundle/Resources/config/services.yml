@@ -20,11 +20,6 @@ services:
         tags:
             - { name: form.type_extension, extended_type: Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodType }
 
-    ph.form.extension.type.subscription:
-        class: PH\Bundle\CoreBundle\Form\Extension\SubscriptionTypeExtension
-        tags:
-            - { name: form.type_extension, extended_type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType }
-
     ph.facade.subscription:
         class: PH\Bundle\CoreBundle\Facade\SubscriptionFacade
         arguments:
