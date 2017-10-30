@@ -12,6 +12,11 @@ Currently, there are five payment gateways configured:
 - [Stripe Checkout](https://stripe.com/checkout)
 - Offline
 
+[This list](https://github.com/PayHelper/payments-hub/blob/master/features/api/payments/adding_new_payment_method.feature)
+shows how to create different payment methods based on available gateways and their configs.
+
+For example, you can create recurring SEPA Direct Debit payments, one-off SEPA Direct Debits payments, credit card payments etc.
+
 ## List all payment gateways
 
 > Definition

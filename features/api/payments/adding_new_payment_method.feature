@@ -128,7 +128,7 @@ Feature: Adding a new payment method
       | gateway_config.config.apiKey    | apikey123456                |
       | gateway_config.config.method    | creditcard                  |
 
-  Scenario: Adding a new Mollie SEPA direct debit payment method
+  Scenario: Adding a new Mollie SEPA direct debit recurring payment method
     Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
@@ -167,6 +167,48 @@ Feature: Adding a new payment method
       | gateway_config.id               | 1                           |
       | gateway_config.factory_name     | mollie                      |
       | gateway_config.gateway_name     | mollie_sepa                 |
+      | gateway_config.config.apiKey    | apikey123456                |
+      | gateway_config.config.method    | directdebit                 |
+
+  Scenario: Adding a new one-off Mollie SEPA direct debit payment method (Lastschrift)
+    Given I am authenticated as "admin"
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/api/v1/payment-methods/new/mollie" with body:
+    """
+    {
+      "code":"lastschrift",
+      "position":"2",
+      "enabled":"1",
+      "supportsRecurring":"0",
+      "gateway_config":{
+        "config":{
+          "apiKey":"apikey123456",
+          "method":"directdebit"
+        }
+      },
+      "translations":{
+        "en":{
+          "name":"Lastschrift",
+          "description":"desc",
+          "instructions":"instructions"
+        }
+      }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+    And the JSON nodes should contain:
+      | id                              | 1                           |
+      | position                        | 2                           |
+      | supports_recurring              | 1                           |
+      | code                            | lastschrift                 |
+      | enabled                         | 1                           |
+      | translations.en.locale          | en                          |
+      | translations.en.id              | 1                           |
+      | gateway_config.id               | 1                           |
+      | gateway_config.factory_name     | mollie                      |
+      | gateway_config.gateway_name     | lastschrift                 |
       | gateway_config.config.apiKey    | apikey123456                |
       | gateway_config.config.method    | directdebit                 |
 

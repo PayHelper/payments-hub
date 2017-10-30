@@ -29,6 +29,7 @@ final class MollieGatewayConfigurationType extends AbstractType
                 'choices' => [
                     'SEPA Direct Debit' => 'directdebit',
                     'Credit Card' => 'creditcard',
+                    'One-off SEPA Direct Debit' => 'directdebit_oneoff',
                 ],
             ])
         ;

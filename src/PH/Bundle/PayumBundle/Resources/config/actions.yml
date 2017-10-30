@@ -41,10 +41,13 @@ services:
     # Mollie
     ph.payum_action.mollie.obtain_sepa_bank_account:
         class: PH\Bundle\PayumBundle\Action\Mollie\SepaDirectDebit\ObtainBankAccountAction
-        arguments:
-            - '%payum.template.sepa_obtain_bank_details%'
         tags:
             - { name: "payum.action", factory: "mollie", alias: "ph.mollie.obtain_sepa_bank_account"}
+
+    ph.payum_action.mollie.obtain_sepa_one_off_bank_account:
+        class: PH\Bundle\PayumBundle\Action\Mollie\SepaDirectDebit\SepaOneOffObtainBankAccountAction
+        tags:
+            - { name: "payum.action", factory: "mollie", alias: "ph.mollie.obtain_sepa_one_off_bank_account"}
 
     # Offline
     ph.payum_action.offline.resolve_next_url:
