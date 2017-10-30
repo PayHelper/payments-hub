@@ -8,3 +8,6 @@ Payum\Core\Model\BankAccount:
                 groups: [ph]
             - Iban:
                 groups: [ph]
+        bic:
+            - Bic:
+                groups: [ph]

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace PH\Bundle\CoreBundle\Controller;
 
 use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
+use PH\Component\Core\Model\Subscription;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -12,7 +13,10 @@ class SandboxController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $form = $this->createForm(SubscriptionType::class);
+        $subscriptionFactory = $this->get('ph.factory.subscription');
+
+        $form = $this->createForm(SubscriptionType::class, $subscriptionFactory->createNew());
+        $form->handleRequest($request);
 
         return $this->render('index.html.twig', [
             'form' => $form->createView(),

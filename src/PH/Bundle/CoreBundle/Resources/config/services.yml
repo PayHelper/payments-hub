@@ -20,6 +20,13 @@ services:
         tags:
             - { name: form.type_extension, extended_type: Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodType }
 
+    ph.form.extension.type.subscription:
+        class: PH\Bundle\CoreBundle\Form\Extension\SubscriptionTypeExtension
+        arguments:
+          - '@ph.provider.payment_method'
+        tags:
+            - { name: form.type_extension, extended_type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType }
+
     ph.facade.subscription:
         class: PH\Bundle\CoreBundle\Facade\SubscriptionFacade
         arguments:
@@ -77,3 +84,9 @@ services:
         arguments:
             - "@ph.repository.webhook"
             - "@jms_serializer"
+
+# providers
+    ph.provider.payment_method:
+        class: PH\Bundle\CoreBundle\Provider\PaymentMethodsProvider
+        arguments:
+          - '@sylius.repository.payment_method'

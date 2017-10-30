@@ -11,7 +11,6 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class SubscriptionType extends AbstractResourceType
@@ -67,7 +66,6 @@ final class SubscriptionType extends AbstractResourceType
                 ],
                 'data' => new \DateTime(),
             ])
-            ->add('submit', SubmitType::class)
         ;
     }
 

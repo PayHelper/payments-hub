@@ -50,9 +50,31 @@
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-            crossorigin="anonymous"></script>
+            crossorigin="anonymous">
+    </script>
     <script>
-
+        var $type = $('#ph_subscription_type');
+        $type.change(function() {
+            var $form = $(this).closest('form');
+            var data = {};
+            data[$type.attr('name')] = $type.val();
+            // Submit data via AJAX to the form's action path.
+            $.ajax({
+                url : $form.attr('action'),
+                type: $form.attr('method'),
+                data : data,
+                success: function(html) {
+                    // Replace current position field ...
+                    $('#ph_subscription_method').replaceWith(
+                        // ... with the returned one from the AJAX response.
+                        $(html).find('#ph_subscription_method')
+                    );
+                    // Position field now displays the appropriate positions.
+                }
+            });
+        });
+    </script>
+    <script>
         var loadPaymentMethods = function(url) {
             $.ajax({
                 type: "GET",
@@ -71,17 +93,17 @@
             });
         };
 
-        $( "#ph_subscription_type" ).change(function() {
-            if ('recurring' == this.value) {
-                $('form span').show();
-                loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=1');
-            } else {
-                $('form span').hide();
-                loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=0');
-            }
-        });
-
-        loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=0');
+//        $( "#ph_subscription_type" ).change(function() {
+//            if ('recurring' == this.value) {
+//                $('form span').show();
+//                loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=1');
+//            } else {
+//                $('form span').hide();
+//                loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=0');
+//            }
+//        });
+//
+//        loadPaymentMethods('/public-api/v1/payment-methods?supportsRecurring=0');
 
         $("form[name='ph_subscription']").submit(function( event ) {
             event.preventDefault();
@@ -94,10 +116,12 @@
                 startDay = $form.find( "select[name='ph_subscription[startDate][day]']" ).val(),
                 startYear = $form.find( "select[name='ph_subscription[startDate][year]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
+                method = $form.find( "input[name='ph_subscription[method]']:checked" ).val(),
                 data = {
                     "amount": amount * 100,
                     "currency_code": currency,
                     "type": subType,
+                    "method": method
                 };
 
             if ('recurring' == subType) {
@@ -116,25 +140,25 @@
                 data: JSON.stringify(data),
                 dataType: "json"
             }).done(function( data ) {
-                $.ajax({
-                    type: "PUT",
-                    contentType: "application/json",
-                    url: '/public-api/v1/purchase/payment/'+data.token_value,
-                    data: JSON.stringify({
-                        "payments": [
-                            {
-                                "method": $('#payment-methods').val()
-                            }
-                        ]
-                    }),
-                    dataType: "json"
-                }).done(function( paymentRes ) {
-                    console.log('payment method selected');
-                    window.location.replace('/public-api/v1/purchase/pay/'+data.token_value);
-                }).fail(function () {
-                    alert('error when selecting payment method');
-                });
-
+//                $.ajax({
+//                    type: "PUT",
+//                    contentType: "application/json",
+//                    url: '/public-api/v1/purchase/payment/'+data.token_value,
+//                    data: JSON.stringify({
+//                        "payments": [
+//                            {
+//                                "method": $('#payment-methods').val()
+//                            }
+//                        ]
+//                    }),
+//                    dataType: "json"
+//                }).done(function( paymentRes ) {
+//                    console.log('payment method selected');
+//                    window.location.replace('/public-api/v1/purchase/pay/'+data.token_value);
+//                }).fail(function () {
+//                    alert('error when selecting payment method');
+//                });
+                window.location.replace('/public-api/v1/purchase/pay/'+data.token_value);
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');

@@ -1,0 +1,5 @@
+PH\Component\Core\Model\Subscription:
+    properties:
+        method:
+            - NotBlank:
+                groups: [ph]

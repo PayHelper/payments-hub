@@ -5,9 +5,11 @@ ph_public_api_core_subscription_create:
         _controller: ph.controller.subscription:addAction
         _sylius:
             section: public_api
-            form:
-                type: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
+            form: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
             serialization_version: $version
+            state_machine:
+                graph: ph_subscription_purchase
+                transition: select_payment
 
 ph_public_api_core_payment_method_index:
     path: /payment-methods/
