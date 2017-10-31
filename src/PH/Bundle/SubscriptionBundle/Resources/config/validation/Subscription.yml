@@ -4,9 +4,8 @@ PH\Component\Subscription\Model\Subscription:
             - NotBlank:
                 groups: [ph]
         amount:
-            - Range:
-                min: 500
-                minMessage: Entered value can not be lower than {{ limit }}
+            - GreaterThanOrEqual:
+                value: 0.01
                 groups: [ph]
             - NotBlank:
                 groups: [ph]

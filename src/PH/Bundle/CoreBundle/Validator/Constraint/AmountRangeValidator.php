@@ -40,7 +40,7 @@ final class AmountRangeValidator extends ConstraintValidator
         $min = $gatewayConfig['minAmount'];
         $max = $gatewayConfig['maxAmount'];
 
-        if (null !== $value->getAmount() && $value->getAmount() > $max) {
+        if (null !== $max && null !== $value->getAmount() && $value->getAmount() > $max) {
             $this->context->buildViolation($constraint->maxMessage)
                 ->setParameter('{{ value }}', $this->formatValue($value->getAmount() / 100, self::PRETTY_DATE))
                 ->setParameter('{{ limit }}', $this->formatValue($max / 100, self::PRETTY_DATE))
@@ -51,7 +51,7 @@ final class AmountRangeValidator extends ConstraintValidator
             return;
         }
 
-        if (null !== $value->getAmount() && $value->getAmount() < $min) {
+        if (null !== $min && null !== $value->getAmount() && $value->getAmount() < $min) {
             $this->context->buildViolation($constraint->minMessage)
                 ->setParameter('{{ value }}', $this->formatValue($value->getAmount() / 100, self::PRETTY_DATE))
                 ->setParameter('{{ limit }}', $this->formatValue($min / 100, self::PRETTY_DATE))

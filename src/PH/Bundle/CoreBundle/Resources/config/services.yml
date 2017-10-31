@@ -96,3 +96,13 @@ services:
         class: PH\Bundle\CoreBundle\Form\Extension\MollieGatewayConfigurationExtensionType
         tags:
             - { name: form.type_extension, extended_type: PH\Bundle\PayumBundle\Form\Type\MollieGatewayConfigurationType }
+
+    ph.form.extension.type.gateway_configuration.mbe4:
+        class: PH\Bundle\CoreBundle\Form\Extension\Mbe4GatewayConfigurationExtensionType
+        tags:
+            - { name: form.type_extension, extended_type: PH\Bundle\PayumBundle\Form\Type\Mbe4GatewayConfigurationType }
+
+    ph.form.extension.type.gateway_configuration.paypal:
+        class: PH\Bundle\CoreBundle\Form\Extension\PaypalGatewayConfigurationExtensionType
+        tags:
+            - { name: form.type_extension, extended_type: Sylius\Bundle\PayumBundle\Form\Type\PaypalGatewayConfigurationType }

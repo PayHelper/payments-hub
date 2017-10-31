@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CurrencyType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 final class SubscriptionType extends AbstractResourceType
@@ -40,7 +41,9 @@ final class SubscriptionType extends AbstractResourceType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('amount', IntegerType::class)
+            ->add('amount', MoneyType::class, [
+                'currency' => false,
+            ])
             ->add('currencyCode', CurrencyType::class)
             ->add('interval', ChoiceType::class, [
                 'choices' => [
