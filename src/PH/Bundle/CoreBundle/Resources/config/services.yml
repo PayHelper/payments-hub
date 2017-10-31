@@ -90,3 +90,9 @@ services:
         class: PH\Bundle\CoreBundle\Provider\PaymentMethodsProvider
         arguments:
           - '@sylius.repository.payment_method'
+
+
+    ph.form.extension.type.gateway_configuration.mollie:
+        class: PH\Bundle\CoreBundle\Form\Extension\MollieGatewayConfigurationExtensionType
+        tags:
+            - { name: form.type_extension, extended_type: PH\Bundle\PayumBundle\Form\Type\MollieGatewayConfigurationType }

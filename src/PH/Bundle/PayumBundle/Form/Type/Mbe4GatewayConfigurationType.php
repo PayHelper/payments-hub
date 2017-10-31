@@ -53,6 +53,24 @@ final class Mbe4GatewayConfigurationType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('minAmount', IntegerType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'groups' => 'ph',
+                    ]),
+                    new Range([
+                        'min' => 0,
+                        'groups' => 'ph',
+                    ]),
+                ],
+            ])
+            ->add('maxAmount', IntegerType::class, [
+                'constraints' => [
+                    new NotBlank([
+                        'groups' => 'ph',
+                    ]),
+                ],
+            ])
         ;
     }
 }

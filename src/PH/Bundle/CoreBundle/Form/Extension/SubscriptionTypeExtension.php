@@ -49,12 +49,7 @@ final class SubscriptionTypeExtension extends AbstractTypeExtension
         $builder->get('type')->addEventListener(
             FormEvents::POST_SUBMIT,
             function (FormEvent $event) use ($formModifier) {
-                // It's important here to fetch $event->getForm()->getData(), as
-                // $event->getData() will get you the client data (that is, the ID)
                 $type = $event->getForm()->getData();
-
-                // since we've added the listener to the child, we'll have to pass on
-                // the parent to the callback functions!
                 $formModifier($event->getForm()->getParent(), $type);
             }
         );
