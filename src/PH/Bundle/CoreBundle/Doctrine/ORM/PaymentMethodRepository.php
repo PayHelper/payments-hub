@@ -10,6 +10,9 @@ use Sylius\Bundle\PaymentBundle\Doctrine\ORM\PaymentMethodRepository as BaseRepo
 
 class PaymentMethodRepository extends BaseRepository implements PaymentMethodRepositoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
     public function findBySupportsRecurring(bool $supportsRecurring): array
     {
         return $this->createQueryBuilder('o')

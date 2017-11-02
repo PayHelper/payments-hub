@@ -16,8 +16,16 @@ use Symfony\Component\Form\FormInterface;
 
 final class SubscriptionTypeExtension extends AbstractTypeExtension
 {
+    /**
+     * @var PaymentMethodsProviderInterface
+     */
     private $paymentMethodsProvider;
 
+    /**
+     * SubscriptionTypeExtension constructor.
+     *
+     * @param PaymentMethodsProviderInterface $paymentMethodsProvider
+     */
     public function __construct(PaymentMethodsProviderInterface $paymentMethodsProvider)
     {
         $this->paymentMethodsProvider = $paymentMethodsProvider;
