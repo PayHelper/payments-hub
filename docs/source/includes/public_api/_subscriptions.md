@@ -1,6 +1,6 @@
 # Subscriptions
 
-These endpoints will allow you to create new recurring or non-recurring subscriptions.
+These endpoints will allow you to create new recurring or non-recurring subscriptions and will allow to pay for the created subscription.
 
 Based on created subscriptions you can perform purchases (see [Purchase API](#purchase)).
 
@@ -24,16 +24,40 @@ Based on created subscriptions you can perform purchases (see [Purchase API](#pu
             "total": 500
         }
     ],
-    "purchase_completed_at": null,
+    "purchase_completed_at": "2017-10-10T14:54:53+00:00",
     "items_total": 500,
     "total": 500,
     "state": "new",
     "created_at": "2017-10-10T14:54:53+00:00",
     "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "purchase_state": "new",
-    "payment_state": "new",
-    "token_value": "zadfgN_3Oo"
+    "purchase_state": "completed",
+    "payment_state": "awaiting_payment",
+    "token_value": "zadfgN_3Oo",
+    "method": {
+        "id": 1,
+        "code": "directdebit",
+        "position": 1,
+        "created_at": "2017-10-25T14:45:01+00:00",
+        "updated_at": "2017-10-25T14:45:01+00:00",
+        "enabled": true,
+        "translations": {
+            "en": {
+                "locale": "en",
+                "translatable": null,
+                "id": 1,
+                "name": "SEPA Direct Debit",
+                "description": "My method description",
+                "instructions": "My method instructions"
+            }
+        },
+        "supports_recurring": true,
+        "_links": {
+            "self": {
+                "href": "/api/v1/payment-methods/directdebit_oneoff"
+            }
+        }
+    }
 }
 ```
 
@@ -53,9 +77,10 @@ state | string | A state of the subscription. Can be either: `new`, `cancelled` 
 created_at | string | Time at which the object was created.
 updated_at | string | Time at which the object was updated.
 payments | array | An array of Payment object which contains [payment methods](#payment-methods) objects.
-purchase_state | string | A state of the checkout process. Can be either: `new`, `payment_selected` or `completed`.
+purchase_state | string | A state of the purchase process. Can be either: `new`, `payment_selected` or `completed`.
 payment_state | string | A state of the payment. Can be either: `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
+method | object | A subscription's payment method object. Defines which payment method has been selected to pay for the subscription (see [Payment Methods API](#payment-methods)).
 
 ## Create a subscription
 
@@ -80,9 +105,10 @@ curl -X POST \
       	"type": "recurring",
       	"start_date": {
       	    "day": "10",
-      	    "month: "10",
+      	    "month": "10",
       	    "year": "2017"
-      	}
+      	},
+      	"method": "directdebit"
 }'
 ```
 
@@ -104,16 +130,37 @@ curl -X POST \
             "total": 500
         }
     ],
-    "purchase_completed_at": null,
+    "purchase_completed_at": "2017-10-10T14:54:53+00:00",
     "items_total": 500,
     "total": 500,
     "state": "new",
     "created_at": "2017-10-10T14:54:53+00:00",
     "updated_at": "2017-10-10T14:54:53+00:00",
     "payments": [],
-    "purchase_state": "new",
-    "payment_state": "new",
-    "token_value": "zadfgN_3Oo"
+    "purchase_state": "completed",
+    "payment_state": "awaiting_payment",
+    "token_value": "zadfgN_3Oo",
+    "method": {
+        "id": 1,
+        "code": "directdebit",
+        "position": 1,
+        "translations": {
+            "en": {
+                "locale": "en",
+                "translatable": null,
+                "id": 1,
+                "name": "SEPA Direct Debit",
+                "description": "My method description",
+                "instructions": "My method instructions"
+            }
+        },
+        "supports_recurring": true,
+        "_links": {
+            "self": {
+                "href": "/api/v1/payment-methods/directdebit_oneoff"
+            }
+        }
+    }
 }
 ```
 
@@ -130,3 +177,35 @@ start_date <br>(`required`)| string | Subscription start date, by default curren
 ### Returns
 
 Returns subscription object if successfully created, and returns an error if something goes wrong.
+
+## Pay for a subscription
+
+> Definition
+
+```shell
+GET http://localhost/public-api/v1/subscriptions/{tokenValue}/pay/
+```
+
+Calling this endpoint will automatically prepare capture and redirect to a proper payment gateway that was selected during the subscription creation (see [Create a Subscription API Endpoint](#create-a-subscription35)) in order to pay for a subscription (e.g. when a PayPal payment method is selected and this endpoint will be called, the app will perform a redirect to a PayPal page to pay for the subscription and if the payment succeeded or failed it will redirect to `thank you` page).
+
+Once the payment transaction is finalized successfully the subscription state is changed from `new` to `fullfiled` and the subscription's payment state is changed from `awaiting_payment` to `paid`.
+
+> Example Request
+
+```shell
+curl -X GET \
+  http://localhost/public-api/v1/subscriptions/lKD1QhGtjW/pay/ \
+  -H 'content-type: application/json' \
+```
+
+> Response (302)
+
+### Arguments
+
+Name | Type | Description
+--------- | ------- | -----------
+tokenValue \(`required`)| string | The token value of the subscription to be paid (can be retrieved from Subscriptions API). It is generated once the subscription is created.
+
+### Returns
+
+Returns an empty response with status code 302 if payment capture succeeded. Returns an error otherwise.

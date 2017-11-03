@@ -24,7 +24,7 @@ These endpoints will allow you to list available payment methods.
   },
   "_links":{
     "self":{
-      "href":"/public-api/v1/payment-methods/paypal"
+      "href":"/api/v1/payment-methods/paypal"
     }
   }
 }
@@ -101,7 +101,7 @@ curl -X GET \
         },
         "_links":{
           "self":{
-            "href":"/public-api/v1/payment-methods/paypal"
+            "href":"/api/v1/payment-methods/paypal"
           }
         }
       }

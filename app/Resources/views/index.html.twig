@@ -106,7 +106,7 @@
                 data: JSON.stringify(data),
                 dataType: "json"
             }).done(function( data ) {
-                window.location.replace('/public-api/v1/purchase/pay/'+data.token_value);
+                window.location.replace('/public-api/v1/subscriptions/'+data.token_value+'/pay/');
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');
