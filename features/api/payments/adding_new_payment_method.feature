@@ -43,7 +43,7 @@ Feature: Adding a new payment method
       | gateway_config.factory_name  | offline                                  |
       | gateway_config.gateway_name  | offline                                  |
 
-  Scenario: Adding a new paypal payment method
+  Scenario: Adding a new PayPal payment method
     Given I am authenticated as "admin"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
@@ -58,7 +58,9 @@ Feature: Adding a new payment method
           "username":"test@example.com",
           "password":"pass",
           "signature":"signature12334",
-          "sandbox":"1"
+          "sandbox":"1",
+          "minAmount":1,
+          "maxAmount": 1000
         }
       },
       "translations":{
@@ -86,7 +88,42 @@ Feature: Adding a new payment method
       | gateway_config.config.password  | pass                        |
       | gateway_config.config.signature | signature12334              |
       | gateway_config.config.sandbox   | 1                           |
+      | gateway_config.config.minAmount | 1                           |
+      | gateway_config.config.maxAmount | 1000                        |
 
+  Scenario: Adding a new PayPal payment method without max amount configured
+    Given I am authenticated as "admin"
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/api/v1/payment-methods/new/paypal_express_checkout" with body:
+    """
+    {
+      "code":"paypal",
+      "position":"2",
+      "enabled":"1",
+      "gateway_config":{
+        "config":{
+          "username":"test@example.com",
+          "password":"pass",
+          "signature":"signature12334",
+          "sandbox":"1",
+          "minAmount":1
+        }
+      },
+      "translations":{
+        "en":{
+          "name":"testpay",
+          "description":"desc",
+          "instructions":"instructions"
+        }
+      }
+    }
+    """
+    Then the response status code should be 201
+    And the response should be in JSON
+    And the JSON nodes should contain:
+      | gateway_config.config.minAmount | 1                           |
+    And the JSON node "gateway_config.config.maxAmount" should be null
 
   Scenario: Adding a new Mollie credit card payment method
     Given I am authenticated as "admin"
@@ -101,7 +138,9 @@ Feature: Adding a new payment method
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
-          "method":"creditcard"
+          "method":"creditcard",
+          "minAmount":1,
+          "maxAmount":1000
         }
       },
       "translations":{
@@ -127,6 +166,8 @@ Feature: Adding a new payment method
       | gateway_config.gateway_name     | mollie_credit_card          |
       | gateway_config.config.apiKey    | apikey123456                |
       | gateway_config.config.method    | creditcard                  |
+      | gateway_config.config.minAmount | 1                           |
+      | gateway_config.config.maxAmount | 1000                        |
 
   Scenario: Adding a new Mollie SEPA direct debit recurring payment method
     Given I am authenticated as "admin"
@@ -142,7 +183,9 @@ Feature: Adding a new payment method
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
-          "method":"directdebit"
+          "method":"directdebit",
+          "minAmount":1,
+          "maxAmount":1000
         }
       },
       "translations":{
@@ -169,6 +212,8 @@ Feature: Adding a new payment method
       | gateway_config.gateway_name     | mollie_sepa                 |
       | gateway_config.config.apiKey    | apikey123456                |
       | gateway_config.config.method    | directdebit                 |
+      | gateway_config.config.minAmount | 1                           |
+      | gateway_config.config.maxAmount | 1000                        |
 
   Scenario: Adding a new one-off Mollie SEPA direct debit payment method (Lastschrift)
     Given I am authenticated as "admin"
@@ -184,7 +229,9 @@ Feature: Adding a new payment method
       "gateway_config":{
         "config":{
           "apiKey":"apikey123456",
-          "method":"directdebit"
+          "method":"directdebit",
+          "minAmount":1,
+          "maxAmount":1000
         }
       },
       "translations":{
@@ -211,6 +258,8 @@ Feature: Adding a new payment method
       | gateway_config.gateway_name     | lastschrift                 |
       | gateway_config.config.apiKey    | apikey123456                |
       | gateway_config.config.method    | directdebit                 |
+      | gateway_config.config.minAmount | 1                           |
+      | gateway_config.config.maxAmount | 1000                        |
 
   Scenario: Adding a new Mollie fake payment method
     Given I am authenticated as "admin"
@@ -256,7 +305,9 @@ Feature: Adding a new payment method
           "password":"pass",
           "serviceId": "4321",
           "clientId": "1234",
-          "contentclass": 1
+          "contentclass": 1,
+          "minAmount":1,
+          "maxAmount":1000
         }
       },
       "translations":{
@@ -285,3 +336,5 @@ Feature: Adding a new payment method
       | gateway_config.config.clientId      | 1234                        |
       | gateway_config.config.serviceId     | 4321                        |
       | gateway_config.config.contentclass  | 1                           |
+      | gateway_config.config.minAmount     | 1                           |
+      | gateway_config.config.maxAmount     | 1000                        |
