@@ -9,6 +9,8 @@
         <field type="string" name="purchaseState" column="purchase_state" />
         <field type="string" name="paymentState" column="payment_state" />
         <field type="string" name="tokenValue" column="token_value" nullable="true" />
+        <field type="string" name="source" column="source" />
+        <field type="string" name="intention" column="intention" />
 
         <one-to-many field="payments" target-entity="PH\Component\Core\Model\PaymentInterface" mapped-by="subscription" orphan-removal="true">
             <cascade>

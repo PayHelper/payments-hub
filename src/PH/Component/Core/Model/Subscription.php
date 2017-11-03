@@ -33,6 +33,16 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     protected $tokenValue;
 
     /**
+     * @var string
+     */
+    protected $source;
+
+    /**
+     * @var string
+     */
+    protected $intention;
+
+    /**
      * Subscription constructor.
      */
     public function __construct()
@@ -162,5 +172,37 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     public function setTokenValue(string $tokenValue): void
     {
         $this->tokenValue = $tokenValue;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getIntention(): string
+    {
+        return $this->intention;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setIntention(string $intention): void
+    {
+        $this->intention = $intention;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSource(): string
+    {
+        return $this->source;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSource(string $source): void
+    {
+        $this->source = $source;
     }
 }

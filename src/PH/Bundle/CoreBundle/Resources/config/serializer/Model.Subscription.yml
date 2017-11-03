@@ -18,3 +18,11 @@ PH\Component\Core\Model\Subscription:
             expose: true
             type: string
             groups: [Detailed]
+        intention:
+            expose: true
+            type: string
+            groups: [Detailed]
+        source:
+            expose: true
+            type: string
+            groups: [Detailed]

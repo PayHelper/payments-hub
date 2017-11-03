@@ -77,4 +77,24 @@ interface SubscriptionInterface extends BaseSubscriptionInterface
      * @param string $tokenValue
      */
     public function setTokenValue(string $tokenValue): void;
+
+    /**
+     * @return string
+     */
+    public function getIntention(): string;
+
+    /**
+     * @param string $intention
+     */
+    public function setIntention(string $intention): void;
+
+    /**
+     * @return string
+     */
+    public function getSource(): string;
+
+    /**
+     * @param string $source
+     */
+    public function setSource(string $source): void;
 }
