@@ -12,7 +12,10 @@ class SandboxController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $form = $this->createForm(SubscriptionType::class);
+        $subscriptionFactory = $this->get('ph.factory.subscription');
+
+        $form = $this->createForm(SubscriptionType::class, $subscriptionFactory->createNew());
+        $form->handleRequest($request);
 
         return $this->render('index.html.twig', [
             'form' => $form->createView(),

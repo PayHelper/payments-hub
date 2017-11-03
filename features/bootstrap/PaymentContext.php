@@ -44,9 +44,30 @@ final class PaymentContext implements Context
     /**
      * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode
      */
-    public function theSystemHasAPaymentMethodWithACode($paymentMethodName, $paymentMethodCode)
+    public function theSystemHasAPaymentMethodWithACode(string $paymentMethodName, string $paymentMethodCode): void
     {
         $this->createPaymentMethod($paymentMethodName, $paymentMethodCode, 'Offline', '', 0);
+    }
+
+    /**
+     * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode and Mbe4 gateway
+     */
+    public function theSystemHasAPaymentMethodWithACodeAndMbe4Gateway(string $paymentMethodName, string $paymentMethodCode): void
+    {
+        $this->createPaymentMethod(
+            $paymentMethodName,
+            $paymentMethodCode,
+            'Mbe4',
+            'Mbe4 description',
+            0,
+            [
+                'username' => 'user',
+                'password' => 'pw',
+                'clientId' => '12345',
+                'serviceId' => '54321',
+                'contentclass' => 1,
+            ]
+        );
     }
 
     /**
@@ -55,7 +76,7 @@ final class PaymentContext implements Context
     public function theSystemHasPaymentMethodWithCodeAndPaypalExpressCheckoutGateway(
         string $paymentMethodName,
         string $paymentMethodCode
-    ) {
+    ): void {
         $this->createPaymentMethod($paymentMethodName, $paymentMethodCode, 'Paypal Express Checkout', 'paypal desc', 1, [
             'username' => 'TEST',
             'password' => 'TEST',
@@ -66,13 +87,29 @@ final class PaymentContext implements Context
     }
 
     /**
-     * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode and a :method and Mollie gateway
+     * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode and a :method method using Mollie gateway which supports recurring
      */
-    public function theSystemHasPaymentMethodWithCodeAndAAndMollieGateway(
+    public function theSystemHasPaymentMethodWithCodeAndAMethodUsingMollieGatewayWhichSupportsRecurring(
         string $paymentMethodName,
         string $paymentMethodCode,
         string $method
-    ) {
+    ): void {
+        $this->createMolliePaymentMethod($paymentMethodName, $paymentMethodCode, $method, true);
+    }
+
+    /**
+     * @Given the system has a payment method :paymentMethodName with a code :paymentMethodCode and a :method method using Mollie gateway which does not support recurring
+     */
+    public function theSystemHasPaymentMethodWithCodeAndAMethodUsingMollieGatewayWhichDoesNotSupportRecurring(
+        string $paymentMethodName,
+        string $paymentMethodCode,
+        string $method
+    ): void {
+        $this->createMolliePaymentMethod($paymentMethodName, $paymentMethodCode, $method, false);
+    }
+
+    private function createMolliePaymentMethod(string $paymentMethodName, string $paymentMethodCode, string $method, bool $supportsRecurring): void
+    {
         $this->createPaymentMethod(
             $paymentMethodName,
             $paymentMethodCode,
@@ -83,7 +120,7 @@ final class PaymentContext implements Context
                 'apiKey' => 'TEST',
                 'method' => $method,
             ],
-            true
+            $supportsRecurring
         );
     }
 

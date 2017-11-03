@@ -17,7 +17,6 @@ includes:
   - public_api/payment_gateways
   - public_api/payment_methods
   - public_api/subscriptions
-  - public_api/purchase
 
 search: true
 ---

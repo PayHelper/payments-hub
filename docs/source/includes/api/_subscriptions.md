@@ -33,7 +33,43 @@ Based on created subscriptions you can perform purchases (see [Purchase API](#pu
     "payments": [],
     "purchase_state": "new",
     "payment_state": "new",
-    "token_value": "zadfgN_3Oo"
+    "token_value": "zadfgN_3Oo",
+    "method": {
+        "id": 1,
+        "code": "directdebit",
+        "position": 1,
+        "created_at": "2017-10-25T14:45:01+00:00",
+        "updated_at": "2017-10-25T14:45:01+00:00",
+        "enabled": true,
+        "translations": {
+            "en": {
+                "locale": "en",
+                "translatable": null,
+                "id": 1,
+                "name": "SEPA Direct Debit",
+                "description": "My method description",
+                "instructions": "My method instructions"
+            }
+        },
+        "gateway_config": {
+            "factory_name": "mollie",
+            "gateway_name": "mollie_sepa_direct_debit",
+            "config": {
+                "apiKey": "test_6tPGmmxNg9AEgxWc7um8E5qEyc97rm",
+                "method": "directdebit",
+                "minAmount": 600,
+                "maxAmount": 1500
+            },
+            "decrypted_config": null,
+            "id": 1
+        },
+        "supports_recurring": false,
+        "_links": {
+            "self": {
+                "href": "/api/v1/payment-methods/directdebit_oneoff"
+            }
+        }
+    }
 }
 ```
 
@@ -56,6 +92,7 @@ payments | array | An array of Payment object which contains [payment methods](#
 purchase_state | string | A state of the checkout process. Can be either: `new`, `payment_selected` or `completed`.
 payment_state | string | A state of the payment. Can be either: `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
+method | object | A subscription's payment method object. Defines which payment method has been selected to pay for the subscription (see [Payment Methods API](#payment-methods)).
 
 ## Create a subscription
 
@@ -81,9 +118,10 @@ curl -X POST \
       	"type": "recurring",
       	"start_date": {
       	    "day": "10",
-      	    "month: "10",
+      	    "month": "10",
       	    "year": "2017"
-      	}
+      	},
+      	"method": "directdebit"
 }'
 ```
 
@@ -114,7 +152,43 @@ curl -X POST \
     "payments": [],
     "purchase_state": "new",
     "payment_state": "new",
-    "token_value": "zadfgN_3Oo"
+    "token_value": "zadfgN_3Oo",
+    "method": {
+        "id": 1,
+        "code": "directdebit",
+        "position": 1,
+        "created_at": "2017-10-25T14:45:01+00:00",
+        "updated_at": "2017-10-25T14:45:01+00:00",
+        "enabled": true,
+        "translations": {
+            "en": {
+                "locale": "en",
+                "translatable": null,
+                "id": 1,
+                "name": "SEPA Direct Debit",
+                "description": "My method description",
+                "instructions": "My method instructions"
+            }
+        },
+        "gateway_config": {
+            "factory_name": "mollie",
+            "gateway_name": "mollie_sepa_direct_debit",
+            "config": {
+                "apiKey": "test_6tPGmmxNg9AEgxWc7um8E5qEyc97rm",
+                "method": "directdebit",
+                "minAmount": 600,
+                "maxAmount": 1500
+            },
+            "decrypted_config": null,
+            "id": 1
+        },
+        "supports_recurring": false,
+        "_links": {
+            "self": {
+                "href": "/api/v1/payment-methods/directdebit_oneoff"
+            }
+        }
+    }
 }
 ```
 
@@ -127,6 +201,7 @@ currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR,
 interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
 type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
 start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
+method <br>(`required`)| string | Subscription's payment method. A value of payment method's code must be used here, e.g. `directdebit` (see [Payment Methods API](#payment-methods)).
 
 ### Returns
 
@@ -178,7 +253,43 @@ curl -X GET \
     "payments": [],
     "purchase_state": "new",
     "payment_state": "new",
-    "token_value": "zadfgN_3Oo"
+    "token_value": "zadfgN_3Oo",
+    "method": {
+        "id": 1,
+        "code": "directdebit",
+        "position": 1,
+        "created_at": "2017-10-25T14:45:01+00:00",
+        "updated_at": "2017-10-25T14:45:01+00:00",
+        "enabled": true,
+        "translations": {
+            "en": {
+                "locale": "en",
+                "translatable": null,
+                "id": 1,
+                "name": "SEPA Direct Debit",
+                "description": "My method description",
+                "instructions": "My method instructions"
+            }
+        },
+        "gateway_config": {
+            "factory_name": "mollie",
+            "gateway_name": "mollie_sepa_direct_debit",
+            "config": {
+                "apiKey": "test_6tPGmmxNg9AEgxWc7um8E5qEyc97rm",
+                "method": "directdebit",
+                "minAmount": 600,
+                "maxAmount": 1500
+            },
+            "decrypted_config": null,
+            "id": 1
+        },
+        "supports_recurring": false,
+        "_links": {
+            "self": {
+                "href": "/api/v1/payment-methods/directdebit_oneoff"
+            }
+        }
+    }
 }
 ```
 
@@ -345,7 +456,43 @@ Returns a list of all subscriptions.
                 "payments": [],
                 "purchase_state": "new",
                 "payment_state": "new",
-                "token_value": "zadfgN_3Oo"
+                "token_value": "zadfgN_3Oo",
+                "method": {
+                    "id": 1,
+                    "code": "directdebit",
+                    "position": 1,
+                    "created_at": "2017-10-25T14:45:01+00:00",
+                    "updated_at": "2017-10-25T14:45:01+00:00",
+                    "enabled": true,
+                    "translations": {
+                        "en": {
+                            "locale": "en",
+                            "translatable": null,
+                            "id": 1,
+                            "name": "SEPA Direct Debit",
+                            "description": "My method description",
+                            "instructions": "My method instructions"
+                        }
+                    },
+                    "gateway_config": {
+                        "factory_name": "mollie",
+                        "gateway_name": "mollie_sepa_direct_debit",
+                        "config": {
+                            "apiKey": "test_6tPGmmxNg9AEgxWc7um8E5qEyc97rm",
+                            "method": "directdebit",
+                            "minAmount": 600,
+                            "maxAmount": 1500
+                        },
+                        "decrypted_config": null,
+                        "id": 1
+                    },
+                    "supports_recurring": false,
+                    "_links": {
+                        "self": {
+                            "href": "/api/v1/payment-methods/directdebit_oneoff"
+                        }
+                    }
+                }
             }
         ]
     }

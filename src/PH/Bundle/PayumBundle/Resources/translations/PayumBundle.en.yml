@@ -1,4 +1,5 @@
 form:
     bank_account:
         holder: Holder Name
-        iban: IBAN
+        iban: International Bank Account Number (IBAN)
+        bic: Business Identifier Code (BIC)
