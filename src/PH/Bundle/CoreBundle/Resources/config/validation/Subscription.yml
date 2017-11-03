@@ -6,3 +6,9 @@ PH\Component\Core\Model\Subscription:
         method:
             - NotBlank:
                 groups: [ph]
+        intention:
+            - NotBlank:
+                groups: [ph]
+        source:
+            - NotBlank:
+                groups: [ph]

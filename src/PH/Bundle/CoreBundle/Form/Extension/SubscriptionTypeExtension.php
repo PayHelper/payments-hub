@@ -9,6 +9,7 @@ use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
 use Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodChoiceType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -61,6 +62,11 @@ final class SubscriptionTypeExtension extends AbstractTypeExtension
                 $formModifier($event->getForm()->getParent(), $type);
             }
         );
+
+        $builder
+            ->add('source', TextType::class)
+            ->add('intention', TextType::class)
+        ;
 
         $builder
             ->add('submit', SubmitType::class)
