@@ -6,7 +6,6 @@ Feature: Listing available subscriptions
 
   Scenario: List subscriptions
     Given I am authenticated as "admin"
-    And the system has a payment method "Offline" with a code "cash_on_delivery"
     And the system has also a new subscription priced at "$50"
     And the system has also a new subscription priced at "$300"
     When I add "Content-Type" header equal to "application/json"

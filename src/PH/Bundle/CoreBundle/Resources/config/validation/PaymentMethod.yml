@@ -1,0 +1,4 @@
+PH\Component\Core\Model\PaymentMethod:
+    properties:
+        gatewayConfig:
+            - Valid: ~

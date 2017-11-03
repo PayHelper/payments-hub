@@ -1,0 +1,5 @@
+services:
+    ph.subscription_token_assigner:
+        class: PH\Behat\Mocks\SubscriptionTokenAssignerMock
+        arguments:
+           - "@sylius.random_generator"

@@ -33,6 +33,11 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     protected $tokenValue;
 
     /**
+     * @var PaymentMethodInterface
+     */
+    protected $method;
+
+    /**
      * @var string
      */
     protected $source;
@@ -172,6 +177,22 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     public function setTokenValue(string $tokenValue): void
     {
         $this->tokenValue = $tokenValue;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMethod(): ?PaymentMethodInterface
+    {
+        return $this->method;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMethod(?PaymentMethodInterface $method): void
+    {
+        $this->method = $method;
     }
 
     /**

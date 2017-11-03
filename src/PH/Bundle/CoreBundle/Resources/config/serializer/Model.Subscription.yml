@@ -18,6 +18,9 @@ PH\Component\Core\Model\Subscription:
             expose: true
             type: string
             groups: [Detailed]
+        method:
+            expose: true
+            groups: [Detailed]
         intention:
             expose: true
             type: string

@@ -104,5 +104,8 @@ ph_api_subscriptions_create:
      defaults:
          _controller: ph.controller.subscription:addAction
          _sylius:
-             section: api
-             serialization_version: $version
+              section: api
+              serialization_version: $version
+              state_machine:
+                  graph: ph_subscription_purchase
+                  transition: select_payment

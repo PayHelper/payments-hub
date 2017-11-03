@@ -42,6 +42,9 @@ class SubscriptionController extends ResourceController
             }
 
             $subscription = $this->getSubscriptionFacade()->prepareSubscription($subscription);
+            if ($configuration->hasStateMachine()) {
+                $this->stateMachine->apply($configuration, $subscription);
+            }
             $this->repository->add($subscription);
             $this->eventDispatcher->dispatchPostEvent(SubscriptionEvents::CREATE, $configuration, $subscription);
 

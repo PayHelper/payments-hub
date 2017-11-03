@@ -7,9 +7,19 @@ Feature: Getting a single subscription
   Background:
     Given I am authenticated as "admin"
 
-  Scenario: Get a single order
-    And the system has a payment method "Offline" with a code "cash_on_delivery"
-    And the system has also a new subscription priced at "$50"
+  Scenario: Get a single subscription
+    Given the system has a payment method "Offline" with a code "cash_on_delivery"
+    When I add "Content-Type" header equal to "application/json"
+    And I add "Accept" header equal to "application/json"
+    And I send a "POST" request to "/api/v1/subscriptions/" with body:
+    """
+    {
+      "amount":5000,
+      "currency_code":"USD",
+      "type":"non-recurring",
+      "method": "cash_on_delivery"
+    }
+    """
     And I add "Accept" header equal to "application/json"
     When I am on "/api/v1/subscriptions/1"
     Then the response status code should be 200
@@ -23,10 +33,11 @@ Feature: Getting a single subscription
       | items_total                           | 5000                        |
       | total                                 | 5000                        |
       | state                                 | new                         |
-      | purchase_state                        | new                         |
-      | payment_state                         | new                         |
-      | token_value                           | 12345abcde                  |
-    And the JSON node "purchase_completed_at" should be null
+      | purchase_state                        | completed                   |
+      | payment_state                         | awaiting_payment            |
+      | method.code                           | cash_on_delivery            |
+    And the JSON node "token_value" should not be null
+    And the JSON node "purchase_completed_at" should not be null
     And the JSON node "interval" should be null
     And the JSON node "start_date" should be null
     And the JSON node "created_at" should not be null

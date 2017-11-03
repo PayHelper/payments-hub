@@ -1,0 +1,8 @@
+PH\Component\Core\Model\Subscription:
+    constraints:
+        - PH\Bundle\CoreBundle\Validator\Constraint\AmountRange:
+            groups: [ph]
+    properties:
+        method:
+            - NotBlank:
+                groups: [ph]

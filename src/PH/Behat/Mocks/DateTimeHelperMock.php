@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+namespace PH\Behat\Mocks;
+
 use PH\Bundle\SubscriptionBundle\Helper\DateTimeHelperInterface;
 
 final class DateTimeHelperMock implements DateTimeHelperInterface
