@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace PH\Bundle\CoreBundle\Controller;
 
 use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
-use PH\Component\Core\Model\Subscription;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 

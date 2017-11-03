@@ -25,7 +25,7 @@ Feature: Listing payment methods
   Scenario: Retrieve the payment methods which support recurring payments only
     And the system has a payment method "Offline" with a code "off"
     And the system has a payment method "PayPal Express Checkout" with a code "paypal" and Paypal Express Checkout gateway
-    And the system has a payment method "SEPA Direct Debit" with a code "sepa" and a "directdebit" and Mollie gateway
+    And the system has a payment method "SEPA Direct Debit" with a code "sepa" and a "directdebit" method using Mollie gateway which supports recurring
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/public-api/v1/payment-methods/?supportsRecurring=1"
     Then the response status code should be 200
@@ -36,7 +36,7 @@ Feature: Listing payment methods
   Scenario: Retrieve the payment methods which do not support recurring payments
     And the system has a payment method "Offline" with a code "off"
     And the system has a payment method "PayPal Express Checkout" with a code "paypal" and Paypal Express Checkout gateway
-    And the system has a payment method "SEPA Direct Debit" with a code "sepa" and a "directdebit" and Mollie gateway
+    And the system has a payment method "SEPA Direct Debit" with a code "sepa" and a "directdebit" method using Mollie gateway which supports recurring
     When I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/public-api/v1/payment-methods/?supportsRecurring=0"
     Then the response status code should be 200

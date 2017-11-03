@@ -4,6 +4,7 @@
     "type": "project",
     "autoload": {
         "psr-4": {
+            "PH\\Behat\\": "src/PH/Behat/",
             "PH\\Bundle\\": "src/PH/Bundle/",
             "PH\\Component\\": "src/PH/Component/"
         },

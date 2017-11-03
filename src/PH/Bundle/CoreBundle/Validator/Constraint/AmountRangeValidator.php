@@ -25,6 +25,10 @@ final class AmountRangeValidator extends ConstraintValidator
             return;
         }
 
+        if (null === $value->getMethod()) {
+            return;
+        }
+
         if (!is_numeric($value->getAmount())) {
             $this->context->buildViolation($constraint->invalidMessage)
                 ->setParameter('{{ value }}', $this->formatValue($value, self::PRETTY_DATE))
@@ -36,6 +40,10 @@ final class AmountRangeValidator extends ConstraintValidator
         }
 
         $gatewayConfig = $value->getMethod()->getGatewayConfig()->getConfig();
+
+        if (!isset($gatewayConfig['minAmount']) && !isset($gatewayConfig['maxAmount'])) {
+            return;
+        }
 
         $min = $gatewayConfig['minAmount'];
         $max = $gatewayConfig['maxAmount'];
