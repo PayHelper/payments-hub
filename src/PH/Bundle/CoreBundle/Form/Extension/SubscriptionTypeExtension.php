@@ -39,10 +39,10 @@ final class SubscriptionTypeExtension extends AbstractTypeExtension
         $formModifier = function (FormInterface $form, string $type = null) {
             $methods = null === $type ? [] : $this->paymentMethodsProvider->getSupportedMethods($type);
 
-            $form->add('method', PaymentMethodChoiceType::class, array(
+            $form->add('method', PaymentMethodChoiceType::class, [
                 'choices' => $methods,
                 'expanded' => true,
-            ));
+            ]);
         };
 
         $builder->addEventListener(
