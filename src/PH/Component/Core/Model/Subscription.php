@@ -193,7 +193,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getMetadata(): ?array
+    public function getMetadata(): array
     {
         return $this->metadata;
     }
@@ -201,7 +201,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setMetadata(?array $metadata): void
+    public function setMetadata(array $metadata): void
     {
         $this->metadata = $metadata;
     }

@@ -91,10 +91,10 @@ interface SubscriptionInterface extends BaseSubscriptionInterface
     /**
      * @return array
      */
-    public function getMetadata(): ?array;
+    public function getMetadata(): array;
 
     /**
-     * @param array|null $metadata
+     * @param array $metadata
      */
-    public function setMetadata(?array $metadata): void;
+    public function setMetadata(array $metadata): void;
 }
