@@ -38,14 +38,9 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     protected $method;
 
     /**
-     * @var string
+     * @var array
      */
-    protected $source;
-
-    /**
-     * @var string
-     */
-    protected $intention;
+    protected $metadata = [];
 
     /**
      * Subscription constructor.
@@ -198,32 +193,16 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getIntention(): ?string
+    public function getMetadata(): ?array
     {
-        return $this->intention;
+        return $this->metadata;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setIntention(?string $intention): void
+    public function setMetadata(?array $metadata): void
     {
-        $this->intention = $intention;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSource(): ?string
-    {
-        return $this->source;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSource(?string $source): void
-    {
-        $this->source = $source;
+        $this->metadata = $metadata;
     }
 }

@@ -19,7 +19,9 @@ Feature: Creating a new subscription
           "month": "10",
           "day": "10",
           "year": "2017"
-       }
+       },
+      "intention":"bottom_box",
+      "source":"mobile_version"
     }
     """
     Then the response status code should be 400
@@ -45,8 +47,12 @@ Feature: Creating a new subscription
           "month": "10",
           "day": "10",
           "year": "2017"
-       },
-       "method":"sepa"
+      },
+      "method":"sepa",
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"web_version"
+      }
     }
     """
     Then the response status code should be 201
@@ -68,6 +74,9 @@ Feature: Creating a new subscription
       | purchase_state                        | completed                   |
       | payment_state                         | awaiting_payment            |
       | method.code                           | sepa                        |
+      | metadata.intention                    | bottom_box                  |
+      | metadata.source                       | web_version                 |
+    And the JSON node "metadata" should have 2 elements
     And the JSON node "purchase_completed_at" should not be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
@@ -88,7 +97,12 @@ Feature: Creating a new subscription
       "amount":500,
       "currency_code":"USD",
       "type":"non-recurring",
-      "method":"cash_on_delivery"
+      "method":"cash_on_delivery",
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"web_version",
+          "custom":"custom value"
+      }
     }
     """
     Then the response status code should be 201
@@ -107,6 +121,10 @@ Feature: Creating a new subscription
       | items[0].total                        | 500                         |
       | purchase_state                        | completed                   |
       | payment_state                         | awaiting_payment            |
+      | metadata.intention                    | bottom_box                  |
+      | metadata.source                       | web_version                 |
+      | metadata.custom                       | custom value                |
+    And the JSON node "metadata" should have 3 elements
     And the JSON node "start_date" should be null
     And the JSON node "token_value" should not be null
     And the JSON node "interval" should be null

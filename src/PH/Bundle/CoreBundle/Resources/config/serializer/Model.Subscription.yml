@@ -21,11 +21,7 @@ PH\Component\Core\Model\Subscription:
         method:
             expose: true
             groups: [Detailed]
-        intention:
+        metadata:
             expose: true
-            type: string
-            groups: [Detailed]
-        source:
-            expose: true
-            type: string
+            type: array<string,string>
             groups: [Detailed]

@@ -17,7 +17,11 @@ Feature: Getting a single subscription
       "amount":5000,
       "currency_code":"USD",
       "type":"non-recurring",
-      "method": "cash_on_delivery"
+      "method": "cash_on_delivery",
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"web_version"
+      }
     }
     """
     And I add "Accept" header equal to "application/json"
@@ -36,6 +40,8 @@ Feature: Getting a single subscription
       | purchase_state                        | completed                   |
       | payment_state                         | awaiting_payment            |
       | method.code                           | cash_on_delivery            |
+      | metadata.intention                    | bottom_box                  |
+      | metadata.source                       | web_version                 |
     And the JSON node "token_value" should not be null
     And the JSON node "purchase_completed_at" should not be null
     And the JSON node "interval" should be null
