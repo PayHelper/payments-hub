@@ -38,6 +38,11 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     protected $method;
 
     /**
+     * @var array
+     */
+    protected $metadata = [];
+
+    /**
      * Subscription constructor.
      */
     public function __construct()
@@ -170,7 +175,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     }
 
     /**
-     * @return PaymentMethodInterface|null
+     * {@inheritdoc}
      */
     public function getMethod(): ?PaymentMethodInterface
     {
@@ -178,10 +183,26 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     }
 
     /**
-     * @param PaymentMethodInterface $method|null
+     * {@inheritdoc}
      */
-    public function setMethod(?PaymentMethodInterface $method)
+    public function setMethod(?PaymentMethodInterface $method): void
     {
         $this->method = $method;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetadata(): array
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetadata(array $metadata): void
+    {
+        $this->metadata = $metadata;
     }
 }

@@ -4,7 +4,7 @@ PH\Component\Subscription\Model\Subscription:
         id:
             expose: true
             type: integer
-            groups: [Default, Detailed]
+            groups: [Detailed]
         amount:
             expose: true
             type: integer
@@ -28,22 +28,22 @@ PH\Component\Subscription\Model\Subscription:
         items:
             expose: true
             type: array
-            groups: [Default, Detailed]
+            groups: [Detailed]
         itemsTotal:
             expose: true
             type: integer
-            groups: [Default, Detailed]
+            groups: [Detailed]
         total:
             expose: true
             type: integer
-            groups: [Default, Detailed]
+            groups: [Detailed]
         state:
             expose: true
             type: string
-            groups: [Detailed]
+            groups: [Default, Detailed]
         purchaseCompletedAt:
             expose: true
-            groups: [Detailed]
+            groups: [Default, Detailed]
         createdAt:
             expose: true
             type: DateTime

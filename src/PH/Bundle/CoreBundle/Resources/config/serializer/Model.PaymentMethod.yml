@@ -7,6 +7,7 @@ PH\Component\Core\Model\PaymentMethod:
         supportsRecurring:
             type: boolean
             expose: true
+            groups: [Default, Detailed]
     relations:
         -   rel: self
             href:

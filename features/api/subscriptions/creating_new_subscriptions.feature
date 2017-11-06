@@ -19,7 +19,11 @@ Feature: Creating new subscriptions by admin
           "month": "10",
           "day": "10",
           "year": "2017"
-       }
+      },
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"web_version"
+      }
     }
     """
     Then the response status code should be 400
@@ -45,7 +49,11 @@ Feature: Creating new subscriptions by admin
           "day": "10",
           "year": "2017"
        },
-      "method": "directdebit"
+      "method": "directdebit",
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"web_version"
+      }
     }
     """
     Then the response status code should be 201
@@ -67,6 +75,8 @@ Feature: Creating new subscriptions by admin
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
       | method.code                           | directdebit                 |
+      | metadata.intention                    | bottom_box                  |
+      | metadata.source                       | web_version                 |
     And the JSON node "purchase_completed_at" should not be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
@@ -87,7 +97,11 @@ Feature: Creating new subscriptions by admin
       "amount":500,
       "currency_code":"USD",
       "type":"non-recurring",
-      "method": "lastschrift"
+      "method": "lastschrift",
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"mobile_version"
+      }
     }
     """
     Then the response status code should be 201
@@ -107,6 +121,8 @@ Feature: Creating new subscriptions by admin
       | items[0].unit_price                   | 500                         |
       | items[0].total                        | 500                         |
       | method.code                           | lastschrift                 |
+      | metadata.intention                    | bottom_box                  |
+      | metadata.source                       | mobile_version              |
     And the JSON node "purchase_completed_at" should not be null
     And the JSON node "created_at" should not be null
     And the JSON node "updated_at" should not be null
@@ -127,7 +143,11 @@ Feature: Creating new subscriptions by admin
       "amount":500,
       "currency_code":"USD",
       "type":"non-recurring",
-      "method": "cash_on_delivery"
+      "method": "cash_on_delivery",
+      "metadata": {
+          "intention":"bottom_box",
+          "source":"mobile_version"
+      }
     }
     """
     Then the response status code should be 201
@@ -147,6 +167,8 @@ Feature: Creating new subscriptions by admin
       | purchase_state                        | completed                   |
       | payment_state                         | awaiting_payment            |
       | method.code                           | cash_on_delivery            |
+      | metadata.intention                    | bottom_box                  |
+      | metadata.source                       | mobile_version              |
     And the JSON node "start_date" should be null
     And the JSON node "interval" should be null
     And the JSON node "purchase_completed_at" should not be null

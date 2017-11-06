@@ -77,4 +77,24 @@ interface SubscriptionInterface extends BaseSubscriptionInterface
      * @param string $tokenValue
      */
     public function setTokenValue(string $tokenValue): void;
+
+    /**
+     * @return null|PaymentMethodInterface
+     */
+    public function getMethod(): ?PaymentMethodInterface;
+
+    /**
+     * @param null|PaymentMethodInterface $method
+     */
+    public function setMethod(?PaymentMethodInterface $method): void;
+
+    /**
+     * @return array
+     */
+    public function getMetadata(): array;
+
+    /**
+     * @param array $metadata
+     */
+    public function setMetadata(array $metadata): void;
 }

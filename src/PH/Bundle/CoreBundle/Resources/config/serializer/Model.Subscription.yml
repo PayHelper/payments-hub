@@ -5,19 +5,23 @@ PH\Component\Core\Model\Subscription:
         payments:
             expose: true
             type: array
-            groups: [Default, Detailed]
+            groups: [Detailed]
         purchaseState:
             expose: true
             type: string
-            groups: [Detailed]
+            groups: [Default, Detailed]
         paymentState:
             expose: true
             type: string
-            groups: [Detailed]
+            groups: [Default, Detailed]
         tokenValue:
             expose: true
             type: string
-            groups: [Detailed]
+            groups: [Default, Detailed]
         method:
             expose: true
-            groups: [Detailed]
+            groups: [Default, Detailed]
+        metadata:
+            expose: true
+            type: array<string,string>
+            groups: [Default, Detailed]
