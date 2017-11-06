@@ -13,6 +13,12 @@ Feature: Listing payment methods
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON node "_embedded.items" should have 2 elements
+    And the JSON node "_embedded.items[0].code" should be equal to "off"
+    And the JSON node "_embedded.items[1].code" should be equal to "paypal"
+    And the JSON node "_embedded.items[0].translations" should exist
+    And the JSON node "_embedded.items[0].position" should exist
+    And the JSON node "_embedded.items[0].supports_recurring" should be false
+    And the JSON node "_embedded.items[1].supports_recurring" should be false
     And the JSON node "_embedded.items[0].enabled" should not exist
     And the JSON node "_embedded.items[0].created_at" should not exist
     And the JSON node "_embedded.items[0].updated_at" should not exist
@@ -32,6 +38,8 @@ Feature: Listing payment methods
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON node "_embedded.items" should have 1 element
+    And the JSON node "_embedded.items[0].code" should be equal to "sepa"
+    And the JSON node "_embedded.items[0].translations" should exist
 
   Scenario: Retrieve the payment methods which do not support recurring payments
     And the system has a payment method "Offline" with a code "off"
@@ -43,3 +51,6 @@ Feature: Listing payment methods
     And the response should be in JSON
     And the header "Content-Type" should be equal to "application/json"
     And the JSON node "_embedded.items" should have 2 elements
+    And the JSON node "_embedded.items[0].code" should be equal to "off"
+    And the JSON node "_embedded.items[0].translations" should exist
+    And the JSON node "_embedded.items[1].code" should be equal to "paypal"

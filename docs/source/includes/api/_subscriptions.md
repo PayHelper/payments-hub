@@ -69,7 +69,8 @@ Based on created subscriptions you can perform purchases (see [Purchase API](#pu
                 "href": "/api/v1/payment-methods/directdebit_oneoff"
             }
         }
-    }
+    },
+    "metadata": {}
 }
 ```
 
@@ -93,6 +94,7 @@ purchase_state | string | A state of the checkout process. Can be either: `new`,
 payment_state | string | A state of the payment. Can be either: `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
 method | object | A subscription's payment method object. Defines which payment method has been selected to pay for the subscription (see [Payment Methods API](#payment-methods)).
+metadata | object | Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
 
 ## Create a subscription
 
@@ -102,7 +104,7 @@ method | object | A subscription's payment method object. Defines which payment 
 POST https://localhost/public-api/v1/subscriptions/
 ```
 
-Creates a new subscription object in the system. If at least one payment method exists, a subscription object after the creation will have one payment object assigned inside `payments` property which will contain default (the very first one defined in the system) payment method.
+Creates a new subscription object in the system. If at least one payment method exists, a subscription object after the creation will have one payment object assigned inside `payments` property which will contain the selected payment method.
 
 > Example Request
 
@@ -121,7 +123,11 @@ curl -X POST \
       	    "month": "10",
       	    "year": "2017"
       	},
-      	"method": "directdebit"
+      	"method": "directdebit",
+        "metadata": {
+        	"intention": "bottom_box",
+        	"source": "web_version"
+        }
 }'
 ```
 
@@ -187,7 +193,11 @@ curl -X POST \
             "self": {
                 "href": "/api/v1/payment-methods/directdebit_oneoff"
             }
-        }
+        },
+    },
+    "metadata": {
+        "intention": "bottom_box",
+        "source": "web_version"
     }
 }
 ```
@@ -202,6 +212,8 @@ interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. Th
 type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
 start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
 method <br>(`required`)| string | Subscription's payment method. A value of payment method's code must be used here, e.g. `directdebit` (see [Payment Methods API](#payment-methods)).
+metadata <br>(`optional`)| object | Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
+
 
 ### Returns
 
@@ -289,6 +301,10 @@ curl -X GET \
                 "href": "/api/v1/payment-methods/directdebit_oneoff"
             }
         }
+    },
+    "metadata": {
+        "intention": "bottom_box",
+        "source": "web_version"
     }
 }
 ```
@@ -492,6 +508,10 @@ Returns a list of all subscriptions.
                             "href": "/api/v1/payment-methods/directdebit_oneoff"
                         }
                     }
+                },
+                "metadata": {
+                    "intention": "bottom_box",
+                    "source": "web_version"
                 }
             }
         ]

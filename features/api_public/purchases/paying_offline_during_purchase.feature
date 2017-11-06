@@ -24,7 +24,7 @@ Feature: Paying offline for a subscription
     Then the response status code should be 200
     And the JSON node "purchase_state" should be equal to "completed"
     And the JSON node "payment_state" should be equal to "awaiting_payment"
-    And the JSON node "total" should be equal to "5000"
+    And the JSON node "amount" should be equal to "5000"
     And the JSON node "token_value" should be equal to "12345abcde"
     And the JSON node "method.code" should be equal to "off"
     And I send a "GET" request to "/public-api/v1/subscriptions/12345abcde/pay/"
@@ -33,7 +33,7 @@ Feature: Paying offline for a subscription
     Then the response status code should be 200
     And the JSON node "purchase_state" should be equal to "completed"
     And the JSON node "payment_state" should be equal to "awaiting_payment"
-    And the JSON node "total" should be equal to "5000"
+    And the JSON node "amount" should be equal to "5000"
     And the JSON node "token_value" should be equal to "12345abcde"
     And the JSON node "state" should be equal to "new"
     And the JSON node "token_value" should be equal to "12345abcde"

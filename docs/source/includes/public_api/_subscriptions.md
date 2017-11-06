@@ -10,77 +10,51 @@ Based on created subscriptions you can perform purchases (see [Purchase API](#pu
 
 ```json
 {
-    "id": 79,
     "amount": 500,
     "currency_code": "USD",
     "interval": "1 month",
-    "start_date": "2017-10-10T00:00:00+00:00",
+    "start_date": "2017-11-06T00:00:00+00:00",
     "type": "recurring",
-    "items": [
-        {
-            "id": 46,
-            "quantity": 1,
-            "unit_price": 500,
-            "total": 500
-        }
-    ],
-    "purchase_completed_at": "2017-10-10T14:54:53+00:00",
-    "items_total": 500,
-    "total": 500,
-    "state": "new",
-    "created_at": "2017-10-10T14:54:53+00:00",
-    "updated_at": "2017-10-10T14:54:53+00:00",
-    "payments": [],
+    "purchase_completed_at": "2017-11-06T14:14:41+00:00",
     "purchase_state": "completed",
     "payment_state": "awaiting_payment",
-    "token_value": "zadfgN_3Oo",
+    "token_value": "GpEwIpL474",
     "method": {
-        "id": 1,
         "code": "directdebit",
-        "position": 1,
-        "created_at": "2017-10-25T14:45:01+00:00",
-        "updated_at": "2017-10-25T14:45:01+00:00",
-        "enabled": true,
+        "position":1,
+        "supports_recurring":true,
         "translations": {
             "en": {
                 "locale": "en",
                 "translatable": null,
-                "id": 1,
+                "id": 3,
                 "name": "SEPA Direct Debit",
                 "description": "My method description",
                 "instructions": "My method instructions"
             }
-        },
-        "supports_recurring": true,
-        "_links": {
-            "self": {
-                "href": "/api/v1/payment-methods/directdebit_oneoff"
-            }
         }
+    },
+    "metadata": {
+        "intention": "bottom_box",
+        "source": "web_version"
     }
 }
 ```
 
 Field | Type | Description
 --------- | ------- | -------
-id | integer | Unique identifier for the object.
-purchase_completed_at | string | Datetime when the purchase has been completed.
-amount | int | The amount of the subscription. It needs to be integer value, e.g. if `5` will be given, it needs to be increased by a factor of `100` which will result in `500`. The value can't be lower than `500`.
+amount | int | The amount of the subscription. It needs to be integer value, e.g. if `5` will be given, it needs to be increased by a factor of `100` which will result in `500`. The amount's value can't be lower than the limit configured in payment method gateway's configuration.
 currency_code| string | Three-letter ISO code for currency, e.g. USD, EUR, PLN.
 interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
 type | string | Subscription type (either `recurring` or `non-recurring`).
 start_date | string | Subscription start date, applies only for recurring subscriptions.
-items | array | An array of subscription items. For more complex subscriptions handling.
-items_total | int | A sum of all items prices.
-total | int | A sum of items total.
-state | string | A state of the subscription. Can be either: `new`, `cancelled` or `fulfilled`.
-created_at | string | Time at which the object was created.
-updated_at | string | Time at which the object was updated.
-payments | array | An array of Payment object which contains [payment methods](#payment-methods) objects.
-purchase_state | string | A state of the purchase process. Can be either: `new`, `payment_selected` or `completed`.
-payment_state | string | A state of the payment. Can be either: `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
 token_value | string | A unique token that is used in payment process.
+purchase_state | string | A state of the checkout process. Can be either: `new`, `payment_selected` or `completed`.
+payment_state | string | A state of the payment. Can be either: `new`, `processing`, `completed`, `failed`, `cancelled` or `refunded`.
+purchase_completed_at | string | Datetime when the purchase has been completed.
 method | object | A subscription's payment method object. Defines which payment method has been selected to pay for the subscription (see [Payment Methods API](#payment-methods)).
+metadata | object | Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
+
 
 ## Create a subscription
 
@@ -90,7 +64,7 @@ method | object | A subscription's payment method object. Defines which payment 
 POST https://localhost/public-api/v1/subscriptions/
 ```
 
-Creates a new subscription object in the system. If at least one payment method exists, a subscription object after the creation will have one payment object assigned inside `payments` property which will contain default (the very first one defined in the system) payment method.
+Creates a new subscription object in the system. If at least one payment method exists, a subscription object after the creation will have one payment object assigned inside `payments` property which will contain the selected payment method.
 
 > Example Request
 
@@ -108,7 +82,11 @@ curl -X POST \
       	    "month": "10",
       	    "year": "2017"
       	},
-      	"method": "directdebit"
+      	"method": "directdebit",
+        "metadata": {
+            "intention": "bottom_box",
+            "source": "web_version"
+        }
 }'
 ```
 
@@ -116,50 +94,33 @@ curl -X POST \
 
 ```json
 {
-    "id": 79,
     "amount": 500,
     "currency_code": "USD",
     "interval": "1 month",
     "start_date": "2017-10-10T00:00:00+00:00",
     "type": "recurring",
-    "items": [
-        {
-            "id": 46,
-            "quantity": 1,
-            "unit_price": 500,
-            "total": 500
-        }
-    ],
-    "purchase_completed_at": "2017-10-10T14:54:53+00:00",
-    "items_total": 500,
-    "total": 500,
-    "state": "new",
-    "created_at": "2017-10-10T14:54:53+00:00",
-    "updated_at": "2017-10-10T14:54:53+00:00",
-    "payments": [],
+    "purchase_completed_at": "2017-10-10T14:14:41+00:00",
     "purchase_state": "completed",
     "payment_state": "awaiting_payment",
-    "token_value": "zadfgN_3Oo",
+    "token_value": "GpEwIpL474",
     "method": {
-        "id": 1,
         "code": "directdebit",
-        "position": 1,
+        "position":1,
+        "supports_recurring":true,
         "translations": {
             "en": {
                 "locale": "en",
                 "translatable": null,
-                "id": 1,
+                "id": 3,
                 "name": "SEPA Direct Debit",
                 "description": "My method description",
                 "instructions": "My method instructions"
             }
-        },
-        "supports_recurring": true,
-        "_links": {
-            "self": {
-                "href": "/api/v1/payment-methods/directdebit_oneoff"
-            }
         }
+    },
+    "metadata": {
+        "intention": "bottom_box",
+        "source": "web_version"
     }
 }
 ```
@@ -173,6 +134,9 @@ currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR,
 interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
 type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
 start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
+method <br>(`required`)| string | Subscription's payment method. A value of payment method's code must be used here, e.g. `directdebit` (see [Payment Methods API](#payment-methods)).
+metadata <br>(`optional`)| object | Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
+
 
 ### Returns
 

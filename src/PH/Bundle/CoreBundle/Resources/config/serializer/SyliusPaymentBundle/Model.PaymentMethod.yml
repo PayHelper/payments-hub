@@ -6,7 +6,7 @@ Sylius\Component\Payment\Model\PaymentMethod:
             expose: true
             type: integer
             xml_attribute: true
-            groups: [Default, Detailed]
+            groups: [Detailed]
         code:
             expose: true
             type: string

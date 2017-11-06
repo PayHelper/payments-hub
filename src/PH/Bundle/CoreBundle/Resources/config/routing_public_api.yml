@@ -7,6 +7,7 @@ ph_public_api_core_subscription_create:
             section: public_api
             form: PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType
             serialization_version: $version
+            serialization_groups: [Default]
             state_machine:
                 graph: ph_subscription_purchase
                 transition: select_payment
@@ -21,7 +22,7 @@ ph_public_api_core_subscription_show:
             arguments: [$token]
         _sylius:
             serialization_version: $version
-            serialization_groups: [Detailed]
+            serialization_groups: [Default]
 
 ph_public_api_core_payment_method_index:
     path: /payment-methods/

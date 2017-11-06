@@ -1,3 +1,5 @@
+# Public API
+
 # Payment Methods
 
 These endpoints will allow you to list available payment methods.

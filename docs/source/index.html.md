@@ -14,7 +14,6 @@ includes:
   - api/payment_methods
   - api/subscriptions
   - api/webhooks
-  - public_api/payment_gateways
   - public_api/payment_methods
   - public_api/subscriptions
 
