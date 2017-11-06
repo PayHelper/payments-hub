@@ -19,10 +19,8 @@
                 {{ form_row(form.type) }}
                 <span style="display: none;">{{ form_row(form.interval) }}</span>
                 <span style="display: none;">{{ form_row(form.startDate) }}</span>
-                Payment method:<br>
-                <select id="payment-methods">
-                </select>
-                <br>
+                {{ form_row(form.method) }}
+                {{ form_row(form.metadata) }}
                 {{ form_row(form.submit) }}
                 {{ form_end(form) }}
             </div>
