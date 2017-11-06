@@ -9,6 +9,12 @@ PH\Component\Core\Model\Subscription:
         intention:
             - NotBlank:
                 groups: [ph]
+            - Length:
+                max: 100
+                groups: [ph]
         source:
             - NotBlank:
+                groups: [ph]
+            - Length:
+                max: 100
                 groups: [ph]

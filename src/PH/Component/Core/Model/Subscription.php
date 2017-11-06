@@ -198,7 +198,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getIntention(): string
+    public function getIntention(): ?string
     {
         return $this->intention;
     }
@@ -206,7 +206,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setIntention(string $intention): void
+    public function setIntention(?string $intention): void
     {
         $this->intention = $intention;
     }
@@ -214,7 +214,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function getSource(): string
+    public function getSource(): ?string
     {
         return $this->source;
     }
@@ -222,7 +222,7 @@ class Subscription extends BaseSubscription implements SubscriptionInterface
     /**
      * {@inheritdoc}
      */
-    public function setSource(string $source): void
+    public function setSource(?string $source): void
     {
         $this->source = $source;
     }

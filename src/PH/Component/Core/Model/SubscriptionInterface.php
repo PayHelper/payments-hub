@@ -89,22 +89,22 @@ interface SubscriptionInterface extends BaseSubscriptionInterface
     public function setMethod(?PaymentMethodInterface $method): void;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getIntention(): string;
+    public function getIntention(): ?string;
 
     /**
-     * @param string $intention
+     * @param null|string $intention
      */
-    public function setIntention(string $intention): void;
+    public function setIntention(?string $intention): void;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSource(): string;
+    public function getSource(): ?string;
 
     /**
-     * @param string $source
+     * @param null|string $source
      */
-    public function setSource(string $source): void;
+    public function setSource(?string $source): void;
 }
