@@ -21,7 +21,7 @@ services:
     ph.payum_action.obtain_bank_account:
         class: PH\Bundle\PayumBundle\Action\ObtainBankAccountAction
         arguments:
-            - '@form.factory'
+            - '@ph.form.factory.bank_account'
             - '%payum.template.sepa_obtain_bank_details%'
         calls:
             - method: setRequestStack

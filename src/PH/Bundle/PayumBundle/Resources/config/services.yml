@@ -33,3 +33,8 @@ services:
         class: PH\Bundle\PayumBundle\Provider\PaymentDescriptionProvider
         arguments:
             - '@translator'
+
+    ph.form.factory.bank_account:
+        class: PH\Bundle\PayumBundle\Factory\BankAccountFormFactory
+        arguments:
+            - '@form.factory'

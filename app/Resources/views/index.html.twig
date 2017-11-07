@@ -67,6 +67,13 @@
                 }
             });
         });
+        $( "#ph_subscription_type" ).change(function() {
+            if ('recurring' == this.value) {
+                $('form span').show();
+            } else {
+                $('form span').hide();
+            }
+        });
     </script>
     <script>
         $("form[name='ph_subscription']").submit(function( event ) {

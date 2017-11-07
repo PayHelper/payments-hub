@@ -74,6 +74,8 @@ final class CapturePaymentAction extends GatewayAwareAction
                     $details['method'] = $paymentMethodConfig['method'];
                 }
 
+                $details['type'] = $subscription->getType();
+
                 $payumPayment->setDetails(array_merge($payment->getDetails(), $details));
 
                 $this->gateway->execute($convert = new Convert($payumPayment, 'array', $request->getToken()));
