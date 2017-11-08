@@ -38,12 +38,11 @@ final class ExceptionExtension implements ExtensionInterface
      */
     public function onPostExecute(Context $context)
     {
-        if (null === ($exception = $context->getException())) {
+        if (null === $context->getException()) {
             return;
         }
 
         $renderTemplate = new RenderTemplate($this->templateName);
-
         $context->getGateway()->execute($renderTemplate);
 
         throw new HttpResponse(new Response($renderTemplate->getResult(), 200));
