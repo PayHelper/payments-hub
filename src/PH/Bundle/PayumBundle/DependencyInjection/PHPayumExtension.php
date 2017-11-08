@@ -30,6 +30,7 @@ final class PHPayumExtension extends AbstractResourceExtension
         $loader->load('services.yml');
         $loader->load('actions.yml');
         $loader->load('forms.yml');
+        $loader->load('extensions.yml');
 
         $container->setParameter('ph.payum.redirect.thank_you_url', $config['thank_you_url']);
         $container->setParameter('ph.payum.redirect.cancel_url', $config['cancel_url']);

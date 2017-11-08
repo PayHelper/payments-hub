@@ -1,0 +1,10 @@
+parameters:
+    payum.template.exception: '@@PHPayum/exception.html.twig'
+
+services:
+    ph.payum_extension.exception:
+        class: PH\Bundle\PayumBundle\Extension\ExceptionExtension
+        arguments:
+            - '%payum.template.exception%'
+        tags:
+            - { name: "payum.extension", all: true, prepend: true }
