@@ -100,6 +100,8 @@
             }
         }
         $( "input[name='subscriptions_customer[email]']" ).prop('disabled', true);
-        $( "input[name='subscriptions_customer[email]']" ).val(decodeURIComponent($.urlParam('email')));
+        if (null != $.urlParam('email')) {
+            $( "input[name='subscriptions_customer[email]']" ).val(decodeURIComponent($.urlParam('email')));
+        }
     </script>
 {% endblock %}
