@@ -48,7 +48,14 @@ final class ResolveNextUrlAction implements ActionInterface
             PaymentInterface::STATE_PROCESSING === $payment->getState()
         ) {
             $request->setUrl($this->thankYouUrl);
-            $request->setUrlQueryParams(['token' => $payment->getSubscription()->getTokenValue()]);
+
+            $params = ['token' => $payment->getSubscription()->getTokenValue()];
+
+            if (isset($payment->getDetails()['email']) && null !== ($email = $payment->getDetails()['email'])) {
+                $params['email'] = $email;
+            }
+
+            $request->setUrlQueryParams($params);
 
             return;
         }

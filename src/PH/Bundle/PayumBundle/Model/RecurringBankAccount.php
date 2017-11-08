@@ -6,25 +6,25 @@ namespace PH\Bundle\PayumBundle\Model;
 
 use Payum\Core\Model\BankAccount;
 
-class RecurringBankAccount extends BankAccount
+class RecurringBankAccount extends BankAccount implements EmailAwareInterface
 {
     /**
-     * @var string
+     * @var null|string
      */
     private $email;
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getEmail()
+    public function getEmail(): ?string
     {
         return $this->email;
     }
 
     /**
-     * @param string $email
+     * @param null|string $email
      */
-    public function setEmail(string $email): void
+    public function setEmail(?string $email): void
     {
         $this->email = $email;
     }

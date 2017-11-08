@@ -55,7 +55,6 @@ final class CapturePaymentAction extends GatewayAwareAction
             } catch (RequestNotSupportedException $e) {
                 $totalAmount = $subscription->getTotal();
                 $payumPayment = new PayumPayment();
-                //$payumPayment->setNumber($subscription->getNumber());
                 $payumPayment->setTotalAmount($totalAmount);
                 $payumPayment->setCurrencyCode($subscription->getCurrencyCode());
                 $payumPayment->setDescription($this->descriptionProvider->getPaymentDescription($payment));
@@ -77,9 +76,7 @@ final class CapturePaymentAction extends GatewayAwareAction
                 $details['type'] = $subscription->getType();
 
                 $payumPayment->setDetails(array_merge($payment->getDetails(), $details));
-
                 $this->gateway->execute($convert = new Convert($payumPayment, 'array', $request->getToken()));
-
                 $payment->setDetails($convert->getResult());
             }
         }

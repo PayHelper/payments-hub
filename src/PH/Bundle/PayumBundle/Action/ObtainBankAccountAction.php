@@ -62,6 +62,7 @@ class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
      * @param ObtainBankAccount $request
      *
      * @throws \Payum\Core\Bridge\Symfony\Reply\HttpResponse
+     * @throws \Payum\Core\Exception\LogicException
      */
     public function execute($request)
     {
@@ -70,6 +71,10 @@ class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
 
         if (false == $httpRequest) {
             throw new LogicException('The action can be run only when http request is set.');
+        }
+
+        if (!isset($request->getModel()['type'])) {
+            throw new LogicException('The type is not defined.');
         }
 
         $form = $this->bankAccountFormFactory->createBankAccountForm($request->getModel()['type']);
