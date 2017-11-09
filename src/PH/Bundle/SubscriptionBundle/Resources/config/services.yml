@@ -1,0 +1,5 @@
+services:
+    ph.provider.start_date:
+        class: PH\Bundle\SubscriptionBundle\Provider\StartDateProvider
+        arguments:
+            - '@ph.helper.date_time'

@@ -4,6 +4,12 @@ services:
         arguments:
             - '%ph.model.subscription.class%'
             - ['ph']
-            - '@ph.helper.date_time' # registered by compiler pass
+        tags:
+            - { name: form.type }
+
+    ph.form.type.start_date_choice:
+        class: PH\Bundle\SubscriptionBundle\Form\Type\StartDateChoiceType
+        arguments:
+            - '@ph.provider.start_date'
         tags:
             - { name: form.type }

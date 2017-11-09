@@ -7,19 +7,19 @@ namespace PH\Bundle\SubscriptionBundle\Helper;
 interface DateTimeHelperInterface
 {
     /**
-     * @param int $next
+     * @param int $day
+     * @param int $months
+     *
+     * @return \DateTimeInterface
+     */
+    public function getDate(int $day, int $months = 0): \DateTimeInterface;
+
+    /**
+     * @param int    $day
+     * @param int    $months
+     * @param string $format
      *
      * @return string
      */
-    public function getCurrentMonth(int $next = 0): string;
-
-    /**
-     * @return string
-     */
-    public function getCurrentDay(): string;
-
-    /**
-     * @return string
-     */
-    public function getCurrentYear(): string;
+    public function getFormattedDate(int $day, int $months = 0, $format = 'Y-m-d'): string;
 }

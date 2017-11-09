@@ -83,9 +83,7 @@
                 currency = $form.find( "select[name='ph_subscription[currencyCode]']" ).val(),
                 amount = $form.find( "input[name='ph_subscription[amount]']" ).val(),
                 interval = $form.find( "select[name='ph_subscription[interval]']" ).val(),
-                startMonth = $form.find( "select[name='ph_subscription[startDate][month]']" ).val(),
-                startDay = $form.find( "select[name='ph_subscription[startDate][day]']" ).val(),
-                startYear = $form.find( "select[name='ph_subscription[startDate][year]']" ).val(),
+                startDate = $form.find( "select[name='ph_subscription[startDate]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
                 method = $form.find( "input[name='ph_subscription[method]']:checked" ).val(),
                 data = {
@@ -97,11 +95,7 @@
 
             if ('recurring' == subType) {
                 data['interval'] = interval;
-                data['start_date'] = {
-                    "month": startMonth,
-                    "day": startDay,
-                    "year": startYear
-                };
+                data['start_date'] = startDate;
             }
 
             $.ajax({
