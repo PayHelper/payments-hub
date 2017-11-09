@@ -2666,12 +2666,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/PayHelper/payum-mollie.git",
-                "reference": "d57d9ed79920aa7ea5a09e30712469a614b45f47"
+                "reference": "4ef60402fd6c1f0720a62e3b5aefef1401fa0d65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PayHelper/payum-mollie/zipball/d57d9ed79920aa7ea5a09e30712469a614b45f47",
-                "reference": "d57d9ed79920aa7ea5a09e30712469a614b45f47",
+                "url": "https://api.github.com/repos/PayHelper/payum-mollie/zipball/4ef60402fd6c1f0720a62e3b5aefef1401fa0d65",
+                "reference": "4ef60402fd6c1f0720a62e3b5aefef1401fa0d65",
                 "shasum": ""
             },
             "require": {
@@ -2715,7 +2715,7 @@
                 "payum",
                 "sepa"
             ],
-            "time": "2017-10-30T11:20:33+00:00"
+            "time": "2017-11-08T12:39:56+00:00"
         },
         {
             "name": "payum/iso4217",

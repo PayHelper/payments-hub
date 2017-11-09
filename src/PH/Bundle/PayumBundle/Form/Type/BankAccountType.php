@@ -24,10 +24,6 @@ class BankAccountType extends AbstractType
             ->add('iban', TextType::class, [
                 'label' => 'form.bank_account.iban',
             ])
-            ->add('bic', TextType::class, [
-                'label' => 'form.bank_account.bic',
-                'required' => false,
-            ])
         ;
     }
 

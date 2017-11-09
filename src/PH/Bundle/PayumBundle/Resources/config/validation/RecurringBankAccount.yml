@@ -1,0 +1,8 @@
+PH\Bundle\PayumBundle\Model\RecurringBankAccount:
+    properties:
+        email:
+            - NotBlank:
+                groups: [ph_recurring_bank_account]
+            - Email:
+                message: The email "{{ value }}" is not a valid email.
+                checkMX: true

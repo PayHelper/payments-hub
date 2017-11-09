@@ -7,6 +7,7 @@ namespace PH\Bundle\PayumBundle\Action;
 use Payum\Core\Action\ActionInterface;
 use PH\Bundle\PayumBundle\Request\ResolveNextUrl;
 use PH\Component\Core\Model\PaymentInterface;
+use PH\Component\Core\Model\SubscriptionInterface;
 
 final class ResolveNextUrlAction implements ActionInterface
 {
@@ -48,7 +49,16 @@ final class ResolveNextUrlAction implements ActionInterface
             PaymentInterface::STATE_PROCESSING === $payment->getState()
         ) {
             $request->setUrl($this->thankYouUrl);
-            $request->setUrlQueryParams(['token' => $payment->getSubscription()->getTokenValue()]);
+
+            /** @var SubscriptionInterface $subscription */
+            $subscription = $payment->getSubscription();
+            $params = ['token' => $subscription->getTokenValue()];
+
+            if (isset($payment->getDetails()['email']) && null !== ($email = $payment->getDetails()['email'])) {
+                $params['email'] = $email;
+            }
+
+            $request->setUrlQueryParams($params);
 
             return;
         }

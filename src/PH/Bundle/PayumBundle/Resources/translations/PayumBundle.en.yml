@@ -3,3 +3,6 @@ form:
         holder: Holder Name
         iban: International Bank Account Number (IBAN)
         bic: Business Identifier Code (BIC)
+        email:
+            label: Email
+            repeat_label: Repeat Email

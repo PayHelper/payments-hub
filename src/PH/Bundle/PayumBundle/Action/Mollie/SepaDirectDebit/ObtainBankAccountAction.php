@@ -14,6 +14,7 @@ use Payum\Core\GatewayAwareTrait;
 use Payum\Core\Model\BankAccountInterface;
 use Payum\Core\Request\GetHttpRequest;
 use Payum\Core\Security\SensitiveValue;
+use PH\Bundle\PayumBundle\Model\EmailAwareInterface;
 use PH\Bundle\PayumBundle\Request\ObtainBankAccount;
 
 class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
@@ -36,7 +37,7 @@ class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
             $postParams = [];
             parse_str($httpRequest->content, $postParams);
 
-            if (array_key_exists('mandate_id', $postParams) && null !== $postParams['mandate_id'] && $postParams['mandate_id'] === $model['mandate']['id']) {
+            if (array_key_exists('mandate_id', $postParams) && null !== $postParams['mandate_id'] && $model['mandate']['id'] === $postParams['mandate_id']) {
                 // mandate has been confirmed by the user
                 return;
             }
@@ -53,6 +54,14 @@ class ObtainBankAccountAction implements ActionInterface, GatewayAwareInterface
 
                 $model['sepaIban'] = SensitiveValue::ensureSensitive($bankAccount->getIban());
                 $model['sepaHolder'] = SensitiveValue::ensureSensitive($bankAccount->getHolder());
+
+                if (null !== $bankAccount->getBic()) {
+                    $model['sepaBic'] = SensitiveValue::ensureSensitive($bankAccount->getBic());
+                }
+
+                if ($bankAccount instanceof EmailAwareInterface) {
+                    $model['email'] = $bankAccount->getEmail();
+                }
 
                 $this->gateway->execute(new CreateSepaMandate($model));
             } catch (RequestNotSupportedException $e) {

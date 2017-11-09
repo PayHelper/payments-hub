@@ -2,12 +2,14 @@ Payum\Core\Model\BankAccount:
     properties:
         holder:
             - NotBlank:
-                groups: [ph]
+                groups: [ph, ph_recurring_bank_account]
         iban:
             - NotBlank:
-                groups: [ph]
+                groups: [ph, ph_recurring_bank_account]
             - Iban:
-                groups: [ph]
+                groups: [ph, ph_recurring_bank_account]
         bic:
+            - NotBlank:
+                groups: [ph_recurring_bank_account]
             - Bic:
-                groups: [ph]
+                groups: [ph_recurring_bank_account]
