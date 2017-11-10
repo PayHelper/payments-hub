@@ -31,7 +31,7 @@ final class DateTimeHelper implements DateTimeHelperInterface
     /**
      * @inheritdoc}
      */
-    public function getCurrentDate(): \DateTimeInterface
+    public function getCurrentDateTime(): \DateTimeInterface
     {
         return new \DateTime();
     }
