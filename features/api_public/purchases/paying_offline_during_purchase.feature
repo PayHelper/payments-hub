@@ -50,11 +50,7 @@ Feature: Paying offline for a subscription
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2017"
-       },
+      "start_date": "2017-10-10",
       "method": "off"
     }
     """

@@ -11,24 +11,30 @@ final class DateTimeHelperMock implements DateTimeHelperInterface
     /**
      * @inheritdoc}
      */
-    public function getCurrentMonth(int $next = 0): string
+    public function getDate(int $day, int $months = 0): \DateTimeInterface
     {
-        return (string) (10 + $next);
+        $date = new \DateTime(date('2017-10-'.$day));
+
+        if (0 !== $months) {
+            $date->modify(sprintf('+%d months', $months));
+        }
+
+        return $date;
     }
 
     /**
      * @inheritdoc}
      */
-    public function getCurrentDay(): string
+    public function getFormattedDate(int $day, int $months = 0, $format = 'Y-m-d'): string
     {
-        return '10';
+        return $this->getDate($day, $months)->format($format);
     }
 
     /**
      * @inheritdoc}
      */
-    public function getCurrentYear(): string
+    public function getCurrentDateTime(): \DateTimeInterface
     {
-        return '2017';
+        return new \DateTime(date('2017-10-09'));
     }
 }

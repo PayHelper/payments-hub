@@ -22,4 +22,9 @@ interface DateTimeHelperInterface
      * @return string
      */
     public function getFormattedDate(int $day, int $months = 0, $format = 'Y-m-d'): string;
+
+    /**
+     * @return \DateTimeInterface
+     */
+    public function getCurrentDateTime(): \DateTimeInterface;
 }

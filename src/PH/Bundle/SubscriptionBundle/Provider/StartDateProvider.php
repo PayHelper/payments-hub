@@ -20,7 +20,7 @@ final class StartDateProvider implements StartDateProviderInterface
      */
     public function getStartDates(): array
     {
-        $now = new \DateTime();
+        $now = $this->dateTimeHelper->getCurrentDateTime();
         $dates = [];
 
         if ($now < $this->dateTimeHelper->getDate(1)) {

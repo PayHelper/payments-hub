@@ -27,4 +27,12 @@ final class DateTimeHelper implements DateTimeHelperInterface
     {
         return $this->getDate($day, $months)->format($format);
     }
+
+    /**
+     * @inheritdoc}
+     */
+    public function getCurrentDate(): \DateTimeInterface
+    {
+        return new \DateTime();
+    }
 }
