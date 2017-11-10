@@ -16,11 +16,7 @@ Feature: Validating subscription's metadata
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2017"
-       },
+      "start_date": "2017-10-15",
       "method": "directdebit",
       "metadata": {
           "intention":"bottom_box",
@@ -48,11 +44,7 @@ Feature: Validating subscription's metadata
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2017"
-       },
+      "start_date": "2017-10-15",
       "method": "directdebit",
       "metadata": {}
     }
@@ -76,11 +68,7 @@ Feature: Validating subscription's metadata
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2017"
-       },
+      "start_date": "2017-10-15",
       "method": "directdebit"
     }
     """

@@ -20,6 +20,7 @@ final class PHSubscriptionExtension extends AbstractResourceExtension
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $this->registerResources('ph', $config['driver'], $config['resources'], $container);
         $loader->load('forms.yml');
+        $loader->load('services.yml');
 
         $container->setParameter(
             $this->getAlias().'.date_time_helper.class',

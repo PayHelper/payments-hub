@@ -9,24 +9,30 @@ final class DateTimeHelper implements DateTimeHelperInterface
     /**
      * @inheritdoc}
      */
-    public function getCurrentMonth(int $next = 0): string
+    public function getDate(int $day, int $months = 0): \DateTimeInterface
     {
-        return (string) ((int) date('m') + $next);
+        $date = new \DateTime(date('Y-m-'.$day));
+
+        if (0 !== $months) {
+            $date->modify(sprintf('+%d months', $months));
+        }
+
+        return $date;
     }
 
     /**
      * @inheritdoc}
      */
-    public function getCurrentDay(): string
+    public function getFormattedDate(int $day, int $months = 0, $format = 'Y-m-d'): string
     {
-        return date('d');
+        return $this->getDate($day, $months)->format($format);
     }
 
     /**
      * @inheritdoc}
      */
-    public function getCurrentYear(): string
+    public function getCurrentDateTime(): \DateTimeInterface
     {
-        return date('Y');
+        return new \DateTime();
     }
 }
