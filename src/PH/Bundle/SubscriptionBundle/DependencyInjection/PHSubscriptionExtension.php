@@ -25,5 +25,7 @@ final class PHSubscriptionExtension extends AbstractResourceExtension
             $this->getAlias().'.date_time_helper.class',
             $config['date_time_helper']
         );
+
+        $container->setParameter($this->getAlias().'.subscription_intervals', $config['subscription_intervals']);
     }
 }

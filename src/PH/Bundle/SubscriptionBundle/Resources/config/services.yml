@@ -1,0 +1,10 @@
+services:
+    ph.provider.start_date:
+        class: PH\Bundle\SubscriptionBundle\Provider\StartDateProvider
+        arguments:
+            - '@ph.helper.date_time'
+
+    ph.provider.subscription_intervals:
+        class: PH\Bundle\SubscriptionBundle\Provider\SubscriptionIntervalsProvider
+        arguments:
+            - '%ph_subscription.subscription_intervals%'

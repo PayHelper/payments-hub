@@ -28,3 +28,8 @@ parameters:
 
     ph_payum_redirect_thank_you_url: '/thank-you'
     ph_payum_redirect_cancel_url: '/cancel'
+
+    subscription_intervals:
+        Monthly: 1 month
+        Quarterly: 3 months
+        Yearly: 1 year

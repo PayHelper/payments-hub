@@ -43,6 +43,7 @@ sylius_payment:
                 repository: PH\Bundle\CoreBundle\Doctrine\ORM\PaymentRepository
 
 ph_subscription:
+    subscription_intervals: '%subscription_intervals%'
     resources:
         subscription:
             classes:

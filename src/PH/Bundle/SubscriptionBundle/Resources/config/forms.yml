@@ -7,3 +7,10 @@ services:
             - '@ph.helper.date_time' # registered by compiler pass
         tags:
             - { name: form.type }
+
+    ph.form.type.interval_choice:
+        class: PH\Bundle\SubscriptionBundle\Form\Type\IntervalChoiceType
+        arguments:
+            - '@ph.provider.subscription_intervals'
+        tags:
+            - { name: form.type }
