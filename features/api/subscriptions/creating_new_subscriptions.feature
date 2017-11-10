@@ -15,11 +15,7 @@ Feature: Creating new subscriptions by admin
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2017"
-      },
+      "start_date": "2017-10-15",
       "metadata": {
           "intention":"bottom_box",
           "source":"web_version"
@@ -44,11 +40,7 @@ Feature: Creating new subscriptions by admin
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2017"
-       },
+      "start_date": "2017-10-15",
       "method": "directdebit",
       "metadata": {
           "intention":"bottom_box",
@@ -64,7 +56,7 @@ Feature: Creating new subscriptions by admin
       | currency_code                         | USD                         |
       | amount                                | 500                         |
       | interval                              | month                       |
-      | start_date                            | 2017-10-10T00:00:00+00:00   |
+      | start_date                            | 2017-10-15T00:00:00+00:00   |
       | type                                  | recurring                   |
       | purchase_state                        | completed                   |
       | payment_state                         | awaiting_payment            |

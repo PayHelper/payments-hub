@@ -15,11 +15,7 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "22",
-          "day": "10",
-          "year": "2017"
-       }
+      "start_date": "2017-10-22"
     }
     """
     Then the response status code should be 400
@@ -36,11 +32,7 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "9",
-          "year": "2017"
-       }
+      "start_date": "2017-09-10"
     }
     """
     Then the response status code should be 400
@@ -57,11 +49,7 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "10",
-          "year": "2018"
-       }
+      "start_date": "2018-10-10"
     }
     """
     Then the response status code should be 400
@@ -79,11 +67,7 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "15",
-          "year": "2017"
-       },
+      "start_date": "2017-10-15",
       "method":"sepa"
     }
     """
@@ -102,18 +86,14 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "10",
-          "day": "1",
-          "year": "2017"
-       },
+      "start_date": "2017-10-01",
       "method":"sepa"
     }
     """
-    Then the response status code should be 201
+    Then the response status code should be 400
     And the response should be in JSON
 
-  Scenario: Creating new subscription with the upcoming month of the given one in start date
+  Scenario: Creating new subscription with the upcoming month in start date
     Given the system has a payment method "SEPA Direct Debit" with a code "sepa" and a "directdebit" method using Mollie gateway which supports recurring
     When I add "Authorization" header equal to null
     And I add "Content-Type" header equal to "application/json"
@@ -125,18 +105,14 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "11",
-          "day": "1",
-          "year": "2017"
-       },
+      "start_date": "2017-11-01",
       "method":"sepa"
     }
     """
     Then the response status code should be 201
     And the response should be in JSON
 
-  Scenario: Creating new subscription with the next month of the upcoming month in start date
+  Scenario: Creating new subscription with the 15th day of upcoming month in start date
     Given the system has a payment method "SEPA Direct Debit" with a code "sepa" and a "directdebit" method using Mollie gateway which supports recurring
     When I add "Authorization" header equal to null
     And I add "Content-Type" header equal to "application/json"
@@ -148,11 +124,7 @@ Feature: Validating subscription's start date
       "currency_code":"USD",
       "interval":"1 month",
       "type":"recurring",
-      "start_date": {
-          "month": "12",
-          "day": "1",
-          "year": "2017"
-       },
+      "start_date": "2017-11-15",
       "method":"sepa"
     }
     """

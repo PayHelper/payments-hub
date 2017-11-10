@@ -14,7 +14,7 @@ Based on created subscriptions you can perform purchases (see [Purchase API](#pu
     "amount": 500,
     "currency_code": "USD",
     "interval": "1 month",
-    "start_date": "2017-10-10T00:00:00+00:00",
+    "start_date": "2017-10-15T00:00:00+00:00",
     "type": "recurring",
     "items": [
         {
@@ -82,7 +82,7 @@ amount | int | The amount of the subscription. It needs to be integer value, e.g
 currency_code| string | Three-letter ISO code for currency, e.g. USD, EUR, PLN.
 interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
 type | string | Subscription type (either `recurring` or `non-recurring`).
-start_date | string | Subscription start date, applies only for recurring subscriptions.
+start_date | string | Subscription start date applies only to recurring subscriptions. Possible values are the 1st day of the current month and year, the 15th day of the current month and year, the 1st day of the next month and current year, the 15th day of the next month and current year. If the current date is lower than the one picked from the dates mentioned above, the API will return 400 status code.
 items | array | An array of subscription items. For more complex subscriptions handling.
 items_total | int | A sum of all items prices.
 total | int | A sum of items total.
@@ -118,11 +118,7 @@ curl -X POST \
       	"currency_code": "USD",
       	"interval": "1 month",
       	"type": "recurring",
-      	"start_date": {
-      	    "day": "10",
-      	    "month": "10",
-      	    "year": "2017"
-      	},
+      	"start_date": "2017-10-15",
       	"method": "directdebit",
         "metadata": {
         	"intention": "bottom_box",
@@ -139,7 +135,7 @@ curl -X POST \
     "amount": 500,
     "currency_code": "USD",
     "interval": "1 month",
-    "start_date": "2017-10-10T00:00:00+00:00",
+    "start_date": "2017-10-15T00:00:00+00:00",
     "type": "recurring",
     "items": [
         {
@@ -210,8 +206,8 @@ amount <br>(`required`)| int | The amount of the subscription. It needs to be in
 currency_code <br>(`required`)| string | The valid currency code, e.g. USD, EUR, PLN.
 interval <br>(`optional`)| string | One of `3 months`, `1 month` or `1 year`. The frequency with which a subscription should be billed. `1 month` by default.
 type <br>(`required`)| string | Subscription type (either `recurring` or `non-recurring`).
-start_date <br>(`required`)| string | Subscription start date, by default current date, applies only for recurring subscriptions.
-method <br>(`required`)| string | Subscription's payment method. A value of payment method's code must be used here, e.g. `directdebit` (see [Payment Methods API](#payment-methods)).
+start_date <br>(`required`)| string | Subscription start date applies only to recurring subscriptions. Possible values are the 1st day of the current month and year, the 15th day of the current month and year, the 1st day of the next month and current year, the 15th day of the next month and current year. If the current date is lower than the one picked from the dates mentioned above, the API will return 400 status code.
+.method <br>(`required`)| string | Subscription's payment method. A value of payment method's code must be used here, e.g. `directdebit` (see [Payment Methods API](#payment-methods)).
 metadata <br>(`optional`)| object | Set of key/value pairs that you can attach to an object. It can be useful for storing additional information about the object in a structured format.
 
 
@@ -246,7 +242,7 @@ curl -X GET \
     "amount": 500,
     "currency_code": "USD",
     "interval": "1 month",
-    "start_date": "2017-10-10T00:00:00+00:00",
+    "start_date": "2017-10-15T00:00:00+00:00",
     "type": "recurring",
     "items": [
         {
@@ -453,7 +449,7 @@ Returns a list of all subscriptions.
                 "amount": 500,
                 "currency_code": "USD",
                 "interval": "1 month",
-                "start_date": "2017-10-10T00:00:00+00:00",
+                "start_date": "2017-10-15T00:00:00+00:00",
                 "type": "recurring",
                 "items": [
                     {
