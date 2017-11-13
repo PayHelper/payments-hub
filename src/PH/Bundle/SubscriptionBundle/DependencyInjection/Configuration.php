@@ -52,6 +52,12 @@ final class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->scalarNode('date_time_helper')->defaultValue(DateTimeHelper::class)->cannotBeEmpty()->end()
+                ->arrayNode('subscription_intervals')
+                    ->isRequired()
+                    ->requiresAtLeastOneElement()
+                    ->useAttributeAsKey('name')
+                    ->prototype('scalar')->end()
+                ->end()
                 ->arrayNode('resources')
                 ->addDefaultsIfNotSet()
                 ->children()

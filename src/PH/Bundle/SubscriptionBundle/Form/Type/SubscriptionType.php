@@ -24,13 +24,7 @@ final class SubscriptionType extends AbstractResourceType
                 'currency' => false,
             ])
             ->add('currencyCode', CurrencyType::class)
-            ->add('interval', ChoiceType::class, [
-                'choices' => [
-                    'Monthly' => SubscriptionInterface::INTERVAL_MONTH,
-                    'Quarterly' => SubscriptionInterface::INTERVAL_QUARTERLY,
-                    'Yearly' => SubscriptionInterface::INTERVAL_YEAR,
-                ],
-            ])
+            ->add('interval', IntervalChoiceType::class)
             ->add('type', ChoiceType::class, [
                 'choices' => [
                     'Non-recurring' => SubscriptionInterface::TYPE_NON_RECURRING,

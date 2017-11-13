@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace PH\Bundle\CoreBundle\DependencyInjection;
 
 use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
