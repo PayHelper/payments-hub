@@ -101,11 +101,11 @@
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
-                url: '/app_dev.php/public-api/v1/subscriptions/',
+                url: '/public-api/v1/subscriptions/',
                 data: JSON.stringify(data),
                 dataType: "json"
             }).done(function( data ) {
-                window.location.replace('/app_dev.php/public-api/v1/subscriptions/'+data.token_value+'/pay/');
+                window.location.replace('/public-api/v1/subscriptions/'+data.token_value+'/pay/');
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');
