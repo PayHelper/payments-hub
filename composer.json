@@ -1,5 +1,5 @@
 {
-    "name": "sourcefabric/payments-hub",
+    "name": "payhelper/payments-hub",
     "license": "GPL-3.0",
     "type": "project",
     "autoload": {
