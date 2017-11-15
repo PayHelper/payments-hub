@@ -22,33 +22,6 @@ Features
 
 TODO
 
-
-Update
-
-The contribution guide
-
-How to add a new payment method:
-
-Customizing Payments Hub templates:
-
-- Error templates
-- Thank you page template
-- cancel template
-- obtain sepa bank account template
-- sepa mandate confirmation template
-
-How to run tests
-
-How to provide custom subscription's intervals
-
-Supported Gateways
-
-API Documentation
-
-
-Payum extensions
-
-
 Getting Started
 ===============
 
@@ -102,16 +75,23 @@ Overriding templates:
 
 .. include:: /templates/map.rst.inc
 
-Payum extensions:
+:doc:`Payum extensions <extensions/index>`
 
-API Documentation
+.. toctree::
+    :hidden:
 
-How to run tests
+    extensions/index
 
-The contribution guide:
+API Documentation:
 
+    API Documentaton can be found at http://hub-docs.s-lab.sourcefabric.org.
+
+:doc:`How To Run Tests? <tests/index>`
+
+.. toctree::
+    :hidden:
+
+    tests/index
 
 .. _`Symfony Framework`: http://symfony.com
 .. _`Quick Tour`: http://symfony.com/doc/current/quick_tour
-
-
