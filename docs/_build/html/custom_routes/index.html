@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Custom Redirect URLs &#8212; Payments Hub  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How To Change Thank You URL?" href="thankyou_url.html" />
+    <link rel="prev" title="Supported Gateways" href="../payments/supported_gateways.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Payments Hub</a></h1>
+
+
+
+<p class="blurb">An open-source framework for voluntary payment integration</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=PayHelper&repo=payments-hub&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../subscriptions/index.html">Subscriptions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../payments/index.html">Payments</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Custom Redirect URLs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="thankyou_url.html">How To Change Thank You URL?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancel_url.html">How To Change Cancel URL?</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../templates/index.html">Overriding templates</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../templates/exception_template.html">Exception Page Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../templates/thankyou_template.html">Payment Thank Tou Template</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../templates/cancel_template.html">Payment Cancellation Template</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../templates/cancel_template.html#what-is-the-cancellation-template">What is the cancellation template?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../templates/cancel_template.html#why-to-change-the-cancellation-template">Why to change the cancellation template?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../templates/cancel_template.html#how-to-override-cancellation-template">How to override cancellation template?</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../templates/cancel_template.html#lear-more">Lear More</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Custom Redirect URLs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="thankyou_url.html">How To Change Thank You URL?</a></li>
+<li class="toctree-l5"><a class="reference internal" href="cancel_url.html">How To Change Cancel URL?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../templates/sepa_bank_account_template.html">SEPA Direct Debit Bank Account Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../templates/sepa_mandate_template.html">SEPA Direct Debit Mandate Confirmation Template</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="../payments/supported_gateways.html" title="previous chapter">Supported Gateways</a></li>
+      <li>Next: <a href="thankyou_url.html" title="next chapter">How To Change Thank You URL?</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="custom-redirect-urls">
+<h1>Custom Redirect URLs<a class="headerlink" href="#custom-redirect-urls" title="Permalink to this headline">¶</a></h1>
+<p>Payments Hub allows to change the redirect URLs that are used by the payment gateways.
+By defaut, there are two main redirect URLs:</p>
+<ul class="simple">
+<li>thank you URL</li>
+<li>cancel URL</li>
+</ul>
+<p>Once a user chooses the payment method and pays for the subscription, Payment Hub communicates with the
+remote gateway. Next, the remote gateway redirects back a user to the Payments Hub and then the internal
+redirect to the “thank you” URL is done. In case of the successful or failed payment, a user is redirected to the “thank you” URL.
+In case of cancellation, a user is redirected to the “cancel” URL.</p>
+<p>These URLs can be changed so, for example, a user can be redirected to a different view on a different server.</p>
+<div class="toctree-wrapper compound">
+</div>
+<ul class="simple">
+<li><a class="reference internal" href="thankyou_url.html"><span class="doc">How To Change Thank You URL?</span></a></li>
+<li><a class="reference internal" href="cancel_url.html"><span class="doc">How To Change Cancel URL?</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017, Sourcefabric.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/custom_routes/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,180 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Subscription’s intervals &#8212; Payments Hub  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Payments" href="../payments/index.html" />
+    <link rel="prev" title="Subscriptions" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Payments Hub</a></h1>
+
+
+
+<p class="blurb">An open-source framework for voluntary payment integration</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=PayHelper&repo=payments-hub&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Subscriptions</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Subscription’s intervals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#why-to-change-the-subscriptions-intervals">Why to change the subscription’s intervals?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-change-the-subscriptions-intervals">How to change the subscription’s intervals?</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../payments/index.html">Payments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../custom_routes/index.html">Custom Redirect URLs</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../templates/index.html">Overriding templates</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Subscriptions</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Subscriptions</a></li>
+      <li>Next: <a href="../payments/index.html" title="next chapter">Payments</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="subscriptions-intervals">
+<h1>Subscription’s intervals<a class="headerlink" href="#subscriptions-intervals" title="Permalink to this headline">¶</a></h1>
+<p>By default, there are three intervals configured as listed below:</p>
+<ul class="simple">
+<li>Monthly (1 month)</li>
+<li>Quarterly (3 months)</li>
+<li>Yearly (1 year)</li>
+</ul>
+<p>Intervals are only used when the subscription of type <code class="docutils literal"><span class="pre">recurring</span></code> is used.
+For <code class="docutils literal"><span class="pre">non-recurring</span></code> subscription this field is ignored.</p>
+<div class="section" id="why-to-change-the-subscriptions-intervals">
+<h2>Why to change the subscription’s intervals?<a class="headerlink" href="#why-to-change-the-subscriptions-intervals" title="Permalink to this headline">¶</a></h2>
+<p>There might be a reason to customize the subscription’s intervals to your own needs in order to provide different options
+to end users.</p>
+</div>
+<div class="section" id="how-to-change-the-subscriptions-intervals">
+<h2>How to change the subscription’s intervals?<a class="headerlink" href="#how-to-change-the-subscriptions-intervals" title="Permalink to this headline">¶</a></h2>
+<p>The default intervals are configured in the <code class="docutils literal"><span class="pre">app/config/parameters.yml</span></code> file as an array under the
+<code class="docutils literal"><span class="pre">subscription_intervals</span></code> parameter:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># app/config/parameters.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+    <span class="c1"># ..</span>
+    <span class="l l-Scalar l-Scalar-Plain">subscription_intervals</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">Monthly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1 month</span>
+        <span class="l l-Scalar l-Scalar-Plain">Quarterly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">3 months</span>
+        <span class="l l-Scalar l-Scalar-Plain">Yearly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1 year</span>
+</pre></div>
+</div>
+<p>To change the intervals, simply change the value of the <code class="docutils literal"><span class="pre">subscription_intervals</span></code> parameter inside <code class="docutils literal"><span class="pre">app/config/parameters.yml</span></code> file:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># app/config/parameters.yml</span>
+<span class="l l-Scalar l-Scalar-Plain">parameters</span><span class="p p-Indicator">:</span>
+    <span class="c1"># ..</span>
+    <span class="l l-Scalar l-Scalar-Plain">subscription_intervals</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">Monthly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1 month</span>
+        <span class="l l-Scalar l-Scalar-Plain">Quarterly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">3 months</span>
+        <span class="l l-Scalar l-Scalar-Plain">Half-yearly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">6 months</span>
+        <span class="l l-Scalar l-Scalar-Plain">Yearly</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1 year</span>
+</pre></div>
+</div>
+<p>Note that this is a key-value array where key is a label and the value is the real interval value that is used by the
+payment gateway. The value can be either:
+1 month, 2 months, 4 months, 2 years etc.</p>
+<p>That’s it! New intervals will be now available in the system.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017, Sourcefabric.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/subscriptions/intervals.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,5 +1,6 @@
 parameters:
     payum.template.sepa_obtain_bank_details: '@@PHPayum/Action/obtain_sepa_bank_account.html.twig'
+    payum.template.sepa_mandate_confirmation: '@@PHPayum/Action/sepa_mandate_confirmation.html.twig'
 
 services:
     # generic
@@ -48,6 +49,13 @@ services:
         class: PH\Bundle\PayumBundle\Action\Mollie\SepaDirectDebit\SepaOneOffObtainBankAccountAction
         tags:
             - { name: "payum.action", factory: "mollie", alias: "ph.mollie.obtain_sepa_one_off_bank_account"}
+
+    ph.payum_action.mollie.sepa_mandate_confirmation:
+        class: PayHelper\Payum\Mollie\Action\Api\CreateSepaMandateAction
+        arguments:
+            - '%payum.template.sepa_mandate_confirmation%'
+        tags:
+            - { name: "payum.action", factory: "mollie", alias: "payum.action.api.create_sepa_mandate"}
 
     # Offline
     ph.payum_action.offline.resolve_next_url:

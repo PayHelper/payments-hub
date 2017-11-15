@@ -1,0 +1,164 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Exception Page Template &#8212; Payments Hub  documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Payment Thank Tou Template" href="thankyou_template.html" />
+    <link rel="prev" title="Overriding templates" href="index.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">Payments Hub</a></h1>
+
+
+
+<p class="blurb">An open-source framework for voluntary payment integration</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=PayHelper&repo=payments-hub&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../setup.html">Setup</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../subscriptions/index.html">Subscriptions</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../payments/index.html">Payments</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../custom_routes/index.html">Custom Redirect URLs</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Overriding templates</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Exception Page Template</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-the-exception-template">What is the exception template?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#why-to-change-the-exception-template">Why to change the exception template?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-override-exception-template">How to override exception template?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="thankyou_template.html">Payment Thank Tou Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cancel_template.html">Payment Cancellation Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sepa_bank_account_template.html">SEPA Direct Debit Bank Account Template</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Overriding templates</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Overriding templates</a></li>
+      <li>Next: <a href="thankyou_template.html" title="next chapter">Payment Thank Tou Template</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="exception-page-template">
+<h1>Exception Page Template<a class="headerlink" href="#exception-page-template" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-the-exception-template">
+<h2>What is the exception template?<a class="headerlink" href="#what-is-the-exception-template" title="Permalink to this headline">¶</a></h2>
+<p>The “exception template” is the template file which is rendered once there is an unexpected exception being thrown by one of the payment gateways.</p>
+</div>
+<div class="section" id="why-to-change-the-exception-template">
+<h2>Why to change the exception template?<a class="headerlink" href="#why-to-change-the-exception-template" title="Permalink to this headline">¶</a></h2>
+<p>There might be a reason to change that template in case there is a need to display a custom message to the user or to change the
+overall template’s appearance.</p>
+</div>
+<div class="section" id="how-to-override-exception-template">
+<h2>How to override exception template?<a class="headerlink" href="#how-to-override-exception-template" title="Permalink to this headline">¶</a></h2>
+<p>The default template location is <a class="reference external" href="https://github.com/PayHelper/payments-hub/blob/master/src/PH/Bundle/PayumBundle/Resources/views/exception.html.twig">src/PH/Bundle/PayumBundle/Resources/views/exception.html.twig</a>.</p>
+<p>To override the template, just copy the <code class="docutils literal"><span class="pre">exception.html.twig</span></code> template from the Payum bundle to
+<code class="docutils literal"><span class="pre">app/Resources/PHPayumBundle/views/exception.html.twig</span></code> (the <code class="docutils literal"><span class="pre">app/Resources/PHPayumBundle</span></code> directory won’t exist,
+so you’ll need to create it). You’re now free to customize the template.</p>
+<div class="highlight-twig"><div class="highlight"><pre><span></span><span class="c">{# app/Resources/PHPayumBundle/views/exception.html.twig #}</span><span class="x"></span>
+
+<span class="x">&lt;h1&gt;My custom exception template.&lt;h1&gt;</span>
+</pre></div>
+</div>
+<p>That’s it! A new template will be rendered whenever there will be an unexpected exception thrown.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2017, Sourcefabric.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.5</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="../_sources/templates/exception_template.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
