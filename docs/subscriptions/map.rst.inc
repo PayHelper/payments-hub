@@ -1,0 +1,1 @@
+* :doc:`/subscriptions/intervals`

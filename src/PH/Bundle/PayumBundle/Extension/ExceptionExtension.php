@@ -38,6 +38,13 @@ final class ExceptionExtension implements ExtensionInterface
      */
     public function onPostExecute(Context $context)
     {
+        $previousStack = $context->getPrevious();
+        $previousStackSize = count($previousStack);
+
+        if ($previousStackSize > 1) {
+            return;
+        }
+
         if (null === $context->getException()) {
             return;
         }
