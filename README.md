@@ -4,27 +4,17 @@ Payments Hub
 
 A free and open-source framework for voluntary payment integration into different publishing channels.
 
+## Documentation
+
+Documentation is available at [payments-hub.readthedocs.io](https://payments-hub.readthedocs.io).
+
 ## Prerequisites
 
-This project requires the [OpenSSL](https://www.openssl.org/) library to be installed and PHP >= 7.1.
+Read the [Prerequisites](https://payments-hub.readthedocs.io/en/latest/installation/prerequisites.html) section to find out more.
 
 ## Requirements
 
-Check [Symfony Requirements](http://symfony.com/doc/current/reference/requirements.html), first.
-
-**Operating Systems**
-- Linux or MacOS
-
-**Web Servers**
-
-Payments Hub can run on Nginx or Apache servers.
-
-For the development purposes we recommend using Symfony's PHP’s built-in web server.
-
-See [Configuring a Web Server](http://symfony.com/doc/current/setup/web_server_configuration.html) section for more details.
-
-**Database**
-- PostgreSQL 9.x
+Read the [Requirements](https://payments-hub.readthedocs.io/en/latest/installation/requirements.html) section to see what is required before starting.
 
 ## Configuration
 
@@ -54,7 +44,7 @@ Next, open http://127.0.0.1:8000 in your browser and you will see Payments Hub r
 
 ## License
 
-See the complete license [here](LICENSE.md).
+See the complete license [here](LICENSE).
 
 ## Contributors
 
