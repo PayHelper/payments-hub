@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Range;
+use Symfony\Component\Validator\Constraints\Type;
 
 abstract class AbstractGatewayConfigurationExtension extends AbstractTypeExtension
 {
@@ -27,6 +28,7 @@ abstract class AbstractGatewayConfigurationExtension extends AbstractTypeExtensi
                         'min' => 0,
                         'groups' => 'ph',
                     ]),
+                    new Type('integer'),
                 ],
             ])
             ->add('maxAmount', IntegerType::class, [
@@ -34,6 +36,7 @@ abstract class AbstractGatewayConfigurationExtension extends AbstractTypeExtensi
                     new NotBlank([
                         'groups' => 'ph',
                     ]),
+                    new Type('integer'),
                 ],
             ])
         ;
