@@ -16,7 +16,7 @@ class Version20171017090729 extends AbstractMigration
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->skipIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('CREATE SEQUENCE sylius_payment_method_translation_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
         $this->addSql('CREATE SEQUENCE ph_subscription_item_id_seq INCREMENT BY 1 MINVALUE 1 START 1');
@@ -56,7 +56,7 @@ class Version20171017090729 extends AbstractMigration
     public function down(Schema $schema)
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->skipIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('ALTER TABLE sylius_payment_method_translation DROP CONSTRAINT FK_966BE3A12C2AC5D3');
         $this->addSql('ALTER TABLE ph_payment DROP CONSTRAINT FK_8E3A744B19883967');
