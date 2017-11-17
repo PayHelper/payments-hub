@@ -20,7 +20,13 @@ based on `Symfony Framework`_.
 Features
 --------
 
-TODO
+- Pay using Paypal Express Checkout, Stripe Checkout, Credit Card, SEPA Direct Debit, Mbe4 phone bill, offline.
+- Recurring & non-recurring subscriptions
+- Ability to manage payment and add custom payment methods.
+- Customization of the templates
+- Possibility to change the application flows (redirect URLs)
+- Push details of the subscription to 3rd party applications using webhooks
+- API-centric architecture
 
 Getting Started
 ===============
