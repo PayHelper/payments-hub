@@ -172,6 +172,7 @@ curl -X POST \
 
 Argument | Type |Default | Description
 --------- | ------- | ------- | -----------
+paymentGateway <br> (`required`) | string | N/A | Payment Gateway name (e.g. `offline`, `paypal_express_checkout`, can be retrieved from [Payment Gateways API](#payment-gateways))
 code <br> (`required`) | string | N/A | An arbitrary string that you can attach to a payment method object. It is displayed alongside the payment method when listing all payment methods.
 position <br> (`optional`) | integer | 0 | If set to 1, the payment method will be positioned at position 1 in the list of payment methods.
 enabled <br> (`optional`) | boolean | true | If set to false, the payment method will be disabled else enabled.
@@ -296,10 +297,10 @@ curl -X PATCH \
 
 Argument | Type |Default | Description
 --------- | ------- | ------- | -----------
-paymentGateway <br> (`required`) | string | N/A | Payment Gateway name (e.g. `offline`, `paypal_express_checkout`, can be retrieved from [Payment Gateways API](#payment-gateways))
 code <br> (`required`) | string | N/A | An arbitrary string that you can attach to a payment method object. It is displayed alongside the payment method when listing all payment methods.
 position <br> (`optional`) | integer | 0 | If set to 1, the payment method will be positioned at position 1 in the list of payment methods.
 enabled <br> (`optional`) | boolean | true | If set to false, the payment method will be disabled else enabled.
+gateway_config.config <br> (`optional`) | object | {} | See a full [gateways configuration list](#gateways-configuration) for more details.
 
 ### Returns
 
