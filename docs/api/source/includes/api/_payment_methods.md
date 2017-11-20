@@ -68,10 +68,10 @@ gateway_config | object | Gateway configuration
 gateway_config.factory_name | string | Gateway factory name (e.g. `offline`, see [Payment Gateways API](#payment-gateways))
 gateway_config.gateway_name | string | Gateway name
 gateway_config.config | object | Gateway specific configuration [see how to create different payment methods with their configuration](https://github.com/PayHelper/payments-hub/blob/master/features/api/payments/adding_new_payment_method.feature)
+gateway_config.config.minAmount | integer | A minimum amount which can be handled by this payment gateway. If set to `100`, a minimum value of `100` can be typed in the subscription's amount field.
+gateway_config.config.maxAmount | integer | A maximum amount which can be handled by this payment gateway. If set to `100`, a maximum value of `100` can be typed in the subscription's amount field.
 gateway_config.decrypted_config | object | Gateway specific decrypted configuration
 gateway_config.id | integer | Gateway configuration unique identifier
-minAmount | integer | A minimum amount which can be handled by this payment gateway. If set to `100`, a minimum value of `100` can be typed in the subscription's amount field.
-maxAmount | integer | A maximum amount which can be handled by this payment gateway. If set to `100`, a maximum value of `100` can be typed in the subscription's amount field.
 
 ## Create a payment method
 
