@@ -70,6 +70,8 @@ gateway_config.gateway_name | string | Gateway name
 gateway_config.config | object | Gateway specific configuration [see how to create different payment methods with their configuration](https://github.com/PayHelper/payments-hub/blob/master/features/api/payments/adding_new_payment_method.feature)
 gateway_config.decrypted_config | object | Gateway specific decrypted configuration
 gateway_config.id | integer | Gateway configuration unique identifier
+minAmount | integer | A minimum amount which can be handled by this payment gateway. If set to `100`, a minimum value of `100` can be typed in the subscription's amount field.
+maxAmount | integer | A maximum amount which can be handled by this payment gateway. If set to `100`, a maximum value of `100` can be typed in the subscription's amount field.
 
 ## Create a payment method
 
@@ -88,7 +90,8 @@ username <br> (`required`) | string | N/A | PayPal's account username, if `sandb
 password <br> (`required`) | string | N/A | PayPal's account password, if `sandbox` field is set to `true`, it requires PayPal Sandbox account password.
 signature <br> (`required`) | string | N/A | PayPal's account signature, if `sandbox` field is set to `true`, it requires PayPal Sandbox account signature.
 sandbox <br> (`required`) | boolean | N/A | Either it should use sandbox service or not.
-minAmount <br> (`optional`) | integer | N/A | Minimum amount which can be handled by this payment gateway. If set to `100`, a minimum value of `100` needs to be provided in the subscription's amount field.
+minAmount <br> (`optional`) | integer | N/A | A minimum amount which can be handled by this payment gateway. If set to `100`, a minimum value of `100` can be typed in the subscription's amount field.
+maxAmount <br> (`optional`) | integer | N/A | A maximum amount which can be handled by this payment gateway. If set to `100`, a maximum value of `100` can be typed in the subscription's amount field.
 
 See a full [gateways configuration list](#gateways-configuration) for more details.
 
