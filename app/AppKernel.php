@@ -36,6 +36,7 @@ class AppKernel extends Kernel
             new PH\Bundle\PayumBundle\PHPayumBundle(),
             new PH\Bundle\WebhookBundle\PHWebhookBundle(),
             new Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle(),
+            new Nelmio\CorsBundle\NelmioCorsBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

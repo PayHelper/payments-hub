@@ -34,3 +34,5 @@ parameters:
         Monthly: 1 month
         Quarterly: 3 months
         Yearly: 1 year
+
+    allow_origin_cors: '*'
