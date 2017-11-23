@@ -112,3 +112,15 @@ doctrine_migrations:
     table_name: ph_migration_versions
     name: PH Migrations
     organize_migrations: false
+
+nelmio_cors:
+    defaults:
+        allow_credentials: false
+        allow_origin: ["%allow_origin_cors%"]
+        allow_headers: ["origin", "content-type", "accept", "authorization"]
+        max_age: 3600
+    paths:
+        '^/api/': ~
+            allow_methods: ["POST", "GET", "DELETE", "OPTIONS", "PATCH", "PUT"]
+        '^/public-api/':
+            allow_methods: ["POST", "GET", "OPTIONS"]
