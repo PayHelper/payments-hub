@@ -49,6 +49,7 @@ ph_public_api_payum_subscription_pay:
                 route: ph_public_api_payum_subscription_after_pay
                 parameters:
                     version: $version
+                    redirect: $redirect
 
 ph_public_api_payum_subscription_after_pay:
     path: /subscriptions/after-pay/
