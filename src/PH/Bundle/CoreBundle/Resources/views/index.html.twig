@@ -105,7 +105,7 @@
                 data: JSON.stringify(data),
                 dataType: "json"
             }).done(function( data ) {
-                window.location.replace('/public-api/v1/subscriptions/'+data.token_value+'/pay/');
+                window.location.replace('/public-api/v1/subscriptions/'+data.token_value+'/pay/?redirect=http://wp.pl');
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');
