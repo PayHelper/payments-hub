@@ -1,3 +1,1 @@
-files:
-  - source: /src/PH/Bundle/*/Resources/translations/*.yml
-    translation: '%original_path%/%original_file_name%'
+files: []
