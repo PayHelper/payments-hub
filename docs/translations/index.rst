@@ -12,7 +12,24 @@ the `ISO 639-1`_ and the `ISO 3166-1 alpha-2`_ standards.
 
 Then, just change the English values of the translation parameters to German.
 
-The last step would be to commit these newly created files and `open a Pull Request`_ to the `Payments Hub Repository`_.
+Last but not least, set the ``locale`` parameter in ``app/config/parameters.yml`` file to ``de`` in order to load
+newly translated strings.
+
+.. code-block:: yaml
+
+    # app/config/parameters.yml
+    parameters:
+        # ..
+        locale: de
+
+
+.. note::
+
+    You might need to clear the cache so the new files with the translations strings can be loaded properly. Just run command
+    ``php app/console cache:clear`` in the terminal.
+
+
+Finally, commit these newly created files and `open a Pull Request`_ to the `Payments Hub Repository`_.
 
 .. _`messages.en.yml`: https://github.com/PayHelper/payments-hub/blob/master/src/PH/Bundle/PayumBundle/Resources/translations/messages.en.yml
 .. _`PayumBundle.en.yml`: https://github.com/PayHelper/payments-hub/blob/master/src/PH/Bundle/PayumBundle/Resources/translations/PayumBundle.en.yml
