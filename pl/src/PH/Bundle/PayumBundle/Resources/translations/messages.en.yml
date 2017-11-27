@@ -1,0 +1,5 @@
+---
+ph:
+  payum_action:
+    payment:
+      description: Płatność w wysokości %total% %currency%

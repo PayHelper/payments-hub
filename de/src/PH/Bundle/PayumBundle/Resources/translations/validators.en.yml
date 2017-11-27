@@ -1,0 +1,5 @@
+---
+form:
+  bank_account:
+    email:
+      match: The email fields must match.
