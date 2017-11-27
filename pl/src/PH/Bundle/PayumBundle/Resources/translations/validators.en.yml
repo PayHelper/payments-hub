@@ -1,0 +1,5 @@
+---
+form:
+  bank_account:
+    email:
+      match: Pola adresu e-mail muszą być zgodne.
