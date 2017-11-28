@@ -1,0 +1,4 @@
+form:
+  bank_account:
+    email:
+      match: Die E-Mail-Adressen müssen übereinstimmen.

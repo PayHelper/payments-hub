@@ -1,0 +1,8 @@
+form:
+  bank_account:
+    holder: Name des Kontoinhabers
+    iban: International Bank Account Number (IBAN)
+    bic: Business Identifier Code (BIC)
+    email:
+      label: E-Mail
+      repeat_label: E-Mail-Adresse wiederholen
