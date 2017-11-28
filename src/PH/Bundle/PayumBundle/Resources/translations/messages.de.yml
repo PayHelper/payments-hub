@@ -1,0 +1,4 @@
+ph:
+  payum_action:
+    payment:
+      description: Zahlung für eine Gesamtmenge von %total% %currency%
