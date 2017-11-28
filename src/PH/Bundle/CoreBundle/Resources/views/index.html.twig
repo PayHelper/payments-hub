@@ -106,6 +106,9 @@
                 dataType: "json"
             }).done(function( data ) {
                 window.location.replace('/public-api/v1/subscriptions/'+data.token_value+'/pay/');
+                // or
+                // window.location.replace('/public-api/v1/subscriptions/'+data.token_value+'/pay/?redirect=http://example.com');
+                // to redirect always to the given url
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');

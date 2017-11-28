@@ -154,7 +154,7 @@ Once the payment transaction is finalized successfully the subscription state is
 
 ```shell
 curl -X GET \
-  http://localhost/public-api/v1/subscriptions/lKD1QhGtjW/pay/ \
+  http://localhost/public-api/v1/subscriptions/lKD1QhGtjW/pay/?redirect=http://example.com/sub \
   -H 'content-type: application/json' \
 ```
 
@@ -165,6 +165,7 @@ curl -X GET \
 Name | Type | Description
 --------- | ------- | -----------
 tokenValue \(`required`)| string | The token value of the subscription to be paid (can be retrieved from Subscriptions API). It is generated once the subscription is created.
+redirect \(`required`)| string | The URL you provide to redirect the customer to a url after payment is completed, failed or cancelled. Providing this parameter will override the default redirect urls.
 
 ### Returns
 

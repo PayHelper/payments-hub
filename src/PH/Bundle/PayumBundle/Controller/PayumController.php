@@ -147,18 +147,25 @@ class PayumController
         $status = new GetStatus($token);
 
         $this->payum->getGateway($token->getGatewayName())->execute($status);
-        $resolveNextUrl = $this->resolveNextUrlFactory->createNewWithModel($status->getFirstModel());
-        $this->payum->getGateway($token->getGatewayName())->execute($resolveNextUrl);
+
+        if (!$request->query->has('redirect')) {
+            $resolveNextUrl = $this->resolveNextUrlFactory->createNewWithModel($status->getFirstModel());
+            $this->payum->getGateway($token->getGatewayName())->execute($resolveNextUrl);
+            $redirect = $resolveNextUrl->getUrl();
+        } else {
+            $redirect = $request->query->get('redirect');
+        }
+
         $this->getHttpRequestVerifier()->invalidate($token);
 
-        $view = View::createRedirect($resolveNextUrl->getUrl());
+        $view = View::createRedirect($redirect);
 
         return $this->viewHandler->handle($configuration, $view);
     }
 
     /**
      * @param Request $request
-     * @param string  $subscription
+     * @param string  $subscriptionId
      * @param string  $id
      *
      * @return Response
