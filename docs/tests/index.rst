@@ -1,4 +1,4 @@
-How To Run Tests?
+How to Run Tests?
 =================
 
 .. note::

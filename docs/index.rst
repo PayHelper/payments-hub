@@ -92,12 +92,15 @@ API Documentation:
 
     API Documentaton can be found at http://hub-docs.s-lab.sourcefabric.org.
 
-:doc:`How To Run Tests? <tests/index>`
+:doc:`How to Run Tests? <tests/index>`
+
+:doc:`How to Translate the Payments Hub? <translations/index>`
 
 .. toctree::
     :hidden:
 
     tests/index
+    translations/index
 
 .. _`Symfony Framework`: http://symfony.com
 .. _`Quick Tour`: http://symfony.com/doc/current/quick_tour
