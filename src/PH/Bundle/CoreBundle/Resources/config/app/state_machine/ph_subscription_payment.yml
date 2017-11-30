@@ -37,3 +37,7 @@ winzou_state_machine:
                     on: ["pay", "cancel"]
                     do: ["@ph.state_resolver.subscription", "resolve"]
                     args: ["object"]
+                ph_send_payload:
+                    on: ["cancel"]
+                    do: ["@ph.payload_sender.subscription", "send"]
+                    args: ["object"]
