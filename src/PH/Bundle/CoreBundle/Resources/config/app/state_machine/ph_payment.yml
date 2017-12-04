@@ -45,3 +45,7 @@ winzou_state_machine:
                     on: ["complete", "refund"]
                     do: ["@ph.state_resolver.subscription_payment", "resolve"]
                     args: ["object.getSubscription()"]
+                ph_send_payload:
+                    on: ["authorize"]
+                    do: ["@ph.payload_sender.subscription", "send"]
+                    args: ["object.getSubscription()"]
