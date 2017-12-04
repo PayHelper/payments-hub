@@ -35,7 +35,7 @@ These endpoints will allow you to list available payment methods.
 Field | Type | Description
 --------- | ------- | -------
 id | integer | Unique identifier for the object.
-code | string | Client facing order code
+code | string | Client facing method code
 position | integer | Position of payment method.
 supports_recurring | boolean | This boolean represents whether or not payment method supports recurring payments, `false` by default.
 translations | array | Translations.
