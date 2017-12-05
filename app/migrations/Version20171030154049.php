@@ -16,7 +16,7 @@ class Version20171030154049 extends AbstractMigration
     public function up(Schema $schema)
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->skipIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->skipIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('ALTER TABLE ph_subscription ADD method_id INT DEFAULT NULL');
         $this->addSql('ALTER TABLE ph_subscription ADD CONSTRAINT FK_98E208AC19883967 FOREIGN KEY (method_id) REFERENCES ph_payment_method (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -29,7 +29,7 @@ class Version20171030154049 extends AbstractMigration
     public function down(Schema $schema)
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->skipIf($this->connection->getDatabasePlatform()->getName() !== 'postgresql', 'Migration can only be executed safely on \'postgresql\'.');
+        $this->skipIf('postgresql' !== $this->connection->getDatabasePlatform()->getName(), 'Migration can only be executed safely on \'postgresql\'.');
 
         $this->addSql('ALTER TABLE ph_subscription DROP CONSTRAINT FK_98E208AC19883967');
         $this->addSql('DROP INDEX IDX_98E208AC19883967');
