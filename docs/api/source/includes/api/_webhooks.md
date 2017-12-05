@@ -208,6 +208,15 @@ Returns a list of all webhooks.
 
 > Example Request
 
+```shell
+curl -X GET \
+  https://localhost/api/v1/webhooks/
+   -H "Authorization: Bearer key"\
+  -H 'content-type: application/json'
+```
+
+> Example Response (200)
+
 ```json
 {
     "page": 1,
