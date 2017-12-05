@@ -1,5 +1,5 @@
 Payments Hub
-[![Build Status](https://travis-ci.org/PayHelper/payments-hub.svg?branch=master)](https://travis-ci.org/PayHelper/payments-hub) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PayHelper/payments-hub/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PayHelper/payments-hub/?branch=master) 
+[![Build Status](https://travis-ci.org/PayHelper/payments-hub.svg?branch=master)](https://travis-ci.org/PayHelper/payments-hub) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PayHelper/payments-hub/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/PayHelper/payments-hub/?branch=master) [![StyleCI](https://styleci.io/repos/92825992/shield?branch=master)](https://styleci.io/repos/92825992)
 =============
 
 A free and open-source framework for voluntary payment integration into different publishing channels.
