@@ -2,7 +2,7 @@
 
 These endpoints will allow you to easily manage webhooks.
 
-For example, imagine you want to send order's details to 3rd party application once the order has been created, or updated. Thanks to webhooks you can achieve it by creating a new webhook with the destination url to which the payload will be submitted.
+For example, imagine you want to send subscription's details to 3rd party application once the subscription has been created, or updated. Thanks to webhooks you can achieve it by creating a new webhook with the destination url to which the payload will be submitted.
 
 ## The webhook object
 
@@ -173,7 +173,7 @@ Returns an empty response if a valid identifier was provided, and returns an err
 DELETE https://localhost/api/v1/webhooks/{id}
 ```
 
-Deletes a webhook object. You need only supply the unique webhook identifier that was generated upon order creation in order to remove webhook.
+Deletes a webhook object. You need only supply the unique webhook identifier that was generated upon subscription creation in order to remove webhook.
 
 > Example Request
 

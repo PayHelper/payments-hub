@@ -425,6 +425,16 @@ Returns a list of all subscriptions.
 
 > Example Request
 
+```shell
+curl -X GET \
+  https://localhost/api/v1/subscriptions/
+   -H "Authorization: Bearer key"\
+  -H 'content-type: application/json'
+'
+```
+
+> Example Response (200)
+
 ```json
 {
     "page": 1,

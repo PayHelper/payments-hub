@@ -31,7 +31,7 @@ This endpoint will return a json response with the token.
 
 ```shell
 curl -X GET \
-  https://localhost/api/v1/orders/
+  https://localhost/api/v1/subscriptions/
    -H "Authorization: Bearer key"\
   -H 'content-type: application/json'
 '
