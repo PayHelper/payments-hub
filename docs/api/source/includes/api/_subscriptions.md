@@ -430,7 +430,6 @@ curl -X GET \
   https://localhost/api/v1/subscriptions/
    -H "Authorization: Bearer key"\
   -H 'content-type: application/json'
-'
 ```
 
 > Example Response (200)
