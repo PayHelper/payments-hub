@@ -12,3 +12,7 @@ _errors:
 
 _main:
     resource: routing.yml
+
+_ph_core_homepage:
+    path:     /
+    defaults: { _controller: PHCoreBundle:Default:index }
