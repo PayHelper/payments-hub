@@ -8,7 +8,7 @@ use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class SandboxController extends Controller
+class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
