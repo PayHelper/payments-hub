@@ -155,7 +155,7 @@ Once the payment transaction is finalized successfully the subscription state is
 ```shell
 curl -X GET \
   http://localhost/public-api/v1/subscriptions/lKD1QhGtjW/pay/?redirect=http://example.com/sub \
-  -H 'content-type: application/json' \
+  -H 'content-type: application/json'
 ```
 
 > Response (302)

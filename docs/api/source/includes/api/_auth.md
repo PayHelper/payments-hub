@@ -13,8 +13,8 @@ curl -X POST \
 '
 ```
 
-Payments Hub allow you to authenticate using [Json Web Tokens](https://jwt.io) (JWT).
-This guide will take you through the steps of authenticating using JWT (obtaining token etc.).
+Payments Hub allows you to authenticate using [Json Web Tokens](https://jwt.io) (JWT).
+This guide will take you through the steps of authentication using JWT (obtaining token etc.).
 
 
 <aside class="notice">There is default admin account created for now with username "admin" and password "admin" which can be used to authenticate.</aside>
@@ -34,7 +34,6 @@ curl -X GET \
   https://localhost/api/v1/subscriptions/
    -H "Authorization: Bearer key"\
   -H 'content-type: application/json'
-'
 ```
 
 `Authorization` header (bearer auth) must be passed to each request in order to authorize user.

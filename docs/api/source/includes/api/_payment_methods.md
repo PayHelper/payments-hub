@@ -194,7 +194,7 @@ Retrieves the details of an existing payment method. You need only supply the un
 curl -X GET \
   http://localhost/api/v1/payment-methods/paypal \
   -H 'authorization: Bearer key' \
-  -H 'content-type: application/json' \
+  -H 'content-type: application/json'
 ```
 
 > Example Response (200)

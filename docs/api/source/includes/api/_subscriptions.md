@@ -427,8 +427,8 @@ Returns a list of all subscriptions.
 
 ```shell
 curl -X GET \
-  https://localhost/api/v1/subscriptions/
-   -H "Authorization: Bearer key"\
+  https://localhost/api/v1/subscriptions/ \
+  -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
 
