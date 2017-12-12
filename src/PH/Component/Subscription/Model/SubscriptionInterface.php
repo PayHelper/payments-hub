@@ -11,14 +11,19 @@ use Sylius\Component\Resource\Model\TimestampableInterface;
 interface SubscriptionInterface extends TimestampableInterface, ResourceInterface
 {
     const INTERVAL_MONTH = '1 month';
+
     const INTERVAL_YEAR = '1 year';
+
     const INTERVAL_QUARTERLY = '3 months';
 
     const TYPE_RECURRING = 'recurring';
+
     const TYPE_NON_RECURRING = 'non-recurring';
 
     const STATE_NEW = 'new';
+
     const STATE_CANCELLED = 'cancelled';
+
     const STATE_FULFILLED = 'fulfilled';
 
     /**
