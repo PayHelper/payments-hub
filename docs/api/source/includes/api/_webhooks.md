@@ -210,8 +210,8 @@ Returns a list of all webhooks.
 
 ```shell
 curl -X GET \
-  https://localhost/api/v1/webhooks/
-   -H "Authorization: Bearer key"\
+  https://localhost/api/v1/webhooks/ \
+  -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
 
