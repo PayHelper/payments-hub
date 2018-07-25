@@ -39,4 +39,36 @@ class SubscriptionRepository extends EntityRepository implements SubscriptionRep
             ->getOneOrNullResult()
         ;
     }
+
+    public function applyCustomCriteria($queryBuilder, $criteria): void
+    {
+        foreach ((array) $criteria as $key => $criterion) {
+            if (false !== strpos($key, 'metadata.')) {
+                $queryBuilder
+                    ->andWhere($queryBuilder->expr()->eq('metadata.key', ':key'))
+                    ->setParameter('key', str_replace('metadata.', '', $key))
+                    ->andWhere($queryBuilder->expr()->eq('metadata.value', ':value'))
+                    ->setParameter('value', $criterion)
+                ;
+
+                unset($criteria[$key]);
+            }
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function createPaginator(array $criteria = [], array $sorting = []): iterable
+    {
+        $queryBuilder = $this->createQueryBuilder('o')
+            ->leftJoin('o.metadata', 'metadata')
+        ;
+
+        $this->applyCustomCriteria($queryBuilder, $criteria);
+        $this->applyCriteria($queryBuilder, $criteria);
+        $this->applySorting($queryBuilder, $sorting);
+
+        return $this->getPaginator($queryBuilder);
+    }
 }

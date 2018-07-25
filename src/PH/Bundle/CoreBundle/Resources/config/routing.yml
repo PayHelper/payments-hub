@@ -94,9 +94,19 @@ ph_api_subscriptions:
     resource: |
         alias: ph.subscription
         section: api
-        only: ["index", "show", "delete"]
+        only: ["show", "delete"]
         serialization_version: $version
     type: sylius.resource_api
+
+ph_api_subscriptions_index:
+    path: /subscriptions/
+    methods: [GET]
+    defaults:
+        _controller: ph.controller.subscription:indexAction
+        _sylius:
+            section: api
+            filterable: true
+            serialization_version: $version
 
 ph_api_subscriptions_create:
      path: /subscriptions/

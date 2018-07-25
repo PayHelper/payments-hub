@@ -9,7 +9,6 @@
         <field type="string" name="purchaseState" column="purchase_state" />
         <field type="string" name="paymentState" column="payment_state" />
         <field type="string" name="tokenValue" column="token_value" nullable="true" />
-        <field type="json_array" name="metadata" column="metadata" />
 
         <many-to-one field="method" target-entity="Sylius\Component\Payment\Model\PaymentMethodInterface">
             <join-column name="method_id" referenced-column-name="id" nullable="true" />

@@ -5,6 +5,7 @@ declare(strict_types=1);
 use Behat\Behat\Context\Context;
 use PH\Bundle\CoreBundle\Facade\SubscriptionFacadeInterface;
 use PH\Component\Core\Model\SubscriptionInterface;
+use PH\Component\Subscription\Model\MetadataInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 
@@ -26,21 +27,34 @@ final class SubscriptionContext implements Context
     private $subscriptionRepository;
 
     /**
+     * @var FactoryInterface
+     */
+    private $subscriptionMetadataFactory;
+
+    /**
+     * @var SubscriptionInterface
+     */
+    private $subscription;
+
+    /**
      * SubscriptionContext constructor.
      *
      * @param SubscriptionFacadeInterface $subscriptionFacade
      * @param FactoryInterface            $subscriptionFactory
      * @param RepositoryInterface         $subscriptionRepository
+     * @param FactoryInterface            $subscriptionMetadataFactory
      */
     public function __construct(
         SubscriptionFacadeInterface $subscriptionFacade,
         FactoryInterface $subscriptionFactory,
-        RepositoryInterface $subscriptionRepository
+        RepositoryInterface $subscriptionRepository,
+        FactoryInterface $subscriptionMetadataFactory
     ) {
         $this->subscriptionFacade = $subscriptionFacade;
         $this->subscriptionFactory = $subscriptionFactory;
         $this->subscriptionRepository = $subscriptionRepository;
         $this->subscriptionFactory = $subscriptionFactory;
+        $this->subscriptionMetadataFactory = $subscriptionMetadataFactory;
     }
 
     /**
@@ -57,6 +71,21 @@ final class SubscriptionContext implements Context
         $this->subscriptionRepository->add($subscription);
     }
 
+    /**
+     * @Then this subscription should( also) have metadata :name with value :value
+     */
+    public function thisSubscriptionShouldHaveMetadataWithValue(string $name, string $value)
+    {
+        /** @var MetadataInterface $subscriptionMetadata */
+        $subscriptionMetadata = $this->subscriptionMetadataFactory->createNew();
+        $subscriptionMetadata->setKey($name);
+        $subscriptionMetadata->setValue($value);
+
+        $this->subscription->addMetadata($subscriptionMetadata);
+
+        $this->subscriptionRepository->add($this->subscription);
+    }
+
     private function createSubscription(int $price, string $currencyCode)
     {
         /** @var SubscriptionInterface $subscription */
@@ -65,7 +94,9 @@ final class SubscriptionContext implements Context
         $subscription->setCurrencyCode($currencyCode);
         $subscription->setTokenValue('12345abcde');
 
-        return  $this->subscriptionFacade->prepareSubscription($subscription);
+        $this->subscription = $this->subscriptionFacade->prepareSubscription($subscription);
+
+        return $this->subscription;
     }
 
     private function getPriceFromString(string $price)
