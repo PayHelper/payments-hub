@@ -58,7 +58,6 @@ final class SubscriptionType extends AbstractResourceType
                 return $value;
             },
             function ($value) {
-
                 $collection = new ArrayCollection();
 
                 foreach ((array) $value as $key => $item) {
