@@ -351,6 +351,10 @@ class Subscription implements SubscriptionInterface
      */
     public function setMetadata(Collection $metadata): void
     {
+        foreach ($metadata as $item) {
+            $item->setSubscription($this);
+        }
+
         $this->metadata = $metadata;
     }
 

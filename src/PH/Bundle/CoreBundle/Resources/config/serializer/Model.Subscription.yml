@@ -21,7 +21,3 @@ PH\Component\Core\Model\Subscription:
         method:
             expose: true
             groups: [Default, Detailed]
-        metadata:
-            expose: true
-            type: array<string,string>
-            groups: [Default, Detailed]

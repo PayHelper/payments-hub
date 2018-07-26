@@ -8,9 +8,7 @@ use PH\Bundle\CoreBundle\Provider\PaymentMethodsProviderInterface;
 use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
 use Sylius\Bundle\PaymentBundle\Form\Type\PaymentMethodChoiceType;
 use Symfony\Component\Form\AbstractTypeExtension;
-use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -63,30 +61,6 @@ final class SubscriptionTypeExtension extends AbstractTypeExtension
                 $formModifier($event->getForm()->getParent(), $type);
             }
         );
-
-        $builder
-            ->add('metadata', TextType::class);
-
-        $builder->get('metadata')->addModelTransformer(new CallbackTransformer(
-            function ($value) {
-                if (is_array($value)) {
-                    return json_encode($value);
-                }
-
-                return $value;
-            },
-            function ($value) {
-                if (is_string($value)) {
-                    return json_decode($value, true);
-                }
-
-                if (null === $value) {
-                    return [];
-                }
-
-                return $value;
-            }
-        ));
 
         $builder
             ->add('submit', SubmitType::class)

@@ -52,3 +52,7 @@ PH\Component\Subscription\Model\Subscription:
             expose: true
             type: DateTime
             groups: [Detailed]
+        metadata:
+            expose: true
+            type: PH\Component\Subscription\Model\MetadataInterface
+            groups: [Default, Detailed]
