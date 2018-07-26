@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace PH\Bundle\CoreBundle\Doctrine\ORM;
 
+use Doctrine\ORM\QueryBuilder;
 use PH\Component\Core\Model\SubscriptionInterface;
 use PH\Component\Core\Repository\SubscriptionRepositoryInterface;
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
@@ -40,15 +41,26 @@ class SubscriptionRepository extends EntityRepository implements SubscriptionRep
         ;
     }
 
-    public function applyCustomCriteria($queryBuilder, $criteria): void
+    public function applyCustomCriteria(QueryBuilder $queryBuilder, array $criteria = []): void
     {
-        foreach ((array) $criteria as $key => $criterion) {
+        foreach ($criteria as $key => $criterion) {
             if (false !== strpos($key, 'metadata.')) {
+                $explodedValueArray = explode(',', $criterion);
+
                 $queryBuilder
-                    ->andWhere($queryBuilder->expr()->eq('metadata.key', ':key'))
-                    ->setParameter('key', str_replace('metadata.', '', $key))
-                    ->andWhere($queryBuilder->expr()->eq('metadata.value', ':value'))
-                    ->setParameter('value', $criterion)
+                    ->andWhere($queryBuilder->expr()->eq(
+                        'metadata.key',
+                        $queryBuilder->expr()->literal(str_replace('metadata.', '', $key))
+                    ))
+                ;
+
+                $orX = $queryBuilder->expr()->orX();
+                foreach ($explodedValueArray as $item) {
+                    $orX->add($queryBuilder->expr()->eq('metadata.value', $queryBuilder->expr()->literal($item)));
+                }
+
+                $queryBuilder
+                    ->andWhere($orX)
                 ;
 
                 unset($criteria[$key]);
