@@ -427,7 +427,7 @@ Returns a list of all subscriptions.
 
 ```shell
 curl -X GET \
-  https://localhost/api/v1/subscriptions/ \
+  https://localhost/api/v1/subscriptions/?criteria[metadata.intention]=bottom_box&criteria[metadata.source]=web_version \
   -H 'authorization: Bearer key' \
   -H 'content-type: application/json'
 ```
@@ -530,6 +530,7 @@ Argument | Default | Description
 --------- | ------- | -----------
 limit | 10 | A limit on the number of objects to be returned.
 page | 1 | A page number
+criteria | array | A filter on the list based on the object field, e.g. `criteria[metadata.intention]=bottom_box` to filter by `intention` metadata field or `criteria[metadata.intention]=bottom_box,top_box` to filter by multiple values of `intention` metadata field.
 
 ### Returns
 
