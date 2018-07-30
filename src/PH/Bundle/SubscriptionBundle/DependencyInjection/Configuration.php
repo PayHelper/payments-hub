@@ -6,6 +6,8 @@ namespace PH\Bundle\SubscriptionBundle\DependencyInjection;
 
 use PH\Bundle\SubscriptionBundle\Form\Type\SubscriptionType;
 use PH\Bundle\SubscriptionBundle\Helper\DateTimeHelper;
+use PH\Component\Subscription\Model\Metadata;
+use PH\Component\Subscription\Model\MetadataInterface;
 use PH\Component\Subscription\Model\Subscription;
 use PH\Component\Subscription\Model\SubscriptionInterface;
 use PH\Component\Subscription\Model\SubscriptionItem;
@@ -80,10 +82,10 @@ final class Configuration implements ConfigurationInterface
                     ->end()
                     ->arrayNode('subscription_item')
                         ->addDefaultsIfNotSet()
-                            ->children()
-                                ->variableNode('options')->end()
-                                ->arrayNode('classes')
-                                ->addDefaultsIfNotSet()
+                        ->children()
+                            ->variableNode('options')->end()
+                            ->arrayNode('classes')
+                            ->addDefaultsIfNotSet()
                                 ->children()
                                     ->scalarNode('model')->defaultValue(SubscriptionItem::class)->cannotBeEmpty()->end()
                                     ->scalarNode('interface')->defaultValue(SubscriptionItemInterface::class)->cannotBeEmpty()->end()
@@ -93,6 +95,21 @@ final class Configuration implements ConfigurationInterface
                                     ->scalarNode('form')->defaultValue(SubscriptionType::class)->cannotBeEmpty()->end()
                                 ->end()
                             ->end()
+                        ->end()
+                    ->end()
+                    ->arrayNode('subscription_metadata')
+                        ->addDefaultsIfNotSet()
+                            ->children()
+                                ->variableNode('options')->end()
+                                ->arrayNode('classes')
+                                ->addDefaultsIfNotSet()
+                                ->children()
+                                    ->scalarNode('model')->defaultValue(Metadata::class)->cannotBeEmpty()->end()
+                                    ->scalarNode('interface')->defaultValue(MetadataInterface::class)->cannotBeEmpty()->end()
+                                    ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
+                                    ->scalarNode('repository')->cannotBeEmpty()->end()
+                                    ->scalarNode('factory')->defaultValue(Factory::class)->end()
+                                ->end()
                             ->end()
                         ->end()
                     ->end()

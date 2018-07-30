@@ -35,6 +35,12 @@
             <gedmo:timestampable on="update"/>
         </field>
 
+        <one-to-many field="metadata" target-entity="PH\Component\Subscription\Model\MetadataInterface" mapped-by="subscription" orphan-removal="true">
+            <cascade>
+                <cascade-all/>
+            </cascade>
+        </one-to-many>
+
     </mapped-superclass>
 
 </doctrine-mapping>

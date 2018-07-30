@@ -19,6 +19,7 @@ default:
             subscriptionFacade: "@ph.facade.subscription"
             subscriptionFactory: "@ph.factory.subscription"
             subscriptionRepository: "@ph.repository.subscription"
+            subscriptionMetadataFactory: "@ph.factory.subscription_metadata"
   extensions:
     Behat\Symfony2Extension:
       kernel:

@@ -73,12 +73,18 @@ class Subscription implements SubscriptionInterface
     protected $state = SubscriptionInterface::STATE_NEW;
 
     /**
+     * @var Collection|MetadataInterface[]
+     */
+    protected $metadata;
+
+    /**
      * Subscription constructor.
      */
     public function __construct()
     {
         $this->items = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->metadata = new ArrayCollection();
     }
 
     /**
@@ -330,5 +336,65 @@ class Subscription implements SubscriptionInterface
     public function setState(string $state): void
     {
         $this->state = $state;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMetadata(): Collection
+    {
+        return $this->metadata;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMetadata(Collection $metadata): void
+    {
+        foreach ($metadata as $item) {
+            $item->setSubscription($this);
+        }
+
+        $this->metadata = $metadata;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasMetadata(): bool
+    {
+        return !$this->metadata->isEmpty();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function addMetadata(MetadataInterface $metadata): void
+    {
+        /** @var MetadataInterface $metadata */
+        if (!$this->hasSingleMetadata($metadata)) {
+            $this->metadata->add($metadata);
+            $metadata->setSubscription($this);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function removeMetadata(MetadataInterface $metadata): void
+    {
+        /** @var MetadataInterface $metadata */
+        if ($this->hasSingleMetadata($metadata)) {
+            $this->metadata->removeElement($metadata);
+            $metadata->setSubscription(null);
+        }
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function hasSingleMetadata(MetadataInterface $metadata): bool
+    {
+        return $this->metadata->contains($metadata);
     }
 }
