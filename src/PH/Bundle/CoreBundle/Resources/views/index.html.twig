@@ -1,4 +1,4 @@
-{% extends ['base.html.twig'] %}
+{% extends 'base.html.twig' %}
 
 {% form_theme form 'bootstrap_4_layout.html.twig' %}
 
@@ -100,14 +100,24 @@
                 startDate = $form.find( "select[name='ph_subscription[startDate]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
                 method = $form.find( "input[name='ph_subscription[method]']:checked" ).val(),
-                metadata = $form.find( "input[name='ph_subscription[metadata]']" ).val(),
-                data = {
-                    "amount": amount * 100,
-                    "currency_code": currency,
-                    "type": subType,
-                    "method": method,
-                    "metadata": metadata
+                metadata = $form.find( "input[name='ph_subscription[metadata]']" ).val();
+
+
+            var emailParam = location.search.split('email=')[1];
+
+            if (typeof emailParam != 'undefined') {
+                metadata = {
+                    email: emailParam
                 };
+            }
+
+            var data = {
+                "amount": amount * 100,
+                "currency_code": currency,
+                "type": subType,
+                "method": method,
+                "metadata": metadata
+            };
 
             if ('recurring' == subType) {
                 data['interval'] = interval;
@@ -128,7 +138,7 @@
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');
-            });;
+            });
         });
     </script>
 {% endblock %}
