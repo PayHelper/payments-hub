@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="col-md-12">
                     <h4 class="mb-3">Payment</h4>
-                {{ form_start(form) }}
+                {{ form_start(form, {attr: {novalidate:  true}}) }}
                 {{ form_errors(form) }}
                     <div class="col-md-6 mb-3">
                         {{ form_row(form.amount, {attr: {class: 'form-control'}}) }}
@@ -40,9 +40,11 @@
                     <div class="col-md-6 mb-3">
                     <div class="d-block my-3">
                         {{ form_label(form.method) }}
+                        <div id="ph_subscription_method">
                         {% for method in form.method %}
                             {{ form_widget(method, {label_attr: {class: 'radio-custom custom-control-label'}}) }}
                         {% endfor %}
+                        </div>
                     </div>
                     </div>
 
@@ -65,11 +67,10 @@
             crossorigin="anonymous">
     </script>
     <script>
-        var $type = $('#ph_subscription_type');
-        $type.change(function() {
+        $( "#ph_subscription_type" ).change(function() {
             var $form = $(this).closest('form');
             var data = {};
-            data[$type.attr('name')] = $type.val();
+            data[$(this).attr('name')] = $(this).val();
             $.ajax({
                 url : $form.attr('action'),
                 type: $form.attr('method'),
@@ -80,8 +81,7 @@
                     );
                 }
             });
-        });
-        $( "#ph_subscription_type" ).change(function() {
+
             if ('recurring' == this.value) {
                 $('form span').show();
             } else {
@@ -100,11 +100,13 @@
                 startDate = $form.find( "select[name='ph_subscription[startDate]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
                 method = $form.find( "input[name='ph_subscription[method]']:checked" ).val(),
+                metadata = $form.find( "input[name='ph_subscription[metadata]']" ).val(),
                 data = {
                     "amount": amount * 100,
                     "currency_code": currency,
                     "type": subType,
-                    "method": method
+                    "method": method,
+                    "metadata": metadata
                 };
 
             if ('recurring' == subType) {
