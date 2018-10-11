@@ -90,6 +90,21 @@
         });
     </script>
     <script>
+        // https://stackoverflow.com/a/3855394/1316350
+        var qs = (function(a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i)
+            {
+                var p=a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        })(window.location.search.substr(1).split('&'));
+
         $("form[name='ph_subscription']").submit(function( event ) {
             event.preventDefault();
 
@@ -100,24 +115,14 @@
                 startDate = $form.find( "select[name='ph_subscription[startDate]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
                 method = $form.find( "input[name='ph_subscription[method]']:checked" ).val(),
-                metadata = $form.find( "input[name='ph_subscription[metadata]']" ).val();
-
-
-            var emailParam = location.search.split('email=')[1];
-
-            if (typeof emailParam != 'undefined') {
-                metadata = {
-                    email: emailParam
+                metadata = qs,
+                data = {
+                    "amount": amount * 100,
+                    "currency_code": currency,
+                    "type": subType,
+                    "method": method,
+                    "metadata": metadata
                 };
-            }
-
-            var data = {
-                "amount": amount * 100,
-                "currency_code": currency,
-                "type": subType,
-                "method": method,
-                "metadata": metadata
-            };
 
             if ('recurring' == subType) {
                 data['interval'] = interval;
