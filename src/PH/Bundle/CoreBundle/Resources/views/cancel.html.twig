@@ -1,16 +1,29 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="wrapper">
-        <div id="container">
-            <div id="welcome">
-                <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
+<div id="wrapper">
+    <div id="container">
+        <div id="welcome">
+            <h1 class="display-4 text-center"><span>Welcome to Payments Hub Sandbox</span></h1>
+        </div>
+        {% if app.request.get('token') %}
+            <div class="alert alert-success" role="alert">
+                Successfully payed for subscription {{ app.request.get('token') }}
             </div>
-            {% if app.request.get('token') %}
-                <div style="color: #ff8888">Purchase {{ app.request.get('token') }} has been canceled!</div>
-            {% else %}
-                <div style="color: #ff8888">Purchase has been canceled!</div>
-            {%  endif %}
+        {%  endif %}
+        <div id="next">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger" role="alert">
+                        {% if app.request.get('token') %}
+                                Purchase {{ app.request.get('token') }} has been canceled!
+                        {% else %}
+                            Purchase has been canceled!
+                        {%  endif %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 {% endblock %}

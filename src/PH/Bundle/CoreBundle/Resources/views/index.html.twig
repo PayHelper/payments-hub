@@ -1,49 +1,65 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
 {% block body %}
     <div id="wrapper">
         <div id="container">
             <div id="welcome">
-                <h1><span>Welcome to Payments Hub Sandbox.</span></h1>
+                <h1 class="display-4 text-center"><span>Welcome to Payments Hub Sandbox</span></h1>
             </div>
             {% if app.request.get('token') %}
-                <div style="color: #3D7700">Successfully payed for subscription {{ app.request.get('token') }}</div>
+                <div class="alert alert-success" role="alert">
+                    Successfully payed for subscription {{ app.request.get('token') }}
+                </div>
             {%  endif %}
             <div id="next">
-                Subscription purchase:<br><br>
-                {{ form_start(form) }}
+                <div class="row">
+                    <div class="col-md-12">
+                    <h4 class="mb-3">Payment</h4>
+                {{ form_start(form, {attr: {novalidate:  true}}) }}
                 {{ form_errors(form) }}
+                    <div class="col-md-6 mb-3">
+                        {{ form_row(form.amount, {attr: {class: 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ form_row(form.currencyCode, {label: 'Currency', attr: {class: 'form-control'}}) }}
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        {{ form_row(form.type, {attr: {class: 'form-control'}}) }}
+                    </div>
+                    <span style="display: none;">
+                        <div class="col-md-6 mb-3">
+                            {{ form_row(form.interval, {attr: {class: 'form-control'}}) }}
+                        </div>
 
-                {{ form_row(form.amount) }}
-                {{ form_row(form.currencyCode) }}
-                {{ form_row(form.type) }}
-                <span style="display: none;">{{ form_row(form.interval) }}</span>
-                <span style="display: none;">{{ form_row(form.startDate) }}</span>
-                {{ form_row(form.method) }}
-                {{ form_row(form.metadata) }}
-                {{ form_row(form.submit) }}
+                        <div class="col-md-6 mb-3">
+                            {{ form_row(form.startDate, {attr: {class: 'form-control'}}) }}
+                        </div>
+                    </span>
+                    <div class="col-md-6 mb-3">
+                    <div class="d-block my-3">
+                        {{ form_label(form.method) }}
+                        <div id="ph_subscription_method">
+                        {% for method in form.method %}
+                            {{ form_widget(method, {label_attr: {class: 'radio-custom custom-control-label'}}) }}
+                        {% endfor %}
+                        </div>
+                    </div>
+                    </div>
+
+                        <hr class="mb-4">
+                        {{ form_row(form.submit, {attr: {class: 'btn btn-primary btn-lg btn-block'}}) }}
+
+                {{ form_widget(form.metadata, {attr: {style: 'display: none'}}) }}
                 {{ form_end(form) }}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
-{% block stylesheets %}
-    <style>
-        body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
-        h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
-        h1 { font-size: 36px; }
-        h2 { font-size: 21px; margin-bottom: 1em; }
-        p { margin: 0 0 1em 0; }
-        a { color: #0000F0; }
-        a:hover { text-decoration: none; }
-        code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
-        #wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
-        #container { padding: 2em; }
-        #welcome, #status { margin-bottom: 2em; }
-        #welcome h1 span { display: block; font-size: 75%; }
-    </style>
-{% endblock %}
 {% block javascripts %}
     <script
             src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -51,11 +67,10 @@
             crossorigin="anonymous">
     </script>
     <script>
-        var $type = $('#ph_subscription_type');
-        $type.change(function() {
+        $( "#ph_subscription_type" ).change(function() {
             var $form = $(this).closest('form');
             var data = {};
-            data[$type.attr('name')] = $type.val();
+            data[$(this).attr('name')] = $(this).val();
             $.ajax({
                 url : $form.attr('action'),
                 type: $form.attr('method'),
@@ -66,8 +81,7 @@
                     );
                 }
             });
-        });
-        $( "#ph_subscription_type" ).change(function() {
+
             if ('recurring' == this.value) {
                 $('form span').show();
             } else {
@@ -76,6 +90,21 @@
         });
     </script>
     <script>
+        // https://stackoverflow.com/a/3855394/1316350
+        var qs = (function(a) {
+            if (a == "") return {};
+            var b = {};
+            for (var i = 0; i < a.length; ++i)
+            {
+                var p=a[i].split('=', 2);
+                if (p.length == 1)
+                    b[p[0]] = "";
+                else
+                    b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+            }
+            return b;
+        })(window.location.search.substr(1).split('&'));
+
         $("form[name='ph_subscription']").submit(function( event ) {
             event.preventDefault();
 
@@ -86,11 +115,13 @@
                 startDate = $form.find( "select[name='ph_subscription[startDate]']" ).val(),
                 subType = $form.find( "select[name='ph_subscription[type]']" ).val(),
                 method = $form.find( "input[name='ph_subscription[method]']:checked" ).val(),
+                metadata = qs,
                 data = {
                     "amount": amount * 100,
                     "currency_code": currency,
                     "type": subType,
-                    "method": method
+                    "method": method,
+                    "metadata": metadata
                 };
 
             if ('recurring' == subType) {
@@ -112,7 +143,7 @@
                 console.log('done');
             }).fail(function () {
                 alert('error when making a purchase');
-            });;
+            });
         });
     </script>
 {% endblock %}
