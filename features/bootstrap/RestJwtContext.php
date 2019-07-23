@@ -29,6 +29,16 @@ final class RestJwtContext extends RestContext
     }
 
     /**
+     * @param string $username
+     *
+     * @Given I am want to get JSON
+     */
+    public function iWantToGetJson()
+    {
+        $this->request->setHttpHeader('Accept', 'application/json');
+    }
+
+    /**
      * @BeforeScenario
      */
     public function restoreAuthHeader()

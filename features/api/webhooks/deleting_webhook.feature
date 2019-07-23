@@ -6,6 +6,7 @@ Feature: Deleting existing webhook
 
   Scenario: Delete a single webhook by id
     Given I am authenticated as "admin"
+    Given I am want to get JSON
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/webhooks/" with body:
@@ -17,6 +18,9 @@ Feature: Deleting existing webhook
     """
     Then the response status code should be 201
     And the response should be in JSON
+
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "DELETE" request to "/api/v1/webhooks/1"

@@ -21,6 +21,8 @@ Feature: Editing existing payment methods
     """
     Then the response status code should be 204
     And the response should be empty
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     Then I send a "GET" request to "/api/v1/payment-methods/off"
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:

@@ -8,6 +8,7 @@ Feature: Getting a single subscription
     Given I am authenticated as "admin"
 
   Scenario: Get a single subscription
+    Given I am want to get JSON
     Given the system has a payment method "Offline" with a code "cash_on_delivery"
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
@@ -24,6 +25,9 @@ Feature: Getting a single subscription
       }
     }
     """
+
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     And I add "Accept" header equal to "application/json"
     When I am on "/api/v1/subscriptions/1"
     Then the response status code should be 200
