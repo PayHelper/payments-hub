@@ -74,17 +74,22 @@ Feature: Paying offline for a subscription
     }
     """
     Then the response status code should be 201
+
     Then I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/public-api/v1/subscriptions/12345abcde"
     Then the response status code should be 200
+
     And I send a "GET" request to "/public-api/v1/subscriptions/12345abcde/pay/"
     Then the response status code should be 302
-    And I am authenticated as "admin"
+
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "PUT" request to "/api/v1/subscriptions/1/payments/1/complete"
     Then the response status code should be 204
+
     And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "GET" request to "/public-api/v1/subscriptions/12345abcde"

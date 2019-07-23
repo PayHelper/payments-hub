@@ -50,6 +50,7 @@ ph_api_subscription_payment_complete:
     defaults:
         _controller: sylius.controller.payment:applyStateMachineTransitionAction
         _sylius:
+            csrf_protection: false
             event: complete
             repository:
                 method: findOneBySubscriptionId

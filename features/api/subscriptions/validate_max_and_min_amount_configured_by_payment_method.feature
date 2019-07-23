@@ -6,6 +6,7 @@ Feature: Prevent creating a new subscription if the gateway's config of a paymen
 
   Scenario: Validate the subscription's amount field based on the payment method's gateway configuration
     Given I am authenticated as "admin"
+    Given I am want to get JSON
     When I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/payment-methods/new/paypal_express_checkout" with body:
@@ -34,6 +35,9 @@ Feature: Prevent creating a new subscription if the gateway's config of a paymen
     }
     """
     Then the response status code should be 201
+
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/subscriptions/" with body:
@@ -50,6 +54,9 @@ Feature: Prevent creating a new subscription if the gateway's config of a paymen
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
       | errors.children.amount.errors[0] | This value should be 1 or more. |
+
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/subscriptions/" with body:
@@ -66,6 +73,9 @@ Feature: Prevent creating a new subscription if the gateway's config of a paymen
     And the header "Content-Type" should be equal to "application/json"
     And the JSON nodes should contain:
       | errors.children.amount.errors[0] | This value should be 5 or less. |
+
+    Given I am authenticated as "admin"
+    Given I am want to get JSON
     And I add "Content-Type" header equal to "application/json"
     And I add "Accept" header equal to "application/json"
     And I send a "POST" request to "/api/v1/subscriptions/" with body:

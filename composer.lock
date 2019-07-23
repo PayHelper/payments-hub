@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "45c1c8838569ef3dfac4e3ad70d7e673",
+    "content-hash": "1ad7597c5bbaf0d1520bdf681458773a",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -3048,34 +3048,35 @@
         },
         {
             "name": "ocramius/package-versions",
-            "version": "1.4.0",
+            "version": "1.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb"
+                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
-                "reference": "a4d4b60d0e60da2487bd21a2c6ac089f85570dbb",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/1d32342b8c1eb27353c8887c366147b4c2da673c",
+                "reference": "1d32342b8c1eb27353c8887c366147b4c2da673c",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0.0",
-                "php": "^7.1.0"
+                "php": "^7.3.0"
             },
             "require-dev": {
-                "composer/composer": "^1.6.3",
-                "doctrine/coding-standard": "^5.0.1",
+                "composer/composer": "^1.8.6",
+                "doctrine/coding-standard": "^6.0.0",
                 "ext-zip": "*",
-                "infection/infection": "^0.7.1",
-                "phpunit/phpunit": "^7.0.0"
+                "infection/infection": "^0.13.4",
+                "phpunit/phpunit": "^8.2.5",
+                "vimeo/psalm": "^3.4.9"
             },
             "type": "composer-plugin",
             "extra": {
                 "class": "PackageVersions\\Installer",
                 "branch-alias": {
-                    "dev-master": "2.0.x-dev"
+                    "dev-master": "1.6.x-dev"
                 }
             },
             "autoload": {
@@ -3094,37 +3095,38 @@
                 }
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "time": "2019-02-21T12:16:21+00:00"
+            "time": "2019-07-17T15:49:50+00:00"
         },
         {
             "name": "ocramius/proxy-manager",
-            "version": "2.1.1",
+            "version": "2.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/ProxyManager.git",
-                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7"
+                "reference": "14b137b06b0f911944132df9d51e445a35920ab1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
-                "reference": "e18ac876b2e4819c76349de8f78ccc8ef1554cd7",
+                "url": "https://api.github.com/repos/Ocramius/ProxyManager/zipball/14b137b06b0f911944132df9d51e445a35920ab1",
+                "reference": "14b137b06b0f911944132df9d51e445a35920ab1",
                 "shasum": ""
             },
             "require": {
-                "ocramius/package-versions": "^1.1.1",
-                "php": "^7.1.0",
-                "zendframework/zend-code": "^3.1.0"
+                "ocramius/package-versions": "^1.1.3",
+                "php": "^7.2.0",
+                "zendframework/zend-code": "^3.3.0"
             },
             "require-dev": {
-                "couscous/couscous": "^1.5.2",
+                "couscous/couscous": "^1.6.1",
                 "ext-phar": "*",
-                "humbug/humbug": "dev-master@DEV",
-                "nikic/php-parser": "^3.0.4",
+                "humbug/humbug": "1.0.0-RC.0@RC",
+                "nikic/php-parser": "^3.1.1",
+                "padraic/phpunit-accelerator": "dev-master@DEV",
                 "phpbench/phpbench": "^0.12.2",
-                "phpstan/phpstan": "^0.6.4",
-                "phpunit/phpunit": "^5.6.4",
-                "phpunit/phpunit-mock-objects": "^3.4.1",
-                "squizlabs/php_codesniffer": "^2.7.0"
+                "phpstan/phpstan": "dev-master#856eb10a81c1d27c701a83f167dc870fd8f4236a as 0.9.999",
+                "phpstan/phpstan-phpunit": "dev-master#5629c0a1f4a9c417cb1077cf6693ad9753895761",
+                "phpunit/phpunit": "^6.4.3",
+                "squizlabs/php_codesniffer": "^2.9.1"
             },
             "suggest": {
                 "ocramius/generated-hydrator": "To have very fast object to array to object conversion for ghost objects",
@@ -3163,7 +3165,7 @@
                 "proxy pattern",
                 "service proxies"
             ],
-            "time": "2017-05-04T11:12:50+00:00"
+            "time": "2018-09-27T13:45:01+00:00"
         },
         {
             "name": "pagerfanta/pagerfanta",
@@ -5074,30 +5076,30 @@
         },
         {
             "name": "sylius/customer",
-            "version": "v1.2.16",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Customer.git",
-                "reference": "c8ae4515b5c74336daf53d1711e75349a795cb23"
+                "reference": "b22fefc91c2a34a21439a4358e3e6508583d61ff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Customer/zipball/c8ae4515b5c74336daf53d1711e75349a795cb23",
-                "reference": "c8ae4515b5c74336daf53d1711e75349a795cb23",
+                "url": "https://api.github.com/repos/Sylius/Customer/zipball/b22fefc91c2a34a21439a4358e3e6508583d61ff",
+                "reference": "b22fefc91c2a34a21439a4358e3e6508583d61ff",
                 "shasum": ""
             },
             "require": {
                 "doctrine/collections": "^1.3",
-                "php": "^7.1",
+                "php": "^7.2",
                 "sylius/resource": "^1.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "phpspec/phpspec": "^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5137,7 +5139,7 @@
                 "customer",
                 "groups"
             ],
-            "time": "2019-01-07T13:49:05+00:00"
+            "time": "2019-02-08T13:20:09+00:00"
         },
         {
             "name": "sylius/inventory",
@@ -5481,30 +5483,30 @@
         },
         {
             "name": "sylius/payment",
-            "version": "v1.2.16",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Payment.git",
-                "reference": "1b658aa0e9151e7659958b616690257379c63c59"
+                "reference": "896368661b4ac018b560f20ea3ab94424dd99010"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Payment/zipball/1b658aa0e9151e7659958b616690257379c63c59",
-                "reference": "1b658aa0e9151e7659958b616690257379c63c59",
+                "url": "https://api.github.com/repos/Sylius/Payment/zipball/896368661b4ac018b560f20ea3ab94424dd99010",
+                "reference": "896368661b4ac018b560f20ea3ab94424dd99010",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
+                "php": "^7.2",
                 "sylius/registry": "^1.2",
                 "sylius/resource": "^1.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "phpspec/phpspec": "^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5539,7 +5541,7 @@
                 "shop",
                 "webshop"
             ],
-            "time": "2019-01-07T13:49:05+00:00"
+            "time": "2019-02-08T13:20:09+00:00"
         },
         {
             "name": "sylius/payment-bundle",
@@ -5753,31 +5755,31 @@
         },
         {
             "name": "sylius/promotion",
-            "version": "v1.2.16",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Promotion.git",
-                "reference": "fd1144165cfbea36978c0d51696793918478109f"
+                "reference": "7557bcdd67322ab42a01f23af68d226bef03bbe6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Promotion/zipball/fd1144165cfbea36978c0d51696793918478109f",
-                "reference": "fd1144165cfbea36978c0d51696793918478109f",
+                "url": "https://api.github.com/repos/Sylius/Promotion/zipball/7557bcdd67322ab42a01f23af68d226bef03bbe6",
+                "reference": "7557bcdd67322ab42a01f23af68d226bef03bbe6",
                 "shasum": ""
             },
             "require": {
                 "doctrine/orm": "^2.5",
-                "php": "^7.1",
+                "php": "^7.2",
                 "sylius/registry": "^1.2",
                 "sylius/resource": "^1.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "phpspec/phpspec": "^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -5811,39 +5813,42 @@
                 "shop",
                 "sylius"
             ],
-            "time": "2019-01-07T13:49:05+00:00"
+            "time": "2019-04-15T09:28:18+00:00"
         },
         {
             "name": "sylius/registry",
-            "version": "v1.2.16",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Registry.git",
-                "reference": "0db7ac5c122627f15d1a29121f6d1e89c3ead9b2"
+                "reference": "e4900b7e016e5b3eb8b2b8ccd157793beeb778e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Registry/zipball/0db7ac5c122627f15d1a29121f6d1e89c3ead9b2",
-                "reference": "0db7ac5c122627f15d1a29121f6d1e89c3ead9b2",
+                "url": "https://api.github.com/repos/Sylius/Registry/zipball/e4900b7e016e5b3eb8b2b8ccd157793beeb778e9",
+                "reference": "e4900b7e016e5b3eb8b2b8ccd157793beeb778e9",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
+                "php": "^7.2",
                 "webmozart/assert": "^1.0",
                 "zendframework/zend-stdlib": "^3.1"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "phpspec/phpspec": "^5.0",
+                "phpstan/phpstan-shim": "^0.10",
+                "proget-hq/phpstan-phpspec": "^0.1.1",
+                "sylius-labs/coding-standard": "^3.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
                 "psr-4": {
-                    "Sylius\\Component\\Registry\\": ""
+                    "Sylius\\Component\\Registry\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -5870,7 +5875,7 @@
                 "registry",
                 "services"
             ],
-            "time": "2019-03-08T14:59:17+00:00"
+            "time": "2019-03-08T15:04:07+00:00"
         },
         {
             "name": "sylius/resource",
@@ -6177,30 +6182,30 @@
         },
         {
             "name": "sylius/taxation",
-            "version": "v1.2.16",
+            "version": "v1.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sylius/Taxation.git",
-                "reference": "6109c69d87e74216d589fc7114204b93aa05c307"
+                "reference": "f7a563353fdfd8193f19b76c4627fe3f33422c96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sylius/Taxation/zipball/6109c69d87e74216d589fc7114204b93aa05c307",
-                "reference": "6109c69d87e74216d589fc7114204b93aa05c307",
+                "url": "https://api.github.com/repos/Sylius/Taxation/zipball/f7a563353fdfd8193f19b76c4627fe3f33422c96",
+                "reference": "f7a563353fdfd8193f19b76c4627fe3f33422c96",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1",
+                "php": "^7.2",
                 "sylius/registry": "^1.2",
                 "sylius/resource": "^1.0"
             },
             "require-dev": {
-                "phpspec/phpspec": "^4.0"
+                "phpspec/phpspec": "^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.5-dev"
                 }
             },
             "autoload": {
@@ -6237,7 +6242,7 @@
                 "taxes",
                 "vat"
             ],
-            "time": "2019-01-07T13:49:05+00:00"
+            "time": "2019-02-08T13:20:09+00:00"
         },
         {
             "name": "sylius/taxonomy",
@@ -7341,7 +7346,7 @@
                     "email": "adrien.brault@gmail.com"
                 },
                 {
-                    "name": "William Durand",
+                    "name": "William DURAND",
                     "email": "william.durand1@gmail.com"
                 }
             ],
